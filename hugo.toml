@@ -1,0 +1,25 @@
+baseURL = 'https://rodrigo-blog.pages.dev/'
+languageCode = 'pt-br'
+title = 'Imunno System Security Blog'
+theme = 'PaperMod'
+
+[params]
+  author = 'Rodrigo'
+  description = 'Pesquisas em Segurança da Informação, Engenharia Reversa e Cloud Security.'
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  defaultTheme = 'auto'
+
+[markup.highlight]
+  codeFences = true
+  guessSyntax = true
+  hl_Lines = ''
+  lineNoStart = 1
+  lineNos = true
+  lineNumbersInTable = true
+  noClasses = true
+  style = 'monokai'
+  tabWidth = 4
