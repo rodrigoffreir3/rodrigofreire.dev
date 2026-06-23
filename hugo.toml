@@ -1,4 +1,4 @@
-baseURL = 'https://rodrigo-blog.pages.dev/'
+baseURL = 'https://rodrigofreire.pages.dev/'
 locale = 'pt-br'
 title = 'Imunno System Security Blog'
 theme = 'PaperMod'
