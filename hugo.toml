@@ -1,6 +1,7 @@
 baseURL = 'https://rodrigofreire.pages.dev/'
 locale = 'pt-br'
-title = 'Imunno System Security Blog'
+title = 'Rodrigo Freire - Blog de Pesquisa e Desenvolvimento em Deep Tech'
+copyright = '© 2026 Rodrigo Freire Desenvolvedor e Pesquisador em Deep Tech'
 theme = 'PaperMod'
 
 [params]
