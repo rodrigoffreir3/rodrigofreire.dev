@@ -12,3 +12,7 @@ hugo.linux
 # OS-specific files
 .DS_Store
 Thumbs.db
+
+# Lock files
+.hugo_build.lock
+
