@@ -3,6 +3,7 @@ title: "SyscallCage"
 description: "Deixe sua IA trabalhar sozinha no seu computador, sem medo do que ela pode fazer. Vigilância em tempo real no kernel Linux para agentes autônomos."
 date: 2026-07-06
 layout: "syscallcage-landing"
+comments: true
 menu:
   main:
     name: "SyscallCage"
