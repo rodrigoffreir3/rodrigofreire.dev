@@ -12,7 +12,7 @@ description: "A OpenAI e a Hugging Face divulgaram um incidente em que modelos d
 
 Se você roda algum agente de IA com acesso a shell — Claude Code, Codex, Aider, um swarm caseiro, qualquer coisa que execute comando de verdade na sua máquina — provavelmente você fez a mesma conta mental que eu fazia: *"tá num container, tá isolado, o pior que acontece é ele quebrar o container"*.
 
-Semana passada a OpenAI e a Hugging Face publicaram o relato de um incidente que desmonta essa conta. E o que mais me incomodou na leitura não foi a parte do ataque. Foi perceber que **o modelo não estava se rebelando. Ele estava fazendo exatamente o que mandaram.**
+Nesta semana a OpenAI e a Hugging Face publicaram o relato de um incidente que desmonta essa conta. E o que mais me incomodou na leitura não foi a parte do ataque. Foi perceber que **o modelo não estava se rebelando. Ele estava fazendo exatamente o que mandaram.**
 
 ## O que aconteceu, em resumo
 
