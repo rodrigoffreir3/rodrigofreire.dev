@@ -10,9 +10,9 @@ description: "Servidor de inferência de IA passa a maior parte do tempo esperan
 
 Toda comparação de eficiência energética de IA que aparece por aí vem do mesmo jeito. GPU no talo, batch cheio, tudo saturado, e no fim um número redondo de "tantos TOPS por watt". Você olha aquilo e acha que tá com a conta na mão.
 
-Só que servidor de inferência não vive assim. Ele passa a maior parte do tempo esperando alguém digitar alguma coisa.
+Só que servidor de inferência não vive assim. Ele passa a boa parte do tempo esperando alguém digitar alguma coisa.
 
-Fiquei remoendo isso um tempo e resolvi medir por conta própria, em vez de continuar aceitando número de folheto.
+Fiquei pensando nisso um tempo e resolvi medir por conta própria, em vez de continuar aceitando número de marketing.
 
 ## Antes de mais nada: os três primeiros experimentos não descobriram nada
 
@@ -24,19 +24,19 @@ A diferença é que eu não queria só *saber*. Queria ver o número saindo do m
 
 Então montei tudo como experimento científico de verdade: hipótese pré-registrada em git antes de coletar qualquer dado, gate de falha declarado antes de rodar (se o baseline térmico derivar mais que 5%, a série toda é descartada), dado bruto commitado, e um critério explícito de que resultado negativo também vale publicação. A instrumentação foi feita com o GreenToken, que lê RAPL pra CPU e DRAM e NVML pra GPU, atribuindo consumo por processo.
 
-O E1 rodou numa L40S. A escala quadrática apareceu certinha: de 128 pra 512 tokens o consumo saltou 13,71x, contra 16x que a teoria prevê. De 512 pra 1024, deu 3,92x contra 4x teórico. Bem perto, sem forçar.
+O testes rodaram em uma L40S e uma T4. Começando pelo E1, a escala quadrática apareceu certinha: de 128 pra 512 tokens o consumo saltou 13,71x, contra 16x que a teoria prevê. De 512 pra 1024, deu 3,92x contra 4x teórico. Bem perto, sem forçar.
 
 O E2 comparou precisão com acurácia igualada. FP32 marcou 51,678 J por inferência. FP16 caiu pra 19,099 J, o que dá 63,04% de economia. INT8 ficou em 33,995 J, uns 34,22% abaixo do FP32. Todos com dispersão baixa, coeficiente de variação entre 2,6% e 3,7%.
 
-Teve um quarto experimento no meio do caminho que virou apêndice, porque era simulação de hardware analógico e não medição de silício real. Simulação não tem o mesmo peso de dado medido, e misturar as duas coisas no mesmo patamar seria desonesto. Ficou lá, separado, com o nome da pasta gritando que é simulação.
+Teve um terceiro experimento no meio do caminho que virou apêndice, porque era simulação de hardware analógico e não medição de silício real. Simulação não tem o mesmo peso de dado medido, e misturar as duas coisas no mesmo patamar seria desonesto. Ficou lá, separado, com o nome da pasta gritando que é simulação.
 
 ## Aí veio o quarto, que era pra ser só mais um
 
-A ideia do último experimento era simples e eu confesso que esperava tédio: medir a mesma inferência sob perfis diferentes de utilização, pra ver quanto a conta muda quando a GPU não tá 100% ocupada o tempo todo.
+A ideia do último experimento era simples e eu confesso que esperava nada muito além do prometido: medir a mesma inferência sob perfis diferentes de utilização, pra ver quanto a conta muda quando a GPU não tá 100% ocupada o tempo todo.
 
 A trava metodológica era normalizar tudo por entrega útil. Nada de comparar janela de tempo bruta. Divide a energia total da janela pelo número exato de inferências que saíram dali (vinte, em todos os perfis) e compara maçã com maçã.
 
-Rodou numa Tesla T4, com quatro perfis de carga. Segue o que saiu:
+Rodou primeiro numa Tesla T4 e depois numa L40S, com quatro perfis de carga. Segue o que saiu:
 
 | Perfil | Energia por inferência útil | Quanto pior que o pico |
 |---|---|---|
@@ -73,7 +73,7 @@ Benchmark de IA faz exatamente isso. Mostra o motor em rotação máxima e cala 
 
 Fazendo jus ao protocolo, vale dizer onde o experimento não chega.
 
-Isso foi medido numa T4, com carga sintética controlada, vinte inferências por janela. Não é um servidor de produção real com tráfego orgânico, nem cobre toda arquitetura de serving que existe por aí. vLLM, TensorRT e companhia têm estratégias próprias de gerenciamento de contexto que podem mudar bastante esse número, pra cima ou pra baixo.
+Isso foi medido numa T4 e numa L40S, com carga sintética controlada nas duas, vinte inferências por janela. Não é um servidor de produção real com tráfego orgânico, nem cobre toda arquitetura de serving que existe por aí. vLLM, TensorRT e companhia têm estratégias próprias de gerenciamento de contexto que podem mudar bastante esse número, pra cima ou pra baixo.
 
 O que dá pra afirmar com o dado na mão é mais modesto e ainda assim incômodo: existe uma diferença enorme entre o número de pico que a indústria publica e o custo por resposta útil em regime de baixa ocupação, e essa diferença não é explicada pelo repouso nominal da placa.
 
