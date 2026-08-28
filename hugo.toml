@@ -1,12 +1,12 @@
 baseURL = 'https://rodrigofreire.pages.dev/'
 locale = 'pt-br'
-title = 'Rodrigo Freire - Blog de Pesquisa e Desenvolvimento em Deep Tech'
-copyright = '© 2026 Rodrigo Freire Desenvolvedor e Pesquisador em Deep Tech'
+title = 'Rodrigo Freire · Desenvolvedor e Pesquisador em Deep Tech'
+copyright = '© 2026 Rodrigo Freire · Desenvolvedor e Pesquisador em Deep Tech'
 theme = 'PaperMod'
 
 [params]
-  author = 'Rodrigo'
-  description = 'Pesquisas em Segurança da Informação, Engenharia Reversa e Cloud Security.'
+  author = 'Rodrigo Freire'
+  description = 'Portfólio de desenvolvimento de software, plataformas web, automação com IA e engenharia de baixo nível por Rodrigo Freire.'
   ShowReadingTime = true
   ShowShareButtons = true
   ShowPostNavLinks = true
@@ -20,6 +20,76 @@ theme = 'PaperMod'
     favicon16x16 = "favicon-16x16.png"
     favicon32x32 = "favicon-32x32.png"
     apple_touch_icon = "apple-touch-icon.png"
+
+  [params.label]
+    text = "Rodrigo Freire"
+
+[menu]
+  [[menu.main]]
+    identifier = "inicio"
+    name = "Início"
+    url = "/"
+    weight = 10
+
+  [[menu.main]]
+    identifier = "projetos"
+    name = "Projetos ▾"
+    url = "/#projetos"
+    weight = 20
+
+  [[menu.main]]
+    parent = "projetos"
+    name = "Imunno System"
+    url = "/imunno-system/"
+    weight = 21
+
+  [[menu.main]]
+    parent = "projetos"
+    name = "CreareLabs"
+    url = "/creare-labs/"
+    weight = 22
+
+  [[menu.main]]
+    parent = "projetos"
+    name = "SysCallCage"
+    url = "/syscallcage/"
+    weight = 23
+
+  [[menu.main]]
+    parent = "projetos"
+    name = "Kernel WSL2 BPF Plus"
+    url = "/kernel-wsl2-bpf-plus/"
+    weight = 24
+
+  [[menu.main]]
+    parent = "projetos"
+    name = "GreenToken"
+    url = "/greentoken/"
+    weight = 25
+
+  [[menu.main]]
+    parent = "projetos"
+    name = "AppFitness"
+    url = "/appfitness/"
+    weight = 26
+
+  [[menu.main]]
+    identifier = "blog"
+    name = "Blog"
+    url = "/posts/"
+    weight = 30
+
+  [[menu.main]]
+    identifier = "servicos"
+    name = "Serviços"
+    url = "/#servicos"
+    weight = 40
+
+  [[menu.main]]
+    identifier = "sobre"
+    name = "Sobre"
+    url = "/#sobre"
+    weight = 50
 
 [markup.highlight]
   codeFences = true

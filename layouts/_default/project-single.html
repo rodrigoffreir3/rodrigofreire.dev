@@ -18,7 +18,7 @@
     {{- end }}
   </header>
 
-  {{/* 2. CONTEÚDO ESTRUTURADO: O PROBLEMA QUE RESOLVE */}}
+  {{/* 2, 3, 4. CONTEÚDO ESTRUTURADO DO PROJETO */}}
   {{- if .Params.problem_description }}
   <section class="project-section glass specular">
     <div class="glass-badge">Visão Prática</div>
@@ -29,7 +29,7 @@
   </section>
   {{- end }}
 
-  {{/* 3. GALERIA DE IMAGENS DO MANIFESTO */}}
+  {{/* Galeria de Imagens do Manifesto */}}
   {{- if .Params.gallery }}
   <section class="project-section glass specular">
     <div class="glass-badge">Galeria Visual</div>
@@ -47,7 +47,7 @@
   </section>
   {{- end }}
 
-  {{/* 4. COMO FUNCIONA POR TRÁS (DEEP TECH) */}}
+  {{/* Como funciona por trás (Técnico / Deep Tech) */}}
   {{- if .Params.technical_details }}
   <section class="project-section glass specular">
     <div class="glass-badge">Arquitetura & Engenharia</div>
@@ -58,7 +58,7 @@
   </section>
   {{- end }}
 
-  {{/* Conteúdo Markdown Principal Adicional */}}
+  {{/* Conteúdo Markdown Principal (se houver texto extra ou se for estruturado via markdown direto) */}}
   {{- if .Content }}
   <div class="project-section glass specular project-prose">
     {{ .Content }}
