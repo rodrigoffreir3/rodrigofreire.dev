@@ -3,435 +3,425 @@
 <div class="portfolio-container">
 
   {{/* ============================================================
-     SEÇÃO 1 — HERO INSTITUCIONAL
+     SEÇÃO 1 — HERO CORPORATIVO
      ============================================================ */}}
-  <section id="sobre" class="enterprise-hero">
-    <div class="hero-grid">
-      <div class="hero-content">
-        <div class="status-pill">
-          <span class="beacon-dot"></span>
-          <span>Engenharia de Software & Deep Tech Labs</span>
-        </div>
-        
-        <h1>
-          Sistemas Críticos, Inteligência Artificial e <span class="gradient-text-cyan">Infraestrutura de Alta Performance</span>
-        </h1>
-        
-        <p class="lead">
-          Desenvolvimento de plataformas web escaláveis, engenharia de baixo nível no kernel do Linux e soluções avançadas de automação com inteligência artificial para empresas que exigem segurança, velocidade e determinismo operacional.
-        </p>
-        
-        <div class="hero-actions">
-          <a href="#servicos" class="btn-enterprise btn-primary">Explorar Soluções & Serviços</a>
-          <a href="#projetos" class="btn-enterprise btn-secondary">Ver Projetos e Pesquisas</a>
-          <a href="{{ printf "https://wa.me/5569992782919?text=%s" ("Olá Rodrigo! Acessei seu site institucional e gostaria de agendar uma conversa sobre um projeto corporativo." | urlquery) }}" target="_blank" rel="noopener noreferrer" class="btn-enterprise btn-secondary">
-            Contato Direto no WhatsApp →
-          </a>
-        </div>
+  <section class="corp-hero">
+    <div class="hero-inner">
+      <div class="corp-badge">
+        <span>Consultoria & Engenharia de Software</span>
       </div>
       
-      <div class="hero-avatar-wrapper">
-        <div class="hero-emblem">
-          <span class="emblem-initials">RF</span>
-          <span class="emblem-sub">RODRIGO FREIRE</span>
-        </div>
+      <h1>
+        Engenharia de software, inteligência artificial e <span class="highlight-blue">plataformas de alto desempenho</span>
+      </h1>
+      
+      <p class="lead">
+        Ajudo empresas e empreendedores a transformar requisitos complexos em plataformas web modernas, automações inteligentes com IA, aplicativos e infraestruturas seguras e escaláveis.
+      </p>
+      
+      <div class="hero-actions">
+        <a href="#servicos" class="corp-btn corp-btn-primary">Conhecer Serviços</a>
+        <a href="#projetos" class="corp-btn corp-btn-secondary">Ver Projetos & Cases</a>
+        <a href="{{ printf "https://wa.me/5569992782919?text=%s" ("Olá Rodrigo! Acessei seu site e gostaria de conversar sobre um projeto de desenvolvimento." | urlquery) }}" target="_blank" rel="noopener noreferrer" class="corp-btn corp-btn-secondary">
+          Falar no WhatsApp →
+        </a>
       </div>
     </div>
   </section>
 
   {{/* ============================================================
-     BARRA DE MÉTRICAS & CREDENCIAIS CORPORATIVAS
+     BARRA DE CREDENCIAIS & CONFIANÇA
      ============================================================ */}}
-  <section class="metrics-ribbon">
-    <div class="metric-card">
-      <div class="metric-header">
-        <span class="metric-code">INPI Nº 512025006506-0</span>
-      </div>
-      <div class="metric-value">Patente & Software</div>
-      <p class="metric-label">Propriedade intelectual de defesa cibernética registrada e auditada.</p>
+  <section class="trust-ribbon">
+    <div class="trust-item">
+      <div class="trust-title">Propriedade Intelectual</div>
+      <p class="trust-desc">Software de defesa cibernética registrado no INPI sob o nº 512025006506-0.</p>
     </div>
 
-    <div class="metric-card">
-      <div class="metric-header">
-        <span class="metric-code">KERNEL LINUX · RING 0</span>
-      </div>
-      <div class="metric-value">Zero-Overhead</div>
-      <p class="metric-label">Vigilância e interceptação determinística via eBPF e módulos LSM.</p>
+    <div class="trust-item">
+      <div class="trust-title">Engenharia de Baixo Nível</div>
+      <p class="trust-desc">Monitoramento e vigilância de processos no Kernel Linux via eBPF e módulos LSM.</p>
     </div>
 
-    <div class="metric-card">
-      <div class="metric-header">
-        <span class="metric-code">SLA & DISPONIBILIDADE</span>
-      </div>
-      <div class="metric-value">99.9% Resiliência</div>
-      <p class="metric-label">Arquiteturas distribuídas em nuvem (AWS/Cloudflare) e servidores locais.</p>
+    <div class="trust-item">
+      <div class="trust-title">Infraestrutura em Nuvem</div>
+      <p class="trust-desc">Arquiteturas seguras e escaláveis na AWS e Cloudflare com foco em resiliência.</p>
     </div>
 
-    <div class="metric-card">
-      <div class="metric-header">
-        <span class="metric-code">STACK ENTERPRISE</span>
-      </div>
-      <div class="metric-value">Full-Stack & IA</div>
-      <p class="metric-label">Rust, Go, Python, TypeScript, PyTorch, WebAssembly e Linux Embarcado.</p>
+    <div class="trust-item">
+      <div class="trust-title">Inteligência Artificial</div>
+      <p class="trust-desc">Modelos em produção, automações de atendimento e fine-tuning especializado.</p>
     </div>
   </section>
 
   {{/* ============================================================
-     SEÇÃO 2 — DIVISÕES ESTRATÉGICAS DE SOLUÇÕES & SERVIÇOS
+     SEÇÃO 2 — SERVIÇOS & SOLUÇÕES
      ============================================================ */}}
-  <section id="servicos" class="services-section">
-    <div class="section-header-enterprise">
-      <div class="section-tag">// CAPACIDADES & SOLUÇÕES DE ENGENHARIA</div>
-      <h2>Serviços Corporativos & Desenvolvimento Sob Medida</h2>
-      <p>Do desenvolvimento de plataformas web robustas à montagem de infraestruturas críticas e treinamento de IA corporativa.</p>
+  <section id="servicos" class="services-section-corp">
+    <div class="section-header-corp">
+      <div class="corp-badge">Serviços & Soluções</div>
+      <h2>O que eu faço pela sua empresa</h2>
+      <p>Do desenvolvimento de plataformas web sob medida à automação com inteligência artificial e consultoria técnica especializada.</p>
     </div>
 
-    <div class="divisions-container">
-
-      {{/* DIVISÃO I: PLATAFORMAS & ENGENHARIA WEB */}}
-      <div class="division-block">
-        <div class="division-title-bar">
-          <span class="division-num">DIVISÃO 01</span>
-          <h3>Plataformas Digitais & Aplicações de Alta Escala</h3>
-        </div>
-        <div class="services-grid-enterprise">
-          <div class="service-card-enterprise">
-            <div class="service-card-header">
-              <span class="tech-tag">WEB APP</span>
-              <span class="metric-code">01</span>
-            </div>
-            <h4>Plataformas Web Corporativas</h4>
-            <p>Portais completos com painéis de gestão, autenticação segura, processamento de dados em tempo real e controle operacional ponta a ponta.</p>
-          </div>
-
-          <div class="service-card-enterprise">
-            <div class="service-card-header">
-              <span class="tech-tag">INSTITUCIONAL</span>
-              <span class="metric-code">02</span>
-            </div>
-            <h4>Criação de Sites Institucionais</h4>
-            <p>Páginas modernas, ultra otimizadas e desenvolvidas com padrão visual de elite para transmitir autoridade imediata ao seu negócio.</p>
-          </div>
-
-          <div class="service-card-enterprise">
-            <div class="service-card-header">
-              <span class="tech-tag">MOBILE</span>
-              <span class="metric-code">03</span>
-            </div>
-            <h4>Aplicativos Mobile (iOS & Android)</h4>
-            <p>Aplicativos nativos e híbridos com interfaces ergonômicas, carregamento instantâneo e sincronização contínua com seu backend.</p>
-          </div>
-
-          <div class="service-card-enterprise">
-            <div class="service-card-header">
-              <span class="tech-tag">DESKTOP</span>
-              <span class="metric-code">04</span>
-            </div>
-            <h4>Sistemas Desktop para Computador</h4>
-            <p>Softwares nativos de alto rendimento projetados para rodar de forma suave em estações de trabalho Windows, macOS ou Linux.</p>
-          </div>
-        </div>
+    <div class="services-grid-corp">
+      
+      {{/* 1. Criação de sites */}}
+      <div class="service-card-corp">
+        <div class="service-icon-box">🌐</div>
+        <h3>Criação de Sites Institucionais</h3>
+        <p>Páginas modernas, ultra rápidas e responsivas, desenhadas para posicionar sua empresa com autoridade e converter visitantes em clientes.</p>
       </div>
 
-      {{/* DIVISÃO II: INTELIGÊNCIA ARTIFICIAL & AUTOMAÇÃO */}}
-      <div class="division-block">
-        <div class="division-title-bar">
-          <span class="division-num">DIVISÃO 02</span>
-          <h3>Inteligência Artificial & Automações Avançadas</h3>
-        </div>
-        <div class="services-grid-enterprise">
-          <div class="service-card-enterprise">
-            <div class="service-card-header">
-              <span class="tech-tag">FINE-TUNING</span>
-              <span class="metric-code">05</span>
-            </div>
-            <h4>Treinamento Especializado de IA</h4>
-            <p>Ajuste fino (fine-tuning) e calibração de modelos de linguagem diretamente nos dados e manuais operacionais da sua empresa.</p>
-          </div>
-
-          <div class="service-card-enterprise">
-            <div class="service-card-header">
-              <span class="tech-tag">AGENTS</span>
-              <span class="metric-code">06</span>
-            </div>
-            <h4>Automação com IA & Agentes Autônomos</h4>
-            <p>Robôs inteligentes para análise de documentos, tomada de decisão assistida e eliminação de gargalos repetitivos da sua equipe.</p>
-          </div>
-
-          <div class="service-card-enterprise">
-            <div class="service-card-header">
-              <span class="tech-tag">WHATSAPP API</span>
-              <span class="metric-code">07</span>
-            </div>
-            <h4>Automação de WhatsApp Corporativo</h4>
-            <p>Fluxos de atendimento ágeis, qualificação de leads e fechamento de propostas em tempo real 24 horas por dia no piloto automático.</p>
-          </div>
-        </div>
+      {{/* 2. Plataformas web */}}
+      <div class="service-card-corp">
+        <div class="service-icon-box">⚙️</div>
+        <h3>Plataformas Web Corporativas</h3>
+        <p>Portais completos com login, painéis de controle, relatórios e gestão operacional em tempo real para organizar a rotina do seu negócio.</p>
       </div>
 
-      {{/* DIVISÃO III: INFRAESTRUTURA CRÍTICA & KERNEL */}}
-      <div class="division-block">
-        <div class="division-title-bar">
-          <span class="division-num">DIVISÃO 03</span>
-          <h3>Infraestrutura Crítica, Servidores & Baixo Nível</h3>
-        </div>
-        <div class="services-grid-enterprise">
-          <div class="service-card-enterprise">
-            <div class="service-card-header">
-              <span class="tech-tag">BARE-METAL</span>
-              <span class="metric-code">08</span>
-            </div>
-            <h4>Montagem de Servidores Locais</h4>
-            <p>Dimensionamento, montagem e configuração de servidores dedicados de processamento e GPU para empresas com soberania de dados.</p>
-          </div>
-
-          <div class="service-card-enterprise">
-            <div class="service-card-header">
-              <span class="tech-tag">CLOUD</span>
-              <span class="metric-code">09</span>
-            </div>
-            <h4>Servidores em Nuvem (AWS & Cloudflare)</h4>
-            <p>Deploy de infraestruturas resilientes, CDN global, clusters escaláveis e políticas de segurança de rede contra ataques DDoS.</p>
-          </div>
-
-          <div class="service-card-enterprise">
-            <div class="service-card-header">
-              <span class="tech-tag">eBPF / KERNEL</span>
-              <span class="metric-code">10</span>
-            </div>
-            <h4>Engenharia de Kernel & Defesa Cibernética</h4>
-            <p>Contenção de processos em tempo real, monitoramento no anel 0 do Linux e mitigação preventiva de incidentes de segurança.</p>
-          </div>
-        </div>
+      {{/* 3. Aplicativos para celular */}}
+      <div class="service-card-corp">
+        <div class="service-icon-box">📱</div>
+        <h3>Aplicativos Mobile (iOS & Android)</h3>
+        <p>Apps fluidos e intuitivos para smartphones, focados em usabilidade simples, navegação rápida e integração com seus sistemas.</p>
       </div>
 
-      {{/* DIVISÃO IV: ESTRATÉGIA, FINOPS & TRÁFEGO */}}
-      <div class="division-block">
-        <div class="division-title-bar">
-          <span class="division-num">DIVISÃO 04</span>
-          <h3>Consultoria Estratégica, FinOps & Aquisição</h3>
-        </div>
-        <div class="services-grid-enterprise">
-          <div class="service-card-enterprise">
-            <div class="service-card-header">
-              <span class="tech-tag">CONSULTORIA</span>
-              <span class="metric-code">11</span>
-            </div>
-            <h4>Consultoria Técnica de Aquisição de Hardware & IA</h4>
-            <p>Análise técnica detalhada para compra assertiva de computadores, placas de vídeo, servidores e escolha do melhor modelo de IA.</p>
-          </div>
-
-          <div class="service-card-enterprise">
-            <div class="service-card-header">
-              <span class="tech-tag">GROWTH</span>
-              <span class="metric-code">12</span>
-            </div>
-            <h4>Gestão de Tráfego Orgânico & Pago</h4>
-            <p>Estratégia de posicionamento em mecanismos de busca (SEO) e campanhas pagas de alta conversão para atrair clientes qualificados.</p>
-          </div>
-        </div>
+      {{/* 4. Sistemas para computador */}}
+      <div class="service-card-corp">
+        <div class="service-icon-box">💻</div>
+        <h3>Sistemas Desktop para Computador</h3>
+        <p>Softwares rápidos e robustos para estações de trabalho Windows, macOS ou Linux, preparados para tarefas pesadas e processamento local.</p>
       </div>
 
-      {{/* CARD EXECUTIVO: SITE INSTITUCIONAL VS PLATAFORMA WEB */}}
-      <div class="platform-comparison-card">
-        <div class="section-tag">// DIRETRIZ ARQUITETURAL</div>
-        <h4 style="font-size: 1.35rem; margin: 0.35rem 0 0.5rem 0;">Compreendendo o Escopo: Site Institucional vs. Plataforma Web</h4>
-        <p style="color: var(--text-secondary); margin: 0;">Entenda qual modelo atende exatamente aos objetivos de negócio da sua empresa:</p>
-        
-        <div class="comparison-grid">
-          <div class="comparison-col">
-            <h5>Site Institucional (Vitrine Digital)</h5>
-            <p>Voltado para presença de marca, autoridade corporativa e captação inicial. O visitante consome informações sobre a empresa, valida credenciais e entra em contato com a equipe comercial.</p>
-          </div>
-          <div class="comparison-col">
-            <h5>Plataforma Web (Sistema de Operação)</h5>
-            <p>Ambiente transacional vivo e dinâmico. Clientes ou colaboradores realizam login, agendam serviços, gerenciam pedidos, emitem relatórios e executam tarefas operacionais do dia a dia.</p>
-          </div>
-        </div>
+      {{/* 5. Automação com IA */}}
+      <div class="service-card-corp">
+        <div class="service-icon-box">🤖</div>
+        <h3>Automação de Processos com IA</h3>
+        <p>Agentes inteligentes que analisam documentos, executam tarefas rotineiras e eliminam o trabalho manual repetitivo da sua equipe.</p>
+      </div>
+
+      {{/* 6. Fine-Tuning de IA */}}
+      <div class="service-card-corp">
+        <div class="service-icon-box">🧠</div>
+        <h3>Treinamento e Ajuste Fino de IA</h3>
+        <p>Especialização de modelos de inteligência artificial treinados diretamente com as informações e regras de negócio da sua empresa.</p>
+      </div>
+
+      {{/* 7. Automação de WhatsApp */}}
+      <div class="service-card-corp">
+        <div class="service-icon-box">💬</div>
+        <h3>Automação de WhatsApp Corporativo</h3>
+        <p>Fluxos inteligentes para atender clientes instantaneamente 24 horas por dia, qualificar oportunidades e agilizar orçamentos.</p>
+      </div>
+
+      {{/* 8. Servidores em nuvem */}}
+      <div class="service-card-corp">
+        <div class="service-icon-box">☁️</div>
+        <h3>Servidores em Nuvem (Cloud)</h3>
+        <p>Configuração e otimização de infraestruturas na AWS, Google Cloud e Cloudflare para garantir que sua aplicação nunca saia do ar.</p>
+      </div>
+
+      {{/* 9. Montagem de servidores */}}
+      <div class="service-card-corp">
+        <div class="service-icon-box">🖥️</div>
+        <h3>Montagem de Servidores Locais</h3>
+        <p>Planejamento e montagem de máquinas e servidores locais dedicados para empresas que precisam de processamento próprio e soberania de dados.</p>
+      </div>
+
+      {{/* 10. Segurança no Kernel */}}
+      <div class="service-card-corp">
+        <div class="service-icon-box">🔒</div>
+        <h3>Segurança & Defesa de Servidores</h3>
+        <p>Contenção de processos, auditoria de código e blindagem de servidores Linux contra invasões e acessos indevidos.</p>
+      </div>
+
+      {{/* 11. Consultoria de Tecnologia */}}
+      <div class="service-card-corp">
+        <div class="service-icon-box">📊</div>
+        <h3>Consultoria Técnica de Tecnologia</h3>
+        <p>Orientação estratégica para aquisição assertiva de hardware, servidores, GPUs e seleção do modelo ideal de IA para sua demanda.</p>
+      </div>
+
+      {{/* 12. Gestão de Tráfego */}}
+      <div class="service-card-corp">
+        <div class="service-icon-box">📈</div>
+        <h3>Estratégia de Tráfego & Presença</h3>
+        <p>Estruturação de SEO e campanhas assertivas para posicionar suas soluções no Google e redes sociais para o público comprador.</p>
       </div>
 
     </div>
+
+    {{/* CARD CONSULTIVO: SITE VS PLATAFORMA WEB */}}
+    <div class="comparison-card-corp">
+      <div class="comparison-header">
+        <div class="corp-badge">Orientação ao Cliente</div>
+        <h3>Qual é a diferença entre um Site Institucional e uma Plataforma Web?</h3>
+        <p>Entenda qual solução faz mais sentido para o momento atual da sua empresa:</p>
+      </div>
+
+      <div class="comparison-grid-corp">
+        <div class="comparison-box-item">
+          <h4>Site Institucional (Vitrine Corporativa)</h4>
+          <p>É a porta de entrada da sua marca. Tem como foco apresentar seus serviços, passar credibilidade, divulgar contatos e captar novos clientes que estão pesquisando sobre a sua empresa.</p>
+        </div>
+        <div class="comparison-box-item">
+          <h4>Plataforma Web (Sistema de Operação)</h4>
+          <p>É uma ferramenta de trabalho funcional. Usuários fazem login, gerenciam pedidos, agendam horários, acessam relatórios e operam fluxos de dados essenciais para o funcionamento do negócio.</p>
+        </div>
+      </div>
+    </div>
+
   </section>
 
   {{/* ============================================================
-     SEÇÃO 3 — VITRINE DE PROJETOS (CASE STUDIES CORPORATIVOS)
+     SEÇÃO 3 — PROJETOS EM DESTAQUE (CASE STUDIES)
      ============================================================ */}}
-  <section id="projetos" class="projects-section">
-    <div class="section-header-enterprise">
-      <div class="section-tag">// PROJETOS & PESQUISA DE DEEP TECH</div>
-      <h2>Portfólio de Engenharia & Case Studies</h2>
-      <p>Projetos desenvolvidos em produção, cobrindo desde defesa cibernética no kernel até plataformas educacionais e observabilidade física.</p>
+  <section id="projetos" class="projects-section-corp">
+    <div class="section-header-corp">
+      <div class="corp-badge">Portfólio & Pesquisa</div>
+      <h2>Projetos e Soluções em Destaque</h2>
+      <p>Conheça alguns dos sistemas, plataformas e softwares proprietários desenvolvidos em produção.</p>
     </div>
 
-    <div class="cases-container">
+    <div class="projects-grid-corp">
 
-      {{/* CASE 01: IMUNNO SYSTEM */}}
-      <div class="case-card-flagship">
-        <div class="case-thumb">
-          <img src="{{ "/images/projetos/imunno-system/imunno-hero.png" | relURL }}" alt="Imunno System Case Study" loading="lazy">
+      {{/* CASE 01: IMUNNO SYSTEM (FULL WIDTH) */}}
+      <div class="project-card-corp featured-full">
+        <div class="project-img-box">
+          <img src="{{ "/images/projetos/imunno-system/imunno-hero.png" | relURL }}" alt="Imunno System" loading="lazy">
         </div>
-        <div class="case-info">
-          <div class="status-pill">
-            <span class="beacon-dot"></span>
-            <span>INPI: 512025006506-0</span>
+        <div class="project-content-box">
+          <div class="browser-chrome" style="margin: -1.75rem -1.75rem 1.25rem -1.75rem;">
+            <div class="browser-dots">
+              <span class="browser-dot red"></span>
+              <span class="browser-dot yellow"></span>
+              <span class="browser-dot green"></span>
+            </div>
+            <span class="browser-url">imunno.system // registered software</span>
           </div>
+          <div class="corp-badge" style="align-self: flex-start;">Segurança & IA · INPI 512025006506-0</div>
           <h3>Imunno System</h3>
           <p>
-            Sistema imunológico adaptativo para servidores que neutraliza invasões e ameaças zero-day em tempo real. Utiliza a arquitetura HADES de decepção ativa para enjaular o atacante em cgroups e alimentá-lo com dados falsos enquanto preserva a infraestrutura de produção.
+            Sistema imunológico para servidores Linux que neutraliza ataques e invasões em tempo real. Utiliza a arquitetura HADES para isolar o atacante em um labirinto de dados falsos sem alertá-lo da detecção.
           </p>
-          <div class="case-tags">
+          <div class="project-tags-list">
             <span class="tech-tag">eBPF Ring 0</span>
             <span class="tech-tag">Golang gRPC</span>
-            <span class="tech-tag">Isolation Forest</span>
             <span class="tech-tag">Cgroups v2</span>
+            <span class="tech-tag">Machine Learning</span>
           </div>
-          <a href="{{ "/imunno-system/" | relURL }}" class="btn-enterprise btn-primary">Ver Case Técnico Completo →</a>
+          <a href="{{ "/imunno-system/" | relURL }}" class="corp-btn corp-btn-primary" style="margin-top: auto;">Conhecer o Projeto →</a>
         </div>
       </div>
 
       {{/* CASE 02: CREARELABS */}}
-      <div class="case-card-flagship" style="grid-template-columns: 0.85fr 1.15fr;">
-        <div class="case-info">
-          <div class="status-pill">
-            <span class="beacon-dot"></span>
-            <span>PLATAFORMA IoT & HARDWARE</span>
+      <div class="project-card-corp">
+        <div class="browser-chrome">
+          <div class="browser-dots">
+            <span class="browser-dot red"></span>
+            <span class="browser-dot yellow"></span>
+            <span class="browser-dot green"></span>
           </div>
+          <span class="browser-url">crearelabs.io // iot & simulation</span>
+        </div>
+        <div class="project-img-box">
+          <img src="{{ "/images/projetos/creare-labs/creare-hero.png" | relURL }}" alt="CreareLabs" loading="lazy">
+        </div>
+        <div class="project-content-box">
+          <div class="corp-badge" style="align-self: flex-start;">Hardware & IoT</div>
           <h3>CreareLabs</h3>
           <p>
-            Plataforma interativa para ensino e desenvolvimento de hardware no navegador. Executa Python localmente via Pyodide (WebAssembly), suporta programação por blocos e grava placas ESP32 via WebSerial e Bluetooth sem necessidade de instalar drivers externos.
+            Plataforma interativa para ensino e desenvolvimento de eletrônica. Permite simular circuitos na web com WebAssembly e gravar placas ESP32 via cabo USB ou Bluetooth sem instalar programas no computador.
           </p>
-          <div class="case-tags">
+          <div class="project-tags-list">
             <span class="tech-tag">WebAssembly</span>
             <span class="tech-tag">WebSerial API</span>
-            <span class="tech-tag">Monaco Editor</span>
             <span class="tech-tag">ESP32 / BLE</span>
           </div>
-          <a href="{{ "/creare-labs/" | relURL }}" class="btn-enterprise btn-primary">Ver Case Técnico Completo →</a>
-        </div>
-        <div class="case-thumb">
-          <img src="{{ "/images/projetos/creare-labs/creare-hero.png" | relURL }}" alt="CreareLabs Case Study" loading="lazy">
+          <a href="{{ "/creare-labs/" | relURL }}" class="corp-btn corp-btn-secondary" style="margin-top: auto;">Ver Detalhes do Projeto →</a>
         </div>
       </div>
 
-      {{/* GRID DE CASOS PADRÃO (4 PROJETOS) */}}
-      <div class="cases-grid-standard">
-
-        {{/* CASE 03: SysCallCage */}}
-        <div class="case-card-standard">
-          <div class="case-thumb">
-            <img src="{{ "/images/projetos/syscallcage/syscallcage-hero.png" | relURL }}" alt="SysCallCage" loading="lazy">
+      {{/* CASE 03: SYSCALLCAGE */}}
+      <div class="project-card-corp">
+        <div class="browser-chrome">
+          <div class="browser-dots">
+            <span class="browser-dot red"></span>
+            <span class="browser-dot yellow"></span>
+            <span class="browser-dot green"></span>
           </div>
-          <div class="tech-tag" style="align-self: flex-start; margin-bottom: 0.6rem; color: var(--accent-cyan);">SEGURANÇA DE BAIXO NÍVEL</div>
+          <span class="browser-url">github.com/rodrigoffreir3/syscallcage</span>
+        </div>
+        <div class="project-img-box">
+          <img src="{{ "/images/projetos/syscallcage/syscallcage-hero.png" | relURL }}" alt="SysCallCage" loading="lazy">
+        </div>
+        <div class="project-content-box">
+          <div class="corp-badge" style="align-self: flex-start;">Segurança no Kernel</div>
           <h3>SysCallCage</h3>
           <p>
-            Runtime de contenção preventiva no kernel Linux para agentes de IA e processos autônomos. Intercepta chamadas de sistema e bloqueia acessos indevidos antes da execução.
+            Ferramenta de contenção no kernel do Linux para agentes de IA e processos autônomos. Impede acessos indevidos a arquivos e conexões de rede não autorizadas em tempo real.
           </p>
-          <div class="case-tags">
+          <div class="project-tags-list">
             <span class="tech-tag">Rust</span>
             <span class="tech-tag">BPF LSM</span>
-            <span class="tech-tag">Aya Framework</span>
+            <span class="tech-tag">Aya</span>
           </div>
-          <a href="{{ "/syscallcage/" | relURL }}" class="btn-enterprise btn-secondary" style="margin-top: auto;">Detalhes da Arquitetura →</a>
+          <a href="{{ "/syscallcage/" | relURL }}" class="corp-btn corp-btn-secondary" style="margin-top: auto;">Ver Detalhes do Projeto →</a>
         </div>
+      </div>
 
-        {{/* CASE 04: Kernel WSL2 BPF Plus */}}
-        <div class="case-card-standard">
-          <div class="case-thumb">
-            <img src="{{ "/images/projetos/kernel-wsl2-bpf-plus/kernel-hero.png" | relURL }}" alt="Kernel WSL2 BPF Plus" loading="lazy">
+      {{/* CASE 04: KERNEL WSL2 BPF PLUS */}}
+      <div class="project-card-corp">
+        <div class="browser-chrome">
+          <div class="browser-dots">
+            <span class="browser-dot red"></span>
+            <span class="browser-dot yellow"></span>
+            <span class="browser-dot green"></span>
           </div>
-          <div class="tech-tag" style="align-self: flex-start; margin-bottom: 0.6rem; color: var(--accent-cyan);">ENGENHARIA DE KERNEL</div>
+          <span class="browser-url">wsl2.kernel.plus // custom build</span>
+        </div>
+        <div class="project-img-box">
+          <img src="{{ "/images/projetos/kernel-wsl2-bpf-plus/kernel-hero.png" | relURL }}" alt="Kernel WSL2 BPF Plus" loading="lazy">
+        </div>
+        <div class="project-content-box">
+          <div class="corp-badge" style="align-self: flex-start;">Engenharia de Kernel</div>
           <h3>Kernel WSL2 BPF Plus</h3>
           <p>
-            Compilação determinística do kernel Linux oficial da Microsoft para Windows com módulos de segurança BPF LSM ativados, permitindo testes avançados no ambiente WSL2.
+            Kernel Linux customizado para Windows (WSL2) com suporte a BPF LSM compilado direto da fonte oficial da Microsoft, permitindo testes avançados de segurança no Windows.
           </p>
-          <div class="case-tags">
+          <div class="project-tags-list">
             <span class="tech-tag">Linux Kernel</span>
             <span class="tech-tag">WSL2</span>
-            <span class="tech-tag">CONFIG_BPF_LSM</span>
+            <span class="tech-tag">BPF LSM</span>
           </div>
-          <a href="{{ "/kernel-wsl2-bpf-plus/" | relURL }}" class="btn-enterprise btn-secondary" style="margin-top: auto;">Detalhes da Arquitetura →</a>
+          <a href="{{ "/kernel-wsl2-bpf-plus/" | relURL }}" class="corp-btn corp-btn-secondary" style="margin-top: auto;">Ver Detalhes do Projeto →</a>
         </div>
+      </div>
 
-        {{/* CASE 05: GreenToken */}}
-        <div class="case-card-standard">
-          <div class="case-thumb">
-            <img src="{{ "/images/projetos/greentoken/greentoken-hero.png" | relURL }}" alt="GreenToken" loading="lazy">
+      {{/* CASE 05: GREENTOKEN */}}
+      <div class="project-card-corp">
+        <div class="browser-chrome">
+          <div class="browser-dots">
+            <span class="browser-dot red"></span>
+            <span class="browser-dot yellow"></span>
+            <span class="browser-dot green"></span>
           </div>
-          <div class="tech-tag" style="align-self: flex-start; margin-bottom: 0.6rem; color: var(--accent-cyan);">FINOPS & OBSERVABILIDADE</div>
+          <span class="browser-url">greentoken.io // ai finops</span>
+        </div>
+        <div class="project-img-box">
+          <img src="{{ "/images/projetos/greentoken/greentoken-hero.png" | relURL }}" alt="GreenToken" loading="lazy">
+        </div>
+        <div class="project-content-box">
+          <div class="corp-badge" style="align-self: flex-start;">FinOps & IA</div>
           <h3>GreenToken</h3>
           <p>
-            Plataforma de observabilidade física e FinOps de IA. Mede a energia gasta em Joules e Watts nos registradores da CPU (RAPL) e GPU (NVML) por cada resposta gerada pelo modelo.
+            Monitor de consumo energético e FinOps para servidores de IA. Mede a energia gasta em Joules e Watts nos sensores da CPU e GPU para calcular o custo exato por token gerado.
           </p>
-          <div class="case-tags">
+          <div class="project-tags-list">
             <span class="tech-tag">Intel/AMD RAPL</span>
             <span class="tech-tag">NVIDIA NVML</span>
             <span class="tech-tag">Rust</span>
           </div>
-          <a href="{{ "/greentoken/" | relURL }}" class="btn-enterprise btn-secondary" style="margin-top: auto;">Detalhes da Arquitetura →</a>
+          <a href="{{ "/greentoken/" | relURL }}" class="corp-btn corp-btn-secondary" style="margin-top: auto;">Ver Detalhes do Projeto →</a>
         </div>
+      </div>
 
-        {{/* CASE 06: AppFitness */}}
-        <div class="case-card-standard">
-          <div class="case-thumb">
-            <img src="{{ "/images/projetos/appfitness/appfitness-hero.png" | relURL }}" alt="AppFitness" loading="lazy">
+      {{/* CASE 06: APPFITNESS */}}
+      <div class="project-card-corp">
+        <div class="browser-chrome">
+          <div class="browser-dots">
+            <span class="browser-dot red"></span>
+            <span class="browser-dot yellow"></span>
+            <span class="browser-dot green"></span>
           </div>
-          <div class="tech-tag" style="align-self: flex-start; margin-bottom: 0.6rem; color: var(--accent-cyan);">SAAS & DESIGN SYSTEM</div>
+          <span class="browser-url">appfitness.pro // saas platform</span>
+        </div>
+        <div class="project-img-box">
+          <img src="{{ "/images/projetos/appfitness/appfitness-hero.png" | relURL }}" alt="AppFitness" loading="lazy">
+        </div>
+        <div class="project-content-box">
+          <div class="corp-badge" style="align-self: flex-start;">Plataforma SaaS</div>
           <h3>AppFitness</h3>
           <p>
-            Plataforma web de alta performance para gestão de treinos com design system Liquid Glass, ergonomia mobile-first e renderização suave a 60 fps em smartphones.
+            Plataforma web para gestão de treinos e acompanhamento físico com interface mobile-first, foco em velocidade de carregamento e navegação ergonômica para alunos e treinadores.
           </p>
-          <div class="case-tags">
+          <div class="project-tags-list">
             <span class="tech-tag">React</span>
             <span class="tech-tag">TypeScript</span>
             <span class="tech-tag">Vite</span>
           </div>
-          <a href="{{ "/appfitness/" | relURL }}" class="btn-enterprise btn-secondary" style="margin-top: auto;">Detalhes da Arquitetura →</a>
+          <a href="{{ "/appfitness/" | relURL }}" class="corp-btn corp-btn-secondary" style="margin-top: auto;">Ver Detalhes do Projeto →</a>
         </div>
-
       </div>
 
     </div>
   </section>
 
   {{/* ============================================================
-     SEÇÃO 4 — ARTIGOS & PESQUISAS DO BLOG
+     SEÇÃO 4 — SOBRE RODRIGO FREIRE (PERFIL PROFISSIONAL)
      ============================================================ */}}
-  <section class="blog-section-enterprise">
-    <div class="section-header-enterprise">
-      <div class="section-tag">// PUBLICAÇÕES TÉCNICAS</div>
-      <h2>Artigos & Pesquisas Recentes</h2>
-      <p>Análises sobre mercado de inteligência artificial, eficiência de hardware, contenção no kernel e arquitetura de sistemas.</p>
+  <section id="sobre" class="about-section-corp">
+    <div class="about-grid">
+      <div class="about-avatar-box">
+        RF
+      </div>
+      <div class="about-text">
+        <div class="corp-badge">Perfil Profissional</div>
+        <h3>Rodrigo Freire</h3>
+        <p>
+          Sou desenvolvedor de software e pesquisador com atuação em plataformas web modernas, inteligência artificial aplicada e sistemas de baixo nível no kernel do Linux.
+        </p>
+        <p>
+          Minha abordagem de trabalho une rigor técnico de engenharia com foco direto no resultado de negócio: entregar sistemas rápidos, fáceis de manter e que suportem a operação diária da sua empresa sem sustos. Sou autor de pesquisas de segurança e possuo registro de software no INPI pelo desenvolvimento de sistemas de defesa autônoma.
+        </p>
+        <div style="margin-top: 1.5rem;">
+          <a href="{{ printf "https://wa.me/5569992782919?text=%s" ("Olá Rodrigo! Gostaria de conversar com você sobre um projeto." | urlquery) }}" target="_blank" rel="noopener noreferrer" class="corp-btn corp-btn-primary">
+            Entrar em Contato Direto →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {{/* ============================================================
+     SEÇÃO 5 — ARTIGOS RECENTES NO BLOG
+     ============================================================ */}}
+  <section class="blog-section-corp">
+    <div class="section-header-corp">
+      <div class="corp-badge">Artigos & Publicações</div>
+      <h2>Publicações e Conteúdos Recentes</h2>
+      <p>Reflexões sobre mercado de tecnologia, arquitetura de sistemas, eficiência de hardware e inteligência artificial.</p>
     </div>
 
-    <div class="blog-grid-enterprise">
+    <div class="blog-grid-corp">
       {{- $posts := where site.RegularPages "Section" "in" (slice "posts" "blog") -}}
       {{- range first 3 $posts }}
-      <div class="blog-card-enterprise">
+      <div class="blog-card-corp">
         <div class="tech-tag" style="align-self: flex-start; margin-bottom: 0.5rem;">{{ .Date.Format "02/01/2006" }}</div>
         <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
         <p>{{ .Description | default (.Summary | truncate 130) }}</p>
-        <a href="{{ .Permalink }}" class="btn-enterprise btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem; margin-top: auto;">Ler Artigo →</a>
+        <a href="{{ .Permalink }}" class="corp-btn corp-btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem; margin-top: auto;">Ler Artigo Completo →</a>
       </div>
       {{- end }}
     </div>
 
     <div style="text-align: center; margin-top: 1.5rem;">
-      <a href="{{ "/posts/" | relURL }}" class="btn-enterprise btn-secondary">Acessar Arquivo Completo do Blog →</a>
+      <a href="{{ "/posts/" | relURL }}" class="corp-btn corp-btn-secondary">Acessar Todas as Publicações →</a>
     </div>
   </section>
 
   {{/* ============================================================
-     BANNER EXECUTIVO DE CONTATO (CTA)
+     BANNER DE CONTATO FINAL (CTA)
      ============================================================ */}}
-  <section class="enterprise-cta-banner">
-    <div class="status-pill" style="margin-bottom: 0.75rem;">
-      <span class="beacon-dot"></span>
-      <span>ATENDIMENTO EXECUTIVO</span>
+  <section class="cta-banner-corp">
+    <div class="corp-badge" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); color: #ffffff;">
+      Atendimento Personalizado
     </div>
-    <h3>Pronto para construir sua próxima plataforma ou sistema?</h3>
-    <p>Vamos estruturar a arquitetura técnica ideal, garantindo alta escalabilidade, segurança no código e inteligência artificial rodando na sua operação.</p>
-    <a href="{{ printf "https://wa.me/5569992782919?text=%s" ("Olá Rodrigo! Gostaria de agendar uma reunião técnica para discutir um projeto." | urlquery) }}" target="_blank" rel="noopener noreferrer" class="btn-enterprise btn-primary" style="font-size: 1.05rem; padding: 0.9rem 2.2rem;">
-      Iniciar Conversa no WhatsApp com Rodrigo Freire →
+    <h3>Pronto para tirar o seu projeto do papel?</h3>
+    <p>Vamos estruturar a melhor solução tecnológica para a sua empresa, com código profissional, prazo cumprido e suporte dedicado.</p>
+    <a href="{{ printf "https://wa.me/5569992782919?text=%s" ("Olá Rodrigo! Gostaria de solicitar um orçamento para o meu projeto." | urlquery) }}" target="_blank" rel="noopener noreferrer" class="corp-btn corp-btn-primary" style="font-size: 1.05rem; padding: 0.9rem 2.2rem; background: #2563eb; border-color: #2563eb;">
+      Conversar com Rodrigo no WhatsApp →
     </a>
   </section>
 

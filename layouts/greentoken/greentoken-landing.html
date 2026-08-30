@@ -2,11 +2,10 @@
 
 <article class="project-case-page">
 
-  {{/* 1. HERO INSTITUCIONAL DO CASE STUDY */}}
+  {{/* 1. HEADER DO CASE STUDY */}}
   <header class="project-case-header">
-    <div class="status-pill" style="margin-bottom: 0.85rem;">
-      <span class="beacon-dot"></span>
-      <span>{{ .Params.badge | default "ENGENHARIA DE DEEP TECH & CASE STUDY" }}</span>
+    <div class="corp-badge" style="margin-bottom: 0.85rem;">
+      <span>{{ .Params.badge | default "Case Study · Engenharia de Software" }}</span>
     </div>
     
     <h1>{{ .Title }}</h1>
@@ -18,15 +17,15 @@
     {{- $heroImg := .Params.hero_image | default (.Params.cover.image | default "") }}
     {{- if $heroImg }}
     <div class="project-hero-media">
-      <img src="{{ $heroImg | relURL }}" alt="{{ .Title }} Architecture Hero" loading="eager">
+      <img src="{{ $heroImg | relURL }}" alt="{{ .Title }} Preview" loading="eager">
     </div>
     {{- end }}
   </header>
 
-  {{/* 2. CONTEXTO E O PROBLEMA QUE RESOLVE */}}
+  {{/* 2. O PROBLEMA QUE RESOLVE */}}
   {{- if .Params.problem_description }}
   <section class="project-section-box">
-    <div class="section-tag">// VISÃO PRÁTICA & CONTEXTO</div>
+    <div class="corp-badge" style="margin-bottom: 0.6rem;">Contexto & Desafio</div>
     <h2>O Problema que Resolve</h2>
     <div class="project-prose">
       {{ .Params.problem_description | markdownify }}
@@ -34,17 +33,17 @@
   </section>
   {{- end }}
 
-  {{/* 3. GALERIA DE TELAS & DIAGRAMAS */}}
+  {{/* 3. GALERIA DE TELAS */}}
   {{- if .Params.gallery }}
   <section class="project-section-box">
-    <div class="section-tag">// REGISTROS VISUAIS & DIAGRAMAS</div>
-    <h2>Galeria do Projeto</h2>
-    <div class="gallery-grid-enterprise">
+    <div class="corp-badge" style="margin-bottom: 0.6rem;">Galeria do Sistema</div>
+    <h2>Telas e Registros Visuais</h2>
+    <div class="gallery-grid-corp">
       {{- range .Params.gallery }}
-      <div class="gallery-card-item">
-        <img src="{{ .image | relURL }}" alt="{{ .caption | default "Captura de tela do projeto" }}" loading="lazy">
+      <div class="gallery-item-corp">
+        <img src="{{ .image | relURL }}" alt="{{ .caption | default "Captura de tela" }}" loading="lazy">
         {{- if .caption }}
-        <div class="gallery-card-caption">{{ .caption }}</div>
+        <div class="gallery-caption-corp">{{ .caption }}</div>
         {{- end }}
       </div>
       {{- end }}
@@ -52,10 +51,10 @@
   </section>
   {{- end }}
 
-  {{/* 4. COMO FUNCIONA POR TRÁS (DEEP TECH & ARQUITETURA) */}}
+  {{/* 4. COMO FUNCIONA POR TRÁS */}}
   {{- if .Params.technical_details }}
   <section class="project-section-box">
-    <div class="section-tag">// ARQUITETURA DE SISTEMAS & KERNEL</div>
+    <div class="corp-badge" style="margin-bottom: 0.6rem;">Arquitetura & Engenharia</div>
     <h2>Como Funciona por Trás</h2>
     <div class="project-prose">
       {{ .Params.technical_details | markdownify }}
@@ -70,22 +69,21 @@
   </section>
   {{- end }}
 
-  {{/* 5. CALL TO ACTION EXECUTIVO */}}
-  <section class="enterprise-cta-banner" style="margin-top: 3.5rem;">
-    <div class="status-pill" style="margin-bottom: 0.75rem;">
-      <span class="beacon-dot"></span>
-      <span>SOLUÇÃO SOB MEDIDA</span>
+  {{/* 5. CTA EXECUTIVO */}}
+  <section class="cta-banner-corp" style="margin-top: 3.5rem;">
+    <div class="corp-badge" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); color: #ffffff; margin-bottom: 0.75rem;">
+      Soluções Sob Medida
     </div>
-    <h3>{{ .Params.cta_title | default "Deseja aplicar essa engenharia na sua infraestrutura?" }}</h3>
-    <p>{{ .Params.cta_desc | default "Entre em contato diretamente para discutir arquiteturas escaláveis, auditoria de segurança ou desenvolvimento de sistemas sob medida." }}</p>
+    <h3 style="color: #ffffff;">{{ .Params.cta_title | default "Gostou desta solução e quer aplicar no seu negócio?" }}</h3>
+    <p>{{ .Params.cta_desc | default "Entre em contato diretamente para conversarmos sobre requisitos, prazos e arquitetura para a sua empresa." }}</p>
     <div class="hero-actions" style="justify-content: center; margin-top: 1.5rem;">
-      {{- $msg := printf "Olá Rodrigo! Vi o projeto %s no seu site e gostaria de agendar uma conversa técnica." .Title -}}
-      <a href="{{ printf "https://wa.me/5569992782919?text=%s" ($msg | urlquery) }}" target="_blank" rel="noopener noreferrer" class="btn-enterprise btn-primary">
-        Falar no WhatsApp sobre este projeto →
+      {{- $msg := printf "Olá Rodrigo! Vi o projeto %s no seu site e gostaria de tirar algumas dúvidas." .Title -}}
+      <a href="{{ printf "https://wa.me/5569992782919?text=%s" ($msg | urlquery) }}" target="_blank" rel="noopener noreferrer" class="corp-btn corp-btn-primary" style="background: #2563eb; border-color: #2563eb;">
+        Conversar no WhatsApp →
       </a>
       {{- with .Params.github_url }}
-      <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="btn-enterprise btn-secondary">
-        Repositório no GitHub ↗
+      <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="corp-btn corp-btn-secondary">
+        Ver Código no GitHub ↗
       </a>
       {{- end }}
     </div>
