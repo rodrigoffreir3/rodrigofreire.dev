@@ -4,16 +4,22 @@ let supabaseUrl = import.meta.env.VITE_SUPABASE_URL || ''
 if (supabaseUrl.includes('=')) {
   supabaseUrl = supabaseUrl.split('=').pop().trim()
 }
-if (!supabaseUrl.startsWith('http://') && !supabaseUrl.startsWith('https://')) {
-  supabaseUrl = 'https://placeholder-project.supabase.co'
-}
+supabaseUrl = supabaseUrl.trim()
 
 let supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || ''
 if (supabaseAnonKey.includes('=')) {
   supabaseAnonKey = supabaseAnonKey.split('=').pop().trim()
 }
-if (!supabaseAnonKey) {
-  supabaseAnonKey = 'placeholder-anon-key'
-}
+supabaseAnonKey = supabaseAnonKey.trim()
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+export const isSupabaseConfigured = 
+  Boolean(supabaseUrl) && 
+  Boolean(supabaseAnonKey) && 
+  (supabaseUrl.startsWith('http://') || supabaseUrl.startsWith('https://')) &&
+  !supabaseUrl.includes('placeholder-project') &&
+  !supabaseAnonKey.includes('placeholder-anon-key')
+
+const finalUrl = isSupabaseConfigured ? supabaseUrl : 'https://placeholder-project.supabase.co'
+const finalKey = isSupabaseConfigured ? supabaseAnonKey : 'placeholder-anon-key'
+
+export const supabase = createClient(finalUrl, finalKey)

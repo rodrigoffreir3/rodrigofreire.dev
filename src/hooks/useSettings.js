@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { supabase } from '../lib/supabase'
+import { supabase, isSupabaseConfigured } from '../lib/supabase'
 import { 
   DEFAULT_HOME_SETTINGS, 
   DEFAULT_PROFILE, 
@@ -14,6 +14,11 @@ export function useSettings() {
 
   useEffect(() => {
     async function loadData() {
+      if (!isSupabaseConfigured) {
+        setLoading(false)
+        return
+      }
+
       try {
         // 1. Home Settings
         const { data: homeData, error: homeError } = await supabase
@@ -55,6 +60,11 @@ export function useProjects() {
 
   useEffect(() => {
     async function loadProjects() {
+      if (!isSupabaseConfigured) {
+        setLoading(false)
+        return
+      }
+
       try {
         const { data, error } = await supabase
           .from('projects')
@@ -83,6 +93,11 @@ export function usePosts() {
 
   useEffect(() => {
     async function loadPosts() {
+      if (!isSupabaseConfigured) {
+        setLoading(false)
+        return
+      }
+
       try {
         const { data, error } = await supabase
           .from('posts')
