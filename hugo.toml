@@ -1,12 +1,12 @@
 baseURL = 'https://rodrigofreire.pages.dev/'
 locale = 'pt-br'
-title = 'Rodrigo Freire · Desenvolvedor e Pesquisador em Deep Tech'
-copyright = '© 2026 Rodrigo Freire · Desenvolvedor e Pesquisador em Deep Tech'
+title = 'Rodrigo Freire · Deep Tech Labs & Engenharia de Software'
+copyright = '© 2026 Rodrigo Freire · Deep Tech Labs & Engenharia de Software'
 theme = 'PaperMod'
 
 [params]
   author = 'Rodrigo Freire'
-  description = 'Portfólio de desenvolvimento de software, plataformas web, automação com IA e engenharia de baixo nível por Rodrigo Freire.'
+  description = 'Plataformas web corporativas, inteligência artificial, engenharia de baixo nível no kernel Linux e infraestrutura crítica por Rodrigo Freire.'
   ShowReadingTime = true
   ShowShareButtons = true
   ShowPostNavLinks = true

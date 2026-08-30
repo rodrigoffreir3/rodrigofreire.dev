@@ -1,16 +1,13 @@
-<header class="header glass-strong specular">
+<header class="header">
     <nav class="header-nav">
         <div class="logo">
-            {{- $label_text := (site.Params.label.text | default site.Title) }}
-            {{- if site.Title }}
-            <a href="{{ "" | absLangURL }}" accesskey="h" title="{{ $label_text }} (Alt + H)">
-                {{- if site.Params.label.icon }}
-                    <img src="{{- site.Params.label.icon | absURL -}}" alt="" aria-label="logo"
-                        height="{{- site.Params.label.iconHeight | default "30" -}}">
-                {{- end -}}
-                <span class="logo-text">{{- $label_text -}}</span>
+            <a href="{{ "" | absLangURL }}" accesskey="h" title="Rodrigo Freire · Deep Tech & Software">
+                <span class="logo-title">RODRIGO FREIRE</span>
+                <span class="logo-badge">
+                    <span class="beacon-dot"></span>
+                    <span>LABS</span>
+                </span>
             </a>
-            {{- end }}
 
             {{- $lsenabled := (or (not site.Params.disableThemeToggle) (and (not site.Params.disableLangToggle) (hugo.IsMultilingual))) }}
             {{- if $lsenabled }}
@@ -40,6 +37,7 @@
             </div>
             {{- end }}
         </div>
+        
         {{- $currentPage := . }}
         <ul id="menu" class="menu">
             {{- range site.Menus.main }}
@@ -53,7 +51,7 @@
                         {{- .Pre }}{{ .Name }}{{ .Post -}}
                     </span>
                 </a>
-                <ul class="dropdown-menu glass specular">
+                <ul class="dropdown-menu">
                     {{- range .Children }}
                     <li>
                         <a href="{{ .URL | absLangURL }}">{{ .Name }}</a>
