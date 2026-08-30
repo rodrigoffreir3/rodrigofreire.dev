@@ -33,7 +33,8 @@ export default function App() {
   const { projects, setProjects } = useProjects();
   const { posts, setPosts } = usePosts();
 
-  const isAdmRoute = location.pathname.startsWith('/adm') || location.pathname === '/login';
+  const cleanPath = location.pathname.toLowerCase().replace(/\/$/, '');
+  const isAdmRoute = cleanPath.startsWith('/adm') || cleanPath === '/login';
 
   return (
     <>
