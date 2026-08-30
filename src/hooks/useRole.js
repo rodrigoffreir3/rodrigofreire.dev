@@ -27,11 +27,12 @@ export function useRole() {
         if (!error && data?.role) {
           setRole(data.role)
         } else {
-          // Se autenticado sem role no banco, atribui admin para o dono logado
-          setRole('admin')
+          // Fail closed: sem role definido, trata como visitante.
+          setRole('visitor')
         }
       } catch {
-        setRole('admin')
+        // Fail closed: em caso de erro, trata como visitante.
+        setRole('visitor')
       } finally {
         setLoading(false)
       }
