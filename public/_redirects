@@ -1,1 +1,5 @@
-/* / 200
+# Serve static assets directly
+/assets/*    /assets/:splat  200
+
+# Catch-all route for SPA navigation
+/*           /index.html     200
