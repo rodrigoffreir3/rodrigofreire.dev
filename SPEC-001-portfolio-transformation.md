@@ -1,5 +1,11 @@
 # SPEC-001 — Transformação do blog em site portfólio (rodrigofreire.dev)
 
+> **NOTA DE SUPERAÇÃO (30/08/2026)**: a decisão de manter Hugo estático
+> (seção 2.1) foi revertida. O site foi reconstruído em React + Vite +
+> Supabase, reaproveitando a arquitetura do projeto Kaminari, por decisão
+> explícita do Rodrigo. Ver SPEC-002-FIX-SEGURANCA para a correção de
+> segurança que essa mudança exigiu.
+
 ## Como este documento está organizado
 
 Primeiro o contexto e as decisões de arquitetura (o "porquê"), depois os
