@@ -4,7 +4,11 @@ let supabaseUrl = import.meta.env.VITE_SUPABASE_URL || ''
 if (supabaseUrl.includes('=')) {
   supabaseUrl = supabaseUrl.split('=').pop().trim()
 }
-supabaseUrl = supabaseUrl.trim()
+supabaseUrl = supabaseUrl.trim().replace(/\/rest\/v1\/?$/, '').replace(/\/+$/, '')
+
+if (supabaseUrl && !supabaseUrl.startsWith('http://') && !supabaseUrl.startsWith('https://')) {
+  supabaseUrl = `https://${supabaseUrl}`
+}
 
 let supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || ''
 if (supabaseAnonKey.includes('=')) {
