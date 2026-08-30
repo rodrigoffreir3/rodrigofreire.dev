@@ -1,18 +1,32 @@
-# Generated files by hugo
-/public/
+# Node & Dependencies
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Environment Variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Hugo & Legacy Generated files
 /resources/_gen/
 /assets/jsconfig.json
 hugo_stats.json
-
-# Executable may be added to repository
 hugo.exe
 hugo.mac
 hugo.linux
+.hugo_build.lock
 
 # OS-specific files
 .DS_Store
 Thumbs.db
-
-# Lock files
-.hugo_build.lock
-
