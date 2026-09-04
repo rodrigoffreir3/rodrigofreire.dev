@@ -1047,7 +1047,7 @@ a {
 
 .services-catalog-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
   gap: 1.85rem;
 }
 
@@ -1865,20 +1865,142 @@ a {
   gap: 1rem;
 }
 
-/* Responsividade Mobile */
+/* ============================================================
+   RESPONSIVIDADE COMPLETA & MOBILE FIRST
+   Adaptação fluida para Smartwatches, Smartphones, Tablets e Desktops
+   ============================================================ */
+
+/* Menu Desktop & Botão Mobile (Base) */
+.header-actions-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.mobile-menu-toggle-btn {
+  display: none;
+}
+
+.mobile-nav-drawer {
+  display: none;
+}
+
+/* Telas Médias e Tablets (max-width: 980px) */
 @media (max-width: 980px) {
+  .desktop-menu {
+    display: none !important;
+  }
+
+  .mobile-menu-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.22);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-top: 1.5px solid rgba(255, 255, 255, 0.85);
+    color: var(--color-dark-teal);
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(11, 74, 79, 0.05);
+    transition: all 0.2s ease;
+  }
+
+  .mobile-menu-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: scale(1.05);
+  }
+
+  .mobile-nav-drawer {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(252, 252, 251, 0.94);
+    -webkit-backdrop-filter: blur(30px) saturate(210%);
+    backdrop-filter: blur(30px) saturate(210%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 24px 50px -10px rgba(11, 74, 79, 0.14);
+    padding: 1.25rem 1.5rem 2rem;
+    z-index: 1100;
+    max-height: calc(100vh - 75px);
+    overflow-y: auto;
+    animation: drawerSlideDown 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes drawerSlideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .mobile-drawer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .mobile-nav-link {
+    display: flex;
+    align-items: center;
+    padding: 0.85rem 0.6rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    border-bottom: 1px solid rgba(11, 74, 79, 0.06);
+    text-decoration: none;
+    transition: color 0.15s ease;
+    border-radius: 8px;
+  }
+
+  .mobile-nav-link:active,
+  .mobile-nav-link:hover,
+  .mobile-nav-link.active {
+    color: var(--color-dark-teal);
+    background: rgba(11, 74, 79, 0.05);
+  }
+
+  .mobile-drawer-divider {
+    height: 1px;
+    background: rgba(11, 74, 79, 0.08);
+    margin: 0.85rem 0;
+  }
+
+  .mobile-drawer-cta {
+    width: 100%;
+    border-radius: var(--radius-pill);
+    font-size: 1rem;
+    padding: 0.95rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+  }
+
   .hero-enterprise-inner {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 2.75rem;
   }
 
   .ai-spotlight-inner {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 2.75rem;
   }
 
   .diagnostic-contact-inner {
     grid-template-columns: 1fr;
+    gap: 2.75rem;
   }
 
   .footer-inner-grid {
@@ -1889,36 +2011,239 @@ a {
   .pricing-features-grid {
     grid-template-columns: 1fr;
   }
-
-  .menu {
-    gap: 0.75rem;
-  }
-
-  .menu a {
-    font-size: 0.82rem;
-  }
 }
 
+/* Telas Mobile Smartphones (max-width: 640px) */
 @media (max-width: 640px) {
   .header-nav {
-    padding: 0.75rem 1rem;
-    flex-wrap: wrap;
+    padding: 0.75rem 1.15rem;
   }
 
-  .footer-inner-grid {
-    grid-template-columns: 1fr;
+  .logo-title-main {
+    font-size: 1.08rem;
+  }
+
+  .logo-subtitle-desc {
+    font-size: 0.62rem;
+    max-width: 240px;
+    line-height: 1.25;
+  }
+
+  .header-cta-btn {
+    padding: 0.5rem 0.9rem !important;
+    font-size: 0.8rem !important;
+  }
+
+  .corp-hero-enterprise {
+    padding: 3.5rem 1.15rem 3rem;
+    min-height: auto;
+  }
+
+  .hero-enterprise-title {
+    font-size: clamp(2rem, 8vw, 2.7rem);
+    line-height: 1.18;
+  }
+
+  .hero-enterprise-desc {
+    font-size: 1rem;
+    line-height: 1.6;
   }
 
   .hero-actions-row {
     flex-direction: column;
     align-items: stretch;
+    gap: 0.75rem;
   }
 
   .corp-btn-accent, .corp-btn-outline-glass {
     width: 100%;
+    text-align: center;
+  }
+
+  .hero-metrics-bar {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    padding-top: 1.35rem;
+  }
+
+  .hero-metric-item strong {
+    font-size: 1.4rem;
+  }
+
+  .hero-metric-item span {
+    font-size: 0.7rem;
+  }
+
+  .hero-visual-card {
+    padding: 1.2rem 1rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .hero-kpi-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  /* Faixa de Soluções: Swipe Horizontal Fluido com Snap no Mobile */
+  .solutions-strip-bar {
+    padding: 1rem 1.15rem;
+  }
+
+  .solutions-strip-inner {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    gap: 0.75rem;
+    padding-bottom: 0.4rem;
+  }
+
+  .solutions-strip-inner::-webkit-scrollbar {
+    display: none;
+  }
+
+  .strip-item-chip {
+    flex: 0 0 170px;
+    scroll-snap-align: start;
+    padding: 0.75rem 1rem;
+  }
+
+  /* Seções Gerais */
+  .section-pains-container,
+  .services-catalog-section,
+  .section-services-catalog,
+  .section-segments-container,
+  .section-faq-container,
+  .section-diagnostic-contact {
+    margin: 3.5rem auto;
+    padding: 0 1.15rem;
+  }
+
+  .section-head-center {
+    margin-bottom: 2.25rem;
+  }
+
+  .section-title-large {
+    font-size: 1.85rem;
+    line-height: 1.25;
+  }
+
+  .section-desc-subtle {
+    font-size: 0.95rem;
+  }
+
+  .pains-grid-cards,
+  .methodology-grid-steps,
+  .services-catalog-grid,
+  .segments-grid-cards {
+    grid-template-columns: 1fr;
+    gap: 1.15rem;
+  }
+
+  .service-card-liquid {
+    padding: 1.6rem 1.3rem;
+  }
+
+  .method-step-card {
+    padding: 1.6rem 1.3rem;
+  }
+
+  .segment-card-item {
+    padding: 1.6rem 1.3rem;
+  }
+
+  .pricing-base-card {
+    padding: 2.2rem 1.25rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .diagnostic-form-glass {
+    padding: 1.85rem 1.25rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .form-input-corp, .form-select-corp {
+    font-size: 16px; /* Evita zoom automático no Safari iOS */
+    padding: 0.8rem 1rem;
   }
 
   .ai-chat-simulator-card {
     height: 480px;
+    border-radius: var(--radius-lg);
+  }
+
+  .ai-chat-header {
+    padding: 0.85rem 1rem;
+  }
+
+  .ai-chat-body {
+    padding: 1rem 0.85rem;
+  }
+
+  .ai-chat-bubble {
+    max-width: 90%;
+    font-size: 0.85rem;
+  }
+
+  .ai-chat-input {
+    font-size: 16px; /* Evita zoom no iOS */
+  }
+
+  /* Botão Flutuante do WhatsApp em Smartphones */
+  .whatsapp-float-corp {
+    width: 54px;
+    height: 54px;
+    right: 18px;
+    bottom: 18px;
+  }
+
+  .whatsapp-float-corp svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* Rodapé */
+  .corp-footer {
+    padding: 3.5rem 1.15rem 2rem;
+  }
+
+  .footer-inner-grid {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .footer-bottom-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}
+
+/* Telas Pequenas (max-width: 420px) */
+@media (max-width: 420px) {
+  .logo-title-main {
+    font-size: 0.98rem;
+  }
+
+  .logo-subtitle-desc {
+    max-width: 175px;
+    font-size: 0.58rem;
+  }
+
+  .header-cta-btn span {
+    display: none;
+  }
+
+  .header-cta-btn {
+    padding: 0.65rem !important;
+    border-radius: 50% !important;
+  }
+
+  .hero-metrics-bar {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    text-align: center;
   }
 }

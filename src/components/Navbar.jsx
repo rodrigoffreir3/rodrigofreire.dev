@@ -1,12 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useProjects } from '../hooks/useSettings';
-import { ChevronDown, MessageSquare } from 'lucide-react';
+import { ChevronDown, MessageSquare, Menu, X } from 'lucide-react';
 
 export default function Navbar({ profile }) {
   const location = useLocation();
   const { projects } = useProjects();
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   // Fecha dropdown ao clicar fora
@@ -20,9 +21,10 @@ export default function Navbar({ profile }) {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Fecha dropdown ao mudar de rota
+  // Fecha menus ao mudar de rota
   useEffect(() => {
     setDropdownOpen(false);
+    setMobileMenuOpen(false);
   }, [location.pathname]);
 
   const isActive = (path) => location.pathname === path;
@@ -34,14 +36,14 @@ export default function Navbar({ profile }) {
         
         {/* LOGO CORPORATIVO COM TITULO E SUBTITULO */}
         <div className="logo">
-          <Link to="/" title="Rodrigo Freire Tech · Início" className="logo-link-stacked">
+          <Link to="/" title="Rodrigo Freire Tech · Início" className="logo-link-stacked" onClick={() => setMobileMenuOpen(false)}>
             <span className="logo-title-main">Rodrigo Freire Tech</span>
             <span className="logo-subtitle-desc">Desenvolvimento de Sistemas e Automações com Inteligência Artificial</span>
           </Link>
         </div>
 
-        {/* MENU PRINCIPAL */}
-        <ul className="menu">
+        {/* MENU PRINCIPAL DESKTOP */}
+        <ul className="menu desktop-menu">
           <li>
             <Link to="/" className={isActive('/') ? 'active' : ''}>Início</Link>
           </li>
@@ -105,20 +107,71 @@ export default function Navbar({ profile }) {
           </li>
         </ul>
 
-        {/* CTA NO HEADER */}
-        <div className="header-cta-wrapper">
+        {/* CTA NO HEADER DESKTOP & MOBILE TOGGLE */}
+        <div className="header-actions-right">
           <a
             href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá! Vim pelo site da RF Tech e gostaria de agendar um diagnóstico.')}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="corp-btn-accent"
-            style={{ padding: '0.55rem 1.15rem', fontSize: '0.85rem' }}
+            className="corp-btn-accent header-cta-btn"
           >
-            <MessageSquare size={15} /> WhatsApp
+            <MessageSquare size={15} /> <span>WhatsApp</span>
           </a>
+
+          {/* BOTÃO HAMBURGUER MOBILE */}
+          <button
+            type="button"
+            className="mobile-menu-toggle-btn"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={mobileMenuOpen}
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
 
       </nav>
+
+      {/* GAVETA / DRAWER MOBILE COM LIQUID GLASS */}
+      {mobileMenuOpen && (
+        <div className="mobile-nav-drawer">
+          <div className="mobile-drawer-content">
+            <Link to="/" className={`mobile-nav-link ${isActive('/') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
+              Início
+            </Link>
+            <a href="/#catalogo" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
+              Soluções & ERP
+            </a>
+            <a href="/#ia-spotlight" className="mobile-nav-link menu-ia-link" onClick={() => setMobileMenuOpen(false)}>
+              Automação com IA ✨
+            </a>
+            <a href="/#segmentos" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
+              Segmentos Atendidos
+            </a>
+            <Link to="/projetos" className={`mobile-nav-link ${location.pathname.startsWith('/projetos') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
+              Cases de Sucesso
+            </Link>
+            <Link to="/blog" className={`mobile-nav-link ${location.pathname.startsWith('/blog') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
+              Blog & Insights
+            </Link>
+            <Link to="/contato" className={`mobile-nav-link ${isActive('/contato') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
+              Fale Conosco
+            </Link>
+
+            <div className="mobile-drawer-divider" />
+
+            <a
+              href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá! Vim pelo site da RF Tech e gostaria de agendar um diagnóstico.')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="corp-btn-accent mobile-drawer-cta"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <MessageSquare size={18} /> Conversar no WhatsApp
+            </a>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

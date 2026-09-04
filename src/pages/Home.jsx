@@ -168,12 +168,12 @@ export default function Home({ profile, projects = [], posts = [] }) {
               </div>
             </div>
 
-            <div style={{ padding: '1rem', background: 'rgba(0,0,0,0.3)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div style={{ padding: '0.85rem 1rem', background: 'rgba(255,255,255,0.22)', border: '1px solid rgba(255,255,255,0.55)', borderTop: '1.5px solid rgba(255,255,255,0.85)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-                <ShieldCheck size={20} color="#00F5D4" />
-                <span style={{ fontSize: '0.82rem', color: '#F8FAFC' }}>Conexão Segura SEFAZ & Banco Central</span>
+                <ShieldCheck size={20} color="var(--color-cyan-teal)" />
+                <span style={{ fontSize: '0.82rem', color: 'var(--text-heading)', fontWeight: '600' }}>Conexão Segura SEFAZ & Banco Central</span>
               </div>
-              <span style={{ fontSize: '0.72rem', background: 'rgba(0,245,212,0.15)', color: '#00F5D4', padding: '0.2rem 0.5rem', borderRadius: '4px', fontWeight: '700' }}>ONLINE</span>
+              <span style={{ fontSize: '0.72rem', background: 'rgba(0, 168, 150, 0.12)', color: 'var(--color-cyan-teal)', padding: '0.2rem 0.5rem', borderRadius: '4px', fontWeight: '700' }}>ONLINE</span>
             </div>
           </div>
         </div>
@@ -184,49 +184,31 @@ export default function Home({ profile, projects = [], posts = [] }) {
          ============================================================ */}
       <section className="solutions-strip-bar">
         <div className="solutions-strip-inner">
-          <a href="#catalogo" className="strip-item-chip">
-            <strong>Sistema ERP</strong>
-            <span>Estoque, vendas e caixa</span>
-          </a>
-          <a href="#catalogo" className="strip-item-chip">
-            <strong>PDV com PIX</strong>
-            <span>QR Code dinâmico na tela</span>
-          </a>
-          <a href="#catalogo" className="strip-item-chip">
-            <strong>Emissor Fiscal</strong>
-            <span>NF-e, NFC-e e MDF-e</span>
-          </a>
-          <a href="#ia-spotlight" className="strip-item-chip">
-            <strong>WhatsApp Bot IA</strong>
-            <span>Linguagem natural 24/7</span>
-          </a>
-          <a href="#catalogo" className="strip-item-chip">
-            <strong>Food Service</strong>
-            <span>Comanda e display cozinha</span>
-          </a>
-          <a href="#catalogo" className="strip-item-chip">
-            <strong>Ponto Digital</strong>
-            <span>Selfie e GPS (Portaria 671)</span>
-          </a>
+          {DEFAULT_SOLUTIONS_STRIP.map((item, idx) => (
+            <div key={idx} className="strip-item-chip">
+              <strong>{item.title}</strong>
+              <span>{item.desc}</span>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* ============================================================
-         3. DORES DO CLIENTE ("ONDE SUA EMPRESA PERDE CONTROLE?")
+         3. DORES DO CLIENTE (ONDE VOCÊ PERDE DINHEIRO E CONTROLE)
          ============================================================ */}
-      <section className="section-pains-container" id="dores">
+      <section className="section-pains-container">
         <div className="section-head-center">
-          <span className="section-tag-pill">Diagnóstico de Gargalos</span>
-          <h2 className="section-title-large">Onde sua empresa está perdendo dinheiro e tempo?</h2>
+          <span className="section-tag-pill">Diagnóstico Operacional</span>
+          <h2 className="section-title-large">Onde sua empresa está perdendo dinheiro agora?</h2>
           <p className="section-desc-subtle">
-            Empresas não quebram por falta de vendas. Quebram por falta de clareza nos custos, estoque desregulado e atendimento lento.
+            Problemas invisíveis na rotina comercial corroem a sua margem de lucro e geram retrabalho diário para você e sua equipe.
           </p>
         </div>
 
         <div className="pains-grid-cards">
-          {DEFAULT_PAINS.map((pain, idx) => (
-            <div key={idx} className="pain-card-item">
-              <span className="pain-icon-cross">✕</span>
+          {DEFAULT_PAINS.map((pain) => (
+            <div key={pain.id} className="pain-card-item">
+              <div className="pain-icon-cross">✕</div>
               <h3>{pain.title}</h3>
               <p>{pain.desc}</p>
             </div>
@@ -240,13 +222,13 @@ export default function Home({ profile, projects = [], posts = [] }) {
       <section className="section-methodology-bg">
         <div className="methodology-inner">
           <div className="section-head-center">
-            <span className="section-tag-pill" style={{ color: '#00F5D4', background: 'rgba(0,245,212,0.12)' }}>
+            <span className="section-tag-pill">
               Metodologia de Sucesso
             </span>
-            <h2 className="section-title-large" style={{ color: '#FFFFFF' }}>
+            <h2 className="section-title-large">
               4 passos para sair do improviso e assumir o controle total
             </h2>
-            <p className="section-desc-subtle" style={{ color: 'rgba(255,255,255,0.75)' }}>
+            <p className="section-desc-subtle">
               Não vendemos apenas software solto. Acompanhamos sua equipe em cada etapa para garantir resultados práticos.
             </p>
           </div>
@@ -362,7 +344,7 @@ export default function Home({ profile, projects = [], posts = [] }) {
       <section className="section-ai-spotlight" id="ia-spotlight">
         <div className="ai-spotlight-inner">
           <div className="ai-spotlight-copy">
-            <span className="section-tag-pill" style={{ color: '#00F5D4', background: 'rgba(0,245,212,0.12)' }}>
+            <span className="section-tag-pill">
               Inovação Exclusiva
             </span>
             <h2>Atendimento 24/7 e Automação de Processos com Inteligência Artificial</h2>
