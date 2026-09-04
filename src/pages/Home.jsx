@@ -5,7 +5,8 @@ import {
   DEFAULT_SEGMENTS,
   DEFAULT_PAINS,
   DEFAULT_STEPS,
-  DEFAULT_FAQS
+  DEFAULT_FAQS,
+  DEFAULT_SOLUTIONS_STRIP
 } from '../data/defaultData';
 import AiChatSimulator from '../components/AiChatSimulator';
 import {
@@ -185,10 +186,10 @@ export default function Home({ profile, projects = [], posts = [] }) {
       <section className="solutions-strip-bar">
         <div className="solutions-strip-inner">
           {DEFAULT_SOLUTIONS_STRIP.map((item, idx) => (
-            <div key={idx} className="strip-item-chip">
+            <a key={idx} href={item.href || "#catalogo"} className="strip-item-chip">
               <strong>{item.title}</strong>
               <span>{item.desc}</span>
-            </div>
+            </a>
           ))}
         </div>
       </section>

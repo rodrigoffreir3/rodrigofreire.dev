@@ -47,6 +47,16 @@ export const DEFAULT_PROFILE = {
   linkedin_url: ""
 };
 
+// FAIXA RÁPIDA DE DESTAQUES (STRIP)
+export const DEFAULT_SOLUTIONS_STRIP = [
+  { title: "Sistema ERP", desc: "Estoque, vendas e caixa", href: "#catalogo" },
+  { title: "PDV com PIX", desc: "QR Code dinâmico na tela", href: "#catalogo" },
+  { title: "Emissor Fiscal", desc: "NF-e, NFC-e e MDF-e", href: "#catalogo" },
+  { title: "WhatsApp Bot IA", desc: "Linguagem natural 24/7", href: "#ia-spotlight" },
+  { title: "Food Service", desc: "Comanda e display cozinha", href: "#catalogo" },
+  { title: "Ponto Digital", desc: "Selfie e GPS (Portaria 671)", href: "#catalogo" }
+];
+
 // 12 SERVIÇOS & SOLUÇÕES CORPORATIVAS
 export const DEFAULT_SERVICES = [
   {
