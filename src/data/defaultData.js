@@ -1,12 +1,12 @@
 // =============================================================================
-// RODRIGO FREIRE · DADOS PADRÃO E ESTRUTURA INICIAL
+// RODRIGO FREIRE TECH · DADOS CORPORATIVOS & CATÁLOGO DE SOLUÇÕES EMPRESARIAIS
 // =============================================================================
 
 export const DEFAULT_HOME_SETTINGS = {
   bg_image_url: "",
   bg_image_size: "cover",
   bg_image_repeat: "no-repeat",
-  overlay_color: "rgba(9, 13, 22, 0.75)",
+  overlay_color: "rgba(11, 74, 79, 0.08)",
   
   hero_char_url: "",
   hero_char_position: "bottom-right",
@@ -19,22 +19,26 @@ export const DEFAULT_HOME_SETTINGS = {
   secondary_bg_opacity: 0.9,
   
   content_has_border: true,
-  content_border_color: "rgba(255, 255, 255, 0.12)",
-  content_bg_color: "rgba(17, 24, 39, 0.62)",
+  content_border_color: "rgba(11, 74, 79, 0.14)",
+  content_bg_color: "rgba(248, 250, 252, 0.78)",
   content_blur_level: 20,
   content_border_radius: "24px",
   
-  primary_color: "rgba(37, 99, 235, 1)",
-  accent_color: "rgba(96, 165, 250, 1)",
-  text_heading_color: "rgba(248, 250, 252, 1)",
-  text_body_color: "rgba(148, 163, 184, 1)"
+  // Paleta SaaS Moderno
+  primary_color: "#0B4A4F",       // Dark Teal (Profundo e sério)
+  accent_color: "#00F5D4",        // Cyan Teal Neon (Ação / Destaque)
+  bg_page: "#F8FAFC",             // Off-White / Gelo
+  bg_page_subtle: "#E2E8F0",      // Cinza UI
+  text_heading_color: "#0F172A",  // Azul da Noite
+  text_body_color: "#334155"
 };
 
 export const DEFAULT_PROFILE = {
   full_name: "Rodrigo Freire",
-  tagline: "Engenharia de software, inteligência artificial e plataformas de alto desempenho.",
-  lead_bio: "Ajudo empresas e empreendedores a transformar requisitos complexos em plataformas web modernas, automações com IA, aplicativos e infraestruturas seguras e escaláveis.",
-  about_text: "Sou desenvolvedor de software e pesquisador com atuação em plataformas web modernas, inteligência artificial aplicada e sistemas de baixo nível no kernel do Linux. Minha abordagem de trabalho une rigor técnico de engenharia com foco direto no resultado de negócio: entregar sistemas rápidos, fáceis de manter e que suportem a operação diária da sua empresa sem sustos. Sou autor de pesquisas de segurança e possuo registro de software no INPI pelo desenvolvimento de sistemas de defesa autônoma.",
+  company_name: "Rodrigo Freire Tech",
+  tagline: "Software de Gestão Empresarial, Inteligência Artificial e Automação de Processos",
+  lead_bio: "Elimine o caos das planilhas e a perda invisível de margem. Oferecemos ERP integrado, frente de caixa com PIX, automações com IA e bots de WhatsApp com linguagem natural para sua empresa crescer com visão de dono.",
+  about_text: "Somos uma empresa de engenharia de software e tecnologia focada em resolver os gargalos reais de negócios comerciais, industriais e de serviços. Desenvolvemos soluções completas: do ERP de gestão com controle rigoroso de estoque e emissão fiscal à vanguarda da inteligência artificial generativa aplicada a atendimentos 24/7 e automação de rotinas.",
   whatsapp_number: "5569992782919",
   inpi_record: "INPI Nº 512025006506-0",
   avatar_url: "",
@@ -43,93 +47,259 @@ export const DEFAULT_PROFILE = {
   linkedin_url: ""
 };
 
+// 12 SERVIÇOS & SOLUÇÕES CORPORATIVAS
 export const DEFAULT_SERVICES = [
   {
-    id: "sites",
-    icon: "🌐",
-    tag: "INSTITUCIONAL",
-    title: "Criação de Sites Institucionais",
-    description: "Páginas modernas, ultra rápidas e responsivas, desenhadas para posicionar sua empresa com autoridade e converter visitantes em clientes."
+    id: "sistema-erp",
+    category: "erp",
+    icon: "LayoutDashboard",
+    tag: "GESTÃO INTEGRADA",
+    title: "Sistema ERP para Gestão Empresarial",
+    short_desc: "Visão de dono em tempo real: vendas, estoque, compras e financeiro em um só ecossistema.",
+    description: "Centralize faturamento, contas a pagar/receber, compras, fornecedores e indicadores vitais. Diga adeus às planilhas desconexas e ganhe previsibilidade para tomar decisões com dados consolidados.",
+    price_tag: "Sob Consulta",
+    highlights: ["Indicadores em tempo real", "Controle de margem de lucro", "Multi-filiais e relatórios"]
   },
   {
-    id: "plataformas",
-    icon: "⚙️",
-    tag: "WEB APP",
-    title: "Plataformas Web Corporativas",
-    description: "Portais completos com login, painéis de controle, relatórios e gestão operacional em tempo real para organizar a rotina do seu negócio."
+    id: "pdv-pix",
+    category: "pdv",
+    icon: "Zap",
+    tag: "FRENTE DE CAIXA",
+    title: "PDV com PIX Dinâmico & TEF Integrado",
+    short_desc: "Venda rápida no balcão: código de barras, TEF e QR Code PIX gerado diretamente na tela.",
+    description: "Acelere a fila do caixa. O QR Code PIX é gerado no monitor com valor exato, sem o operador digitar valores na maquininha. Confirmação instantânea do recebimento na tela e baixa automática.",
+    price_tag: "Sob Consulta",
+    highlights: ["QR Code dinâmico na tela", "Sem digitação de maquininha", "Compatível com balanças e leitores"]
   },
   {
-    id: "mobile",
-    icon: "📱",
-    tag: "MOBILE",
-    title: "Aplicativos Mobile (iOS & Android)",
-    description: "Apps fluidos e intuitivos para smartphones, focados em usabilidade simples, navegação rápida e integração com seus sistemas."
+    id: "emissor-fiscal",
+    category: "fiscal",
+    icon: "FileText",
+    tag: "FISCAL COMPLETO",
+    title: "Emissor Fiscal Automatizado (NF-e / NFC-e / MDF-e)",
+    short_desc: "Emissão simplificada e sem dor de cabeça, em conformidade com as exigências da SEFAZ.",
+    description: "Emita notas fiscais de venda (NFC-e), notas grandes (NF-e), notas de frete e transporte (MDF-e) e notas de serviço (NFS-e). Armazenamento em nuvem dos arquivos XML e envio direto para contabilidade.",
+    price_tag: "Sob Consulta",
+    highlights: ["NF-e, NFC-e, NFS-e e MDF-e", "Conexão direta SEFAZ", "Envio automático para o contador"]
   },
   {
-    id: "desktop",
-    icon: "💻",
-    tag: "DESKTOP",
-    title: "Sistemas Desktop para Computador",
-    description: "Softwares rápidos e robustos para estações de trabalho Windows, macOS ou Linux, preparados para tarefas pesadas e processamento local."
+    id: "estoque-balanco",
+    category: "erp",
+    icon: "Boxes",
+    tag: "LOGÍSTICA & ESTOQUE",
+    title: "Controle e Balanço Inteligente de Estoque",
+    short_desc: "Evite perdas e produtos vencidos: ponto de pedido, código de barras e inventário ágil.",
+    description: "Monitore entrada e saída com leitor, controle lotes e validades, crie etiquetas personalizadas para gôndolas e receba alertas de reposição antes que o produto falte para o cliente.",
+    price_tag: "Sob Consulta",
+    highlights: ["Controle de validade por lote", "Geração de etiquetas de código de barras", "Alerta de estoque mínimo"]
   },
   {
-    id: "automacao-ia",
-    icon: "🤖",
-    tag: "AGENTS",
-    title: "Automação de Processos com IA",
-    description: "Agentes inteligentes que analisam documentos, executam tarefas rotineiras e eliminam o trabalho manual repetitivo da sua equipe."
+    id: "gestao-financeira",
+    category: "erp",
+    icon: "TrendingUp",
+    tag: "FINANCEIRO",
+    title: "Gestão Financeira & Conciliação Bancária",
+    short_desc: "Fluxo de caixa diário, dedução automática de taxas de cartão e DRE simplificado.",
+    description: "Saiba exatamente para onde vai cada centavo. Faça conciliação bancária, emita boletos integrados sem entrar no portal do banco e acompanhe vendas à vista, a prazo e inadimplência.",
+    price_tag: "Sob Consulta",
+    highlights: ["Dedução real de taxas de cartão", "Emissão de boletos bancários", "Previsão de fluxo de caixa"]
   },
   {
-    id: "fine-tuning",
-    icon: "🧠",
-    tag: "FINE-TUNING",
-    title: "Treinamento e Ajuste Fino de IA",
-    description: "Especialização de modelos de inteligência artificial treinados diretamente com as informações e regras de negócio da sua empresa."
+    id: "food-service",
+    category: "segmento",
+    icon: "UtensilsCrossed",
+    tag: "FOOD SERVICE",
+    title: "Comanda Digital & Gestão para Restaurantes",
+    short_desc: "Do celular do garçom direto para o display da cozinha, sem papel solto e sem confusão.",
+    description: "Gerencie mesas, comandas individuais e delivery. O garçom lança o pedido no smartphone, a cozinha recebe na tela ou na impressora térmica e o caixa fecha a mesa com agilidade e divisão de contas.",
+    price_tag: "Sob Consulta",
+    highlights: ["Comanda mobile por mesa", "Painel KDS para cozinha", "Fechamento parcial de contas"]
   },
   {
-    id: "whatsapp",
-    icon: "💬",
-    tag: "WHATSAPP API",
-    title: "Automação de WhatsApp Corporativo",
-    description: "Fluxos inteligentes para atender clientes instantaneamente 24 horas por dia, qualificar oportunidades e agilizar orçamentos."
+    id: "logistica-romaneio",
+    category: "erp",
+    icon: "Truck",
+    tag: "DISTRIBUIÇÃO",
+    title: "Romaneio de Carga & Roteirização de Entregas",
+    short_desc: "Controle de expedição, montagem de cargas e força de vendas externa para distribuidoras.",
+    description: "Organize pedidos por rota, gere romaneios consolidados e acompanhe a equipe externa de vendedores com app de vendas offline que sincroniza pedidos assim que encontra conexão.",
+    price_tag: "Sob Consulta",
+    highlights: ["Força de vendas no celular", "Organização por roteiro de entrega", "Emissão em lote de faturas"]
   },
   {
-    id: "cloud",
-    icon: "☁️",
-    tag: "CLOUD",
-    title: "Servidores em Nuvem (Cloud)",
-    description: "Configuração e otimização de infraestruturas na AWS, Google Cloud e Cloudflare para garantir que sua aplicação nunca saia do ar."
+    id: "ponto-eletronico",
+    category: "rh",
+    icon: "Clock",
+    tag: "RH & PONTO",
+    title: "Ponto Digital com Selfie e Geolocalização GPS",
+    short_desc: "Controle de jornada moderno sem relógio físico caro, conforme a Portaria 671 do MTE.",
+    description: "Registro de ponto rápido pelo navegador ou smartphone com foto selfie e validação de localização geográfica. Relatórios automáticos de horas extras, banco de horas, intervalos e faltas.",
+    price_tag: "Sob Consulta",
+    highlights: ["Portaria 671 MTE homologada", "Foto com anti-fraude e GPS", "Espelho de ponto para contabilidade"]
   },
   {
-    id: "bare-metal",
-    icon: "🖥️",
-    tag: "BARE-METAL",
-    title: "Montagem de Servidores Locais",
-    description: "Planejamento e montagem de máquinas e servidores locais dedicados para empresas que precisam de processamento próprio e soberania de dados."
+    id: "loja-virtual",
+    category: "software",
+    icon: "ShoppingCart",
+    tag: "E-COMMERCE",
+    title: "Loja Virtual & Catálogo Digital Integrado",
+    short_desc: "Seus produtos na internet com estoque, preços e pedidos sincronizados ao seu ERP.",
+    description: "Venda online 24h sem risco de vender produto que já acabou na loja física. Catálogo interativo com checkout transparente, cálculo de frete e envio do pedido direto para expedição.",
+    price_tag: "Sob Consulta",
+    highlights: ["Estoque sincronizado em tempo real", "Checkout PIX e Cartão", "Catálogo responsivo mobile"]
   },
   {
-    id: "kernel-sec",
-    icon: "🔒",
-    tag: "eBPF / KERNEL",
-    title: "Segurança & Defesa de Servidores",
-    description: "Contenção de processos, auditoria de código e blindagem de servidores Linux contra invasões e acessos indevidos."
+    id: "software-demanda",
+    category: "software",
+    icon: "Code2",
+    tag: "SOB MEDIDA",
+    title: "Desenvolvimento de Software & Aplicativos Sob Demanda",
+    short_desc: "Sistemas web exclusivos, portais corporativos e apps mobile para processos únicos.",
+    description: "Quando nenhum software pronto do mercado atende à particularidade da sua operação, nossa equipe de engenharia desenha a arquitetura, prototipa, programa e integra a solução feita sob medida para você.",
+    price_tag: "Sob Consulta",
+    highlights: ["Arquitetura escalável em nuvem", "APIs e integrações com legados", "Apps nativos iOS & Android"]
   },
   {
-    id: "consultoria",
-    icon: "📊",
-    tag: "CONSULTORIA",
-    title: "Consultoria Técnica de Tecnologia",
-    description: "Orientação estratégica para aquisição assertiva de hardware, servidores, GPUs e seleção do modelo ideal de IA para sua demanda."
+    id: "ia-automacao",
+    category: "ia",
+    icon: "BrainCircuit",
+    tag: "INOVAÇÃO & IA",
+    title: "Automação e Treinamento de Inteligência Artificial",
+    short_desc: "Agentes autônomos para rotinas operacionais e capacitação in-company em IA generativa.",
+    description: "Implementamos agentes de IA que leem notas, conferem contratos, processam documentos e cruzam dados sem intervenção humana. Oferecemos também treinamento prático para sua equipe extrair produtividade máxima de ferramentas de IA.",
+    price_tag: "Sob Consulta",
+    highlights: ["Agentes de triagem de dados", "Fine-tuning com regras do seu negócio", "Treinamentos práticos in-company"]
   },
   {
-    id: "trafego",
-    icon: "📈",
-    tag: "GROWTH",
-    title: "Estratégia de Tráfego & Presença",
-    description: "Estruturação de SEO e campanhas assertivas para posicionar suas soluções no Google e redes sociais para o público comprador."
+    id: "whatsapp-bot-nlp",
+    category: "ia",
+    icon: "Bot",
+    tag: "IA CONVERSACIONAL",
+    title: "WhatsApp Bot com Linguagem Natural (NLP)",
+    short_desc: "Atendimento humanizado 24/7 com IA que entende o cliente, consulta o ERP e vende.",
+    description: "Esqueça robôs travados que só aceitam números ('digite 1 para...'). Nosso bot com inteligência artificial compreende mensagens em texto ou áudio, consulta estoque, emite 2ª via de boletos, agenda reuniões e fecha vendas.",
+    price_tag: "Sob Consulta",
+    highlights: ["Conversação natural como humano", "Integração profunda ao banco de dados", "Transbordo suave para atendentes"]
   }
 ];
 
+// SEGMENTOS DE MERCADO ATENDIDOS
+export const DEFAULT_SEGMENTS = [
+  {
+    id: "panificadoras",
+    title: "Padarias & Confeitarias",
+    desc: "Controle de ficha técnica de receitas, perdas de insumos, balcão ágil com PIX e encomendas antecipadas."
+  },
+  {
+    id: "construcao",
+    title: "Materiais de Construção",
+    desc: "Orçamentos técnicos para obras, romaneio de carga por canteiro, crediário próprio e emissão de notas fiscais."
+  },
+  {
+    id: "restaurantes",
+    title: "Bares & Restaurantes",
+    desc: "Comanda digital por mesa, integração direta com telão da cozinha, divisão de contas e controle de delivery."
+  },
+  {
+    id: "supermercados",
+    title: "Supermercados & Mercados",
+    desc: "Frente de caixa rápida com leitor de código de barras, balança integrada, controle de validade e TV de ofertas."
+  },
+  {
+    id: "roupas",
+    title: "Lojas de Roupas & Calçados",
+    desc: "Controle por grade (cor, tamanho e modelo), etiquetas de código de barras, promoções e crediário da loja."
+  },
+  {
+    id: "distribuidoras",
+    title: "Atacados & Distribuidoras",
+    desc: "Força de vendas externa no celular, romaneio e rotas de entrega, múltiplos estoques e faturamento em lote."
+  },
+  {
+    id: "oficinas",
+    title: "Oficinas Mecânicas & Autopeças",
+    desc: "Ordem de serviço completa por placa/veículo, histórico de manutenções, peças aplicadas e comissão de mecânicos."
+  },
+  {
+    id: "farmacias",
+    title: "Farmácias & Cosméticos",
+    desc: "Controle rigoroso de lote e data de validade, venda ágil no balcão e conferência de entradas via XML de compra."
+  }
+];
+
+// AS 5 DORES DO EMPRESÁRIO
+export const DEFAULT_PAINS = [
+  {
+    title: "Estoque Desregulado",
+    desc: "Comprar produto que já tem em excesso ou perder vendas porque o item em alta acabou sem ninguém perceber."
+  },
+  {
+    title: "Caixa sem Visão Real",
+    desc: "Vender muito no mês, mas chegar no fechamento sem saber para onde o dinheiro foi ou qual o lucro líquido real."
+  },
+  {
+    title: "Atendimento Lento no WhatsApp",
+    desc: "Clientes esperando horas por uma resposta comercial ou orçamentos simples enquanto a concorrência responde em 1 minuto."
+  },
+  {
+    title: "Retrabalho com Notas e Tributos",
+    desc: "Horas perdidas redigitando notas fiscais, medo de multas da SEFAZ ou confusão no fechamento contábil mensal."
+  },
+  {
+    title: "Processos Amarrados em Planilhas",
+    desc: "Depender de planilhas de Excel que corrompem, desatualizam ou que só uma pessoa da empresa sabe mexer."
+  }
+];
+
+// 4 PASSOS DA METODOLOGIA
+export const DEFAULT_STEPS = [
+  {
+    step: "01",
+    title: "Diagnóstico da Operação",
+    desc: "Mapeamos como sua empresa compra, vende, estoca, atende e fecha o financeiro para identificar os vazamentos de receita."
+  },
+  {
+    step: "02",
+    title: "Parametrização & Implantação",
+    desc: "Configuramos o ERP e os módulos na medida da sua empresa, importando seus produtos, clientes e tabelas de preço."
+  },
+  {
+    step: "03",
+    title: "Capacitação da Equipe",
+    desc: "Treinamos seus colaboradores no balcão, no estoque, no financeiro e no atendimento para dominarem o sistema na rotina."
+  },
+  {
+    step: "04",
+    title: "Acompanhamento & Evolução",
+    desc: "Suporte consultivo e contínuo para garantir que seus indicadores estejam sempre precisos e seu negócio pronto para crescer."
+  }
+];
+
+// PERGUNTAS FREQUENTES (FAQ)
+export const DEFAULT_FAQS = [
+  {
+    q: "Como funciona a implantação do sistema na minha empresa?",
+    a: "Nossa equipe realiza uma implantação assistida: mapeamos seu fluxo, migramos seus cadastros existentes (produtos, fornecedores, clientes), configuramos o ambiente e treinamos seus funcionários presencialmente ou por vídeo chamada dedicada."
+  },
+  {
+    q: "O que é o WhatsApp Bot com Linguagem Natural e como ele se conecta ao ERP?",
+    a: "Diferente dos bots antigos baseados em 'menu numérico', nosso bot utiliza inteligência artificial avançada (LLMs) para entender qualquer pergunta digitada ou gravada em áudio pelo cliente. Ele é conectado via API segura ao seu banco de dados para consultar estoque, enviar código PIX, emitir 2ª via de boleto ou agendar serviços 24 horas por dia."
+  },
+  {
+    q: "Preciso trocar de computador ou comprar servidores caros?",
+    a: "Não. Nossas soluções operam com tecnologia web moderna em nuvem com alta disponibilidade e baixo consumo de máquina. Computadores convencionais de balcão ou escritório rodam perfeitamente."
+  },
+  {
+    q: "E se a internet cair, consigo continuar vendendo no PDV?",
+    a: "Sim! Nosso módulo de frente de caixa e força de vendas possui modo de contingência offline, permitindo emitir pedidos e registrar vendas que são sincronizadas automaticamente assim que o sinal retorna."
+  },
+  {
+    q: "Como solicito uma demonstração ou orçamento?",
+    a: "Basta clicar em qualquer botão de 'Solicitar Diagnóstico' ou 'Falar no WhatsApp'. Você conversará diretamente com nossa equipe técnica que entenderá seu segmento e montará uma proposta personalizada sem compromisso."
+  }
+];
+
+// CASES & PROJETOS DO PORTFÓLIO
 export const DEFAULT_PROJECTS = [
   {
     id: 1,
@@ -255,6 +425,7 @@ export const DEFAULT_PROJECTS = [
   }
 ];
 
+// ARTIGOS TÉCNICOS & BLOG
 export const DEFAULT_POSTS = [
   {
     id: 1,

@@ -1,291 +1,587 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { DEFAULT_SERVICES } from '../data/defaultData';
-import { ShieldCheck, Cpu, Cloud, Sparkles, ArrowRight } from 'lucide-react';
+import {
+  DEFAULT_SERVICES,
+  DEFAULT_SEGMENTS,
+  DEFAULT_PAINS,
+  DEFAULT_STEPS,
+  DEFAULT_FAQS
+} from '../data/defaultData';
+import AiChatSimulator from '../components/AiChatSimulator';
+import {
+  LayoutDashboard,
+  Zap,
+  FileText,
+  Boxes,
+  TrendingUp,
+  UtensilsCrossed,
+  Truck,
+  Clock,
+  ShoppingCart,
+  Code2,
+  BrainCircuit,
+  Bot,
+  Sparkles,
+  ArrowRight,
+  ShieldCheck,
+  ChevronDown,
+  ChevronUp,
+  MessageSquare,
+  CheckCircle2,
+  PhoneCall
+} from 'lucide-react';
 
-export default function Home({ profile, projects, posts }) {
-  const featuredProjects = projects.filter(p => p.is_featured);
-  const standardProjects = projects.filter(p => !p.is_featured);
+const ICON_MAP = {
+  LayoutDashboard,
+  Zap,
+  FileText,
+  Boxes,
+  TrendingUp,
+  UtensilsCrossed,
+  Truck,
+  Clock,
+  ShoppingCart,
+  Code2,
+  BrainCircuit,
+  Bot
+};
+
+export default function Home({ profile, projects = [], posts = [] }) {
+  const [selectedCategory, setSelectedCategory] = useState('todos');
+  const [openFaqIndex, setOpenFaqIndex] = useState(0);
+
+  // Formulário de diagnóstico
+  const [formData, setFormData] = useState({
+    nome: '',
+    whatsapp: '',
+    empresa: '',
+    segmento: 'varejo',
+    dor_principal: 'estoque'
+  });
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const phone = profile?.whatsapp_number || '5569992782919';
+    const text = `Olá! Gostaria de solicitar um diagnóstico gratuito para minha empresa.\n\n*Nome:* ${formData.nome}\n*Empresa:* ${formData.empresa}\n*Segmento:* ${formData.segmento}\n*Principal Desafio:* ${formData.dor_principal}`;
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
+  };
+
+  const filteredServices = selectedCategory === 'todos'
+    ? DEFAULT_SERVICES
+    : DEFAULT_SERVICES.filter((s) => s.category === selectedCategory);
+
+  const phone = profile?.whatsapp_number || '5569992782919';
 
   return (
-    <div className="portfolio-container">
+    <div className="home-enterprise-wrapper">
 
       {/* ============================================================
-         SEÇÃO 1 — HERO EXECUTIVO EM LIQUID GLASS
+         1. HERO EXECUTIVO HIGH-TECH COM APPLE LIQUID GLASS
          ============================================================ */}
-      <section className="corp-hero">
-        <div className="hero-inner">
-          <div className="corp-badge">
-            <Sparkles size={14} />
-            <span>Consultoria & Engenharia de Software</span>
-          </div>
-          
-          <h1>
-            Engenharia de software, inteligência artificial e <span className="highlight-blue">plataformas de alto desempenho</span>
-          </h1>
-          
-          <p className="lead">
-            {profile?.lead_bio || "Ajudo empresas e empreendedores a transformar requisitos complexos em plataformas web modernas, automações com IA, aplicativos e infraestruturas seguras e escaláveis."}
-          </p>
-          
-          <div className="hero-actions">
-            <a href="#servicos" className="corp-btn corp-btn-primary">Conhecer Serviços</a>
-            <a href="#projetos" className="corp-btn corp-btn-secondary">Ver Projetos & Cases</a>
-            <a
-              href={`https://wa.me/${profile?.whatsapp_number || '5569992782919'}?text=${encodeURIComponent('Olá Rodrigo! Acessei seu site e gostaria de agendar uma reunião sobre um projeto.')}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="corp-btn corp-btn-secondary"
-            >
-              Falar no WhatsApp →
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* ============================================================
-         BARRA DE CREDENCIAIS & CONFIANÇA
-         ============================================================ */}
-      <section className="trust-ribbon">
-        <div className="trust-item">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.4rem', color: '#60a5fa' }}>
-            <ShieldCheck size={20} />
-            <div className="trust-title" style={{ margin: 0 }}>Propriedade Intelectual</div>
-          </div>
-          <p className="trust-desc">{profile?.inpi_record || "Software registrado no INPI sob o nº 512025006506-0"}.</p>
-        </div>
-
-        <div className="trust-item">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.4rem', color: '#60a5fa' }}>
-            <Cpu size={20} />
-            <div className="trust-title" style={{ margin: 0 }}>Engenharia de Baixo Nível</div>
-          </div>
-          <p className="trust-desc">Vigilância e interceptação determinística no Kernel Linux via eBPF e módulos LSM.</p>
-        </div>
-
-        <div className="trust-item">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.4rem', color: '#60a5fa' }}>
-            <Cloud size={20} />
-            <div className="trust-title" style={{ margin: 0 }}>Infraestrutura em Nuvem</div>
-          </div>
-          <p className="trust-desc">Arquiteturas seguras e escaláveis na AWS e Cloudflare com foco em resiliência.</p>
-        </div>
-
-        <div className="trust-item">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.4rem', color: '#60a5fa' }}>
-            <Sparkles size={20} />
-            <div className="trust-title" style={{ margin: 0 }}>Inteligência Artificial</div>
-          </div>
-          <p className="trust-desc">Modelos em produção, automações de atendimento e fine-tuning especializado.</p>
-        </div>
-      </section>
-
-      {/* ============================================================
-         SEÇÃO 2 — SERVIÇOS & SOLUÇÕES
-         ============================================================ */}
-      <section id="servicos" className="services-section-corp">
-        <div className="section-header-corp">
-          <div className="corp-badge">Serviços & Soluções</div>
-          <h2>O que eu faço pela sua empresa</h2>
-          <p>Do desenvolvimento de plataformas web sob medida à automação com inteligência artificial e consultoria técnica especializada.</p>
-        </div>
-
-        <div className="services-grid-corp">
-          {DEFAULT_SERVICES.map((serv) => (
-            <div key={serv.id} className="service-card-corp">
-              <div className="service-icon-box">{serv.icon}</div>
-              <div className="tech-tag" style={{ alignSelf: 'flex-start', marginBottom: '0.65rem' }}>{serv.tag}</div>
-              <h3>{serv.title}</h3>
-              <p>{serv.description}</p>
+      <section className="corp-hero-enterprise" id="inicio">
+        <div className="hero-enterprise-inner">
+          <div className="hero-enterprise-copy">
+            <div className="hero-pill-badge">
+              <Sparkles size={14} />
+              <span>Soluções Empresariais Integradas + IA Aplicada</span>
             </div>
-          ))}
-        </div>
 
-        {/* CARD CONSULTIVO: SITE VS PLATAFORMA WEB */}
-        <div className="comparison-card-corp">
-          <div className="comparison-header">
-            <div className="corp-badge">Orientação ao Cliente</div>
-            <h3>Qual é a diferença entre um Site Institucional e uma Plataforma Web?</h3>
-            <p style={{ color: 'var(--text-body)', margin: 0 }}>Entenda qual solução faz mais sentido para o momento atual da sua empresa:</p>
-          </div>
+            <h1 className="hero-enterprise-title">
+              Controle total da sua operação. Da gestão de estoque ao <span className="highlight-cyan">atendimento com IA</span>.
+            </h1>
 
-          <div className="comparison-grid-corp">
-            <div className="comparison-box-item">
-              <h4>Site Institucional (Vitrine Corporativa)</h4>
-              <p>É a porta de entrada da sua marca. Tem como foco apresentar seus serviços, passar credibilidade, divulgar contatos e captar novos clientes que estão pesquisando sobre a sua empresa.</p>
+            <p className="hero-enterprise-desc">
+              {profile?.lead_bio || "Elimine o caos de planilhas soltas e perdas invisíveis de receita. Implementamos sistemas ERP completos, frente de caixa com PIX dinâmico e agentes de inteligência artificial sob medida."}
+            </p>
+
+            <div className="hero-pain-chips-row">
+              <span className="hero-pain-chip-item">Estoque sem furos</span>
+              <span className="hero-pain-chip-item">Caixa com lucro real</span>
+              <span className="hero-pain-chip-item">Atendimento IA 24/7</span>
+              <span className="hero-pain-chip-item">Notas fiscais sem travar</span>
             </div>
-            <div className="comparison-box-item">
-              <h4>Plataforma Web (Sistema de Operação)</h4>
-              <p>É uma ferramenta de trabalho funcional. Usuários fazem login, gerenciam pedidos, agendam horários, acessam relatórios e operam fluxos de dados essenciais para o funcionamento do negócio.</p>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* ============================================================
-         SEÇÃO 3 — PROJETOS EM DESTAQUE (CASE STUDIES)
-         ============================================================ */}
-      <section id="projetos" className="projects-section-corp">
-        <div className="section-header-corp">
-          <div className="corp-badge">Portfólio & Pesquisa</div>
-          <h2>Projetos e Soluções em Destaque</h2>
-          <p>Conheça alguns dos sistemas, plataformas e softwares proprietários desenvolvidos em produção.</p>
-        </div>
-
-        <div className="projects-grid-corp">
-          
-          {/* PROJETOS DESTACADOS EM LARGURA TOTAL */}
-          {featuredProjects.map((proj) => (
-            <div key={proj.id} className="project-card-corp featured-full">
-              <div className="project-img-box">
-                <img src={proj.cover_image || proj.hero_image} alt={proj.title} loading="lazy" />
-              </div>
-              <div className="project-content-box">
-                <div className="browser-chrome" style={{ margin: '-1.85rem -1.85rem 1.25rem -1.85rem' }}>
-                  <div className="browser-dots">
-                    <span className="browser-dot red"></span>
-                    <span className="browser-dot yellow"></span>
-                    <span className="browser-dot green"></span>
-                  </div>
-                  <span className="browser-url">rodrigofreire.dev/projetos/{proj.slug}</span>
-                </div>
-                <div className="corp-badge" style={{ alignSelf: 'flex-start' }}>{proj.badge}</div>
-                <h3>{proj.title}</h3>
-                <p>{proj.summary}</p>
-                <div className="project-tags-list">
-                  {proj.tags?.map((t, idx) => (
-                    <span key={idx} className="tech-tag">{t}</span>
-                  ))}
-                </div>
-                <Link to={`/projetos/${proj.slug}`} className="corp-btn corp-btn-primary" style={{ marginTop: 'auto' }}>
-                  Conhecer o Projeto →
-                </Link>
-              </div>
-            </div>
-          ))}
-
-          {/* DEMAIS PROJETOS EM GRID PADRÃO */}
-          {standardProjects.slice(0, 4).map((proj) => (
-            <div key={proj.id} className="project-card-corp">
-              <div className="browser-chrome">
-                <div className="browser-dots">
-                  <span className="browser-dot red"></span>
-                  <span className="browser-dot yellow"></span>
-                  <span className="browser-dot green"></span>
-                </div>
-                <span className="browser-url">rodrigofreire.dev/projetos/{proj.slug}</span>
-              </div>
-              <div className="project-img-box">
-                <img src={proj.cover_image || proj.hero_image} alt={proj.title} loading="lazy" />
-              </div>
-              <div className="project-content-box">
-                <div className="corp-badge" style={{ alignSelf: 'flex-start' }}>{proj.badge}</div>
-                <h3>{proj.title}</h3>
-                <p>{proj.summary}</p>
-                <div className="project-tags-list">
-                  {proj.tags?.map((t, idx) => (
-                    <span key={idx} className="tech-tag">{t}</span>
-                  ))}
-                </div>
-                <Link to={`/projetos/${proj.slug}`} className="corp-btn corp-btn-secondary" style={{ marginTop: 'auto' }}>
-                  Ver Detalhes do Projeto →
-                </Link>
-              </div>
-            </div>
-          ))}
-
-        </div>
-
-        <div style={{ textAlign: 'center', marginTop: '1rem', marginBottom: '4.5rem' }}>
-          <Link to="/projetos" className="corp-btn corp-btn-secondary">
-            Ver Todos os {projects.length} Projetos do Portfólio →
-          </Link>
-        </div>
-      </section>
-
-      {/* ============================================================
-         SEÇÃO 4 — SOBRE RODRIGO FREIRE
-         ============================================================ */}
-      <section id="sobre" className="about-section-corp">
-        <div className="about-grid">
-          <div className="about-avatar-box">
-            {profile?.avatar_url ? (
-              <img src={profile.avatar_url} alt={profile.full_name} style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }} />
-            ) : (
-              "RF"
-            )}
-          </div>
-          <div className="about-text">
-            <div className="corp-badge">Perfil Profissional</div>
-            <h3>{profile?.full_name || "Rodrigo Freire"}</h3>
-            <p>{profile?.about_text}</p>
-            <div style={{ marginTop: '1.5rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-              <Link to="/sobre" className="corp-btn corp-btn-secondary">
-                Ler Trajetória Completa →
-              </Link>
+            <div className="hero-actions-row">
+              <a href="#diagnostico" className="corp-btn-accent">
+                🚀 Solicitar Diagnóstico Gratuito
+              </a>
+              <a href="#ia-spotlight" className="corp-btn-outline-glass">
+                Ver Simulação de IA →
+              </a>
               <a
-                href={`https://wa.me/${profile?.whatsapp_number || '5569992782919'}?text=${encodeURIComponent('Olá Rodrigo! Gostaria de conversar com você sobre um projeto.')}`}
+                href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá! Gostaria de conhecer as soluções para minha empresa.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="corp-btn corp-btn-primary"
+                className="corp-btn-outline-glass"
               >
-                Entrar em Contato Direto →
+                <MessageSquare size={16} /> WhatsApp Direto
               </a>
+            </div>
+
+            <div className="hero-metrics-bar">
+              <div className="hero-metric-item">
+                <strong>12+</strong>
+                <span>Módulos Integrados</span>
+              </div>
+              <div className="hero-metric-item">
+                <strong>100%</strong>
+                <span>Implantação Assistida</span>
+              </div>
+              <div className="hero-metric-item">
+                <strong>24/7</strong>
+                <span>Automação com IA</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Visual Hero Mockup */}
+          <div className="hero-visual-card">
+            <div className="hero-screen-header">
+              <span className="screen-dot dot-red" />
+              <span className="screen-dot dot-yellow" />
+              <span className="screen-dot dot-green" />
+              <small style={{ color: 'rgba(255,255,255,0.6)', marginLeft: 'auto', fontSize: '0.72rem' }}>
+                painel-executivo.rftech.app
+              </small>
+            </div>
+
+            <div className="hero-kpi-grid">
+              <div className="kpi-card">
+                <small>Faturamento Hoje</small>
+                <strong>R$ 14.820,00</strong>
+                <span>▲ 18.4% vs semana anterior</span>
+              </div>
+              <div className="kpi-card">
+                <small>Estoque & Reposição</small>
+                <strong>98.2% Regular</strong>
+                <span>0 rupturas críticas</span>
+              </div>
+              <div className="kpi-card">
+                <small>PIX no PDV</small>
+                <strong>312 Transações</strong>
+                <span>Confirmação em 1.4s</span>
+              </div>
+              <div className="kpi-card">
+                <small>WhatsApp Bot IA</small>
+                <strong>84 Leads Atendidos</strong>
+                <span>24/7 sem fila de espera</span>
+              </div>
+            </div>
+
+            <div style={{ padding: '1rem', background: 'rgba(0,0,0,0.3)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                <ShieldCheck size={20} color="#00F5D4" />
+                <span style={{ fontSize: '0.82rem', color: '#F8FAFC' }}>Conexão Segura SEFAZ & Banco Central</span>
+              </div>
+              <span style={{ fontSize: '0.72rem', background: 'rgba(0,245,212,0.15)', color: '#00F5D4', padding: '0.2rem 0.5rem', borderRadius: '4px', fontWeight: '700' }}>ONLINE</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* ============================================================
-         SEÇÃO 5 — ARTIGOS RECENTES NO BLOG
+         2. FAIXA DE SOLUÇÕES RÁPIDAS (STRIP)
          ============================================================ */}
-      <section className="blog-section-corp">
-        <div className="section-header-corp">
-          <div className="corp-badge">Artigos & Publicações</div>
-          <h2>Publicações e Conteúdos Recentes</h2>
-          <p>Reflexões sobre mercado de tecnologia, arquitetura de sistemas, eficiência de hardware e inteligência artificial.</p>
-        </div>
-
-        <div className="blog-grid-corp">
-          {posts.slice(0, 3).map((post) => (
-            <div key={post.id} className="blog-card-corp">
-              <div className="tech-tag" style={{ alignSelf: 'flex-start', marginBottom: '0.6rem' }}>
-                {new Date(post.published_at).toLocaleDateString('pt-BR')}
-              </div>
-              <h4><Link to={`/blog/${post.slug}`}>{post.title}</Link></h4>
-              <p>{post.description}</p>
-              <Link to={`/blog/${post.slug}`} className="corp-btn corp-btn-secondary" style={{ padding: '0.5rem 1.1rem', fontSize: '0.85rem', marginTop: 'auto', alignSelf: 'flex-start' }}>
-                Ler Artigo Completo →
-              </Link>
-            </div>
-          ))}
-        </div>
-
-        <div style={{ textAlign: 'center', marginTop: '1.5rem', marginBottom: '4.5rem' }}>
-          <Link to="/blog" className="corp-btn corp-btn-secondary">
-            Acessar Todas as Publicações do Blog →
-          </Link>
+      <section className="solutions-strip-bar">
+        <div className="solutions-strip-inner">
+          <a href="#catalogo" className="strip-item-chip">
+            <strong>Sistema ERP</strong>
+            <span>Estoque, vendas e caixa</span>
+          </a>
+          <a href="#catalogo" className="strip-item-chip">
+            <strong>PDV com PIX</strong>
+            <span>QR Code dinâmico na tela</span>
+          </a>
+          <a href="#catalogo" className="strip-item-chip">
+            <strong>Emissor Fiscal</strong>
+            <span>NF-e, NFC-e e MDF-e</span>
+          </a>
+          <a href="#ia-spotlight" className="strip-item-chip">
+            <strong>WhatsApp Bot IA</strong>
+            <span>Linguagem natural 24/7</span>
+          </a>
+          <a href="#catalogo" className="strip-item-chip">
+            <strong>Food Service</strong>
+            <span>Comanda e display cozinha</span>
+          </a>
+          <a href="#catalogo" className="strip-item-chip">
+            <strong>Ponto Digital</strong>
+            <span>Selfie e GPS (Portaria 671)</span>
+          </a>
         </div>
       </section>
 
       {/* ============================================================
-         BANNER DE CONTATO FINAL (CTA)
+         3. DORES DO CLIENTE ("ONDE SUA EMPRESA PERDE CONTROLE?")
          ============================================================ */}
-      <section className="cta-banner-corp">
-        <div className="corp-badge" style={{ background: 'rgba(255,255,255,0.1)', borderColor: 'rgba(255,255,255,0.2)', color: '#ffffff' }}>
-          Atendimento Personalizado
+      <section className="section-pains-container" id="dores">
+        <div className="section-head-center">
+          <span className="section-tag-pill">Diagnóstico de Gargalos</span>
+          <h2 className="section-title-large">Onde sua empresa está perdendo dinheiro e tempo?</h2>
+          <p className="section-desc-subtle">
+            Empresas não quebram por falta de vendas. Quebram por falta de clareza nos custos, estoque desregulado e atendimento lento.
+          </p>
         </div>
-        <h3>Pronto para tirar o seu projeto do papel?</h3>
-        <p>Vamos estruturar a melhor solução tecnológica para a sua empresa, com código profissional, prazo cumprido e suporte dedicado.</p>
-        <a
-          href={`https://wa.me/${profile?.whatsapp_number || '5569992782919'}?text=${encodeURIComponent('Olá Rodrigo! Gostaria de solicitar uma proposta técnica para o meu projeto.')}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="corp-btn corp-btn-primary"
-          style={{ fontSize: '1.05rem', padding: '0.9rem 2.2rem' }}
-        >
-          Conversar com Rodrigo no WhatsApp →
-        </a>
+
+        <div className="pains-grid-cards">
+          {DEFAULT_PAINS.map((pain, idx) => (
+            <div key={idx} className="pain-card-item">
+              <span className="pain-icon-cross">✕</span>
+              <h3>{pain.title}</h3>
+              <p>{pain.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ============================================================
+         4. METODOLOGIA EM 4 PASSOS
+         ============================================================ */}
+      <section className="section-methodology-bg">
+        <div className="methodology-inner">
+          <div className="section-head-center">
+            <span className="section-tag-pill" style={{ color: '#00F5D4', background: 'rgba(0,245,212,0.12)' }}>
+              Metodologia de Sucesso
+            </span>
+            <h2 className="section-title-large" style={{ color: '#FFFFFF' }}>
+              4 passos para sair do improviso e assumir o controle total
+            </h2>
+            <p className="section-desc-subtle" style={{ color: 'rgba(255,255,255,0.75)' }}>
+              Não vendemos apenas software solto. Acompanhamos sua equipe em cada etapa para garantir resultados práticos.
+            </p>
+          </div>
+
+          <div className="methodology-grid-steps">
+            {DEFAULT_STEPS.map((step) => (
+              <div key={step.step} className="method-step-card">
+                <div className="step-num-badge">{step.step}</div>
+                <h3>{step.title}</h3>
+                <p>{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================
+         5. CATÁLOGO DE MÓDULOS & SOLUÇÕES (FILTRÁVEL)
+         ============================================================ */}
+      <section className="section-services-catalog" id="catalogo">
+        <div className="section-head-center">
+          <span className="section-tag-pill">Soluções Corporativas</span>
+          <h2 className="section-title-large">Módulos especializados para cada rotina do seu negócio</h2>
+          <p className="section-desc-subtle">
+            Arquitetura modular e integrada: comece resolvendo a dor mais urgente e adicione novos módulos conforme sua empresa cresce.
+          </p>
+        </div>
+
+        {/* Filtros de Categoria */}
+        <div className="catalog-filter-tabs">
+          <button
+            onClick={() => setSelectedCategory('todos')}
+            className={`catalog-tab-btn ${selectedCategory === 'todos' ? 'active' : ''}`}
+          >
+            Todos os Módulos
+          </button>
+          <button
+            onClick={() => setSelectedCategory('erp')}
+            className={`catalog-tab-btn ${selectedCategory === 'erp' ? 'active' : ''}`}
+          >
+            Gestão & ERP
+          </button>
+          <button
+            onClick={() => setSelectedCategory('pdv')}
+            className={`catalog-tab-btn ${selectedCategory === 'pdv' ? 'active' : ''}`}
+          >
+            Frente de Caixa (PDV)
+          </button>
+          <button
+            onClick={() => setSelectedCategory('ia')}
+            className={`catalog-tab-btn ${selectedCategory === 'ia' ? 'active' : ''}`}
+          >
+            Inteligência Artificial ✨
+          </button>
+          <button
+            onClick={() => setSelectedCategory('fiscal')}
+            className={`catalog-tab-btn ${selectedCategory === 'fiscal' ? 'active' : ''}`}
+          >
+            Fiscal & Tributário
+          </button>
+          <button
+            onClick={() => setSelectedCategory('software')}
+            className={`catalog-tab-btn ${selectedCategory === 'software' ? 'active' : ''}`}
+          >
+            Sob Medida & Apps
+          </button>
+        </div>
+
+        {/* Grid de Serviços */}
+        <div className="services-catalog-grid">
+          {filteredServices.map((service) => {
+            const IconComponent = ICON_MAP[service.icon] || LayoutDashboard;
+            return (
+              <div key={service.id} className="service-card-liquid">
+                <div className="service-card-header">
+                  <div className="service-icon-wrapper">
+                    <IconComponent size={24} />
+                  </div>
+                  <span className="service-card-tag">{service.tag}</span>
+                </div>
+
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
+
+                {service.highlights && (
+                  <ul className="service-highlights-list">
+                    {service.highlights.map((h, i) => (
+                      <li key={i}>{h}</li>
+                    ))}
+                  </ul>
+                )}
+
+                <div className="service-card-footer">
+                  <span className="service-price-label">{service.price_tag}</span>
+                  <a
+                    href={`https://wa.me/${phone}?text=${encodeURIComponent(`Olá! Tenho interesse no módulo: ${service.title}`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="service-btn-contact"
+                  >
+                    Detalhes <ArrowRight size={14} />
+                  </a>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* ============================================================
+         6. DESTAQUE ESPECIAL: AUTOMAÇÃO COM IA & WHATSAPP BOT COM SIMULADOR
+         ============================================================ */}
+      <section className="section-ai-spotlight" id="ia-spotlight">
+        <div className="ai-spotlight-inner">
+          <div className="ai-spotlight-copy">
+            <span className="section-tag-pill" style={{ color: '#00F5D4', background: 'rgba(0,245,212,0.12)' }}>
+              Inovação Exclusiva
+            </span>
+            <h2>Atendimento 24/7 e Automação de Processos com Inteligência Artificial</h2>
+            <p>
+              Substitua robôs arcaicos por agentes de IA com compreensão de linguagem natural. Seu cliente envia áudios ou textos livres e a IA consulta o estoque, envia o código PIX e registra o pedido no seu ERP em tempo real.
+            </p>
+
+            <div className="ai-features-checks">
+              <div className="ai-feature-row">
+                <div className="ai-feature-icon-badge">✓</div>
+                <div>
+                  <strong>Compreensão Contextual Profunda (NLP)</strong>
+                  <span>Entende gírias, erros de digitação e mensagens de áudio sem menus travados.</span>
+                </div>
+              </div>
+              <div className="ai-feature-row">
+                <div className="ai-feature-icon-badge">✓</div>
+                <div>
+                  <strong>Conexão em Tempo Real com o Banco de Dados</strong>
+                  <span>Verifica saldo de produtos, tabela de preços e limite de crédito na hora.</span>
+                </div>
+              </div>
+              <div className="ai-feature-row">
+                <div className="ai-feature-icon-badge">✓</div>
+                <div>
+                  <strong>Treinamento Corporativo In-Company</strong>
+                  <span>Capacitamos seu time operacional para extrair eficiência máxima de IAs generativas.</span>
+                </div>
+              </div>
+            </div>
+
+            <a
+              href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá! Quero conhecer a automação com Inteligência Artificial e WhatsApp Bot para minha empresa.')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="corp-btn-accent"
+            >
+              🚀 Quero um WhatsApp Bot de IA para minha Empresa
+            </a>
+          </div>
+
+          {/* Simulador Interativo */}
+          <div className="ai-spotlight-demo">
+            <AiChatSimulator />
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================
+         7. SEGMENTOS ATENDIDOS
+         ============================================================ */}
+      <section className="section-segments-container" id="segmentos">
+        <div className="section-head-center">
+          <span className="section-tag-pill">Soluções por Ramo de Atuação</span>
+          <h2 className="section-title-large">Tecnologia adaptada ao dia a dia do seu segmento</h2>
+          <p className="section-desc-subtle">
+            Cada tipo de negócio possui particularidades fiscais, operacionais e de balcão. Nossos sistemas já vêm configurados para sua área.
+          </p>
+        </div>
+
+        <div className="segments-grid-cards">
+          {DEFAULT_SEGMENTS.map((seg) => (
+            <div key={seg.id} className="segment-card-item">
+              <h3>{seg.title}</h3>
+              <p>{seg.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ============================================================
+         8. TRANSPARÊNCIA & PLANO BASE DE ENTRADA
+         ============================================================ */}
+      <section className="section-pricing-base">
+        <div className="pricing-base-card">
+          <span className="pricing-badge-pill">Estrutura Transparente</span>
+          <h2 style={{ fontSize: '2rem', color: '#FFFFFF', marginBottom: '0.75rem' }}>
+            Comece com o essencial e escale com segurança
+          </h2>
+          <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.95rem' }}>
+            Implantação com migração de dados, configuração inicial do banco e treinamento dedicado para toda a sua equipe.
+          </p>
+
+          <div className="pricing-features-grid">
+            <div className="pricing-feature-check">Cadastro de produtos e clientes</div>
+            <div className="pricing-feature-check">Frente de caixa (PDV) rápido</div>
+            <div className="pricing-feature-check">Emissão integrada de NF-e e NFC-e</div>
+            <div className="pricing-feature-check">Controle financeiro de contas</div>
+            <div className="pricing-feature-check">Relatórios de faturamento e lucro</div>
+            <div className="pricing-feature-check">Suporte técnico consultivo</div>
+          </div>
+
+          <a href="#diagnostico" className="corp-btn-accent" style={{ fontSize: '1.05rem', padding: '0.9rem 2.2rem' }}>
+            Solicitar Proposta para Minha Empresa
+          </a>
+        </div>
+      </section>
+
+      {/* ============================================================
+         9. PERGUNTAS FREQUENTES (FAQ COM ACORDEÃO)
+         ============================================================ */}
+      <section className="section-faq-container" id="faq">
+        <div className="section-head-center">
+          <span className="section-tag-pill">Tire suas dúvidas</span>
+          <h2 className="section-title-large">Perguntas Frequentes</h2>
+          <p className="section-desc-subtle">
+            Tudo o que você precisa saber antes de contratar seu sistema ou automação com IA.
+          </p>
+        </div>
+
+        <div className="faq-accordion-list">
+          {DEFAULT_FAQS.map((faq, index) => {
+            const isOpen = openFaqIndex === index;
+            return (
+              <div key={index} className="faq-item-accordion">
+                <button
+                  onClick={() => setOpenFaqIndex(isOpen ? -1 : index)}
+                  className="faq-summary-btn"
+                  aria-expanded={isOpen}
+                >
+                  <span>{faq.q}</span>
+                  {isOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+                </button>
+                {isOpen && (
+                  <div className="faq-answer-body">
+                    <p>{faq.a}</p>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* ============================================================
+         10. DIAGNÓSTICO GRATUITO & CONTATO DIRETO
+         ============================================================ */}
+      <section className="section-diagnostic-contact" id="diagnostico">
+        <div className="diagnostic-contact-inner">
+          <div>
+            <span className="section-tag-pill">Comece Agora</span>
+            <h2 className="section-title-large">Solicite um Diagnóstico Gratuito da sua Operação</h2>
+            <p className="section-desc-subtle" style={{ marginBottom: '1.5rem' }}>
+              Nossos especialistas entram em contato pelo WhatsApp para entender o volume da sua loja, identificar onde ocorrem perdas e sugerir os módulos exatos para sua empresa crescer.
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-dark-teal)', fontWeight: '600' }}>
+                <CheckCircle2 size={18} /> Sem compromisso ou custos ocultos
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-dark-teal)', fontWeight: '600' }}>
+                <CheckCircle2 size={18} /> Atendimento ágil e direto pelo WhatsApp
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-dark-teal)', fontWeight: '600' }}>
+                <CheckCircle2 size={18} /> Plano de implantação sob medida para seu tamanho
+              </div>
+            </div>
+          </div>
+
+          <form onSubmit={handleFormSubmit} className="diagnostic-form-glass">
+            <h3 style={{ fontSize: '1.3rem', marginBottom: '1.25rem' }}>Preencha para receber o contato</h3>
+
+            <div className="form-group-item">
+              <label className="form-label-corp">Seu Nome Completo</label>
+              <input
+                type="text"
+                required
+                value={formData.nome}
+                onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
+                placeholder="Ex: João da Silva"
+                className="form-input-corp"
+              />
+            </div>
+
+            <div className="form-group-item">
+              <label className="form-label-corp">WhatsApp com DDD</label>
+              <input
+                type="tel"
+                required
+                value={formData.whatsapp}
+                onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
+                placeholder="(69) 99999-9999"
+                className="form-input-corp"
+              />
+            </div>
+
+            <div className="form-group-item">
+              <label className="form-label-corp">Nome da sua Empresa</label>
+              <input
+                type="text"
+                value={formData.empresa}
+                onChange={(e) => setFormData({ ...formData, empresa: e.target.value })}
+                placeholder="Ex: Supermercado Central"
+                className="form-input-corp"
+              />
+            </div>
+
+            <div className="form-group-item">
+              <label className="form-label-corp">Segmento Principal</label>
+              <select
+                value={formData.segmento}
+                onChange={(e) => setFormData({ ...formData, segmento: e.target.value })}
+                className="form-select-corp"
+              >
+                <option value="varejo">Comércio & Lojas em Geral</option>
+                <option value="padaria">Padaria / Confeitaria</option>
+                <option value="restaurante">Restaurante / Bar / Food</option>
+                <option value="supermercado">Supermercado / Mercearia</option>
+                <option value="distribuidora">Distribuidora / Atacado</option>
+                <option value="construcao">Material de Construção</option>
+                <option value="oficina">Oficina Mecânica / Autopeças</option>
+                <option value="servicos">Prestação de Serviços / Outros</option>
+              </select>
+            </div>
+
+            <button type="submit" className="corp-btn-accent" style={{ width: '100%', marginTop: '0.5rem' }}>
+              Solicitar Diagnóstico via WhatsApp 🚀
+            </button>
+          </form>
+        </div>
       </section>
 
     </div>
