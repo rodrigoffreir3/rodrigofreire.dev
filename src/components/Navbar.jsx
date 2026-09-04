@@ -114,8 +114,9 @@ export default function Navbar({ profile }) {
             target="_blank"
             rel="noopener noreferrer"
             className="corp-btn-accent header-cta-btn"
+            title="Falar no WhatsApp"
           >
-            <MessageSquare size={15} /> <span>WhatsApp</span>
+            <MessageSquare size={16} /> <span className="header-cta-btn-text">WhatsApp</span>
           </a>
 
           {/* BOTÃO HAMBURGUER MOBILE */}

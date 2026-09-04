@@ -169,12 +169,12 @@ export default function Home({ profile, projects = [], posts = [] }) {
               </div>
             </div>
 
-            <div style={{ padding: '0.85rem 1rem', background: 'rgba(255,255,255,0.22)', border: '1px solid rgba(255,255,255,0.55)', borderTop: '1.5px solid rgba(255,255,255,0.85)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-                <ShieldCheck size={20} color="var(--color-cyan-teal)" />
-                <span style={{ fontSize: '0.82rem', color: 'var(--text-heading)', fontWeight: '600' }}>Conexão Segura SEFAZ & Banco Central</span>
+            <div className="hero-security-status-bar">
+              <div className="hero-security-status-left">
+                <ShieldCheck size={18} color="var(--color-cyan-teal)" />
+                <span>Conexão Segura SEFAZ & Banco Central</span>
               </div>
-              <span style={{ fontSize: '0.72rem', background: 'rgba(0, 168, 150, 0.12)', color: 'var(--color-cyan-teal)', padding: '0.2rem 0.5rem', borderRadius: '4px', fontWeight: '700' }}>ONLINE</span>
+              <span className="hero-security-status-badge">ONLINE</span>
             </div>
           </div>
         </div>
@@ -438,7 +438,7 @@ export default function Home({ profile, projects = [], posts = [] }) {
             <div className="pricing-feature-check">Suporte técnico consultivo</div>
           </div>
 
-          <a href="#diagnostico" className="corp-btn-accent" style={{ fontSize: '1.05rem', padding: '0.9rem 2.2rem' }}>
+          <a href="#diagnostico" className="corp-btn-accent pricing-cta-btn">
             Solicitar Proposta para Minha Empresa
           </a>
         </div>

@@ -78,6 +78,9 @@
 html {
   scroll-behavior: smooth;
   background-color: var(--bg-page);
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: clip;
 }
 
 body {
@@ -89,8 +92,40 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: clip;
   touch-action: manipulation;
+  position: relative;
+}
+
+#root,
+.multi-layer-viewport,
+.canvas-content-wrapper,
+.home-enterprise-wrapper {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+/* Previne que flex e grid children estourem a largura na tela mobile */
+.hero-enterprise-inner > *,
+.ai-spotlight-inner > *,
+.diagnostic-contact-inner > *,
+.footer-inner-grid > *,
+.services-catalog-grid > *,
+.pains-grid-cards > *,
+.methodology-grid-steps > *,
+.segments-grid-cards > *,
+.pricing-features-grid > *,
+.hero-kpi-grid > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+img, video, svg {
+  max-width: 100%;
+  height: auto;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -284,7 +319,8 @@ a {
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
-  white-space: nowrap;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .corp-btn-accent:hover {
@@ -613,6 +649,8 @@ a {
   padding: 0.45rem 1rem;
   border-radius: var(--radius-pill);
   margin-bottom: 1.5rem;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .hero-enterprise-title {
@@ -775,6 +813,45 @@ a {
   color: var(--text-muted);
 }
 
+.hero-security-status-bar {
+  padding: 0.85rem 1rem;
+  background: rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.85);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+.hero-security-status-left {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 0;
+}
+
+.hero-security-status-left span {
+  font-size: 0.82rem;
+  color: var(--text-heading);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.hero-security-status-badge {
+  font-size: 0.72rem;
+  background: rgba(0, 168, 150, 0.12);
+  color: var(--color-cyan-teal);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
 /* ============================================================
    FAIXA DE SOLUÇÕES (TICKER) EM VIDRO CRISTALINO
    ============================================================ */
@@ -783,14 +860,20 @@ a {
   border-top: 1px solid rgba(11, 74, 79, 0.08);
   border-bottom: 1px solid rgba(11, 74, 79, 0.08);
   padding: 1.25rem 1.5rem;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .solutions-strip-inner {
   max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   gap: 0.85rem;
+  box-sizing: border-box;
 }
 
 .strip-item-chip {
@@ -805,6 +888,8 @@ a {
   border-radius: var(--radius-sm);
   box-shadow: 0 6px 18px rgba(11, 74, 79, 0.03), inset 0 1px 1px rgba(255, 255, 255, 0.9);
   transition: all 0.25s ease;
+  text-decoration: none;
+  box-sizing: border-box;
 }
 
 .strip-item-chip:hover {
@@ -1626,6 +1711,12 @@ a {
   font-weight: 900;
 }
 
+.pricing-cta-btn {
+  font-size: 1.05rem;
+  padding: 0.9rem 2.2rem;
+  display: inline-flex;
+}
+
 /* ============================================================
    SEÇÃO FAQ (ACORDEÕES EM VIDRO CRISTALINO)
    ============================================================ */
@@ -1885,8 +1976,10 @@ a {
   display: none;
 }
 
-/* Telas Médias e Tablets (max-width: 980px) */
-@media (max-width: 980px) {
+/* ============================================================
+   1. Telas Médias e Tablets (max-width: 991px)
+   ============================================================ */
+@media (max-width: 991px) {
   .desktop-menu {
     display: none !important;
   }
@@ -1907,6 +2000,7 @@ a {
     cursor: pointer;
     box-shadow: 0 4px 14px rgba(11, 74, 79, 0.05);
     transition: all 0.2s ease;
+    flex-shrink: 0;
   }
 
   .mobile-menu-toggle-btn:hover {
@@ -1920,7 +2014,8 @@ a {
     top: 100%;
     left: 0;
     right: 0;
-    background: rgba(252, 252, 251, 0.94);
+    width: 100%;
+    background: rgba(252, 252, 251, 0.96);
     -webkit-backdrop-filter: blur(30px) saturate(210%);
     backdrop-filter: blur(30px) saturate(210%);
     border-bottom: 1px solid rgba(255, 255, 255, 0.9);
@@ -1929,7 +2024,9 @@ a {
     z-index: 1100;
     max-height: calc(100vh - 75px);
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     animation: drawerSlideDown 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-sizing: border-box;
   }
 
   @keyframes drawerSlideDown {
@@ -2013,80 +2110,146 @@ a {
   }
 }
 
-/* Telas Mobile Smartphones (max-width: 640px) */
-@media (max-width: 640px) {
+/* ============================================================
+   2. Telas Mobile / Smartphones (max-width: 768px)
+   ============================================================ */
+@media (max-width: 768px) {
   .header-nav {
-    padding: 0.75rem 1.15rem;
+    padding: 0.65rem 1rem;
+    gap: 0.75rem;
   }
 
   .logo-title-main {
-    font-size: 1.08rem;
+    font-size: 1.05rem;
+    line-height: 1.2;
   }
 
   .logo-subtitle-desc {
-    font-size: 0.62rem;
-    max-width: 240px;
-    line-height: 1.25;
+    font-size: 0.6rem;
+    max-width: 210px;
+    line-height: 1.2;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .header-cta-btn-text {
+    display: none;
   }
 
   .header-cta-btn {
-    padding: 0.5rem 0.9rem !important;
-    font-size: 0.8rem !important;
+    padding: 0.6rem !important;
+    border-radius: 50% !important;
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .corp-hero-enterprise {
-    padding: 3.5rem 1.15rem 3rem;
+    padding: 2.5rem 1rem 2rem;
     min-height: auto;
   }
 
+  .hero-pill-badge {
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+    padding: 0.4rem 0.8rem;
+    margin-bottom: 1.15rem;
+    text-align: center;
+    line-height: 1.35;
+  }
+
   .hero-enterprise-title {
-    font-size: clamp(2rem, 8vw, 2.7rem);
+    font-size: clamp(1.65rem, 6vw, 2.25rem);
     line-height: 1.18;
+    margin-bottom: 1rem;
+    word-break: break-word;
   }
 
   .hero-enterprise-desc {
-    font-size: 1rem;
-    line-height: 1.6;
+    font-size: 0.98rem;
+    line-height: 1.55;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-pain-chips-row {
+    gap: 0.45rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-pain-chip-item {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.7rem;
   }
 
   .hero-actions-row {
     flex-direction: column;
     align-items: stretch;
+    width: 100%;
     gap: 0.75rem;
+    margin-bottom: 1.75rem;
   }
 
-  .corp-btn-accent, .corp-btn-outline-glass {
-    width: 100%;
-    text-align: center;
+  .corp-btn-accent,
+  .corp-btn-outline-glass,
+  .corp-btn-primary,
+  .pricing-cta-btn {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+    padding: 0.85rem 1.25rem !important;
+    font-size: 0.92rem !important;
+    white-space: normal !important;
+    box-sizing: border-box;
   }
 
   .hero-metrics-bar {
     grid-template-columns: repeat(3, 1fr);
-    gap: 0.75rem;
-    padding-top: 1.35rem;
+    gap: 0.5rem;
+    padding-top: 1.25rem;
   }
 
   .hero-metric-item strong {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
 
   .hero-metric-item span {
-    font-size: 0.7rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.02em;
   }
 
   .hero-visual-card {
-    padding: 1.2rem 1rem;
+    padding: 1.15rem 0.9rem;
     border-radius: var(--radius-lg);
   }
 
   .hero-kpi-grid {
     grid-template-columns: 1fr;
-    gap: 0.75rem;
+    gap: 0.65rem;
+  }
+
+  .kpi-card {
+    padding: 0.85rem;
+  }
+
+  .hero-security-status-bar {
+    padding: 0.75rem 0.85rem;
+    gap: 0.5rem;
+  }
+
+  .hero-security-status-left span {
+    font-size: 0.75rem;
   }
 
   /* Faixa de Soluções: Swipe Horizontal Fluido com Snap no Mobile */
   .solutions-strip-bar {
-    padding: 1rem 1.15rem;
+    padding: 0.85rem 1rem;
+    width: 100%;
+    overflow: hidden;
   }
 
   .solutions-strip-inner {
@@ -2095,8 +2258,9 @@ a {
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
-    gap: 0.75rem;
+    gap: 0.65rem;
     padding-bottom: 0.4rem;
+    width: 100%;
   }
 
   .solutions-strip-inner::-webkit-scrollbar {
@@ -2104,9 +2268,10 @@ a {
   }
 
   .strip-item-chip {
-    flex: 0 0 170px;
+    flex: 0 0 155px;
+    min-width: 155px;
     scroll-snap-align: start;
-    padding: 0.75rem 1rem;
+    padding: 0.7rem 0.85rem;
   }
 
   /* Seções Gerais */
@@ -2116,102 +2281,187 @@ a {
   .section-segments-container,
   .section-faq-container,
   .section-diagnostic-contact {
-    margin: 3.5rem auto;
-    padding: 0 1.15rem;
+    margin: 2.75rem auto;
+    padding: 0 1rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .section-methodology-bg {
+    padding: 2.75rem 1rem;
+    margin: 2.75rem 0;
   }
 
   .section-head-center {
-    margin-bottom: 2.25rem;
+    margin-bottom: 1.85rem;
   }
 
   .section-title-large {
-    font-size: 1.85rem;
-    line-height: 1.25;
+    font-size: clamp(1.45rem, 5.5vw, 1.95rem);
+    line-height: 1.22;
+    word-break: break-word;
   }
 
   .section-desc-subtle {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
+    line-height: 1.55;
   }
 
+  /* Filtros de Categoria em Carrossel Horizontal Deslizável */
+  .catalog-filter-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 0.5rem;
+    padding: 0.25rem 0.25rem 0.65rem;
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+
+  .catalog-filter-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .catalog-tab-btn {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    font-size: 0.82rem;
+    padding: 0.5rem 1rem;
+    scroll-snap-align: start;
+  }
+
+  /* Grids de Cards em 1 Coluna Fluida */
   .pains-grid-cards,
   .methodology-grid-steps,
   .services-catalog-grid,
   .segments-grid-cards {
     grid-template-columns: 1fr;
-    gap: 1.15rem;
+    gap: 1rem;
+    width: 100%;
   }
 
-  .service-card-liquid {
-    padding: 1.6rem 1.3rem;
+  .service-card-liquid,
+  .method-step-card,
+  .segment-card-item,
+  .pain-card-item {
+    padding: 1.4rem 1.15rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
-  .method-step-card {
-    padding: 1.6rem 1.3rem;
-  }
-
-  .segment-card-item {
-    padding: 1.6rem 1.3rem;
+  .service-card-liquid h3 {
+    font-size: 1.18rem;
   }
 
   .pricing-base-card {
-    padding: 2.2rem 1.25rem;
+    padding: 1.85rem 1.15rem;
     border-radius: var(--radius-lg);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .section-pricing-base {
+    padding: 3rem 1rem;
+  }
+
+  .diagnostic-contact-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
 
   .diagnostic-form-glass {
-    padding: 1.85rem 1.25rem;
+    padding: 1.6rem 1.15rem;
     border-radius: var(--radius-lg);
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .form-input-corp, .form-select-corp {
     font-size: 16px; /* Evita zoom automático no Safari iOS */
-    padding: 0.8rem 1rem;
+    padding: 0.75rem 0.95rem;
+  }
+
+  .ai-spotlight-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .ai-spotlight-copy h2 {
+    font-size: clamp(1.5rem, 5.5vw, 2rem);
+    line-height: 1.2;
   }
 
   .ai-chat-simulator-card {
-    height: 480px;
+    height: 460px;
     border-radius: var(--radius-lg);
+    width: 100%;
   }
 
   .ai-chat-header {
-    padding: 0.85rem 1rem;
+    padding: 0.75rem 0.95rem;
+  }
+
+  .ai-chat-presets {
+    width: 100%;
+    padding: 0.5rem 0.85rem;
+    scrollbar-width: none;
+  }
+
+  .ai-chat-presets::-webkit-scrollbar {
+    display: none;
   }
 
   .ai-chat-body {
-    padding: 1rem 0.85rem;
+    padding: 0.85rem;
+    width: 100%;
   }
 
   .ai-chat-bubble {
     max-width: 90%;
-    font-size: 0.85rem;
+    font-size: 0.84rem;
   }
 
   .ai-chat-input {
     font-size: 16px; /* Evita zoom no iOS */
   }
 
+  /* FAQ Accordion */
+  .faq-summary-btn {
+    padding: 1rem 1.15rem;
+    font-size: 0.95rem;
+  }
+
+  .faq-answer-body {
+    padding: 0 1.15rem 1rem;
+    font-size: 0.88rem;
+  }
+
   /* Botão Flutuante do WhatsApp em Smartphones */
   .whatsapp-float-corp {
-    width: 54px;
-    height: 54px;
-    right: 18px;
-    bottom: 18px;
+    width: 52px;
+    height: 52px;
+    right: 16px;
+    bottom: 16px;
   }
 
   .whatsapp-float-corp svg {
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
   }
 
   /* Rodapé */
   .corp-footer {
-    padding: 3.5rem 1.15rem 2rem;
+    padding: 3rem 1rem 2rem;
   }
 
   .footer-inner-grid {
     grid-template-columns: 1fr;
-    gap: 2.25rem;
-    margin-bottom: 2.5rem;
+    gap: 2rem;
+    margin-bottom: 2rem;
   }
 
   .footer-bottom-row {
@@ -2221,29 +2471,30 @@ a {
   }
 }
 
-/* Telas Pequenas (max-width: 420px) */
-@media (max-width: 420px) {
+/* ============================================================
+   3. Telas Pequenas (max-width: 440px)
+   ============================================================ */
+@media (max-width: 440px) {
   .logo-title-main {
     font-size: 0.98rem;
   }
 
   .logo-subtitle-desc {
-    max-width: 175px;
-    font-size: 0.58rem;
-  }
-
-  .header-cta-btn span {
-    display: none;
-  }
-
-  .header-cta-btn {
-    padding: 0.65rem !important;
-    border-radius: 50% !important;
+    max-width: 160px;
+    font-size: 0.56rem;
   }
 
   .hero-metrics-bar {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 0.85rem;
     text-align: center;
+  }
+
+  .hero-metric-item strong {
+    font-size: 1.35rem;
+  }
+
+  .hero-metric-item span {
+    font-size: 0.72rem;
   }
 }
