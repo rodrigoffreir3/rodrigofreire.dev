@@ -12,7 +12,7 @@ export default function Sobre({ profile }) {
           <span>Perfil & Trajetória</span>
         </div>
         <h2>Sobre Rodrigo Freire</h2>
-        <p>Desenvolvedor de software, pesquisador em deep tech e especialista em sistemas críticos de alto rendimento.</p>
+        <p>Especialista em soluções de tecnologia, automação inteligente e sistemas de alta confiabilidade para empresas.</p>
       </div>
 
       {/* CARD PRINCIPAL COM FOTO / AVATAR */}
@@ -26,9 +26,9 @@ export default function Sobre({ profile }) {
             )}
           </div>
           <div className="about-text">
-            <div className="corp-badge">Visão de Engenharia</div>
+            <div className="corp-badge">Compromisso com Resultados</div>
             <h3>{profile?.full_name || "Rodrigo Freire"}</h3>
-            <p>{profile?.about_text}</p>
+            <p>{profile?.about_text || "Com ampla experiência na modernização de processos operacionais e criação de sistemas robustos, desenvolvemos tecnologia que resolve os problemas diários de empresas que buscam reduzir custos, evitar falhas e acelerar vendas."}</p>
           </div>
         </div>
       </div>
@@ -38,20 +38,20 @@ export default function Sobre({ profile }) {
         
         <div className="service-card-corp">
           <div className="service-icon-box"><ShieldCheck size={22} /></div>
-          <h3>Propriedade Intelectual & Defesa</h3>
-          <p>Autor do <strong>Imunno System</strong>, arquitetura de defesa cibernética e sistema imunológico para servidores registrada no INPI (Processo 512025006506-0).</p>
+          <h3>Segurança Operacional & Proteção de Dados</h3>
+          <p>Proteção ativa contra perda de informações, fraudes e paradas imprevistas no seu negócio. Autor do sistema de defesa cibernética <strong>Imunno System</strong> registrado no INPI (Processo 512025006506-0).</p>
         </div>
 
         <div className="service-card-corp">
           <div className="service-icon-box"><Cpu size={22} /></div>
-          <h3>Engenharia de Kernel & eBPF</h3>
-          <p>Desenvolvimento em baixo nível no Linux Kernel (Ring 0), sondas eBPF para observabilidade física, medição termodinâmica (RAPL/NVML) e módulos LSM de contenção.</p>
+          <h3>Eficiência de Custos & Alta Estabilidade</h3>
+          <p>Sistemas desenhados para suportar picos de faturamento sem travar os caixas da sua loja, cortando desperdícios de servidores e garantindo continuidade ininterrupta.</p>
         </div>
 
         <div className="service-card-corp">
           <div className="service-icon-box"><Code2 size={22} /></div>
-          <h3>Plataformas Web & Nuvem</h3>
-          <p>Construção de aplicações completas em React, TypeScript, Go e Python, com foco em arquitetura limpa, latência mínima e escalabilidade na AWS e Cloudflare.</p>
+          <h3>Sistemas de Gestão & Automação Inteligente</h3>
+          <p>Desenvolvimento e implantação de plataformas completas, integração de processos de ponta a ponta e inteligência artificial prática para impulsionar suas vendas e produtividade.</p>
         </div>
 
       </div>
@@ -59,12 +59,12 @@ export default function Sobre({ profile }) {
       {/* CTA DE CONTATO */}
       <section className="cta-banner-corp">
         <div className="corp-badge" style={{ background: 'rgba(255,255,255,0.1)', borderColor: 'rgba(255,255,255,0.2)', color: '#ffffff', marginBottom: '0.75rem' }}>
-          Agendar Reunião
+          Agendar Conversa
         </div>
-        <h3 style={{ color: '#ffffff' }}>Vamos conversar sobre o seu projeto?</h3>
-        <p>Estou à disposição para analisar requisitos técnicos, dimensionar arquiteturas e estruturar sistemas com rigor e pontualidade.</p>
+        <h3 style={{ color: '#ffffff' }}>Vamos conversar sobre o seu negócio?</h3>
+        <p>Estou à disposição para entender os gargalos da sua operação, identificar oportunidades de automação e propor a solução ideal para o seu crescimento.</p>
         <a
-          href={`https://wa.me/${profile?.whatsapp_number || '5569992782919'}?text=${encodeURIComponent('Olá Rodrigo! Gostaria de agendar uma reunião técnica para conversar sobre uma solução.')}`}
+          href={`https://wa.me/${profile?.whatsapp_number || '5569992782919'}?text=${encodeURIComponent('Olá Rodrigo! Gostaria de conversar sobre soluções de tecnologia e automação para minha empresa.')}`}
           target="_blank"
           rel="noopener noreferrer"
           className="corp-btn corp-btn-primary"

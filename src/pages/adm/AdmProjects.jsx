@@ -228,7 +228,7 @@ export default function AdmProjects({ projects, setProjects }) {
                   type="text"
                   value={formData.tags}
                   onChange={(e) => setFormData({ ...formData, tags: e.target.value })}
-                  placeholder="eBPF, Rust, Cloudflare, React"
+                  placeholder="Ex: ERP, Frente de Caixa, Inteligência Artificial, Nuvem"
                   style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '10px', background: 'rgba(0,0,0,0.4)', border: '1px solid var(--glass-border)', color: '#fff' }}
                 />
               </div>

@@ -5,7 +5,7 @@ export default function MultiLayerCanvas({ settings, children }) {
     bg_image_url = '',
     bg_image_size = 'cover',
     bg_image_repeat = 'no-repeat',
-    overlay_color = 'rgba(9, 13, 22, 0.75)',
+    overlay_color = 'rgba(11, 74, 79, 0.08)',
     
     hero_char_url = '',
     hero_char_position = 'bottom-right',
@@ -15,13 +15,7 @@ export default function MultiLayerCanvas({ settings, children }) {
     secondary_bg_url = '',
     secondary_bg_position = 'bottom-center',
     secondary_bg_size = '100%',
-    secondary_bg_opacity = 0.9,
-    
-    content_has_border = true,
-    content_border_color = 'rgba(255, 255, 255, 0.12)',
-    content_bg_color = 'rgba(17, 24, 39, 0.62)',
-    content_blur_level = 20,
-    content_border_radius = '24px'
+    secondary_bg_opacity = 0.9
   } = settings || {};
 
   // Calcula posição CSS para o elemento flutuante
@@ -55,7 +49,7 @@ export default function MultiLayerCanvas({ settings, children }) {
           backgroundSize: bg_image_size,
           backgroundRepeat: bg_image_repeat,
           backgroundPosition: 'center',
-          backgroundColor: '#090d16'
+          backgroundColor: 'var(--bg-page)'
         }}
       />
 
@@ -120,38 +114,9 @@ export default function MultiLayerCanvas({ settings, children }) {
         </div>
       )}
 
-      {/* 6. CONTAINER CENTRAL DE CONTEÚDO (Com Delimitação de Vidro ou Livre/Transparente) */}
-      <div className="canvas-content-wrapper" style={{ width: '100%', position: 'relative', zIndex: 20 }}>
-        {content_has_border ? (
-          <div
-            className="central-glass-container"
-            style={{
-              maxWidth: '1240px',
-              margin: '1.5rem auto 3rem auto',
-              padding: '0 1rem',
-              backgroundColor: content_bg_color,
-              backdropFilter: `blur(${content_blur_level}px) saturate(180%)`,
-              WebkitBackdropFilter: `blur(${content_blur_level}px) saturate(180%)`,
-              border: `1px solid ${content_border_color}`,
-              borderRadius: content_border_radius,
-              boxShadow: '0 16px 48px -8px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.18)'
-            }}
-          >
-            {children}
-          </div>
-        ) : (
-          <div
-            className="central-free-container"
-            style={{
-              maxWidth: '1240px',
-              margin: '0 auto',
-              padding: '0 1rem',
-              backgroundColor: 'transparent'
-            }}
-          >
-            {children}
-          </div>
-        )}
+      {/* 6. CONTEÚDO PRINCIPAL (100% LARGURA TOTAL COM FLUIDEZ) */}
+      <div className="canvas-content-wrapper" style={{ width: '100%', minHeight: '100vh', position: 'relative', zIndex: 20 }}>
+        {children}
       </div>
 
     </div>

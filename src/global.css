@@ -206,32 +206,39 @@ a {
   transform: translateY(-1px);
 }
 
-/* Header & Nav */
+/* Header & Nav - Apple Liquid Glass Efeito Lupa */
 .header {
   position: sticky;
   top: 0;
-  z-index: 900;
-  background: rgba(248, 250, 252, 0.85);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid rgba(11, 74, 79, 0.1);
-  box-shadow: 0 4px 20px rgba(11, 74, 79, 0.04);
-  transform: translateZ(0);
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(248, 250, 252, 0.75);
+  -webkit-backdrop-filter: blur(28px) saturate(210%) brightness(104%);
+  backdrop-filter: blur(28px) saturate(210%) brightness(104%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 8px 30px -8px rgba(11, 74, 79, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 0 rgba(11, 74, 79, 0.06);
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 [data-theme="dark"] .header {
-  background: rgba(6, 22, 24, 0.88);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(5, 22, 24, 0.78);
+  -webkit-backdrop-filter: blur(28px) saturate(210%) brightness(110%);
+  backdrop-filter: blur(28px) saturate(210%) brightness(110%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 30px -8px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15), inset 0 -1px 0 rgba(0, 245, 212, 0.1);
 }
 
 .header-nav {
-  max-width: 1280px;
+  width: 100%;
+  max-width: 1320px;
   margin: 0 auto;
-  padding: 0.85rem 1.5rem;
+  padding: 0.85rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .logo a {
@@ -242,6 +249,7 @@ a {
   font-size: 1.15rem;
   font-weight: 800;
   color: var(--color-dark-teal);
+  text-decoration: none;
 }
 
 [data-theme="dark"] .logo a {
@@ -269,7 +277,7 @@ a {
 .menu {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: 1.4rem;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -280,6 +288,7 @@ a {
   font-weight: 600;
   color: var(--text-body);
   transition: color 0.2s ease;
+  text-decoration: none;
 }
 
 .menu a:hover, .menu a.active {
@@ -288,6 +297,178 @@ a {
 }
 
 [data-theme="dark"] .menu a:hover, [data-theme="dark"] .menu a.active {
+  color: var(--color-cyan-teal);
+}
+
+/* ============================================================
+   DROPDOWN DE CASES (MENU FLUTUANTE SEM INCHAR O CABEÇALHO)
+   ============================================================ */
+.has-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-trigger-btn {
+  background: transparent;
+  border: none;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-body);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0.35rem 0.2rem;
+  font-family: inherit;
+  transition: color 0.2s ease;
+}
+
+.dropdown-trigger-btn:hover,
+.dropdown-trigger-btn.active {
+  color: var(--color-dark-teal);
+  font-weight: 700;
+}
+
+[data-theme="dark"] .dropdown-trigger-btn {
+  color: #F8FAFC;
+}
+
+[data-theme="dark"] .dropdown-trigger-btn:hover,
+[data-theme="dark"] .dropdown-trigger-btn.active {
+  color: var(--color-cyan-teal);
+}
+
+.dropdown-arrow {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dropdown-arrow.rotated {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu-box {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  max-width: 92vw;
+  background: rgba(255, 255, 255, 0.96);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid rgba(11, 74, 79, 0.16);
+  border-radius: 16px;
+  box-shadow: 0 20px 48px -10px rgba(11, 74, 79, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  z-index: 1200;
+  animation: dropdownBoxFade 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="dark"] .dropdown-menu-box {
+  background: rgba(6, 22, 24, 0.96);
+  border-color: rgba(0, 245, 212, 0.25);
+  box-shadow: 0 20px 48px -10px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+@keyframes dropdownBoxFade {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -6px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.dropdown-link-all {
+  display: block;
+  padding: 0.65rem 0.85rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-dark-teal);
+  background: rgba(11, 74, 79, 0.08);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.dropdown-link-all:hover {
+  background: var(--color-dark-teal);
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .dropdown-link-all {
+  color: var(--color-cyan-teal);
+  background: rgba(0, 245, 212, 0.12);
+}
+
+[data-theme="dark"] .dropdown-link-all:hover {
+  background: var(--color-cyan-teal);
+  color: #051618 !important;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: rgba(11, 74, 79, 0.1);
+  margin: 0.25rem 0;
+}
+
+[data-theme="dark"] .dropdown-divider {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-item-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding: 0.55rem 0.85rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  color: var(--text-body);
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.dropdown-item-link:hover {
+  background: rgba(11, 74, 79, 0.07);
+  color: var(--color-dark-teal);
+  font-weight: 600;
+}
+
+[data-theme="dark"] .dropdown-item-link {
+  color: rgba(248, 250, 252, 0.85);
+}
+
+[data-theme="dark"] .dropdown-item-link:hover {
+  background: rgba(0, 245, 212, 0.12);
+  color: var(--color-cyan-teal);
+}
+
+.dropdown-item-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.dropdown-item-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(11, 74, 79, 0.1);
+  color: var(--color-dark-teal);
+  white-space: nowrap;
+}
+
+[data-theme="dark"] .dropdown-item-badge {
+  background: rgba(0, 245, 212, 0.15);
   color: var(--color-cyan-teal);
 }
 
@@ -1473,42 +1654,75 @@ a {
 
 /* Floating WhatsApp Button */
 .whatsapp-float-corp {
-  position: fixed;
+  position: fixed !important;
   right: 24px;
   bottom: 24px;
-  z-index: 999;
-  width: 60px;
-  height: 60px;
+  z-index: 9999 !important;
+  width: 62px;
+  height: 62px;
   border-radius: 50%;
   background: #25D366;
   color: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.42), 0 0 0 0 rgba(37, 211, 102, 0.5);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: whatsappPulse 3s infinite;
 }
 
 .whatsapp-float-corp:hover {
-  transform: scale(1.1) translateY(-3px);
-  box-shadow: 0 16px 36px rgba(37, 211, 102, 0.55);
+  transform: scale(1.12) translateY(-3px);
+  box-shadow: 0 16px 40px rgba(37, 211, 102, 0.65);
 }
 
-/* Footer Corporativo */
+@keyframes whatsappPulse {
+  0% {
+    box-shadow: 0 12px 30px rgba(37, 211, 102, 0.42), 0 0 0 0 rgba(37, 211, 102, 0.5);
+  }
+  70% {
+    box-shadow: 0 12px 30px rgba(37, 211, 102, 0.42), 0 0 0 14px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 12px 30px rgba(37, 211, 102, 0.42), 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+/* Footer Corporativo Fluido 100% */
 .corp-footer {
+  width: 100%;
   background: #051618;
   color: rgba(248, 250, 252, 0.75);
   padding: 4.5rem 1.5rem 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  z-index: 30;
 }
 
 .footer-inner-grid {
-  max-width: 1280px;
+  width: 100%;
+  max-width: 1320px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr 1fr;
   gap: 3rem;
   margin-bottom: 3.5rem;
+}
+
+/* Project Detail Pill Actions */
+.project-pill-actions-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 0;
+  border-top: 1px solid rgba(11, 74, 79, 0.12);
+  margin-top: 2rem;
+}
+
+[data-theme="dark"] .project-pill-actions-container {
+  border-top-color: rgba(255, 255, 255, 0.1);
 }
 
 .footer-col h4 {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useProjects } from '../hooks/useSettings';
 import { Moon, Sun, ChevronDown, MessageSquare } from 'lucide-react';
@@ -8,12 +8,29 @@ export default function Navbar({ profile }) {
   const { projects } = useProjects();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [theme, setTheme] = useState('light');
+  const dropdownRef = useRef(null);
 
   const toggleTheme = () => {
     const nextTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(nextTheme);
     document.documentElement.setAttribute('data-theme', nextTheme);
   };
+
+  // Fecha dropdown ao clicar fora
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // Fecha dropdown ao mudar de rota
+  useEffect(() => {
+    setDropdownOpen(false);
+  }, [location.pathname]);
 
   const isActive = (path) => location.pathname === path;
   const phone = profile?.whatsapp_number || '5569992782919';
@@ -29,7 +46,7 @@ export default function Navbar({ profile }) {
             <span className="logo-badge">Soluções & IA</span>
           </Link>
 
-          {/* Theme Toggle */}
+          {/* Alternador de Tema */}
           <button
             onClick={toggleTheme}
             className="theme-toggle"
@@ -51,7 +68,7 @@ export default function Navbar({ profile }) {
           </li>
 
           <li>
-            <a href="/#ia-spotlight" style={{ color: 'var(--color-dark-teal)', fontWeight: '700' }}>
+            <a href="/#ia-spotlight" className="menu-ia-link">
               Automação com IA ✨
             </a>
           </li>
@@ -60,31 +77,39 @@ export default function Navbar({ profile }) {
             <a href="/#segmentos">Segmentos</a>
           </li>
 
-          {/* DROPDOWN DE PROJETOS */}
+          {/* DROPDOWN DE CASES / PROJETOS */}
           <li
             className="has-dropdown"
+            ref={dropdownRef}
             onMouseEnter={() => setDropdownOpen(true)}
             onMouseLeave={() => setDropdownOpen(false)}
           >
-            <Link to="/projetos" className={location.pathname.startsWith('/projetos') ? 'active' : ''}>
-              Cases <ChevronDown size={14} style={{ display: 'inline', marginLeft: '3px' }} />
-            </Link>
+            <button
+              type="button"
+              className={`dropdown-trigger-btn ${location.pathname.startsWith('/projetos') ? 'active' : ''}`}
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+              aria-expanded={dropdownOpen}
+            >
+              Cases <ChevronDown size={14} className={`dropdown-arrow ${dropdownOpen ? 'rotated' : ''}`} />
+            </button>
             
             {dropdownOpen && (
-              <ul className="dropdown-menu">
-                <li>
-                  <Link to="/projetos" style={{ fontWeight: '700', color: 'var(--color-dark-teal)' }}>
-                    ✦ Ver Todos os Cases
-                  </Link>
-                </li>
+              <div className="dropdown-menu-box">
+                <Link to="/projetos" className="dropdown-link-all">
+                  ✦ Ver Todos os Cases de Sucesso
+                </Link>
+                <div className="dropdown-divider" />
                 {projects.slice(0, 6).map((proj) => (
-                  <li key={proj.id}>
-                    <Link to={`/projetos/${proj.slug}`}>
-                      {proj.title}
-                    </Link>
-                  </li>
+                  <Link
+                    key={proj.id}
+                    to={`/projetos/${proj.slug}`}
+                    className="dropdown-item-link"
+                  >
+                    <span className="dropdown-item-title">{proj.title}</span>
+                    {proj.badge && <span className="dropdown-item-badge">{proj.badge}</span>}
+                  </Link>
                 ))}
-              </ul>
+              </div>
             )}
           </li>
 
@@ -98,7 +123,7 @@ export default function Navbar({ profile }) {
         </ul>
 
         {/* CTA NO HEADER */}
-        <div className="header-cta-wrapper" style={{ display: 'flex', alignItems: 'center' }}>
+        <div className="header-cta-wrapper">
           <a
             href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá! Vim pelo site da RF Tech e gostaria de agendar um diagnóstico.')}`}
             target="_blank"

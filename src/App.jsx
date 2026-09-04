@@ -40,9 +40,10 @@ export default function App() {
     <>
       {!isAdmRoute ? (
         <MultiLayerCanvas settings={settings}>
+          {/* Cabeçalho 100% largura total com Liquid Glass estilo Lupa */}
           <Navbar profile={profile} />
           
-          <main style={{ minHeight: '80vh' }}>
+          <main style={{ minHeight: '80vh', width: '100%' }}>
             <Routes>
               <Route path="/" element={<Home profile={profile} projects={projects} posts={posts} />} />
               <Route path="/projetos" element={<Projects projects={projects} />} />
@@ -55,7 +56,10 @@ export default function App() {
             </Routes>
           </main>
 
+          {/* Rodapé 100% largura total */}
           <Footer profile={profile} />
+
+          {/* Botão flutuante do WhatsApp fixo e sempre visível */}
           <WhatsAppButton number={profile?.whatsapp_number} />
         </MultiLayerCanvas>
       ) : (
