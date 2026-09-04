@@ -33,20 +33,28 @@
   --text-light:          #FCFCFB;
 
   /* =========================================================================
-     APPLE LIQUID CRYSTAL GLASS TOKENS (Translúcido Fosco · Semitransparente)
-     Permite enxergar suavemente através do card com refração e brilho especular
+     TRUE CRYSTAL LIQUID GLASS TOKENS (Translúcido Puro · Semitransparência Real)
+     Transparência pura de cristal sem pintar de branco. O fundo e os orbs
+     fluidos passam livremente através da lâmina com refração óptica.
      ========================================================================= */
-  --glass-crystal-bg:       rgba(255, 255, 255, 0.58);
-  --glass-crystal-bg-hover: rgba(255, 255, 255, 0.76);
-  --glass-crystal-border:   rgba(255, 255, 255, 0.90);
-  --glass-crystal-subtle:   rgba(11, 74, 79, 0.10);
+  --glass-crystal-bg:          rgba(255, 255, 255, 0.12);
+  --glass-crystal-bg-subtle:   rgba(255, 255, 255, 0.06);
+  --glass-crystal-bg-hover:    rgba(255, 255, 255, 0.22);
+  --glass-crystal-border:      rgba(255, 255, 255, 0.45);
+  --glass-crystal-border-top:  rgba(255, 255, 255, 0.82);
+  --glass-crystal-border-hover: rgba(255, 255, 255, 0.88);
+  --glass-crystal-subtle:      rgba(11, 74, 79, 0.08);
 
-  --glass-crystal-blur:     24px;
-  --glass-crystal-saturate: 190%;
+  --glass-crystal-blur:        20px;
+  --glass-crystal-saturate:    190%;
 
-  --glass-crystal-specular: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.98), inset 0 -1px 2px 0 rgba(11, 74, 79, 0.03);
-  --glass-crystal-shadow:   0 14px 38px -6px rgba(11, 74, 79, 0.07), 0 2px 8px -2px rgba(11, 74, 79, 0.03);
-  --glass-crystal-hover-sh: 0 22px 50px -8px rgba(11, 74, 79, 0.12), inset 0 1px 2px 0 rgba(255, 255, 255, 1);
+  --glass-crystal-specular:    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.90),
+                               inset 0 -1px 2px 0 rgba(11, 74, 79, 0.03),
+                               inset 0 0 18px 0 rgba(255, 255, 255, 0.12);
+  --glass-crystal-shadow:      0 16px 40px -10px rgba(11, 74, 79, 0.08), 0 2px 8px -2px rgba(11, 74, 79, 0.03);
+  --glass-crystal-hover-sh:    0 24px 56px -12px rgba(11, 74, 79, 0.14),
+                               inset 0 1.5px 2px 0 rgba(255, 255, 255, 1),
+                               inset 0 0 22px 0 rgba(255, 255, 255, 0.22);
 
   --radius-xs:           8px;
   --radius-sm:           12px;
@@ -102,47 +110,83 @@ a {
 
 /* ============================================================
    APPLE AMBIENT MESH (LUZES ORGÂNICAS SOB O VIDRO CRISTAL)
-   Proporciona a refração perfeita ao rolar a página
+   Proporciona refração líquida e visibilidade através dos cards
    ============================================================ */
 .apple-ambient-container {
   position: fixed;
   inset: 0;
   overflow: hidden;
   pointer-events: none;
-  z-index: -2;
+  z-index: 2;
 }
 
 .apple-ambient-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.38;
+  filter: blur(85px);
   pointer-events: none;
-  will-change: transform;
+  will-change: transform, opacity;
+  opacity: 0.65;
 }
 
 .orb-primary {
-  width: 650px;
-  height: 650px;
-  top: -120px;
-  right: -80px;
-  background: radial-gradient(circle, rgba(0, 245, 212, 0.28) 0%, rgba(11, 74, 79, 0.16) 55%, transparent 70%);
+  width: 720px;
+  height: 720px;
+  top: -100px;
+  right: -100px;
+  background: radial-gradient(circle, rgba(0, 245, 212, 0.42) 0%, rgba(11, 74, 79, 0.22) 50%, transparent 70%);
+  animation: floatOrb1 22s ease-in-out infinite alternate;
 }
 
 .orb-secondary {
-  width: 800px;
-  height: 800px;
+  width: 850px;
+  height: 850px;
   top: 35%;
-  left: -220px;
-  background: radial-gradient(circle, rgba(11, 74, 79, 0.18) 0%, rgba(0, 168, 150, 0.12) 55%, transparent 70%);
+  left: -200px;
+  background: radial-gradient(circle, rgba(11, 74, 79, 0.28) 0%, rgba(0, 168, 150, 0.20) 50%, transparent 70%);
+  animation: floatOrb2 26s ease-in-out infinite alternate;
 }
 
 .orb-accent {
-  width: 700px;
-  height: 700px;
-  bottom: -150px;
-  right: 5%;
-  background: radial-gradient(circle, rgba(0, 212, 255, 0.22) 0%, rgba(245, 158, 11, 0.12) 50%, transparent 70%);
+  width: 750px;
+  height: 750px;
+  bottom: 10%;
+  right: -80px;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.35) 0%, rgba(99, 102, 241, 0.20) 50%, transparent 70%);
+  animation: floatOrb3 24s ease-in-out infinite alternate;
+}
+
+.orb-warm {
+  width: 650px;
+  height: 650px;
+  top: 70%;
+  left: 20%;
+  background: radial-gradient(circle, rgba(251, 146, 60, 0.25) 0%, rgba(244, 63, 94, 0.15) 50%, transparent 70%);
+  animation: floatOrb4 28s ease-in-out infinite alternate;
+}
+
+@keyframes floatOrb1 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-60px, 80px) scale(1.08); }
+  100% { transform: translate(40px, -40px) scale(0.95); }
+}
+
+@keyframes floatOrb2 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(80px, -70px) scale(1.1); }
+  100% { transform: translate(-50px, 60px) scale(0.92); }
+}
+
+@keyframes floatOrb3 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-70px, -50px) scale(1.05); }
+  100% { transform: translate(50px, 70px) scale(0.95); }
+}
+
+@keyframes floatOrb4 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(60px, 60px) scale(1.12); }
+  100% { transform: translate(-40px, -50px) scale(0.9); }
 }
 
 /* ============================================================
@@ -151,27 +195,73 @@ a {
 .apple-liquid-glass,
 .crystal-liquid-glass,
 .glass-panel {
+  position: relative;
   background: var(--glass-crystal-bg);
-  -webkit-backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate)) brightness(102%);
-  backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate)) brightness(102%);
+  -webkit-backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
+  backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
   border: 1px solid var(--glass-crystal-border);
+  border-top: 1.5px solid var(--glass-crystal-border-top);
   box-shadow: var(--glass-crystal-specular), var(--glass-crystal-shadow);
   border-radius: var(--radius-lg);
   transform: translateZ(0);
   will-change: transform;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.25s ease,
-              background-color 0.25s ease;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease,
+              background 0.3s ease;
 }
 
 .apple-liquid-glass:hover,
 .crystal-liquid-glass:hover,
 .glass-panel:hover {
   background: var(--glass-crystal-bg-hover);
-  border-color: rgba(255, 255, 255, 1);
-  box-shadow: var(--glass-crystal-specular), var(--glass-crystal-hover-sh);
-  transform: translateY(-3px) translateZ(0);
+  border-color: var(--glass-crystal-border-hover);
+  border-top-color: #FFFFFF;
+  box-shadow: var(--glass-crystal-hover-sh);
+  transform: translateY(-4px) translateZ(0);
+}
+
+/* Efeito de Reflexo de Luz Líquida (Shimmer Glint) ao passar o mouse */
+.crystal-liquid-glass::after,
+.service-card-liquid::after,
+.pain-card-item::after,
+.method-step-card::after,
+.segment-card-item::after,
+.pricing-base-card::after,
+.diagnostic-form-glass::after,
+.hero-visual-card::after,
+.apple-liquid-glass::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -130%;
+  width: 120%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.04) 25%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0.04) 75%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  transition: left 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.crystal-liquid-glass:hover::after,
+.service-card-liquid:hover::after,
+.pain-card-item:hover::after,
+.method-step-card:hover::after,
+.segment-card-item:hover::after,
+.pricing-base-card:hover::after,
+.diagnostic-form-glass:hover::after,
+.hero-visual-card:hover::after,
+.apple-liquid-glass:hover::after {
+  left: 150%;
 }
 
 /* ============================================================
@@ -208,25 +298,27 @@ a {
   align-items: center;
   justify-content: center;
   gap: 0.55rem;
-  background: rgba(255, 255, 255, 0.65);
+  background: rgba(255, 255, 255, 0.15);
   color: var(--color-dark-teal) !important;
   font-family: var(--font-heading);
   font-weight: 700;
   font-size: 0.95rem;
   padding: 0.78rem 1.75rem;
   border-radius: var(--radius-pill);
-  border: 1px solid rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.85);
   -webkit-backdrop-filter: blur(18px) saturate(180%);
   backdrop-filter: blur(18px) saturate(180%);
-  box-shadow: 0 6px 18px rgba(11, 74, 79, 0.05), inset 0 1px 1.5px rgba(255, 255, 255, 0.98);
+  box-shadow: 0 6px 18px rgba(11, 74, 79, 0.05), inset 0 1px 1.5px rgba(255, 255, 255, 0.9);
   cursor: pointer;
   transition: all 0.25s ease;
   text-decoration: none;
 }
 
 .corp-btn-outline-glass:hover {
-  background: rgba(255, 255, 255, 0.88);
-  border-color: rgba(255, 255, 255, 1);
+  background: rgba(255, 255, 255, 0.28);
+  border-color: rgba(255, 255, 255, 0.9);
+  border-top-color: #FFFFFF;
   color: var(--color-dark-teal) !important;
   transform: translateY(-2px);
   box-shadow: 0 10px 24px rgba(11, 74, 79, 0.1), inset 0 1px 2px rgba(255, 255, 255, 1);
@@ -265,11 +357,11 @@ a {
   right: 0;
   width: 100%;
   z-index: 1000;
-  background: rgba(252, 252, 251, 0.72);
-  -webkit-backdrop-filter: blur(28px) saturate(210%) brightness(103%);
-  backdrop-filter: blur(28px) saturate(210%) brightness(103%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 0 10px 32px -10px rgba(11, 74, 79, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  background: rgba(252, 252, 251, 0.40);
+  -webkit-backdrop-filter: blur(28px) saturate(210%);
+  backdrop-filter: blur(28px) saturate(210%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 10px 32px -10px rgba(11, 74, 79, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.9);
   transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -393,12 +485,13 @@ a {
   transform: translateX(-50%);
   width: 330px;
   max-width: 92vw;
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.22);
   -webkit-backdrop-filter: blur(32px) saturate(200%);
   backdrop-filter: blur(32px) saturate(200%);
-  border: 1px solid rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.85);
   border-radius: 18px;
-  box-shadow: 0 24px 56px -10px rgba(11, 74, 79, 0.16), inset 0 1px 2px rgba(255, 255, 255, 1);
+  box-shadow: 0 24px 56px -10px rgba(11, 74, 79, 0.12), inset 0 1px 2px rgba(255, 255, 255, 0.9);
   padding: 0.85rem;
   display: flex;
   flex-direction: column;
@@ -478,32 +571,6 @@ a {
 }
 
 /* ============================================================
-   SEÇÃO HERO CORPORATIVO (HIGH-TECH DARK TEAL LIQUID GLASS)
-   ============================================================ */
-.corp-hero-enterprise {
-  position: relative;
-  min-height: 85vh;
-  display: flex;
-  align-items: center;
-  background: radial-gradient(circle at 80% 20%, rgba(0, 245, 212, 0.15), transparent 45%),
-              linear-gradient(135deg, #051618 0%, #0B4A4F 60%, #08383C 100%);
-  color: #F8FAFC;
-  padding: 5rem 1.5rem 4rem;
-  overflow: hidden;
-}
-
-.corp-hero-enterprise::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: 
-    radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
-  background-size: 24px 24px;
-  pointer-events: none;
-  opacity: 0.8;
-}
-
-/* ============================================================
    HERO CORPORATIVO INTEGRADO AO FUNDO CLAUDE #FCFCFB
    ============================================================ */
 .corp-hero-enterprise {
@@ -532,11 +599,12 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.65);
+  background: rgba(255, 255, 255, 0.16);
   -webkit-backdrop-filter: blur(18px) saturate(180%);
   backdrop-filter: blur(18px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.95);
-  box-shadow: 0 6px 18px rgba(11, 74, 79, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 6px 18px rgba(11, 74, 79, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.9);
   color: var(--color-dark-teal);
   font-size: 0.78rem;
   font-weight: 800;
@@ -584,11 +652,12 @@ a {
   gap: 0.5rem;
   padding: 0.45rem 0.95rem;
   border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.62);
+  background: rgba(255, 255, 255, 0.14);
   -webkit-backdrop-filter: blur(18px) saturate(180%);
   backdrop-filter: blur(18px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.92);
-  box-shadow: 0 4px 14px rgba(11, 74, 79, 0.04), inset 0 1px 1.5px rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 4px 14px rgba(11, 74, 79, 0.03), inset 0 1px 1.5px rgba(255, 255, 255, 0.9);
   color: var(--text-body);
   font-size: 0.82rem;
   font-weight: 600;
@@ -639,12 +708,13 @@ a {
 .hero-visual-card {
   position: relative;
   padding: 1.6rem;
-  background: rgba(255, 255, 255, 0.62);
+  background: rgba(255, 255, 255, 0.14);
   -webkit-backdrop-filter: blur(30px) saturate(200%);
   backdrop-filter: blur(30px) saturate(200%);
-  border: 1px solid rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.85);
   border-radius: var(--radius-xl);
-  box-shadow: 0 30px 70px -15px rgba(11, 74, 79, 0.14), inset 0 1px 2px rgba(255, 255, 255, 1);
+  box-shadow: 0 30px 70px -15px rgba(11, 74, 79, 0.1), inset 0 1.5px 2px rgba(255, 255, 255, 0.95);
 }
 
 .hero-screen-header {
@@ -674,13 +744,14 @@ a {
 }
 
 .kpi-card {
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.18);
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.85);
   padding: 1.1rem;
   border-radius: var(--radius-md);
-  box-shadow: 0 6px 18px rgba(11, 74, 79, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.95);
+  box-shadow: 0 6px 18px rgba(11, 74, 79, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.9);
 }
 
 .kpi-card small {
@@ -726,18 +797,20 @@ a {
   display: flex;
   flex-direction: column;
   padding: 0.85rem 1.15rem;
-  background: rgba(255, 255, 255, 0.58);
+  background: rgba(255, 255, 255, 0.14);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.75);
   border-radius: var(--radius-sm);
-  box-shadow: 0 6px 18px rgba(11, 74, 79, 0.03), inset 0 1px 1px rgba(255, 255, 255, 0.95);
+  box-shadow: 0 6px 18px rgba(11, 74, 79, 0.03), inset 0 1px 1px rgba(255, 255, 255, 0.9);
   transition: all 0.25s ease;
 }
 
 .strip-item-chip:hover {
-  background: rgba(255, 255, 255, 0.78);
-  border-color: rgba(255, 255, 255, 1);
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.9);
+  border-top-color: #FFFFFF;
   transform: translateY(-2px);
   box-shadow: 0 10px 24px rgba(11, 74, 79, 0.08), inset 0 1px 1px rgba(255, 255, 255, 1);
 }
@@ -804,22 +877,25 @@ a {
 }
 
 .pain-card-item {
-  padding: 1.85rem 1.6rem;
-  background: rgba(255, 255, 255, 0.58);
-  -webkit-backdrop-filter: blur(26px) saturate(190%) brightness(102%);
-  backdrop-filter: blur(26px) saturate(190%) brightness(102%);
-  border: 1px solid rgba(255, 255, 255, 0.88);
-  border-radius: var(--radius-md);
-  box-shadow: 0 12px 32px -6px rgba(11, 74, 79, 0.05), inset 0 1px 1.5px rgba(255, 255, 255, 0.98), inset 0 -1px 2px rgba(11, 74, 79, 0.03);
-  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
+  overflow: hidden;
+  padding: 1.85rem 1.6rem;
+  background: var(--glass-crystal-bg);
+  -webkit-backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
+  backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
+  border: 1px solid var(--glass-crystal-border);
+  border-top: 1.5px solid var(--glass-crystal-border-top);
+  border-radius: var(--radius-md);
+  box-shadow: var(--glass-crystal-specular), var(--glass-crystal-shadow);
+  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .pain-card-item:hover {
-  background: rgba(255, 255, 255, 0.76);
-  border-color: rgba(255, 255, 255, 1);
+  background: var(--glass-crystal-bg-hover);
+  border-color: var(--glass-crystal-border-hover);
+  border-top-color: #FFFFFF;
   transform: translateY(-4px) translateZ(0);
-  box-shadow: 0 18px 42px -8px rgba(239, 68, 68, 0.12), inset 0 1px 2px rgba(255, 255, 255, 1);
+  box-shadow: 0 20px 44px -8px rgba(239, 68, 68, 0.12), var(--glass-crystal-hover-sh);
 }
 
 .pain-icon-cross {
@@ -873,21 +949,25 @@ a {
 }
 
 .method-step-card {
+  position: relative;
+  overflow: hidden;
   padding: 2.2rem 1.8rem;
-  background: rgba(255, 255, 255, 0.58);
-  -webkit-backdrop-filter: blur(26px) saturate(190%);
-  backdrop-filter: blur(26px) saturate(190%);
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: var(--glass-crystal-bg);
+  -webkit-backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
+  backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
+  border: 1px solid var(--glass-crystal-border);
+  border-top: 1.5px solid var(--glass-crystal-border-top);
   border-radius: var(--radius-lg);
-  box-shadow: 0 14px 38px -6px rgba(11, 74, 79, 0.06), inset 0 1px 1.5px rgba(255, 255, 255, 0.98);
-  transition: all 0.28s ease;
+  box-shadow: var(--glass-crystal-specular), var(--glass-crystal-shadow);
+  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .method-step-card:hover {
-  background: rgba(255, 255, 255, 0.78);
-  border-color: rgba(255, 255, 255, 1);
+  background: var(--glass-crystal-bg-hover);
+  border-color: var(--glass-crystal-border-hover);
+  border-top-color: #FFFFFF;
   transform: translateY(-4px);
-  box-shadow: 0 20px 48px -8px rgba(11, 74, 79, 0.12), inset 0 1px 2px rgba(255, 255, 255, 1);
+  box-shadow: var(--glass-crystal-hover-sh);
 }
 
 .step-num-badge {
@@ -934,23 +1014,25 @@ a {
 .catalog-tab-btn {
   padding: 0.6rem 1.25rem;
   border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.15);
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 0 4px 14px rgba(11, 74, 79, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 14px rgba(11, 74, 79, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.9);
   font-family: var(--font-heading);
   font-size: 0.88rem;
   font-weight: 700;
   color: var(--text-body);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
 }
 
 .filter-pill-corp:hover,
 .catalog-tab-btn:hover {
-  background: rgba(255, 255, 255, 0.85);
-  border-color: rgba(255, 255, 255, 1);
+  background: rgba(255, 255, 255, 0.28);
+  border-color: rgba(255, 255, 255, 0.85);
+  border-top-color: #FFFFFF;
   color: var(--color-dark-teal);
   transform: translateY(-1px);
 }
@@ -970,28 +1052,27 @@ a {
 }
 
 .service-card-liquid {
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   padding: 2.2rem;
-  background: rgba(255, 255, 255, 0.58);
-  -webkit-backdrop-filter: blur(26px) saturate(190%) brightness(102%);
-  backdrop-filter: blur(26px) saturate(190%) brightness(102%);
-  border: 1px solid rgba(255, 255, 255, 0.88);
+  background: var(--glass-crystal-bg);
+  -webkit-backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
+  backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
+  border: 1px solid var(--glass-crystal-border);
+  border-top: 1.5px solid var(--glass-crystal-border-top);
   border-radius: var(--radius-lg);
-  box-shadow: 
-    0 14px 38px -6px rgba(11, 74, 79, 0.06),
-    inset 0 1px 1.5px rgba(255, 255, 255, 0.98),
-    inset 0 -1px 2px rgba(11, 74, 79, 0.03);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--glass-crystal-specular), var(--glass-crystal-shadow);
+  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .service-card-liquid:hover {
-  background: rgba(255, 255, 255, 0.78);
-  border-color: rgba(255, 255, 255, 1);
+  background: var(--glass-crystal-bg-hover);
+  border-color: var(--glass-crystal-border-hover);
+  border-top-color: #FFFFFF;
   transform: translateY(-5px) translateZ(0);
-  box-shadow: 
-    0 22px 52px -10px rgba(11, 74, 79, 0.12),
-    inset 0 1px 2px rgba(255, 255, 255, 1);
+  box-shadow: var(--glass-crystal-hover-sh);
 }
 
 .service-card-header {
@@ -1005,10 +1086,11 @@ a {
   width: 48px;
   height: 48px;
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.7);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.22);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.85);
   box-shadow: 0 4px 12px rgba(11, 74, 79, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.9);
   color: var(--color-dark-teal);
   display: flex;
@@ -1167,14 +1249,17 @@ a {
 }
 
 /* AI Chat Simulator Card - Puro Vidro Cristalino Fosco */
+/* AI Chat Simulator Card - Puro Vidro Cristalino Fosco */
 .ai-chat-simulator-card {
-  background: rgba(255, 255, 255, 0.62);
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.14);
   -webkit-backdrop-filter: blur(30px) saturate(200%);
   backdrop-filter: blur(30px) saturate(200%);
-  border: 1px solid rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.85);
   border-radius: var(--radius-xl);
-  box-shadow: 0 30px 70px -15px rgba(11, 74, 79, 0.12), inset 0 1px 2px rgba(255, 255, 255, 1);
-  overflow: hidden;
+  box-shadow: 0 30px 70px -15px rgba(11, 74, 79, 0.1), inset 0 1.5px 2px rgba(255, 255, 255, 0.95);
   display: flex;
   flex-direction: column;
   height: 520px;
@@ -1182,8 +1267,8 @@ a {
 
 .ai-chat-header {
   padding: 1rem 1.25rem;
-  background: rgba(255, 255, 255, 0.72);
-  border-bottom: 1px solid rgba(11, 74, 79, 0.08);
+  background: rgba(255, 255, 255, 0.18);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   display: flex;
   align-items: center;
   gap: 0.85rem;
@@ -1246,8 +1331,8 @@ a {
 
 .ai-chat-presets {
   padding: 0.65rem 1rem;
-  background: rgba(255, 255, 255, 0.5);
-  border-bottom: 1px solid rgba(11, 74, 79, 0.06);
+  background: rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -1262,8 +1347,9 @@ a {
 }
 
 .ai-chat-presets button {
-  background: rgba(255, 255, 255, 0.75);
-  border: 1px solid rgba(11, 74, 79, 0.14);
+  background: rgba(255, 255, 255, 0.20);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.8);
   color: var(--text-body);
   font-size: 0.72rem;
   font-weight: 600;
@@ -1287,7 +1373,7 @@ a {
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .ai-chat-bubble {
@@ -1306,9 +1392,10 @@ a {
 
 .bubble-bot {
   align-self: flex-start;
-  background: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.25);
   color: var(--text-body);
-  border: 1px solid rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.85);
   box-shadow: 0 4px 14px rgba(11, 74, 79, 0.04);
   border-bottom-left-radius: 4px;
 }
@@ -1372,8 +1459,8 @@ a {
 
 .ai-chat-input-bar {
   padding: 0.85rem 1rem;
-  background: rgba(255, 255, 255, 0.75);
-  border-top: 1px solid rgba(11, 74, 79, 0.08);
+  background: rgba(255, 255, 255, 0.18);
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
   display: flex;
   align-items: center;
   gap: 0.6rem;
@@ -1381,8 +1468,9 @@ a {
 
 .ai-chat-input {
   flex: 1;
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(11, 74, 79, 0.15);
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.85);
   border-radius: var(--radius-pill);
   padding: 0.65rem 1.1rem;
   color: var(--text-heading);
@@ -1437,21 +1525,25 @@ a {
 }
 
 .segment-card-item {
+  position: relative;
+  overflow: hidden;
   padding: 2rem;
-  background: rgba(255, 255, 255, 0.58);
-  -webkit-backdrop-filter: blur(24px) saturate(190%);
-  backdrop-filter: blur(24px) saturate(190%);
-  border: 1px solid rgba(255, 255, 255, 0.88);
+  background: var(--glass-crystal-bg);
+  -webkit-backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
+  backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
+  border: 1px solid var(--glass-crystal-border);
+  border-top: 1.5px solid var(--glass-crystal-border-top);
   border-radius: var(--radius-lg);
-  box-shadow: 0 12px 32px -6px rgba(11, 74, 79, 0.05), inset 0 1px 1.5px rgba(255, 255, 255, 0.98);
-  transition: all 0.28s ease;
+  box-shadow: var(--glass-crystal-specular), var(--glass-crystal-shadow);
+  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .segment-card-item:hover {
-  background: rgba(255, 255, 255, 0.78);
-  border-color: rgba(255, 255, 255, 1);
+  background: var(--glass-crystal-bg-hover);
+  border-color: var(--glass-crystal-border-hover);
+  border-top-color: #FFFFFF;
   transform: translateY(-4px);
-  box-shadow: 0 20px 44px -8px rgba(11, 74, 79, 0.1), inset 0 1px 2px rgba(255, 255, 255, 1);
+  box-shadow: var(--glass-crystal-hover-sh);
 }
 
 .segment-card-item h3 {
@@ -1475,16 +1567,27 @@ a {
 }
 
 .pricing-base-card {
+  position: relative;
+  overflow: hidden;
   max-width: 720px;
   margin: 0 auto;
   padding: 3.5rem 2.8rem;
-  background: rgba(255, 255, 255, 0.62);
+  background: var(--glass-crystal-bg);
   -webkit-backdrop-filter: blur(28px) saturate(200%);
   backdrop-filter: blur(28px) saturate(200%);
-  border: 1px solid rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--glass-crystal-border);
+  border-top: 1.5px solid var(--glass-crystal-border-top);
   border-radius: var(--radius-xl);
-  box-shadow: 0 25px 60px -10px rgba(11, 74, 79, 0.1), inset 0 1px 2px rgba(255, 255, 255, 1);
+  box-shadow: var(--glass-crystal-specular), var(--glass-crystal-shadow);
   text-align: center;
+  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pricing-base-card:hover {
+  background: var(--glass-crystal-bg-hover);
+  border-color: var(--glass-crystal-border-hover);
+  border-top-color: #FFFFFF;
+  box-shadow: var(--glass-crystal-hover-sh);
 }
 
 .pricing-badge-pill {
@@ -1539,19 +1642,21 @@ a {
 }
 
 .faq-item-accordion {
-  background: rgba(255, 255, 255, 0.58);
-  -webkit-backdrop-filter: blur(24px) saturate(190%);
-  backdrop-filter: blur(24px) saturate(190%);
-  border: 1px solid rgba(255, 255, 255, 0.88);
+  background: var(--glass-crystal-bg);
+  -webkit-backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
+  backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
+  border: 1px solid var(--glass-crystal-border);
+  border-top: 1.5px solid var(--glass-crystal-border-top);
   border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: 0 8px 24px -4px rgba(11, 74, 79, 0.04), inset 0 1px 1.5px rgba(255, 255, 255, 0.95);
+  box-shadow: var(--glass-crystal-specular), 0 8px 24px -4px rgba(11, 74, 79, 0.04);
   transition: all 0.25s ease;
 }
 
 .faq-item-accordion:hover {
-  background: rgba(255, 255, 255, 0.75);
-  border-color: rgba(255, 255, 255, 1);
+  background: var(--glass-crystal-bg-hover);
+  border-color: var(--glass-crystal-border-hover);
+  border-top-color: #FFFFFF;
 }
 
 .faq-summary-btn {
@@ -1595,13 +1700,24 @@ a {
 }
 
 .diagnostic-form-glass {
+  position: relative;
+  overflow: hidden;
   padding: 2.6rem;
-  background: rgba(255, 255, 255, 0.62);
+  background: var(--glass-crystal-bg);
   -webkit-backdrop-filter: blur(28px) saturate(200%);
   backdrop-filter: blur(28px) saturate(200%);
-  border: 1px solid rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--glass-crystal-border);
+  border-top: 1.5px solid var(--glass-crystal-border-top);
   border-radius: var(--radius-xl);
-  box-shadow: 0 24px 56px -10px rgba(11, 74, 79, 0.1), inset 0 1px 2px rgba(255, 255, 255, 1);
+  box-shadow: var(--glass-crystal-specular), var(--glass-crystal-shadow);
+  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.diagnostic-form-glass:hover {
+  background: var(--glass-crystal-bg-hover);
+  border-color: var(--glass-crystal-border-hover);
+  border-top-color: #FFFFFF;
+  box-shadow: var(--glass-crystal-hover-sh);
 }
 
 .form-group-item {
@@ -1620,20 +1736,21 @@ a {
   width: 100%;
   padding: 0.85rem 1.15rem;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(11, 74, 79, 0.14);
-  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.18);
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
   color: var(--text-heading);
   font-size: 0.92rem;
   outline: none;
   transition: all 0.2s ease;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.03);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.02);
 }
 
 .form-input-corp:focus, .form-select-corp:focus {
   border-color: var(--color-dark-teal);
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.32);
   box-shadow: 0 0 0 3px rgba(11, 74, 79, 0.12);
 }
 
