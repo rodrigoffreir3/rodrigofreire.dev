@@ -54,16 +54,18 @@ export default function MultiLayerCanvas({ settings, children }) {
       />
 
       {/* 2. CAMADA DE OVERLAY DE COR / TINT */}
-      <div
-        className="canvas-layer-overlay"
-        style={{
-          position: 'fixed',
-          inset: 0,
-          zIndex: -3,
-          backgroundColor: overlay_color,
-          pointerEvents: 'none'
-        }}
-      />
+      {bg_image_url && overlay_color && overlay_color !== 'transparent' && (
+        <div
+          className="canvas-layer-overlay"
+          style={{
+            position: 'fixed',
+            inset: 0,
+            zIndex: -3,
+            backgroundColor: overlay_color,
+            pointerEvents: 'none'
+          }}
+        />
+      )}
 
       {/* 3. CAMADA AMBIENTE APPLE MESH (Orbs de Luz Suave para Refração) */}
       <div className="apple-ambient-container" aria-hidden="true" style={{ position: 'fixed', inset: 0, zIndex: -2, pointerEvents: 'none' }}>

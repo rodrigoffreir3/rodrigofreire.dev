@@ -6,7 +6,7 @@ export const DEFAULT_HOME_SETTINGS = {
   bg_image_url: "",
   bg_image_size: "cover",
   bg_image_repeat: "no-repeat",
-  overlay_color: "rgba(11, 74, 79, 0.08)",
+  overlay_color: "transparent",
   
   hero_char_url: "",
   hero_char_position: "bottom-right",
@@ -19,24 +19,24 @@ export const DEFAULT_HOME_SETTINGS = {
   secondary_bg_opacity: 0.9,
   
   content_has_border: false,
-  content_border_color: "rgba(11, 74, 79, 0.14)",
-  content_bg_color: "rgba(248, 250, 252, 0.78)",
-  content_blur_level: 20,
+  content_border_color: "rgba(11, 74, 79, 0.12)",
+  content_bg_color: "rgba(252, 252, 251, 0.65)",
+  content_blur_level: 24,
   content_border_radius: "24px",
   
-  // Paleta SaaS Moderno
+  // Paleta SaaS Moderno Crystal Glass
   primary_color: "#0B4A4F",       // Dark Teal (Profundo e sério)
   accent_color: "#00F5D4",        // Cyan Teal Neon (Ação / Destaque)
-  bg_page: "#F8FAFC",             // Off-White / Gelo
-  bg_page_subtle: "#E2E8F0",      // Cinza UI
+  bg_page: "#FCFCFB",             // Claude Chat Warm White
+  bg_page_subtle: "#F0EFEA",      // Cinza Quente UI
   text_heading_color: "#0F172A",  // Azul da Noite
-  text_body_color: "#334155"
+  text_body_color: "#3F4E50"
 };
 
 export const DEFAULT_PROFILE = {
   full_name: "Rodrigo Freire",
   company_name: "Rodrigo Freire Tech",
-  tagline: "Software de Gestão Empresarial, Inteligência Artificial e Automação de Processos",
+  tagline: "Desenvolvimento de Sistemas e Automações com Inteligência Artificial",
   lead_bio: "Elimine o caos das planilhas e a perda invisível de margem. Oferecemos ERP integrado, frente de caixa com PIX dinâmico, automações com IA e bots de WhatsApp com linguagem natural para sua empresa crescer com visão de dono.",
   about_text: "Somos uma empresa de soluções em tecnologia focada em resolver os gargalos reais de negócios comerciais, industriais e de serviços. Desenvolvemos soluções completas: do sistema de gestão com controle rigoroso de estoque e emissão fiscal à vanguarda da inteligência artificial aplicada ao atendimento 24 horas e automação de tarefas rotineiras.",
   whatsapp_number: "5569992782919",

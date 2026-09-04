@@ -1,20 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useProjects } from '../hooks/useSettings';
-import { Moon, Sun, ChevronDown, MessageSquare } from 'lucide-react';
+import { ChevronDown, MessageSquare } from 'lucide-react';
 
 export default function Navbar({ profile }) {
   const location = useLocation();
   const { projects } = useProjects();
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [theme, setTheme] = useState('light');
   const dropdownRef = useRef(null);
-
-  const toggleTheme = () => {
-    const nextTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(nextTheme);
-    document.documentElement.setAttribute('data-theme', nextTheme);
-  };
 
   // Fecha dropdown ao clicar fora
   useEffect(() => {
@@ -39,22 +32,12 @@ export default function Navbar({ profile }) {
     <header className="header">
       <nav className="header-nav">
         
-        {/* LOGO CORPORATIVO */}
+        {/* LOGO CORPORATIVO COM TITULO E SUBTITULO */}
         <div className="logo">
-          <Link to="/" title="Rodrigo Freire Tech · Início">
-            <span className="logo-title">{profile?.company_name || profile?.full_name || "Rodrigo Freire Tech"}</span>
-            <span className="logo-badge">Soluções & IA</span>
+          <Link to="/" title="Rodrigo Freire Tech · Início" className="logo-link-stacked">
+            <span className="logo-title-main">Rodrigo Freire Tech</span>
+            <span className="logo-subtitle-desc">Desenvolvimento de Sistemas e Automações com Inteligência Artificial</span>
           </Link>
-
-          {/* Alternador de Tema */}
-          <button
-            onClick={toggleTheme}
-            className="theme-toggle"
-            title="Alternar Tema Claro/Escuro"
-            aria-label="Alternar Tema"
-          >
-            {theme === 'light' ? <Moon size={16} /> : <Sun size={16} />}
-          </button>
         </div>
 
         {/* MENU PRINCIPAL */}

@@ -140,7 +140,7 @@ export default function Home({ profile, projects = [], posts = [] }) {
               <span className="screen-dot dot-red" />
               <span className="screen-dot dot-yellow" />
               <span className="screen-dot dot-green" />
-              <small style={{ color: 'rgba(255,255,255,0.6)', marginLeft: 'auto', fontSize: '0.72rem' }}>
+              <small style={{ color: 'var(--text-muted)', marginLeft: 'auto', fontSize: '0.72rem', fontWeight: 600 }}>
                 painel-executivo.rftech.app
               </small>
             </div>
@@ -439,10 +439,10 @@ export default function Home({ profile, projects = [], posts = [] }) {
       <section className="section-pricing-base">
         <div className="pricing-base-card">
           <span className="pricing-badge-pill">Estrutura Transparente</span>
-          <h2 style={{ fontSize: '2rem', color: '#FFFFFF', marginBottom: '0.75rem' }}>
+          <h2 style={{ fontSize: '2rem', color: 'var(--text-heading)', marginBottom: '0.75rem' }}>
             Comece com o essencial e escale com segurança
           </h2>
-          <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.95rem' }}>
+          <p style={{ color: 'var(--text-body)', fontSize: '0.95rem' }}>
             Implantação com migração de dados, configuração inicial do banco e treinamento dedicado para toda a sua equipe.
           </p>
 
