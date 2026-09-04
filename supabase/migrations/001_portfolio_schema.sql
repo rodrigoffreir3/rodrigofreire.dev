@@ -124,16 +124,34 @@ ALTER TABLE public.projects ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.posts ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
 
--- Políticas de Leitura Pública
+-- Políticas de Leitura Pública (Idempotentes com DROP POLICY IF EXISTS)
+DROP POLICY IF EXISTS "Leitura pública de home_settings" ON public.home_settings;
 CREATE POLICY "Leitura pública de home_settings" ON public.home_settings FOR SELECT USING (true);
+
+DROP POLICY IF EXISTS "Leitura pública de profile_settings" ON public.profile_settings;
 CREATE POLICY "Leitura pública de profile_settings" ON public.profile_settings FOR SELECT USING (true);
+
+DROP POLICY IF EXISTS "Leitura pública de projects" ON public.projects;
 CREATE POLICY "Leitura pública de projects" ON public.projects FOR SELECT USING (true);
+
+DROP POLICY IF EXISTS "Leitura pública de posts publicados" ON public.posts;
 CREATE POLICY "Leitura pública de posts publicados" ON public.posts FOR SELECT USING (is_published = true OR auth.role() = 'authenticated');
+
+DROP POLICY IF EXISTS "Usuário pode ver seu próprio perfil" ON public.profiles;
 CREATE POLICY "Usuário pode ver seu próprio perfil" ON public.profiles FOR SELECT USING (auth.uid() = id);
 
--- Políticas de Modificação Apenas para Administradores Autenticados
+-- Políticas de Modificação (Idempotentes)
+DROP POLICY IF EXISTS "Admin pode alterar home_settings" ON public.home_settings;
 CREATE POLICY "Admin pode alterar home_settings" ON public.home_settings FOR ALL USING (auth.role() = 'authenticated');
+
+DROP POLICY IF EXISTS "Admin pode alterar profile_settings" ON public.profile_settings;
 CREATE POLICY "Admin pode alterar profile_settings" ON public.profile_settings FOR ALL USING (auth.role() = 'authenticated');
+
+DROP POLICY IF EXISTS "Admin pode alterar projects" ON public.projects;
 CREATE POLICY "Admin pode alterar projects" ON public.projects FOR ALL USING (auth.role() = 'authenticated');
+
+DROP POLICY IF EXISTS "Admin pode alterar posts" ON public.posts;
 CREATE POLICY "Admin pode alterar posts" ON public.posts FOR ALL USING (auth.role() = 'authenticated');
+
+DROP POLICY IF EXISTS "Admin pode gerenciar perfis" ON public.profiles;
 CREATE POLICY "Admin pode gerenciar perfis" ON public.profiles FOR ALL USING (auth.role() = 'authenticated');
