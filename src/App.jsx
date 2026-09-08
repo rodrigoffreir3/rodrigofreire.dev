@@ -36,6 +36,13 @@ export default function App() {
   const cleanPath = location.pathname.toLowerCase().replace(/\/$/, '');
   const isAdmRoute = cleanPath.startsWith('/adm') || cleanPath === '/login';
 
+  // Garante que o usuário sempre inicie no topo da página ao trocar de rota
+  React.useEffect(() => {
+    if (!location.hash) {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname]);
+
   return (
     <>
       {!isAdmRoute ? (

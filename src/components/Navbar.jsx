@@ -36,9 +36,18 @@ export default function Navbar({ profile }) {
         
         {/* LOGO CORPORATIVO COM TITULO E SUBTITULO */}
         <div className="logo">
-          <Link to="/" title="Rodrigo Freire Tech · Início" className="logo-link-stacked" onClick={() => setMobileMenuOpen(false)}>
-            <span className="logo-title-main">Rodrigo Freire Tech</span>
-            <span className="logo-subtitle-desc">Desenvolvimento de Sistemas e Automações com Inteligência Artificial</span>
+          <Link
+            to="/"
+            title={`${profile?.company_name || profile?.full_name || 'Rodrigo Freire'} Tech · Início`}
+            className="logo-link-stacked"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            <span className="logo-title-main">
+              {profile?.company_name || (profile?.full_name ? `${profile.full_name} Tech` : 'Rodrigo Freire Tech')}
+            </span>
+            <span className="logo-subtitle-desc">
+              {profile?.tagline || 'Desenvolvimento de Sistemas e Automações com Inteligência Artificial'}
+            </span>
           </Link>
         </div>
 

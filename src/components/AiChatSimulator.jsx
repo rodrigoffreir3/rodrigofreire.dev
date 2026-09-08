@@ -38,10 +38,20 @@ export default function AiChatSimulator() {
   const [messages, setMessages] = useState(INITIAL_MESSAGES);
   const [inputText, setInputText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
-  const chatBottomRef = useRef(null);
+  const chatBodyRef = useRef(null);
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
-    chatBottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    if (chatBodyRef.current) {
+      chatBodyRef.current.scrollTo({
+        top: chatBodyRef.current.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
   }, [messages, isTyping]);
 
   const handleSend = (textToSend) => {
@@ -123,7 +133,7 @@ export default function AiChatSimulator() {
       </div>
 
       {/* Corpo de Mensagens */}
-      <div className="ai-chat-body">
+      <div className="ai-chat-body" ref={chatBodyRef}>
         {messages.map((msg, index) => (
           <div
             key={index}
@@ -146,7 +156,6 @@ export default function AiChatSimulator() {
             <span className="typing-dot" />
           </div>
         )}
-        <div ref={chatBottomRef} />
       </div>
 
       {/* Input de Mensagem */}
