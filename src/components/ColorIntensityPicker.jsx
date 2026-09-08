@@ -94,8 +94,8 @@ export default function ColorIntensityPicker({ label, value, onChange }) {
 
   return (
     <div style={{
-      background: "rgba(255, 255, 255, 0.04)",
-      border: "1px solid rgba(255, 255, 255, 0.12)",
+      background: "rgba(255, 255, 255, 0.55)",
+      border: "1px solid rgba(11, 74, 79, 0.12)",
       borderRadius: "16px",
       padding: "1.25rem",
       marginBottom: "1.25rem",
@@ -103,7 +103,7 @@ export default function ColorIntensityPicker({ label, value, onChange }) {
       WebkitBackdropFilter: "blur(14px)"
     }}>
       {label && (
-        <label style={{ display: "block", marginBottom: "0.85rem", fontWeight: "700", color: "#f8fafc", fontSize: "0.95rem" }}>
+        <label style={{ display: "block", marginBottom: "0.85rem", fontWeight: "700", color: "var(--text-heading)", fontSize: "0.95rem" }}>
           {label}
         </label>
       )}
@@ -113,15 +113,15 @@ export default function ColorIntensityPicker({ label, value, onChange }) {
         
         {/* 1. Botão da Paleta de Cor com Seletor Nativo */}
         <div style={{ display: "flex", flexDirection: "column", gap: "0.35rem", alignItems: "center" }}>
-          <span style={{ fontSize: "0.75rem", color: "#94a3b8", fontWeight: "500" }}>Paleta / Matiz</span>
+          <span style={{ fontSize: "0.75rem", color: "var(--text-muted)", fontWeight: "500" }}>Paleta / Matiz</span>
           <div style={{
             position: "relative",
             width: "56px",
             height: "56px",
             borderRadius: "12px",
             overflow: "hidden",
-            border: "2px solid rgba(255, 255, 255, 0.4)",
-            boxShadow: "0 4px 14px rgba(0,0,0,0.4)",
+            border: "2px solid rgba(11, 74, 79, 0.2)",
+            boxShadow: "0 4px 14px rgba(11, 74, 79, 0.08)",
             cursor: "pointer"
           }}>
             <input
@@ -141,14 +141,14 @@ export default function ColorIntensityPicker({ label, value, onChange }) {
               title="Clique para abrir a paleta de cores"
             />
           </div>
-          <span style={{ fontSize: "0.75rem", fontFamily: "monospace", color: "#f8fafc" }}>{currentHex.toUpperCase()}</span>
+          <span style={{ fontSize: "0.75rem", fontFamily: "monospace", color: "var(--text-heading)", fontWeight: "600" }}>{currentHex.toUpperCase()}</span>
         </div>
 
         {/* 2. Barra de Intensidade / Opacidade (Slider) */}
         <div style={{ flex: "1 1 220px", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <span style={{ fontSize: "0.85rem", color: "#cbd5e1", fontWeight: "500" }}>Intensidade / Opacidade:</span>
-            <span style={{ fontWeight: "700", color: "#60a5fa", fontSize: "0.95rem" }}>{alphaPercent}%</span>
+            <span style={{ fontSize: "0.85rem", color: "var(--text-body)", fontWeight: "500" }}>Intensidade / Opacidade:</span>
+            <span style={{ fontWeight: "700", color: "var(--color-dark-teal)", fontSize: "0.95rem" }}>{alphaPercent}%</span>
           </div>
           <input
             type="range"
@@ -160,11 +160,11 @@ export default function ColorIntensityPicker({ label, value, onChange }) {
               width: "100%",
               height: "8px",
               borderRadius: "4px",
-              accentColor: "#3b82f6",
+              accentColor: "var(--color-dark-teal)",
               cursor: "pointer"
             }}
           />
-          <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.7rem", color: "#64748b" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.7rem", color: "var(--text-muted)" }}>
             <span>Translúcido (0%)</span>
             <span>Sólido (100%)</span>
           </div>
@@ -172,18 +172,18 @@ export default function ColorIntensityPicker({ label, value, onChange }) {
 
         {/* 3. Amostra do Resultado Final (Preview com Fundo Xadrez para transparência) */}
         <div style={{ display: "flex", flexDirection: "column", gap: "0.35rem", alignItems: "center" }}>
-          <span style={{ fontSize: "0.75rem", color: "#94a3b8", fontWeight: "500" }}>Preview</span>
+          <span style={{ fontSize: "0.75rem", color: "var(--text-muted)", fontWeight: "500" }}>Preview</span>
           <div style={{
             width: "60px",
             height: "56px",
             borderRadius: "12px",
-            border: "2px solid rgba(255,255,255,0.4)",
-            backgroundImage: "linear-gradient(45deg, #334155 25%, transparent 25%), linear-gradient(-45deg, #334155 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #334155 75%), linear-gradient(-45deg, transparent 75%, #334155 75%)",
+            border: "2px solid rgba(11, 74, 79, 0.2)",
+            backgroundImage: "linear-gradient(45deg, #cbd5e1 25%, transparent 25%), linear-gradient(-45deg, #cbd5e1 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #cbd5e1 75%), linear-gradient(-45deg, transparent 75%, #cbd5e1 75%)",
             backgroundSize: "12px 12px",
             backgroundPosition: "0 0, 0 6px, 6px -6px, -6px 0px",
             position: "relative",
             overflow: "hidden",
-            boxShadow: "0 4px 14px rgba(0,0,0,0.4)"
+            boxShadow: "0 4px 14px rgba(11, 74, 79, 0.08)"
           }}>
             <div style={{
               width: "100%",
@@ -191,34 +191,33 @@ export default function ColorIntensityPicker({ label, value, onChange }) {
               backgroundColor: rgbaDisplay
             }} />
           </div>
-          <span style={{ fontSize: "0.7rem", color: "#64748b" }}>Camada</span>
+          <span style={{ fontSize: "0.7rem", color: "var(--text-muted)" }}>Camada</span>
         </div>
 
       </div>
 
       {/* 4. Campo de Código RGBA Técnico */}
       <div style={{ marginTop: "1rem", display: "flex", alignItems: "center", gap: "0.8rem" }}>
-        <span style={{ fontSize: "0.8rem", color: "#94a3b8" }}>Código RGBA:</span>
+        <span style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>Código RGBA:</span>
         <input
           type="text"
           value={rgbaDisplay}
           onChange={(e) => onChange(e.target.value)}
+          className="adm-input"
           style={{
             flex: 1,
             padding: "0.45rem 0.85rem",
-            background: "rgba(0, 0, 0, 0.4)",
-            border: "1px solid rgba(255, 255, 255, 0.15)",
-            borderRadius: "8px",
-            color: "#60a5fa",
+            color: "var(--color-dark-teal)",
             fontFamily: "monospace",
-            fontSize: "0.85rem"
+            fontSize: "0.85rem",
+            fontWeight: "600"
           }}
         />
       </div>
 
       {/* 5. Atalhos Práticos de Cores Pré-definidas */}
-      <div style={{ marginTop: "1rem", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "0.8rem" }}>
-        <span style={{ display: "block", fontSize: "0.78rem", color: "#94a3b8", marginBottom: "0.5rem" }}>
+      <div style={{ marginTop: "1rem", borderTop: "1px solid rgba(11, 74, 79, 0.08)", paddingTop: "0.8rem" }}>
+        <span style={{ display: "block", fontSize: "0.78rem", color: "var(--text-muted)", marginBottom: "0.5rem" }}>
           Paletas Rápidas & Liquid Glass:
         </span>
         <div style={{ display: "flex", gap: "0.45rem", flexWrap: "wrap" }}>
@@ -231,9 +230,9 @@ export default function ColorIntensityPicker({ label, value, onChange }) {
                 padding: "0.3rem 0.65rem",
                 fontSize: "0.75rem",
                 borderRadius: "999px",
-                border: "1px solid rgba(255,255,255,0.18)",
-                background: "rgba(255,255,255,0.05)",
-                color: "#e2e8f0",
+                border: "1px solid rgba(11, 74, 79, 0.15)",
+                background: "rgba(255, 255, 255, 0.75)",
+                color: "var(--text-body)",
                 cursor: "pointer",
                 display: "flex",
                 alignItems: "center",
@@ -248,7 +247,7 @@ export default function ColorIntensityPicker({ label, value, onChange }) {
                 height: "12px",
                 borderRadius: "50%",
                 backgroundColor: preset.value,
-                border: "1px solid rgba(255,255,255,0.6)",
+                border: "1px solid rgba(11, 74, 79, 0.2)",
                 display: "inline-block"
               }} />
               {preset.name}

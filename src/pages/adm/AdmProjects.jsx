@@ -191,100 +191,100 @@ export default function AdmProjects({ projects, setProjects }) {
             
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
               <div>
-                <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>Título do Projeto</label>
+                <label className="adm-label">Título do Projeto</label>
                 <input
                   type="text"
                   required
                   value={formData.title}
                   onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                  style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '10px', background: 'rgba(0,0,0,0.4)', border: '1px solid var(--glass-border)', color: '#fff' }}
+                  className="adm-input"
                 />
               </div>
 
               <div>
-                <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>Slug da URL (ex: imunno-system)</label>
+                <label className="adm-label">Slug da URL (ex: imunno-system)</label>
                 <input
                   type="text"
                   value={formData.slug}
                   onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
                   placeholder="gerado-automaticamente"
-                  style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '10px', background: 'rgba(0,0,0,0.4)', border: '1px solid var(--glass-border)', color: '#fff' }}
+                  className="adm-input"
                 />
               </div>
 
               <div>
-                <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>Badge / Categoria</label>
+                <label className="adm-label">Badge / Categoria</label>
                 <input
                   type="text"
                   value={formData.badge}
                   onChange={(e) => setFormData({ ...formData, badge: e.target.value })}
-                  style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '10px', background: 'rgba(0,0,0,0.4)', border: '1px solid var(--glass-border)', color: '#fff' }}
+                  className="adm-input"
                 />
               </div>
 
               <div>
-                <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>Tags (separadas por vírgula)</label>
+                <label className="adm-label">Tags (separadas por vírgula)</label>
                 <input
                   type="text"
                   value={formData.tags}
                   onChange={(e) => setFormData({ ...formData, tags: e.target.value })}
                   placeholder="Ex: ERP, Frente de Caixa, Inteligência Artificial, Nuvem"
-                  style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '10px', background: 'rgba(0,0,0,0.4)', border: '1px solid var(--glass-border)', color: '#fff' }}
+                  className="adm-input"
                 />
               </div>
             </div>
 
             <div>
-              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>Resumo Executivo (Exibido na Home e Cartões)</label>
+              <label className="adm-label">Resumo Executivo (Exibido na Home e Cartões)</label>
               <textarea
                 rows={3}
                 required
                 value={formData.summary}
                 onChange={(e) => setFormData({ ...formData, summary: e.target.value })}
-                style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '10px', background: 'rgba(0,0,0,0.4)', border: '1px solid var(--glass-border)', color: '#fff' }}
+                className="adm-textarea"
               />
             </div>
 
             <div>
-              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>O Problema que Resolve (Markdown)</label>
+              <label className="adm-label">O Problema que Resolve (Markdown)</label>
               <textarea
                 rows={4}
                 value={formData.problem_description}
                 onChange={(e) => setFormData({ ...formData, problem_description: e.target.value })}
-                style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '10px', background: 'rgba(0,0,0,0.4)', border: '1px solid var(--glass-border)', color: '#fff' }}
+                className="adm-textarea"
               />
             </div>
 
             <div>
-              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>Como Funciona por Trás / Arquitetura (Markdown)</label>
+              <label className="adm-label">Como Funciona por Trás / Arquitetura (Markdown)</label>
               <textarea
                 rows={4}
                 value={formData.technical_details}
                 onChange={(e) => setFormData({ ...formData, technical_details: e.target.value })}
-                style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '10px', background: 'rgba(0,0,0,0.4)', border: '1px solid var(--glass-border)', color: '#fff' }}
+                className="adm-textarea"
               />
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
               <div>
-                <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>URL da Imagem de Capa</label>
+                <label className="adm-label">URL da Imagem de Capa</label>
                 <input
                   type="text"
                   value={formData.cover_image}
                   onChange={(e) => setFormData({ ...formData, cover_image: e.target.value })}
-                  placeholder="/images/projetos/imunno-system/imunno-hero.png"
-                  style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '10px', background: 'rgba(0,0,0,0.4)', border: '1px solid var(--glass-border)', color: '#fff' }}
+                  placeholder="https://exemplo.com/imagem-do-projeto.png (opcional)"
+                  className="adm-input"
                 />
               </div>
 
               <div>
-                <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>Link do Repositório GitHub</label>
+                <label className="adm-label">Link do Repositório GitHub</label>
                 <input
                   type="text"
                   value={formData.github_url}
                   onChange={(e) => setFormData({ ...formData, github_url: e.target.value })}
                   placeholder="https://github.com/rodrigoffreir3/..."
-                  style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '10px', background: 'rgba(0,0,0,0.4)', border: '1px solid var(--glass-border)', color: '#fff' }}
+                  className="adm-input"
                 />
               </div>
             </div>
@@ -295,23 +295,24 @@ export default function AdmProjects({ projects, setProjects }) {
                   type="checkbox"
                   checked={formData.is_featured}
                   onChange={(e) => setFormData({ ...formData, is_featured: e.target.checked })}
-                  style={{ width: '20px', height: '20px', accentColor: '#3b82f6' }}
+                  style={{ width: '20px', height: '20px', accentColor: 'var(--color-dark-teal)' }}
                 />
-                <span style={{ fontWeight: '600', color: '#f8fafc' }}>Destacar em Largura Total na Home</span>
+                <span style={{ fontWeight: '600', color: 'var(--text-heading)' }}>Destacar em Largura Total na Home</span>
               </label>
 
               <div>
-                <label style={{ fontSize: '0.85rem', color: '#94a3b8', marginRight: '0.5rem' }}>Ordem de Exibição:</label>
+                <label style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginRight: '0.5rem' }}>Ordem de Exibição:</label>
                 <input
                   type="number"
                   value={formData.display_order}
                   onChange={(e) => setFormData({ ...formData, display_order: Number(e.target.value) })}
-                  style={{ width: '80px', padding: '0.4rem 0.6rem', borderRadius: '8px', background: 'rgba(0,0,0,0.4)', border: '1px solid var(--glass-border)', color: '#fff' }}
+                  className="adm-input"
+                  style={{ width: '80px', display: 'inline-block' }}
                 />
               </div>
             </div>
 
-            <div style={{ display: 'flex', gap: '1rem', marginTop: '1.5rem', borderTop: '1px solid var(--glass-border)', paddingTop: '1.25rem' }}>
+            <div style={{ display: 'flex', gap: '1rem', marginTop: '1.5rem', borderTop: '1px solid rgba(11, 74, 79, 0.12)', paddingTop: '1.25rem' }}>
               <button
                 type="submit"
                 disabled={saving}
@@ -333,22 +334,22 @@ export default function AdmProjects({ projects, setProjects }) {
           <div key={proj.id} className="glass-panel" style={{ padding: '1.25rem 1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
             
             <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
-              <div style={{ width: '60px', height: '40px', borderRadius: '8px', overflow: 'hidden', background: '#000', flexShrink: 0 }}>
+              <div style={{ width: '60px', height: '40px', borderRadius: '8px', overflow: 'hidden', background: 'rgba(11, 74, 79, 0.08)', flexShrink: 0 }}>
                 {proj.cover_image ? (
                   <img src={proj.cover_image} alt={proj.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 ) : (
-                  <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#64748b' }}><ImageIcon size={18} /></div>
+                  <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)' }}><ImageIcon size={18} /></div>
                 )}
               </div>
 
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-                  <h4 style={{ fontSize: '1.1rem', fontWeight: '700', margin: 0, color: '#f8fafc' }}>{proj.title}</h4>
+                  <h4 style={{ fontSize: '1.1rem', fontWeight: '700', margin: 0, color: 'var(--text-heading)' }}>{proj.title}</h4>
                   {proj.is_featured && (
                     <span className="corp-badge" style={{ fontSize: '0.68rem', padding: '0.15rem 0.5rem' }}>Destaque</span>
                   )}
                 </div>
-                <span style={{ fontSize: '0.8rem', color: '#94a3b8' }}>/projetos/{proj.slug}</span>
+                <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>/projetos/{proj.slug}</span>
               </div>
             </div>
 
@@ -364,7 +365,7 @@ export default function AdmProjects({ projects, setProjects }) {
               <button
                 onClick={() => handleDelete(proj.id)}
                 className="corp-btn corp-btn-secondary"
-                style={{ padding: '0.45rem 0.95rem', fontSize: '0.82rem', minHeight: '36px', borderColor: 'rgba(239, 68, 68, 0.3)', color: '#f87171' }}
+                style={{ padding: '0.45rem 0.95rem', fontSize: '0.82rem', minHeight: '36px', borderColor: 'rgba(239, 68, 68, 0.3)', color: '#ef4444' }}
               >
                 <Trash2 size={14} /> Excluir
               </button>

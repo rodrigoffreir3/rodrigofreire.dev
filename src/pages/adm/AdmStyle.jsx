@@ -87,10 +87,10 @@ export default function AdmStyle({ settings: initialSettings, setSettings: updat
            ========================================================================= */}
         <div className="glass-panel" style={{ padding: '1.85rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '1.25rem' }}>
-            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(37, 99, 235, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#60a5fa' }}>
+            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(11, 74, 79, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-dark-teal)' }}>
               <Layers size={18} />
             </div>
-            <h3 style={{ fontSize: '1.25rem', fontWeight: '700', margin: 0 }}>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: '700', margin: 0, color: 'var(--text-heading)' }}>
               1. Imagem de Fundo Principal (Background Base)
             </h3>
           </div>
@@ -98,7 +98,7 @@ export default function AdmStyle({ settings: initialSettings, setSettings: updat
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem', marginBottom: '1.5rem' }}>
             
             <div>
-              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>
+              <label className="adm-label">
                 URL da Imagem de Fundo / Padrão
               </label>
               <input
@@ -106,18 +106,18 @@ export default function AdmStyle({ settings: initialSettings, setSettings: updat
                 value={settings.bg_image_url || ''}
                 onChange={(e) => setSettings({ ...settings, bg_image_url: e.target.value })}
                 placeholder="Ex: /images/background-pattern.png ou URL externa"
-                style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '10px', background: 'rgba(0,0,0,0.4)', border: '1px solid var(--glass-border)', color: '#fff', fontSize: '0.9rem' }}
+                className="adm-input"
               />
             </div>
 
             <div>
-              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>
+              <label className="adm-label">
                 Modo de Escala / Tamanho
               </label>
               <select
                 value={settings.bg_image_size || 'cover'}
                 onChange={(e) => setSettings({ ...settings, bg_image_size: e.target.value })}
-                style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '10px', background: '#0b0f19', border: '1px solid var(--glass-border)', color: '#fff', fontSize: '0.9rem' }}
+                className="adm-select"
               >
                 <option value="cover">Preenchimento Completo (Cover)</option>
                 <option value="contain">Conter Proporcional (Contain)</option>
@@ -128,13 +128,13 @@ export default function AdmStyle({ settings: initialSettings, setSettings: updat
             </div>
 
             <div>
-              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>
+              <label className="adm-label">
                 Repetição da Imagem
               </label>
               <select
                 value={settings.bg_image_repeat || 'no-repeat'}
                 onChange={(e) => setSettings({ ...settings, bg_image_repeat: e.target.value })}
-                style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '10px', background: '#0b0f19', border: '1px solid var(--glass-border)', color: '#fff', fontSize: '0.9rem' }}
+                className="adm-select"
               >
                 <option value="no-repeat">Sem Repetição (Única)</option>
                 <option value="repeat">Repetir em Grade (X e Y)</option>
@@ -157,10 +157,10 @@ export default function AdmStyle({ settings: initialSettings, setSettings: updat
            ========================================================================= */}
         <div className="glass-panel" style={{ padding: '1.85rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '1.25rem' }}>
-            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(96, 165, 250, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#60a5fa' }}>
+            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(11, 74, 79, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-dark-teal)' }}>
               <Sparkles size={18} />
             </div>
-            <h3 style={{ fontSize: '1.25rem', fontWeight: '700', margin: 0 }}>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: '700', margin: 0, color: 'var(--text-heading)' }}>
               2. Elemento Decorativo Flutuante (Sticker / PNG)
             </h3>
           </div>
@@ -168,7 +168,7 @@ export default function AdmStyle({ settings: initialSettings, setSettings: updat
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.25rem', marginBottom: '1.25rem' }}>
             
             <div style={{ gridColumn: '1 / -1' }}>
-              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>
+              <label className="adm-label">
                 URL da Imagem Flutuante (PNG com fundo transparente)
               </label>
               <input
@@ -176,18 +176,18 @@ export default function AdmStyle({ settings: initialSettings, setSettings: updat
                 value={settings.hero_char_url || ''}
                 onChange={(e) => setSettings({ ...settings, hero_char_url: e.target.value })}
                 placeholder="Ex: /images/sticker_nuvem.png ou URL externa"
-                style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '10px', background: 'rgba(0,0,0,0.4)', border: '1px solid var(--glass-border)', color: '#fff', fontSize: '0.9rem' }}
+                className="adm-input"
               />
             </div>
 
             <div>
-              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>
+              <label className="adm-label">
                 Posição na Tela
               </label>
               <select
                 value={settings.hero_char_position || 'bottom-right'}
                 onChange={(e) => setSettings({ ...settings, hero_char_position: e.target.value })}
-                style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '10px', background: '#0b0f19', border: '1px solid var(--glass-border)', color: '#fff', fontSize: '0.9rem' }}
+                className="adm-select"
               >
                 <option value="bottom-right">Inferior Direito (Canto)</option>
                 <option value="bottom-left">Inferior Esquerdo (Canto)</option>
@@ -198,7 +198,7 @@ export default function AdmStyle({ settings: initialSettings, setSettings: updat
             </div>
 
             <div>
-              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>
+              <label className="adm-label">
                 Tamanho / Largura Máxima
               </label>
               <input
@@ -206,12 +206,12 @@ export default function AdmStyle({ settings: initialSettings, setSettings: updat
                 value={settings.hero_char_size || '380px'}
                 onChange={(e) => setSettings({ ...settings, hero_char_size: e.target.value })}
                 placeholder="Ex: 380px, 450px, 30vw"
-                style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '10px', background: 'rgba(0,0,0,0.4)', border: '1px solid var(--glass-border)', color: '#fff', fontSize: '0.9rem' }}
+                className="adm-input"
               />
             </div>
 
             <div>
-              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>
+              <label className="adm-label">
                 Opacidade ({Math.round((settings.hero_char_opacity ?? 1) * 100)}%)
               </label>
               <input
@@ -220,7 +220,7 @@ export default function AdmStyle({ settings: initialSettings, setSettings: updat
                 max="100"
                 value={Math.round((settings.hero_char_opacity ?? 1) * 100)}
                 onChange={(e) => setSettings({ ...settings, hero_char_opacity: Number(e.target.value) / 100 })}
-                style={{ width: '100%', height: '8px', accentColor: '#3b82f6', marginTop: '0.8rem', cursor: 'pointer' }}
+                style={{ width: '100%', height: '8px', accentColor: 'var(--color-dark-teal)', marginTop: '0.8rem', cursor: 'pointer' }}
               />
             </div>
 
@@ -232,17 +232,17 @@ export default function AdmStyle({ settings: initialSettings, setSettings: updat
            ========================================================================= */}
         <div className="glass-panel" style={{ padding: '1.85rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '1.25rem' }}>
-            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(14, 165, 233, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0ea5e9' }}>
+            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(11, 74, 79, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-dark-teal)' }}>
               <Layers size={18} />
             </div>
-            <h3 style={{ fontSize: '1.25rem', fontWeight: '700', margin: 0 }}>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: '700', margin: 0, color: 'var(--text-heading)' }}>
               2B. Camada Decorativa de Rodapé (ex: Nuvens / Horizonte)
             </h3>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.25rem' }}>
             <div style={{ gridColumn: '1 / -1' }}>
-              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>
+              <label className="adm-label">
                 URL da Camada Decorativa de Rodapé (PNG transparente repetível na horizontal)
               </label>
               <input
@@ -250,12 +250,12 @@ export default function AdmStyle({ settings: initialSettings, setSettings: updat
                 value={settings.secondary_bg_url || ''}
                 onChange={(e) => setSettings({ ...settings, secondary_bg_url: e.target.value })}
                 placeholder="Ex: /images/nuvens_rodape.png"
-                style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '10px', background: 'rgba(0,0,0,0.4)', border: '1px solid var(--glass-border)', color: '#fff', fontSize: '0.9rem' }}
+                className="adm-input"
               />
             </div>
 
             <div>
-              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>
+              <label className="adm-label">
                 Altura da Camada
               </label>
               <input
@@ -263,12 +263,12 @@ export default function AdmStyle({ settings: initialSettings, setSettings: updat
                 value={settings.secondary_bg_size || '300px'}
                 onChange={(e) => setSettings({ ...settings, secondary_bg_size: e.target.value })}
                 placeholder="Ex: 300px, 40vh"
-                style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '10px', background: 'rgba(0,0,0,0.4)', border: '1px solid var(--glass-border)', color: '#fff', fontSize: '0.9rem' }}
+                className="adm-input"
               />
             </div>
 
             <div>
-              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>
+              <label className="adm-label">
                 Opacidade ({Math.round((settings.secondary_bg_opacity ?? 0.9) * 100)}%)
               </label>
               <input
@@ -277,7 +277,7 @@ export default function AdmStyle({ settings: initialSettings, setSettings: updat
                 max="100"
                 value={Math.round((settings.secondary_bg_opacity ?? 0.9) * 100)}
                 onChange={(e) => setSettings({ ...settings, secondary_bg_opacity: Number(e.target.value) / 100 })}
-                style={{ width: '100%', height: '8px', accentColor: '#0ea5e9', marginTop: '0.8rem', cursor: 'pointer' }}
+                style={{ width: '100%', height: '8px', accentColor: 'var(--color-dark-teal)', marginTop: '0.8rem', cursor: 'pointer' }}
               />
             </div>
           </div>
@@ -288,21 +288,21 @@ export default function AdmStyle({ settings: initialSettings, setSettings: updat
            ========================================================================= */}
         <div className="glass-panel" style={{ padding: '1.85rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '1.25rem' }}>
-            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(16, 185, 129, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#10b981' }}>
+            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(11, 74, 79, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-dark-teal)' }}>
               <Sliders size={18} />
             </div>
-            <h3 style={{ fontSize: '1.25rem', fontWeight: '700', margin: 0 }}>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: '700', margin: 0, color: 'var(--text-heading)' }}>
               3. Delimitação Central & Efeito Glassmorphism
             </h3>
           </div>
 
           {/* TOGGLE DELIMITAÇÃO EXPLÍCITA VS FLUTUANTE */}
-          <div style={{ padding: '1.25rem', borderRadius: '12px', background: 'rgba(255,255,255,0.04)', border: '1px solid var(--glass-border)', marginBottom: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
+          <div style={{ padding: '1.25rem', borderRadius: '12px', background: 'rgba(11, 74, 79, 0.03)', border: '1px solid rgba(11, 74, 79, 0.12)', marginBottom: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
             <div>
-              <div style={{ fontWeight: '700', fontSize: '1rem', color: '#f8fafc' }}>
+              <div style={{ fontWeight: '700', fontSize: '1rem', color: 'var(--text-heading)' }}>
                 Delimitação com Caixa de Vidro ao Centro
               </div>
-              <p style={{ fontSize: '0.85rem', color: '#94a3b8', margin: '0.2rem 0 0 0' }}>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', margin: '0.2rem 0 0 0' }}>
                 {settings.content_has_border
                   ? "Ativo: O conteúdo central fica dentro de uma caixa com borda e vidro translúcido."
                   : "Desativado: O conteúdo flutua livremente sobre o fundo e as nuvens, sem caixa externa."}
@@ -314,9 +314,9 @@ export default function AdmStyle({ settings: initialSettings, setSettings: updat
                 type="checkbox"
                 checked={!!settings.content_has_border}
                 onChange={(e) => setSettings({ ...settings, content_has_border: e.target.checked })}
-                style={{ width: '22px', height: '22px', accentColor: '#3b82f6', cursor: 'pointer' }}
+                style={{ width: '22px', height: '22px', accentColor: 'var(--color-dark-teal)', cursor: 'pointer' }}
               />
-              <span style={{ fontWeight: '600', color: '#60a5fa' }}>
+              <span style={{ fontWeight: '600', color: 'var(--color-dark-teal)' }}>
                 {settings.content_has_border ? 'Com Moldura' : 'Sem Moldura'}
               </span>
             </label>
@@ -327,10 +327,10 @@ export default function AdmStyle({ settings: initialSettings, setSettings: updat
             <>
               <div style={{ marginBottom: '1.5rem' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.4rem' }}>
-                  <label style={{ fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1' }}>
+                  <label className="adm-label">
                     Nível de Desfoque de Vidro (Blur):
                   </label>
-                  <span style={{ fontWeight: '700', color: '#60a5fa' }}>{settings.content_blur_level || 20}px</span>
+                  <span style={{ fontWeight: '700', color: 'var(--color-dark-teal)' }}>{settings.content_blur_level || 20}px</span>
                 </div>
                 <input
                   type="range"
@@ -338,7 +338,7 @@ export default function AdmStyle({ settings: initialSettings, setSettings: updat
                   max="40"
                   value={settings.content_blur_level || 20}
                   onChange={(e) => setSettings({ ...settings, content_blur_level: Number(e.target.value) })}
-                  style={{ width: '100%', height: '8px', accentColor: '#3b82f6', cursor: 'pointer' }}
+                  style={{ width: '100%', height: '8px', accentColor: 'var(--color-dark-teal)', cursor: 'pointer' }}
                 />
               </div>
 
@@ -358,8 +358,8 @@ export default function AdmStyle({ settings: initialSettings, setSettings: updat
         </div>
 
         {/* BOTÃO DE SALVAR NO RODAPÉ */}
-        <div style={{ position: 'sticky', bottom: '20px', zIndex: 50, background: 'rgba(11, 15, 25, 0.95)', backdropFilter: 'blur(20px)', padding: '1rem 1.5rem', borderRadius: '16px', border: '1px solid var(--primary-border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxShadow: '0 12px 36px rgba(0,0,0,0.6)' }}>
-          <span style={{ fontSize: '0.88rem', color: '#94a3b8' }}>
+        <div style={{ position: 'sticky', bottom: '20px', zIndex: 50, background: 'rgba(252, 252, 251, 0.92)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', padding: '1rem 1.5rem', borderRadius: '16px', border: '1px solid rgba(11, 74, 79, 0.15)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxShadow: '0 12px 36px rgba(11, 74, 79, 0.12)' }}>
+          <span style={{ fontSize: '0.88rem', color: 'var(--text-muted)' }}>
             As alterações são aplicadas e salvas diretamente no banco.
           </span>
 

@@ -7,20 +7,22 @@ export default function Blog({ posts = [] }) {
   const sortedPosts = [...posts].sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
 
   return (
-    <div className="portfolio-container" style={{ paddingTop: '2.5rem' }}>
+    <div className="portfolio-container">
       
       {/* HEADER DO BLOG */}
-      <div className="section-header-corp" style={{ marginBottom: '3rem' }}>
-        <div className="corp-badge">
+      <div style={{ marginBottom: '3.5rem', textAlign: 'center' }}>
+        <div className="corp-badge" style={{ margin: '0 auto 0.85rem auto' }}>
           <BookOpen size={14} />
           <span>Artigos & Publicações</span>
         </div>
-        <h2>Blog & Reflexões de Engenharia</h2>
-        <p>Análises sobre arquitetura de sistemas, inteligência artificial, eficiência de hardware e segurança no kernel.</p>
+        <h2 className="section-title-large">Blog & Reflexões de Engenharia</h2>
+        <p className="section-desc-subtle" style={{ maxWidth: '680px', margin: '0 auto' }}>
+          Análises sobre arquitetura de sistemas, inteligência artificial, eficiência de hardware e segurança no kernel.
+        </p>
       </div>
 
       {/* FEED DE ARTIGOS */}
-      <div className="blog-grid-corp" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.75rem' }}>
+      <div className="blog-grid-corp">
         {sortedPosts.length > 0 ? (
           sortedPosts.map((post) => (
             <div key={post.id} className="blog-card-corp">

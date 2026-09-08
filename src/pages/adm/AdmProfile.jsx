@@ -83,33 +83,34 @@ export default function AdmProfile({ profile: initialProfile, setProfile: update
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
           
           <div>
-            <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>Nome Completo</label>
+            <label className="adm-label">Nome Completo</label>
             <input
               type="text"
               required
               value={profile.full_name || ''}
               onChange={(e) => setProfile({ ...profile, full_name: e.target.value })}
-              style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '10px', background: 'rgba(0,0,0,0.4)', border: '1px solid var(--glass-border)', color: '#fff' }}
+              className="adm-input"
             />
           </div>
 
           <div>
-            <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>Número de WhatsApp (DDI + DDD + Número)</label>
+            <label className="adm-label">Número de WhatsApp (DDI + DDD + Número)</label>
             <div style={{ position: 'relative' }}>
-              <Phone size={16} style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: '#25d366' }} />
+              <Phone size={16} style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: '#10b981' }} />
               <input
                 type="text"
                 required
                 value={profile.whatsapp_number || ''}
                 onChange={(e) => setProfile({ ...profile, whatsapp_number: e.target.value })}
                 placeholder="5569992782919"
-                style={{ width: '100%', padding: '0.75rem 1rem 0.75rem 40px', borderRadius: '10px', background: 'rgba(0,0,0,0.4)', border: '1px solid var(--glass-border)', color: '#fff' }}
+                className="adm-input"
+                style={{ paddingLeft: '40px' }}
               />
             </div>
           </div>
 
           <div>
-            <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>E-mail de Contato</label>
+            <label className="adm-label">E-mail de Contato</label>
             <div style={{ position: 'relative' }}>
               <Mail size={16} style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
               <input
@@ -117,21 +118,23 @@ export default function AdmProfile({ profile: initialProfile, setProfile: update
                 value={profile.email || ''}
                 onChange={(e) => setProfile({ ...profile, email: e.target.value })}
                 placeholder="contato@rodrigofreire.dev"
-                style={{ width: '100%', padding: '0.75rem 1rem 0.75rem 40px', borderRadius: '10px', background: 'rgba(0,0,0,0.4)', border: '1px solid var(--glass-border)', color: '#fff' }}
+                className="adm-input"
+                style={{ paddingLeft: '40px' }}
               />
             </div>
           </div>
 
           <div>
-            <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>Registro de Software no INPI</label>
+            <label className="adm-label">Registro de Software no INPI</label>
             <div style={{ position: 'relative' }}>
-              <ShieldCheck size={16} style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: '#60a5fa' }} />
+              <ShieldCheck size={16} style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: 'var(--color-dark-teal)' }} />
               <input
                 type="text"
                 value={profile.inpi_record || ''}
                 onChange={(e) => setProfile({ ...profile, inpi_record: e.target.value })}
                 placeholder="INPI Nº 512025006506-0"
-                style={{ width: '100%', padding: '0.75rem 1rem 0.75rem 40px', borderRadius: '10px', background: 'rgba(0,0,0,0.4)', border: '1px solid var(--glass-border)', color: '#fff' }}
+                className="adm-input"
+                style={{ paddingLeft: '40px' }}
               />
             </div>
           </div>
@@ -139,49 +142,49 @@ export default function AdmProfile({ profile: initialProfile, setProfile: update
         </div>
 
         <div>
-          <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>Headline / Frase de Impacto</label>
+          <label className="adm-label">Headline / Frase de Impacto</label>
           <input
             type="text"
             value={profile.tagline || ''}
             onChange={(e) => setProfile({ ...profile, tagline: e.target.value })}
-            style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '10px', background: 'rgba(0,0,0,0.4)', border: '1px solid var(--glass-border)', color: '#fff' }}
+            className="adm-input"
           />
         </div>
 
         <div>
-          <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>Lead Bio (Exibida no Hero da Home)</label>
+          <label className="adm-label">Lead Bio (Exibida no Hero da Home)</label>
           <textarea
             rows={3}
             value={profile.lead_bio || ''}
             onChange={(e) => setProfile({ ...profile, lead_bio: e.target.value })}
-            style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '10px', background: 'rgba(0,0,0,0.4)', border: '1px solid var(--glass-border)', color: '#fff' }}
+            className="adm-textarea"
           />
         </div>
 
         <div>
-          <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>Biografia Completa (Página Sobre e Home)</label>
+          <label className="adm-label">Biografia Completa (Página Sobre e Home)</label>
           <textarea
             rows={5}
             value={profile.about_text || ''}
             onChange={(e) => setProfile({ ...profile, about_text: e.target.value })}
-            style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '10px', background: 'rgba(0,0,0,0.4)', border: '1px solid var(--glass-border)', color: '#fff' }}
+            className="adm-textarea"
           />
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
           <div>
-            <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>URL da Foto de Perfil / Avatar</label>
+            <label className="adm-label">URL da Foto de Perfil / Avatar</label>
             <input
               type="text"
               value={profile.avatar_url || ''}
               onChange={(e) => setProfile({ ...profile, avatar_url: e.target.value })}
               placeholder="Ex: /images/rodrigo-avatar.png"
-              style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '10px', background: 'rgba(0,0,0,0.4)', border: '1px solid var(--glass-border)', color: '#fff' }}
+              className="adm-input"
             />
           </div>
 
           <div>
-            <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>URL do GitHub</label>
+            <label className="adm-label">URL do GitHub</label>
             <div style={{ position: 'relative' }}>
               <GithubIcon size={16} style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
               <input
@@ -189,13 +192,14 @@ export default function AdmProfile({ profile: initialProfile, setProfile: update
                 value={profile.github_url || ''}
                 onChange={(e) => setProfile({ ...profile, github_url: e.target.value })}
                 placeholder="https://github.com/rodrigoffreir3"
-                style={{ width: '100%', padding: '0.75rem 1rem 0.75rem 40px', borderRadius: '10px', background: 'rgba(0,0,0,0.4)', border: '1px solid var(--glass-border)', color: '#fff' }}
+                className="adm-input"
+                style={{ paddingLeft: '40px' }}
               />
             </div>
           </div>
         </div>
 
-        <div style={{ marginTop: '1rem', borderTop: '1px solid var(--glass-border)', paddingTop: '1.25rem' }}>
+        <div style={{ marginTop: '1rem', borderTop: '1px solid rgba(11, 74, 79, 0.12)', paddingTop: '1.25rem' }}>
           <button
             type="submit"
             disabled={saving}

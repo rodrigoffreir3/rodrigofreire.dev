@@ -36,19 +36,19 @@ export default function Login() {
   };
 
   return (
-    <div style={{ minHeight: '85vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1.5rem' }}>
-      <div className="glass-panel" style={{ maxWidth: '440px', width: '100%', padding: '2.5rem 2rem' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1.5rem', backgroundColor: 'var(--bg-page)' }}>
+      <div className="glass-panel" style={{ maxWidth: '440px', width: '100%', padding: '2.75rem 2.25rem' }}>
         
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-          <div style={{ width: '56px', height: '56px', borderRadius: '16px', background: 'var(--primary-subtle)', border: '1px solid var(--primary-border)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1rem auto', color: '#60a5fa' }}>
+          <div style={{ width: '56px', height: '56px', borderRadius: '16px', background: 'rgba(11, 74, 79, 0.08)', border: '1px solid rgba(11, 74, 79, 0.16)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1rem auto', color: 'var(--color-dark-teal)' }}>
             <Lock size={26} />
           </div>
-          <h2 style={{ fontSize: '1.6rem', fontWeight: '800', margin: '0 0 0.4rem 0' }}>Painel Administrativo</h2>
+          <h2 style={{ fontSize: '1.6rem', fontWeight: '800', margin: '0 0 0.4rem 0', color: 'var(--text-heading)' }}>Painel Administrativo</h2>
           <p style={{ fontSize: '0.9rem', color: 'var(--text-body)', margin: 0 }}>Autenticação segura do CMS de Rodrigo Freire</p>
         </div>
 
         {errorMsg && (
-          <div style={{ padding: '0.85rem 1rem', borderRadius: '10px', background: 'rgba(239, 68, 68, 0.15)', border: '1px solid rgba(239, 68, 68, 0.3)', color: '#fca5a5', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.5rem' }}>
+          <div style={{ padding: '0.85rem 1rem', borderRadius: '10px', background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.25)', color: '#ef4444', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.5rem' }}>
             <AlertCircle size={16} style={{ flexShrink: 0 }} />
             <span>{errorMsg}</span>
           </div>
@@ -57,7 +57,7 @@ export default function Login() {
         <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
           
           <div>
-            <label style={{ display: 'block', marginBottom: '0.45rem', fontSize: '0.85rem', fontWeight: '600', color: 'var(--text-light)' }}>
+            <label className="adm-label">
               E-mail de Administrador
             </label>
             <div style={{ position: 'relative' }}>
@@ -68,22 +68,14 @@ export default function Login() {
                 placeholder="seu-email@dominio.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                style={{
-                  width: '100%',
-                  padding: '0.75rem 1rem 0.75rem 40px',
-                  borderRadius: '10px',
-                  border: '1px solid var(--glass-border)',
-                  background: 'rgba(0, 0, 0, 0.4)',
-                  color: '#ffffff',
-                  fontSize: '0.95rem',
-                  outline: 'none'
-                }}
+                className="adm-input"
+                style={{ paddingLeft: '40px' }}
               />
             </div>
           </div>
 
           <div>
-            <label style={{ display: 'block', marginBottom: '0.45rem', fontSize: '0.85rem', fontWeight: '600', color: 'var(--text-light)' }}>
+            <label className="adm-label">
               Senha de Acesso
             </label>
             <div style={{ position: 'relative' }}>
@@ -94,16 +86,8 @@ export default function Login() {
                 placeholder="••••••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                style={{
-                  width: '100%',
-                  padding: '0.75rem 1rem 0.75rem 40px',
-                  borderRadius: '10px',
-                  border: '1px solid var(--glass-border)',
-                  background: 'rgba(0, 0, 0, 0.4)',
-                  color: '#ffffff',
-                  fontSize: '0.95rem',
-                  outline: 'none'
-                }}
+                className="adm-input"
+                style={{ paddingLeft: '40px' }}
               />
             </div>
           </div>
@@ -119,8 +103,8 @@ export default function Login() {
 
         </form>
 
-        <div style={{ marginTop: '2rem', textAlign: 'center', borderTop: '1px solid var(--glass-border)', paddingTop: '1.25rem' }}>
-          <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', color: 'var(--text-muted)', fontSize: '0.85rem', textDecoration: 'none' }}>
+        <div style={{ marginTop: '2rem', textAlign: 'center', borderTop: '1px solid rgba(11, 74, 79, 0.1)', paddingTop: '1.25rem' }}>
+          <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', color: 'var(--color-dark-teal)', fontSize: '0.88rem', fontWeight: '600', textDecoration: 'none' }}>
             <ArrowLeft size={14} /> Voltar para o site público
           </Link>
         </div>

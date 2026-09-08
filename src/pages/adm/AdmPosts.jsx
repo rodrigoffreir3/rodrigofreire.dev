@@ -174,64 +174,64 @@ export default function AdmPosts({ posts, setPosts }) {
             
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
               <div>
-                <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>Título do Artigo</label>
+                <label className="adm-label">Título do Artigo</label>
                 <input
                   type="text"
                   required
                   value={formData.title}
                   onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                  style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '10px', background: 'rgba(0,0,0,0.4)', border: '1px solid var(--glass-border)', color: '#fff' }}
+                  className="adm-input"
                 />
               </div>
 
               <div>
-                <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>Slug da URL</label>
+                <label className="adm-label">Slug da URL</label>
                 <input
                   type="text"
                   value={formData.slug}
                   onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
                   placeholder="gerado-automaticamente"
-                  style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '10px', background: 'rgba(0,0,0,0.4)', border: '1px solid var(--glass-border)', color: '#fff' }}
+                  className="adm-input"
                 />
               </div>
 
               <div style={{ gridColumn: '1 / -1' }}>
-                <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>Resumo do Artigo (Exibido nas Listagens)</label>
+                <label className="adm-label">Resumo do Artigo (Exibido nas Listagens)</label>
                 <textarea
                   rows={2}
                   required
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                  style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '10px', background: 'rgba(0,0,0,0.4)', border: '1px solid var(--glass-border)', color: '#fff' }}
+                  className="adm-textarea"
                 />
               </div>
 
               <div>
-                <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>Tags (separadas por vírgula)</label>
+                <label className="adm-label">Tags (separadas por vírgula)</label>
                 <input
                   type="text"
                   value={formData.tags}
                   onChange={(e) => setFormData({ ...formData, tags: e.target.value })}
                   placeholder="IA, Hardware, Kernel, Carreira"
-                  style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '10px', background: 'rgba(0,0,0,0.4)', border: '1px solid var(--glass-border)', color: '#fff' }}
+                  className="adm-input"
                 />
               </div>
 
               <div>
-                <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>URL da Imagem de Capa</label>
+                <label className="adm-label">URL da Imagem de Capa (Opcional)</label>
                 <input
                   type="text"
                   value={formData.cover_image}
                   onChange={(e) => setFormData({ ...formData, cover_image: e.target.value })}
-                  placeholder="/images/projetos/greentoken/greentoken-hero.png"
-                  style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '10px', background: 'rgba(0,0,0,0.4)', border: '1px solid var(--glass-border)', color: '#fff' }}
+                  placeholder="https://exemplo.com/imagem.png (opcional)"
+                  className="adm-input"
                 />
               </div>
             </div>
 
             {/* EDITOR MARKDOWN RICO */}
-            <div data-color-mode="dark" style={{ marginTop: '0.5rem' }}>
-              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1', marginBottom: '0.45rem' }}>Conteúdo em Markdown</label>
+            <div data-color-mode="light" style={{ marginTop: '0.5rem' }}>
+              <label className="adm-label">Conteúdo em Markdown</label>
               <MDEditor
                 value={formData.content_markdown}
                 onChange={(val) => setFormData({ ...formData, content_markdown: val || '' })}
@@ -240,15 +240,15 @@ export default function AdmPosts({ posts, setPosts }) {
               />
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1.5rem', borderTop: '1px solid var(--glass-border)', paddingTop: '1.25rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1.5rem', borderTop: '1px solid rgba(11, 74, 79, 0.12)', paddingTop: '1.25rem' }}>
               <label style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', cursor: 'pointer' }}>
                 <input
                   type="checkbox"
                   checked={formData.is_published}
                   onChange={(e) => setFormData({ ...formData, is_published: e.target.checked })}
-                  style={{ width: '20px', height: '20px', accentColor: '#3b82f6' }}
+                  style={{ width: '20px', height: '20px', accentColor: 'var(--color-dark-teal)' }}
                 />
-                <span style={{ fontWeight: '600', color: '#f8fafc' }}>Publicar Imediatamente no Blog</span>
+                <span style={{ fontWeight: '600', color: 'var(--text-heading)' }}>Publicar Imediatamente no Blog</span>
               </label>
 
               <button
@@ -272,12 +272,12 @@ export default function AdmPosts({ posts, setPosts }) {
           <div key={post.id} className="glass-panel" style={{ padding: '1.25rem 1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-                <h4 style={{ fontSize: '1.1rem', fontWeight: '700', margin: 0, color: '#f8fafc' }}>{post.title}</h4>
+                <h4 style={{ fontSize: '1.1rem', fontWeight: '700', margin: 0, color: 'var(--text-heading)' }}>{post.title}</h4>
                 <span className="corp-badge" style={{ fontSize: '0.68rem', padding: '0.15rem 0.5rem' }}>
                   {new Date(post.published_at).toLocaleDateString('pt-BR')}
                 </span>
               </div>
-              <span style={{ fontSize: '0.8rem', color: '#94a3b8' }}>/blog/{post.slug}</span>
+              <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>/blog/{post.slug}</span>
             </div>
 
             <div style={{ display: 'flex', gap: '0.65rem' }}>
@@ -292,7 +292,7 @@ export default function AdmPosts({ posts, setPosts }) {
               <button
                 onClick={() => handleDelete(post.id)}
                 className="corp-btn corp-btn-secondary"
-                style={{ padding: '0.45rem 0.95rem', fontSize: '0.82rem', minHeight: '36px', borderColor: 'rgba(239, 68, 68, 0.3)', color: '#f87171' }}
+                style={{ padding: '0.45rem 0.95rem', fontSize: '0.82rem', minHeight: '36px', borderColor: 'rgba(239, 68, 68, 0.3)', color: '#ef4444' }}
               >
                 <Trash2 size={14} /> Excluir
               </button>
