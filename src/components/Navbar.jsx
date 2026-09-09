@@ -100,7 +100,6 @@ export default function Navbar({ profile }) {
                     className="dropdown-item-link"
                   >
                     <span className="dropdown-item-title">{proj.title}</span>
-                    {proj.badge && <span className="dropdown-item-badge">{proj.badge}</span>}
                   </Link>
                 ))}
               </div>
