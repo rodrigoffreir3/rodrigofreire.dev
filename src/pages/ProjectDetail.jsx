@@ -57,11 +57,11 @@ export default function ProjectDetail({ projects, profile }) {
         )}
       </header>
 
-      {/* 2. O DESAFIO DO NEGÓCIO */}
+      {/* 2. O PROBLEMA QUE RESOLVE */}
       {project.problem_description && (
         <section className="project-section-box apple-liquid-glass" style={{ padding: '2.2rem', marginBottom: '2.5rem' }}>
-          <div className="section-tag-pill" style={{ marginBottom: '0.75rem' }}>O Desafio Empresarial</div>
-          <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Qual dor de gestão esse projeto elimina?</h2>
+          <div className="section-tag-pill" style={{ marginBottom: '0.75rem' }}>Contexto & Desafio</div>
+          <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>O Problema que Resolve</h2>
           <div className="project-prose" style={{ fontSize: '1rem', lineHeight: '1.7', color: 'var(--text-body)' }}>
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {project.problem_description}
@@ -74,7 +74,7 @@ export default function ProjectDetail({ projects, profile }) {
       {realGallery.length > 0 && (
         <section className="project-section-box apple-liquid-glass" style={{ padding: '2.2rem', marginBottom: '2.5rem' }}>
           <div className="section-tag-pill" style={{ marginBottom: '0.75rem' }}>Demonstração Visual</div>
-          <h2 style={{ fontSize: '1.5rem', marginBottom: '1.25rem' }}>Telas e Fluxo da Operação</h2>
+          <h2 style={{ fontSize: '1.5rem', marginBottom: '1.25rem' }}>Telas e Registros Visuais</h2>
           <div className="gallery-grid-corp" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
             {realGallery.map((item, idx) => (
               <div key={idx} style={{ borderRadius: '14px', overflow: 'hidden', border: '1px solid var(--color-gray-ui)' }}>
@@ -90,11 +90,11 @@ export default function ProjectDetail({ projects, profile }) {
         </section>
       )}
 
-      {/* 4. COMO ESTA SOLUÇÃO ATUA NA PRÁTICA */}
+      {/* 4. ARQUITETURA & COMO FUNCIONA POR TRÁS */}
       {project.technical_details && (
         <section className="project-section-box apple-liquid-glass" style={{ padding: '2.2rem', marginBottom: '3rem' }}>
-          <div className="section-tag-pill" style={{ marginBottom: '0.75rem' }}>Metodologia & Aplicação</div>
-          <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Como Funciona na Prática da Empresa</h2>
+          <div className="section-tag-pill" style={{ marginBottom: '0.75rem' }}>Engenharia & Arquitetura</div>
+          <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Como Funciona por Trás</h2>
           <div className="project-prose" style={{ fontSize: '1rem', lineHeight: '1.7', color: 'var(--text-body)' }}>
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {project.technical_details}

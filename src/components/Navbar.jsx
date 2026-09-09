@@ -93,7 +93,7 @@ export default function Navbar({ profile }) {
                   ✦ Ver Todos os Cases de Sucesso
                 </Link>
                 <div className="dropdown-divider" />
-                {projects.slice(0, 6).map((proj) => (
+                {projects.map((proj) => (
                   <Link
                     key={proj.id}
                     to={`/projetos/${proj.slug}`}
