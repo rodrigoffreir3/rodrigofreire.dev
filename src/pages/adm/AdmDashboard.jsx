@@ -21,16 +21,16 @@ export default function AdmDashboard({ profile }) {
             width: '38px',
             height: '38px',
             borderRadius: '10px',
-            background: 'linear-gradient(135deg, var(--color-dark-teal), var(--color-cyan-teal))',
+            background: 'linear-gradient(90deg, #000000 0%, #3533cd 100%)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             color: '#fff',
             fontWeight: '800',
-            fontSize: '0.95rem',
-            boxShadow: '0 4px 12px rgba(11, 74, 79, 0.2)'
+            fontSize: '0.85rem',
+            boxShadow: '0 4px 12px rgba(53, 51, 205, 0.3)'
           }}>
-            RF
+            RFD
           </div>
           <div>
             <div style={{ fontWeight: '800', fontSize: '1rem', display: 'flex', alignItems: 'center', gap: '0.45rem', color: 'var(--text-heading)' }}>

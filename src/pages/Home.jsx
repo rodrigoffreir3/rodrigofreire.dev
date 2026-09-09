@@ -140,13 +140,13 @@ export default function Home({ profile }) {
                 {/* Solução */}
                 <div style={{ marginBottom: '1rem' }}>
                   <p style={{ fontSize: '0.94rem', color: 'var(--text-body)', lineHeight: '1.6', margin: 0 }}>
-                    <strong style={{ color: 'var(--color-dark-teal)' }}>O que eu faço: </strong>
+                    <strong style={{ color: '#3533cd' }}>O que eu faço: </strong>
                     {service.solution}
                   </p>
                 </div>
 
                 {/* Ganho Concreto */}
-                <div style={{ marginTop: 'auto', padding: '0.85rem 1rem', background: 'rgba(0, 245, 212, 0.08)', borderRadius: '12px', border: '1px solid rgba(0, 245, 212, 0.2)', marginBottom: '1.25rem' }}>
+                <div style={{ marginTop: 'auto', padding: '0.85rem 1rem', background: 'rgba(53, 51, 205, 0.06)', borderRadius: '12px', border: '1px solid rgba(53, 51, 205, 0.2)', marginBottom: '1.25rem' }}>
                   <p style={{ fontSize: '0.9rem', color: 'var(--text-heading)', lineHeight: '1.5', margin: 0 }}>
                     <strong>Ganho concreto: </strong>
                     {service.gain}
@@ -184,9 +184,9 @@ export default function Home({ profile }) {
 
         <div className="pains-grid-cards" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginTop: '2.5rem' }}>
           
-          <div className="pain-card-item" style={{ borderColor: 'rgba(11, 74, 79, 0.15)', background: '#FFFFFF' }}>
+          <div className="pain-card-item" style={{ borderColor: 'rgba(53, 51, 205, 0.15)', background: '#FFFFFF' }}>
             <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
-              <MessageSquare size={22} color="var(--color-dark-teal)" />
+              <MessageSquare size={22} color="#3533cd" />
             </div>
             <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Atendimento direto comigo</h3>
             <p style={{ fontSize: '0.92rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
@@ -194,9 +194,9 @@ export default function Home({ profile }) {
             </p>
           </div>
 
-          <div className="pain-card-item" style={{ borderColor: 'rgba(11, 74, 79, 0.15)', background: '#FFFFFF' }}>
+          <div className="pain-card-item" style={{ borderColor: 'rgba(53, 51, 205, 0.15)', background: '#FFFFFF' }}>
             <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
-              <MapPin size={22} color="var(--color-dark-teal)" />
+              <MapPin size={22} color="#3533cd" />
             </div>
             <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Presença local em Porto Velho</h3>
             <p style={{ fontSize: '0.92rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
@@ -204,9 +204,9 @@ export default function Home({ profile }) {
             </p>
           </div>
 
-          <div className="pain-card-item" style={{ borderColor: 'rgba(11, 74, 79, 0.15)', background: '#FFFFFF' }}>
+          <div className="pain-card-item" style={{ borderColor: 'rgba(53, 51, 205, 0.15)', background: '#FFFFFF' }}>
             <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
-              <CheckCircle2 size={22} color="var(--color-dark-teal)" />
+              <CheckCircle2 size={22} color="#3533cd" />
             </div>
             <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Falo a sua língua</h3>
             <p style={{ fontSize: '0.92rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
@@ -214,9 +214,9 @@ export default function Home({ profile }) {
             </p>
           </div>
 
-          <div className="pain-card-item" style={{ borderColor: 'rgba(11, 74, 79, 0.15)', background: '#FFFFFF' }}>
+          <div className="pain-card-item" style={{ borderColor: 'rgba(53, 51, 205, 0.15)', background: '#FFFFFF' }}>
             <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
-              <Clock size={22} color="var(--color-dark-teal)" />
+              <Clock size={22} color="#3533cd" />
             </div>
             <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Menos tempo de loja parada</h3>
             <p style={{ fontSize: '0.92rem', lineHeight: '1.6', color: 'var(--text-body)' }}>

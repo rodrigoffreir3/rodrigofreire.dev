@@ -19,29 +19,31 @@ export const DEFAULT_HOME_SETTINGS = {
   secondary_bg_opacity: 0.9,
   
   content_has_border: false,
-  content_border_color: "rgba(11, 74, 79, 0.12)",
+  content_border_color: "rgba(53, 51, 205, 0.15)",
   content_bg_color: "rgba(252, 252, 251, 0.65)",
   content_blur_level: 24,
   content_border_radius: "24px",
   
-  // Paleta Visual Moderno Crystal Glass
-  primary_color: "#0B4A4F",       // Dark Teal (Profundo e sério)
-  accent_color: "#00F5D4",        // Cyan Teal Neon (Ação / Destaque)
+  // Paleta Oficial Rodrigo Freire Tech: #000000 e #3533cd (Luz da Direita para a Esquerda)
+  primary_color: "#000000",       // Preto puro (base esquerda)
+  accent_color: "#3533cd",        // Azul Elétrico intenso (luz direita)
   bg_page: "#FCFCFB",             // Claude Chat Warm White
   bg_page_subtle: "#F0EFEA",      // Cinza Quente UI
-  text_heading_color: "#0F172A",  // Azul da Noite
-  text_body_color: "#3F4E50"
+  text_heading_color: "#000000",  // Preto
+  text_body_color: "#2C3437"
 };
 
 export const DEFAULT_PROFILE = {
-  full_name: "Rodrigo Freire",
-  company_name: "Rodrigo Freire",
+  full_name: "RODRIGOFREIRE.DEV",
+  company_name: "Rodrigo Freire Tech",
   tagline: "Serviços de TI e Informática · Porto Velho",
   lead_bio: "Seu sistema travou, o computador do caixa não liga ou aquele problema que ninguém resolve virou rotina? Eu atendo aqui em Porto Velho, direto com você, sem call center e sem enrolação.",
   about_text: "Sou profissional de tecnologia em Porto Velho, formado em Direito e cursando Análise e Desenvolvimento de Sistemas. Presto serviços de informática, computadores e internet direto com você, sem conversa difícil e com foco em deixar seu comércio funcionando.",
   whatsapp_number: "5569992782919",
   inpi_record: "Registro INPI Nº 512025006506-0",
   avatar_url: "/foto_perfil.jpeg",
+  logo_url: "/icon-512.png",
+  logo_square_url: "/favicon-32x32.png",
   email: "contato@rodrigofreire.dev",
   github_url: "https://github.com/rodrigoffreir3",
   linkedin_url: ""

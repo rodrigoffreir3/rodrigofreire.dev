@@ -38,13 +38,15 @@ export default function Navbar({ profile }) {
         <div className="logo">
           <Link
             to="/"
-            title={`${profile?.full_name || 'Rodrigo Freire'} · Início`}
+            title="RODRIGOFREIRE.DEV · Início"
             className="logo-link-stacked"
             onClick={() => setMobileMenuOpen(false)}
           >
-            <span className="logo-title-main">
-              {profile?.full_name || 'Rodrigo Freire'}
-            </span>
+            <img
+              src="/icon-512.png"
+              alt="RODRIGOFREIRE.DEV"
+              className="navbar-brand-logo-img"
+            />
             <span className="logo-subtitle-desc">
               {profile?.tagline || 'Serviços de TI e Informática · Porto Velho'}
             </span>

@@ -13,13 +13,17 @@ export default function Footer({ profile }) {
         
         {/* COLUNA 1: PERFIL & BIO */}
         <div className="footer-col">
-          <h4 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#FFFFFF', marginBottom: '0.85rem' }}>
-            {company}
-          </h4>
+          <div style={{ background: 'rgba(255, 255, 255, 0.07)', padding: '0.45rem 0.85rem', borderRadius: '10px', display: 'inline-block', marginBottom: '1rem', border: '1px solid rgba(53, 51, 205, 0.3)' }}>
+            <img
+              src="/icon-512.png"
+              alt="RODRIGOFREIRE.DEV"
+              style={{ height: '28px', width: 'auto', display: 'block' }}
+            />
+          </div>
           <p style={{ fontSize: '0.9rem', color: 'rgba(248, 250, 252, 0.72)', lineHeight: '1.65', marginBottom: '1.25rem' }}>
             Serviços de informática, computadores e internet para comércios e empresas em Porto Velho. Atendimento direto e suporte presencial no seu estabelecimento.
           </p>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.35rem 0.75rem', background: 'rgba(0, 245, 212, 0.1)', border: '1px solid rgba(0, 245, 212, 0.3)', borderRadius: '999px', color: '#00F5D4', fontSize: '0.75rem', fontWeight: '700' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.35rem 0.75rem', background: 'rgba(53, 51, 205, 0.15)', border: '1px solid rgba(53, 51, 205, 0.4)', borderRadius: '999px', color: '#6866ff', fontSize: '0.75rem', fontWeight: '700' }}>
             <ShieldCheck size={14} />
             <span>{profile?.inpi_record || "Registro INPI Nº 512025006506-0"}</span>
           </div>
