@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, ArrowRight, CheckCircle } from 'lucide-react';
+import { Sparkles, ArrowRight } from 'lucide-react';
 
 export default function Projects({ projects = [] }) {
   return (
@@ -10,11 +10,11 @@ export default function Projects({ projects = [] }) {
       <div className="section-head-center">
         <span className="section-tag-pill">
           <Sparkles size={14} style={{ display: 'inline', marginRight: '4px' }} />
-          Cases de Sucesso & Resultados Reais
+          Pesquisa, Engenharia & Sistemas
         </span>
-        <h1 className="section-title-large">Casos de Sucesso Empresariais</h1>
+        <h1 className="section-title-large">Projetos & Cases Desenvolvidos</h1>
         <p className="section-desc-subtle">
-          Conheça como desenvolvemos soluções práticas para proteger empresas contra perdas, cortar desperdícios de servidores e automatizar processos operacionais com segurança.
+          Conheça sistemas de segurança, ferramentas open source e projetos desenvolvidos por mim para proteção de computadores, pesquisa científica e automação.
         </p>
       </div>
 
@@ -23,7 +23,7 @@ export default function Projects({ projects = [] }) {
         {projects.map((proj) => (
           <div key={proj.id} className="service-card-liquid">
             <div className="service-card-header">
-              <span className="service-card-tag">{proj.badge || "Case Corporativo"}</span>
+              <span className="service-card-tag">{proj.badge || "Projeto & Engenharia"}</span>
             </div>
 
             <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem' }}>{proj.title}</h3>
@@ -52,7 +52,7 @@ export default function Projects({ projects = [] }) {
             )}
 
             <div className="service-card-footer">
-              <span className="service-price-label">Solução Prática</span>
+              <span className="service-price-label">Engenharia & Código</span>
               <Link to={`/projetos/${proj.slug}`} className="service-btn-contact">
                 Conhecer Detalhes <ArrowRight size={14} />
               </Link>

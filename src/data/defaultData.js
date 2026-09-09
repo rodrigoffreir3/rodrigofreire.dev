@@ -24,7 +24,7 @@ export const DEFAULT_HOME_SETTINGS = {
   content_blur_level: 24,
   content_border_radius: "24px",
   
-  // Paleta SaaS Moderno Crystal Glass
+  // Paleta Visual Moderno Crystal Glass
   primary_color: "#0B4A4F",       // Dark Teal (Profundo e sério)
   accent_color: "#00F5D4",        // Cyan Teal Neon (Ação / Destaque)
   bg_page: "#FCFCFB",             // Claude Chat Warm White
@@ -35,277 +35,91 @@ export const DEFAULT_HOME_SETTINGS = {
 
 export const DEFAULT_PROFILE = {
   full_name: "Rodrigo Freire",
-  company_name: "Rodrigo Freire Tech",
-  tagline: "Desenvolvimento de Sistemas e Automações com Inteligência Artificial",
-  lead_bio: "Elimine o caos das planilhas e a perda invisível de margem. Oferecemos ERP integrado, frente de caixa com PIX dinâmico, automações com IA e bots de WhatsApp com linguagem natural para sua empresa crescer com visão de dono.",
-  about_text: "Somos uma empresa de soluções em tecnologia focada em resolver os gargalos reais de negócios comerciais, industriais e de serviços. Desenvolvemos soluções completas: do sistema de gestão com controle rigoroso de estoque e emissão fiscal à vanguarda da inteligência artificial aplicada ao atendimento 24 horas e automação de tarefas rotineiras.",
+  company_name: "Rodrigo Freire",
+  tagline: "Serviços de TI e Informática · Porto Velho",
+  lead_bio: "Seu sistema travou, o computador do caixa não liga ou aquele problema que ninguém resolve virou rotina? Eu atendo aqui em Porto Velho, direto com você, sem call center e sem enrolação.",
+  about_text: "Sou profissional de tecnologia em Porto Velho, formado em Direito e cursando Análise e Desenvolvimento de Sistemas. Presto serviços de informática, computadores e internet direto com você, sem conversa difícil e com foco em deixar seu comércio funcionando.",
   whatsapp_number: "5569992782919",
-  inpi_record: "INPI Nº 512025006506-0",
-  avatar_url: "",
+  inpi_record: "Registro INPI Nº 512025006506-0",
+  avatar_url: "/foto_perfil.jpeg",
   email: "contato@rodrigofreire.dev",
   github_url: "https://github.com/rodrigoffreir3",
   linkedin_url: ""
 };
 
-// FAIXA RÁPIDA DE DESTAQUES (STRIP)
-export const DEFAULT_SOLUTIONS_STRIP = [
-  { title: "Sistema ERP", desc: "Estoque, vendas e caixa", href: "#catalogo" },
-  { title: "PDV com PIX", desc: "QR Code dinâmico na tela", href: "#catalogo" },
-  { title: "Emissor Fiscal", desc: "NF-e, NFC-e e MDF-e", href: "#catalogo" },
-  { title: "WhatsApp Bot IA", desc: "Linguagem natural 24/7", href: "#ia-spotlight" },
-  { title: "Food Service", desc: "Comanda e display cozinha", href: "#catalogo" },
-  { title: "Ponto Digital", desc: "Selfie e GPS (Portaria 671)", href: "#catalogo" }
-];
-
-// 12 SERVIÇOS & SOLUÇÕES CORPORATIVAS
+// 6 SERVIÇOS DE TI AUTÔNOMOS E LOCAIS EM PORTO VELHO (SPEC-SITE-003)
 export const DEFAULT_SERVICES = [
   {
-    id: "sistema-erp",
-    category: "erp",
-    icon: "LayoutDashboard",
-    tag: "GESTÃO INTEGRADA",
-    title: "Sistema ERP para Gestão Empresarial",
-    short_desc: "Visão de dono em tempo real: vendas, estoque, compras e financeiro em um só ecossistema.",
-    description: "Centralize faturamento, contas a pagar/receber, compras, fornecedores e indicadores vitais. Diga adeus às planilhas desconexas e ganhe previsibilidade para tomar decisões com dados consolidados.",
-    price_tag: "Sob Consulta",
-    highlights: ["Indicadores em tempo real", "Controle de margem de lucro", "Multi-filiais e relatórios"]
+    id: "socorro-tecnico",
+    icon: "Wrench",
+    tag: "CONSERTO & SUPORTE",
+    title: "Socorro técnico e conserto de computadores",
+    short_desc: "Destrave computadores, impressoras e internet para não perder vendas.",
+    description: "O computador do caixa travou bem no meio do expediente, a impressora de notas não responde ou a internet da loja caiu? Eu atendo no seu comércio em Porto Velho ou acesso pelo computador na hora para identificar a falha e colocar tudo para rodar de novo. Sua loja não perde vendas, o atendimento não para e você não passa constrangimento com cliente esperando na fila.",
+    pain: "O computador do caixa travou bem no meio do expediente, a impressora de notas não responde ou a internet da loja caiu?",
+    solution: "Eu atendo no seu comércio em Porto Velho ou acesso pelo computador na hora para identificar a falha e colocar tudo para rodar de novo.",
+    gain: "Sua loja não perde vendas, o atendimento não para e você não passa constrangimento com cliente esperando na fila.",
+    whatsapp_msg: "Olá Rodrigo! Preciso de socorro técnico no meu computador/rede aqui na minha empresa."
   },
   {
-    id: "pdv-pix",
-    category: "pdv",
-    icon: "Zap",
-    tag: "FRENTE DE CAIXA",
-    title: "PDV com PIX Dinâmico & TEF Integrado",
-    short_desc: "Venda rápida no balcão: código de barras, TEF e QR Code PIX gerado diretamente na tela.",
-    description: "Acelere a fila do caixa. O QR Code PIX é gerado no monitor com valor exato, sem o operador digitar valores na maquininha. Confirmação instantânea do recebimento na tela e baixa automática.",
-    price_tag: "Sob Consulta",
-    highlights: ["QR Code dinâmico na tela", "Sem digitação de maquininha", "Compatível com balanças e leitores"]
-  },
-  {
-    id: "emissor-fiscal",
-    category: "fiscal",
-    icon: "FileText",
-    tag: "FISCAL COMPLETO",
-    title: "Emissor Fiscal Automatizado (NF-e / NFC-e / MDF-e)",
-    short_desc: "Emissão simplificada e sem dor de cabeça, em conformidade com as exigências da SEFAZ.",
-    description: "Emita notas fiscais de venda (NFC-e), notas grandes (NF-e), notas de frete e transporte (MDF-e) e notas de serviço (NFS-e). Armazenamento em nuvem dos arquivos XML e envio direto para contabilidade.",
-    price_tag: "Sob Consulta",
-    highlights: ["NF-e, NFC-e, NFS-e e MDF-e", "Conexão direta SEFAZ", "Envio automático para o contador"]
-  },
-  {
-    id: "estoque-balanco",
-    category: "erp",
-    icon: "Boxes",
-    tag: "LOGÍSTICA & ESTOQUE",
-    title: "Controle e Balanço Inteligente de Estoque",
-    short_desc: "Evite perdas e produtos vencidos: ponto de pedido, código de barras e inventário ágil.",
-    description: "Monitore entrada e saída com leitor, controle lotes e validades, crie etiquetas personalizadas para gôndolas e receba alertas de reposição antes que o produto falte para o cliente.",
-    price_tag: "Sob Consulta",
-    highlights: ["Controle de validade por lote", "Geração de etiquetas de código de barras", "Alerta de estoque mínimo"]
-  },
-  {
-    id: "gestao-financeira",
-    category: "erp",
-    icon: "TrendingUp",
-    tag: "FINANCEIRO",
-    title: "Gestão Financeira & Conciliação Bancária",
-    short_desc: "Fluxo de caixa diário, dedução automática de taxas de cartão e DRE simplificado.",
-    description: "Saiba exatamente para onde vai cada centavo. Faça conciliação bancária, emita boletos integrados sem entrar no portal do banco e acompanhe vendas à vista, a prazo e inadimplência.",
-    price_tag: "Sob Consulta",
-    highlights: ["Dedução real de taxas de cartão", "Emissão de boletos bancários", "Previsão de fluxo de caixa"]
-  },
-  {
-    id: "food-service",
-    category: "segmento",
-    icon: "UtensilsCrossed",
-    tag: "FOOD SERVICE",
-    title: "Comanda Digital & Gestão para Restaurantes",
-    short_desc: "Do celular do garçom direto para o display da cozinha, sem papel solto e sem confusão.",
-    description: "Gerencie mesas, comandas individuais e delivery. O garçom lança o pedido no smartphone, a cozinha recebe na tela ou na impressora térmica e o caixa fecha a mesa com agilidade e divisão de contas.",
-    price_tag: "Sob Consulta",
-    highlights: ["Comanda mobile por mesa", "Painel KDS para cozinha", "Fechamento parcial de contas"]
-  },
-  {
-    id: "logistica-romaneio",
-    category: "erp",
-    icon: "Truck",
-    tag: "DISTRIBUIÇÃO",
-    title: "Romaneio de Carga & Roteirização de Entregas",
-    short_desc: "Controle de expedição, montagem de cargas e força de vendas externa para distribuidoras.",
-    description: "Organize pedidos por rota, gere romaneios consolidados e acompanhe a equipe externa de vendedores com app de vendas offline que sincroniza pedidos assim que encontra conexão.",
-    price_tag: "Sob Consulta",
-    highlights: ["Força de vendas no celular", "Organização por roteiro de entrega", "Emissão em lote de faturas"]
-  },
-  {
-    id: "ponto-eletronico",
-    category: "rh",
-    icon: "Clock",
-    tag: "RH & PONTO",
-    title: "Ponto Digital com Selfie e Geolocalização GPS",
-    short_desc: "Controle de jornada moderno sem relógio físico caro, conforme a Portaria 671 do MTE.",
-    description: "Registro de ponto rápido pelo navegador ou smartphone com foto selfie e validação de localização geográfica. Relatórios automáticos de horas extras, banco de horas, intervalos e faltas.",
-    price_tag: "Sob Consulta",
-    highlights: ["Portaria 671 MTE homologada", "Foto com anti-fraude e GPS", "Espelho de ponto para contabilidade"]
-  },
-  {
-    id: "loja-virtual",
-    category: "software",
+    id: "site-vendas",
     icon: "ShoppingCart",
-    tag: "E-COMMERCE",
-    title: "Loja Virtual & Catálogo Digital Integrado",
-    short_desc: "Seus produtos na internet com estoque, preços e pedidos sincronizados ao seu ERP.",
-    description: "Venda online 24h sem risco de vender produto que já acabou na loja física. Catálogo interativo com checkout transparente, cálculo de frete e envio do pedido direto para expedição.",
-    price_tag: "Sob Consulta",
-    highlights: ["Estoque sincronizado em tempo real", "Checkout PIX e Cartão", "Catálogo responsivo mobile"]
+    tag: "VENDAS PELA INTERNET",
+    title: "Site seu, onde o cliente compra com confiança",
+    short_desc: "Site simples e direto integrado ao seu Instagram/TikTok para vender com mais lucro.",
+    description: "Você vende bem no Instagram ou TikTok? O problema é que cliente que quer gastar mais (ou que é primeira vez comprando) entra no Google, procura o nome da sua loja e não acha nada além de um perfil de rede social. Desconfia. Ou pior: acha concorrente que tem website e compra lá. Eu crio para você um site simples onde o cliente compra direto, com cupom de desconto vinculado só para quem vem das suas redes sociais — assim o site trabalha junto com o Instagram/TikTok que você já usa, não substitui. O cliente que compra uma vez no seu site volta a comprar lá, porque já tem a conta feita. Você fica com o e-mail dele, sabe quem compra o quê e consegue oferecer outro produto quando faz sentido, sem depender do algoritmo da rede mudar. Ganho concreto: você vende mais caro, porque cliente descobre você pelo Instagram mas compra no site onde sente segurança. Cada venda que acontece lá é sua, sem taxa da plataforma comendo margem.",
+    pain: "Você vende bem no Instagram ou TikTok? O problema é que cliente que quer gastar mais (ou que é primeira vez comprando) entra no Google, procura o nome da sua loja e não acha nada além de um perfil de rede social. Desconfia. Ou pior: acha concorrente que tem website e compra lá.",
+    solution: "Eu crio para você um site simples onde o cliente compra direto, com cupom de desconto vinculado só para quem vem das suas redes sociais — assim o site trabalha junto com o Instagram/TikTok que você já usa, não substitui. O cliente que compra uma vez no seu site volta a comprar lá, porque já tem a conta feita. Você fica com o e-mail dele, sabe quem compra o quê e consegue oferecer outro produto quando faz sentido, sem depender do algoritmo da rede mudar.",
+    gain: "Você vende mais caro, porque cliente descobre você pelo Instagram mas compra no site onde sente segurança. Cada venda que acontece lá é sua, sem taxa da plataforma comendo margem.",
+    whatsapp_msg: "Olá Rodrigo! Gostaria de criar um site de vendas próprio para o meu negócio."
   },
   {
-    id: "software-demanda",
-    category: "software",
-    icon: "Code2",
-    tag: "SOB MEDIDA",
-    title: "Desenvolvimento de Software & Aplicativos Sob Demanda",
-    short_desc: "Sistemas web exclusivos, portais corporativos e apps mobile para processos únicos.",
-    description: "Quando nenhum software pronto do mercado atende à particularidade da sua operação, nossa equipe de engenharia desenha a arquitetura, prototipa, programa e integra a solução feita sob medida para você.",
-    price_tag: "Sob Consulta",
-    highlights: ["Arquitetura escalável em nuvem", "APIs e integrações com legados", "Apps nativos iOS & Android"]
+    id: "organizacao-planilhas",
+    icon: "FileSpreadsheet",
+    tag: "CONTROLE FINANCEIRO",
+    title: "Organização de planilhas e controle do negócio",
+    short_desc: "Planilhas fáceis e automáticas para saber quanto entrou e quanto sobrou de lucro.",
+    description: "O controle do seu dinheiro e das suas mercadorias está espalhado em planilhas confusas que só uma pessoa entende, vivem desatualizadas ou dão erro na hora de somar? Eu organizo e padronizo suas planilhas com cálculos automáticos, deixando tudo fácil e intuitivo para qualquer funcionário preencher sem quebrar nada. Você bate o olho e sabe na hora quanto faturou no dia, o que tem para pagar e quanto realmente sobrou de lucro no fim do mês.",
+    pain: "O controle do seu dinheiro e das suas mercadorias está espalhado em planilhas confusas que só uma pessoa entende, vivem desatualizadas ou dão erro na hora de somar?",
+    solution: "Eu organizo e padronizo suas planilhas com cálculos automáticos, deixando tudo fácil e intuitivo para qualquer funcionário preencher sem quebrar nada.",
+    gain: "Você bate o olho e sabe na hora quanto faturou no dia, o que tem para pagar e quanto realmente sobrou de lucro no fim do mês.",
+    whatsapp_msg: "Olá Rodrigo! Preciso organizar as planilhas e controles financeiros da minha empresa."
   },
   {
-    id: "ia-automacao",
-    category: "ia",
-    icon: "BrainCircuit",
-    tag: "INOVAÇÃO & IA",
-    title: "Automação e Treinamento de Inteligência Artificial",
-    short_desc: "Agentes autônomos para rotinas operacionais e capacitação in-company em IA generativa.",
-    description: "Implementamos agentes de IA que leem notas, conferem contratos, processam documentos e cruzam dados sem intervenção humana. Oferecemos também treinamento prático para sua equipe extrair produtividade máxima de ferramentas de IA.",
-    price_tag: "Sob Consulta",
-    highlights: ["Agentes de triagem de dados", "Fine-tuning com regras do seu negócio", "Treinamentos práticos in-company"]
+    id: "automacao-tarefas",
+    icon: "Zap",
+    tag: "ECONOMIA DE TEMPO",
+    title: "Automação de tarefas manuais e repetitivas",
+    short_desc: "Elimine o trabalho chato de copiar dados e preencher relatórios na mão.",
+    description: "Você ou seus colaboradores perdem horas preciosas copiando dados de um lugar para o outro, preenchendo as mesmas coisas todo dia ou conferindo relatórios na mão? Eu crio rotinas automáticas no seu computador para executar essas tarefas chatas e demoradas em poucos segundos com um único clique. Sua equipe ganha horas livres no expediente para focar no que realmente traz dinheiro: atender bem e vender mais.",
+    pain: "Você ou seus colaboradores perdem horas preciosas copiando dados de um lugar para o outro, preenchendo as mesmas coisas todo dia ou conferindo relatórios na mão?",
+    solution: "Eu crio rotinas automáticas no seu computador para executar essas tarefas chatas e demoradas em poucos segundos com um único clique.",
+    gain: "Sua equipe ganha horas livres no expediente para focar no que realmente traz dinheiro: atender bem e vender mais.",
+    whatsapp_msg: "Olá Rodrigo! Gostaria de automatizar tarefas manuais repetitivas na minha empresa."
   },
   {
-    id: "whatsapp-bot-nlp",
-    category: "ia",
-    icon: "Bot",
-    tag: "IA CONVERSACIONAL",
-    title: "WhatsApp Bot com Linguagem Natural (NLP)",
-    short_desc: "Atendimento humanizado 24/7 com IA que entende o cliente, consulta o ERP e vende.",
-    description: "Esqueça robôs travados que só aceitam números ('digite 1 para...'). Nosso bot com inteligência artificial compreende mensagens em texto ou áudio, consulta estoque, emite 2ª via de boletos, agenda reuniões e fecha vendas.",
-    price_tag: "Sob Consulta",
-    highlights: ["Conversação natural como humano", "Integração profunda ao banco de dados", "Transbordo suave para atendentes"]
-  }
-];
-
-// SEGMENTOS DE MERCADO ATENDIDOS
-export const DEFAULT_SEGMENTS = [
-  {
-    id: "panificadoras",
-    title: "Padarias & Confeitarias",
-    desc: "Controle de ficha técnica de receitas, perdas de insumos, balcão ágil com PIX e encomendas antecipadas."
+    id: "seguranca-backup",
+    icon: "ShieldCheck",
+    tag: "CÓPIA DE DADOS",
+    title: "Proteção de dados e cópia de segurança (Backup)",
+    short_desc: "Se o computador estragar amanhã, seus dados e clientes continuam salvos.",
+    description: "Se o computador principal da sua loja queimar, for roubado ou for infectado por vírus amanhã, você perde todo o histórico de vendas e clientes? Eu configuro cópias de segurança automáticas para que seus arquivos e informações fiquem salvos em local protegido todos os dias, sem você precisar lembrar de nada. Se qualquer equipamento estragar amanhã, seus dados continuam guardados e você recupera tudo em minutos, sem prejuízo financeiro.",
+    pain: "Se o computador principal da sua loja queimar, for roubado ou for infectado por vírus amanhã, você perde todo o histórico de vendas e clientes?",
+    solution: "Eu configuro cópias de segurança automáticas para que seus arquivos e informações fiquem salvos em local protegido todos os dias, sem você precisar lembrar de nada.",
+    gain: "Se qualquer equipamento estragar amanhã, seus dados continuam guardados e você recupera tudo em minutos, sem prejuízo financeiro.",
+    whatsapp_msg: "Olá Rodrigo! Gostaria de configurar cópias de segurança (backup) para os dados da minha empresa."
   },
   {
-    id: "construcao",
-    title: "Materiais de Construção",
-    desc: "Orçamentos técnicos para obras, romaneio de carga por canteiro, crediário próprio e emissão de notas fiscais."
-  },
-  {
-    id: "restaurantes",
-    title: "Bares & Restaurantes",
-    desc: "Comanda digital por mesa, integração direta com telão da cozinha, divisão de contas e controle de delivery."
-  },
-  {
-    id: "supermercados",
-    title: "Supermercados & Mercados",
-    desc: "Frente de caixa rápida com leitor de código de barras, balança integrada, controle de validade e TV de ofertas."
-  },
-  {
-    id: "roupas",
-    title: "Lojas de Roupas & Calçados",
-    desc: "Controle por grade (cor, tamanho e modelo), etiquetas de código de barras, promoções e crediário da loja."
-  },
-  {
-    id: "distribuidoras",
-    title: "Atacados & Distribuidoras",
-    desc: "Força de vendas externa no celular, romaneio e rotas de entrega, múltiplos estoques e faturamento em lote."
-  },
-  {
-    id: "oficinas",
-    title: "Oficinas Mecânicas & Autopeças",
-    desc: "Ordem de serviço completa por placa/veículo, histórico de manutenções, peças aplicadas e comissão de mecânicos."
-  },
-  {
-    id: "farmacias",
-    title: "Farmácias & Cosméticos",
-    desc: "Controle rigoroso de lote e data de validade, venda ágil no balcão e conferência de entradas via XML de compra."
-  }
-];
-
-// AS 5 DORES DO EMPRESÁRIO
-export const DEFAULT_PAINS = [
-  {
-    title: "Estoque Desregulado",
-    desc: "Comprar produto que já tem em excesso ou perder vendas porque o item em alta acabou sem ninguém perceber."
-  },
-  {
-    title: "Caixa sem Visão Real",
-    desc: "Vender muito no mês, mas chegar no fechamento sem saber para onde o dinheiro foi ou qual o lucro líquido real."
-  },
-  {
-    title: "Atendimento Lento no WhatsApp",
-    desc: "Clientes esperando horas por uma resposta comercial ou orçamentos simples enquanto a concorrência responde em 1 minuto."
-  },
-  {
-    title: "Retrabalho com Notas e Tributos",
-    desc: "Horas perdidas redigitando notas fiscais, medo de multas da SEFAZ ou confusão no fechamento contábil mensal."
-  },
-  {
-    title: "Processos Amarrados em Planilhas",
-    desc: "Depender de planilhas de Excel que corrompem, desatualizam ou que só uma pessoa da empresa sabe mexer."
-  }
-];
-
-// 4 PASSOS DA METODOLOGIA
-export const DEFAULT_STEPS = [
-  {
-    step: "01",
-    title: "Diagnóstico da Operação",
-    desc: "Mapeamos como sua empresa compra, vende, estoca, atende e fecha o financeiro para identificar os vazamentos de receita."
-  },
-  {
-    step: "02",
-    title: "Parametrização & Implantação",
-    desc: "Configuramos o ERP e os módulos na medida da sua empresa, importando seus produtos, clientes e tabelas de preço."
-  },
-  {
-    step: "03",
-    title: "Capacitação da Equipe",
-    desc: "Treinamos seus colaboradores no balcão, no estoque, no financeiro e no atendimento para dominarem o sistema na rotina."
-  },
-  {
-    step: "04",
-    title: "Acompanhamento & Evolução",
-    desc: "Suporte consultivo e contínuo para garantir que seus indicadores estejam sempre precisos e seu negócio pronto para crescer."
-  }
-];
-
-// PERGUNTAS FREQUENTES (FAQ)
-export const DEFAULT_FAQS = [
-  {
-    q: "Como funciona a implantação do sistema na minha empresa?",
-    a: "Nossa equipe realiza uma implantação assistida: mapeamos seu fluxo, migramos seus cadastros existentes (produtos, fornecedores, clientes), configuramos o ambiente e treinamos seus funcionários presencialmente ou por vídeo chamada dedicada."
-  },
-  {
-    q: "O que é o WhatsApp Bot com Linguagem Natural e como ele se conecta ao ERP?",
-    a: "Diferente dos bots antigos baseados em 'menu numérico', nosso bot utiliza inteligência artificial avançada para entender qualquer pergunta digitada ou gravada em áudio pelo cliente. Ele é conectado de forma segura ao seu banco de dados para consultar estoque, enviar código PIX, emitir 2ª via de boleto ou agendar serviços 24 horas por dia."
-  },
-  {
-    q: "Preciso trocar de computador ou comprar servidores caros?",
-    a: "Não. Nossas soluções operam com tecnologia moderna em nuvem com alta disponibilidade e baixo consumo de máquina. Computadores convencionais de balcão ou escritório rodam perfeitamente."
-  },
-  {
-    q: "E se a internet cair, consigo continuar vendendo no PDV?",
-    a: "Sim! Nosso módulo de frente de caixa e força de vendas possui modo de contingência offline, permitindo emitir pedidos e registrar vendas que são sincronizadas automaticamente assim que o sinal retorna."
-  },
-  {
-    q: "Como solicito uma demonstração ou orçamento?",
-    a: "Basta clicar em qualquer botão de 'Solicitar Diagnóstico' ou 'Falar no WhatsApp'. Você conversará diretamente com nossa equipe que entenderá seu segmento e montará uma proposta personalizada sem compromisso."
+    id: "consultoria-sistemas",
+    icon: "CheckCircle2",
+    tag: "ORIENTAÇÃO PRÁTICA",
+    title: "Ajuda para escolher e implantar sistemas no comércio",
+    short_desc: "Apoio neutro para escolher o programa certo e não jogar dinheiro fora com mensalidades.",
+    description: "Quer colocar um programa de gestão ou vendas na sua loja, mas não sabe qual contratar e tem medo de pagar mensalidade cara por algo que não vai funcionar? Eu analiso a rotina real do seu comércio, ajudo a escolher a ferramenta do mercado que melhor resolve o seu problema e acompanho a instalação do começo ao fim. Você não joga dinheiro fora com sistemas errados e coloca para rodar apenas o que realmente ajuda o seu negócio a crescer.",
+    pain: "Quer colocar um programa de gestão ou vendas na sua loja, mas não sabe qual contratar e tem medo de pagar mensalidade cara por algo que não vai funcionar?",
+    solution: "Eu analiso a rotina real do seu comércio, ajudo a escolher a ferramenta do mercado que melhor resolve o seu problema e acompanho a instalação do começo ao fim.",
+    gain: "Você não joga dinheiro fora com sistemas errados e coloca para rodar apenas o que realmente ajuda o seu negócio a crescer.",
+    whatsapp_msg: "Olá Rodrigo! Gostaria de ajuda para escolher e implantar um sistema no meu comércio."
   }
 ];
 
@@ -335,7 +149,7 @@ export const DEFAULT_PROJECTS = [
     badge: "Contenção Determinística no Kernel · BPF LSM Open Source",
     summary: "Jaula de segurança preventiva em Ring 0 para agentes autônomos de IA e processos locais. Intercepta chamadas de sistema no kernel Linux impedindo vazamento de credenciais (.env, chaves SSH) e conexões de rede não autorizadas com zero overhead.",
     problem_description: "Permitir que agentes autônomos de inteligência artificial (como Claude Code, Cursor, Aider ou robôs de automação) executem comandos e scripts diretamente no computador é extremamente produtivo, mas cria um risco de segurança real: o modelo pode ler segredos em arquivos `.env`, chaves privadas SSH ou conectar-se a servidores externos não autorizados ao cumprir uma instrução literal demais.\n\nAs soluções tradicionais forçam o isolamento do agente dentro de contêineres ou máquinas virtuais pesadas. Embora funcione, essa abordagem é lenta, difícil de configurar e rompe a agilidade de trabalhar diretamente na árvore de arquivos do projeto real.\n\nO SysCallCage inverte esse modelo: ele não isola o agente em uma jaula virtual pesada. O agente trabalha livremente nos seus arquivos locais, enquanto o kernel do Linux monitora e aplica regras inegociáveis no nível mais fundamental do sistema operacional, bloqueando qualquer desvio de forma síncrona antes que o comando proibido aconteça.",
-    technical_details: "### 1. Documentação Técnica & Produto Open Source\nO SysCallCage é um software open source distribuído sob a licença Mozilla Public License 2.0 (MPL 2.0). Ele foi projetado para desenvolvedores e empresas que desejam autonomia para seus agentes de inteligência artificial com controle total sobre o que pode ser acessado.\n\n### 2. Validação e Compilação de Kernel Customizado para WSL2\nUm dos pontos mais marcantes da engenharia do SysCallCage foi viabilizar seu funcionamento determinístico dentro do Windows via WSL2:\n\n- **O Desafio do Kernel Padrão:** Por padrão, a imagem de kernel do WSL2 distribuída pela Microsoft vem com os ganchos de segurança `BPF_LSM` desabilitados na compilação, impedindo a contenção preventiva síncrona.\n- **Compilação do Kernel a partir da Fonte Oficial:** Nossa engenharia clonou a árvore oficial da Microsoft (`WSL2-Linux-Kernel`), reconfigurou o arquivo de configuração com `CONFIG_BPF_LSM=y`, `CONFIG_SECURITY_BPF=y` e `CONFIG_DEBUG_INFO_BTF=y`, e compilou uma imagem de kernel Linux customizada e totalmente reprodutível.\n- **Superação de Bug no Verifier do Kernel:** Durante os testes de validação, foi identificado e solucionado um bug real no verifier do kernel Linux relacionado à inspeção de estruturas de ponteiros aninhados em programas BPF LSM, garantindo estabilidade e permitindo que o SysCallCage funcione com segurança comprovada no Windows.\n\n### 3. Como Funciona a Contenção em Ring 0\nConstruído em Rust com programas compilados diretamente em BPF LSM (Linux Security Module):\n\n1. **Política Declarativa em YAML:** O usuário define em poucas linhas quais diretórios o agente tem permissão para ler ou escrever, quais arquivos são estritamente vetados (ex: `**/.env`, `**/.ssh/**`, `**/*.pem`) e quais domínios externos podem ser contactados.\n2. **Interceptação Síncrona Preventiva:** A cada chamada de sistema relevante (`openat`, `execve`, `connect`), o programa BPF no kernel avalia a solicitação em nanossegundos. Se houver tentativa de acesso a um arquivo proibido, o kernel aborta a operação imediatamente com `-EACCES` ou encerra o processo infrator com `kill`.\n3. **Zero Overhead de Processamento:** Como a verificação reside dentro do próprio kernel via tabelas BPF em memória, não há trocas de contexto lentas com o espaço de usuário e nenhuma perda de desempenho na execução do código.\n\n### 4. Modo Watch Supervisionado\nAtravés do comando `syscallcage watch --policy politica.yaml -- claude-code`, o SysCallCage cria o processo do agente a partir do nascimento (`fork` + `execve`), eliminando a necessidade de descobrir o PID manualmente. Em conformidade com a flag de sistema `PR_SET_PDEATHSIG`, caso o supervisor seja encerrado, o agente protegido recebe `SIGTERM` imediatamente: o estado 'parado' é sempre preferível a 'rodando desprotegido'.\n\n### 5. Geração de Políticas por Aprendizado de Sessão\nPara projetos pré-existentes, o comando `generate-policy` permite rodar o agente em modo de observação e sintetizar automaticamente o arquivo YAML ideal com base nos arquivos que ele realmente precisou acessar, mantendo credenciais e chaves críticas fora da lista permitida por padrão.",
+    technical_details: "### 1. Documentação Técnica & Produto Open Source\nO SysCallCage é um software open source distribuído sob a licença Mozilla Public License 2.0 (MPL 2.0). Ele foi projetado para desenvolvedores e empresas que desejam autonomia para seus agentes de inteligência artificial com controle total sobre o que pode ser acessado.\n\n### 2. Validação e Compilação de Kernel Customizado para WSL2\nUm dos pontos mais marcantes da engenharia do SysCallCage foi viabilizar seu funcionamento determinístico dentro do Windows via WSL2:\n\n- **O Desafio do Kernel Padrão:** Por padrão, a imagem de kernel do WSL2 distribuída pela Microsoft vem com os ganchos de segurança `BPF_LSM` desabilitados na compilação, impedindo a contenção preventiva síncrona.\n- **Compilação do Kernel a partir da Fonte Oficial:** Clonei a árvore oficial da Microsoft (`WSL2-Linux-Kernel`), reconfigurou o arquivo de configuração com `CONFIG_BPF_LSM=y`, `CONFIG_SECURITY_BPF=y` e `CONFIG_DEBUG_INFO_BTF=y`, e compilei uma imagem de kernel Linux customizada e totalmente reprodutível.\n- **Superação de Bug no Verifier do Kernel:** Durante os testes de validação, foi identificado e solucionado um bug real no verifier do kernel Linux relacionado à inspeção de estruturas de ponteiros aninhados em programas BPF LSM, garantindo estabilidade e permitindo que o SysCallCage funcione com segurança comprovada no Windows.\n\n### 3. Como Funciona a Contenção em Ring 0\nConstruído em Rust com programas compilados diretamente em BPF LSM (Linux Security Module):\n\n1. **Política Declarativa em YAML:** O usuário define em poucas linhas quais diretórios o agente tem permissão para ler ou escrever, quais arquivos são estritamente vetados (ex: `**/.env`, `**/.ssh/**`, `**/*.pem`) e quais domínios externos podem ser contactados.\n2. **Interceptação Síncrona Preventiva:** A cada chamada de sistema relevante (`openat`, `execve`, `connect`), o programa BPF no kernel avalia a solicitação em nanossegundos. Se houver tentativa de acesso a um arquivo proibido, o kernel aborta a operação imediatamente com `-EACCES` ou encerra o processo infrator com `kill`.\n3. **Zero Overhead de Processamento:** Como a verificação reside dentro do próprio kernel via tabelas BPF em memória, não há trocas de contexto lentas com o espaço de usuário e nenhuma perda de desempenho na execução do código.\n\n### 4. Modo Watch Supervisionado\nAtravés do comando `syscallcage watch --policy politica.yaml -- claude-code`, o SysCallCage cria o processo do agente a partir do nascimento (`fork` + `execve`), eliminando a necessidade de descobrir o PID manualmente. Em conformidade com a flag de sistema `PR_SET_PDEATHSIG`, caso o supervisor seja encerrado, o agente protegido recebe `SIGTERM` imediatamente: o estado 'parado' é sempre preferível a 'rodando desprotegido'.\n\n### 5. Geração de Políticas por Aprendizado de Sessão\nPara projetos pré-existentes, o comando `generate-policy` permite rodar o agente em modo de observação e sintetizar automaticamente o arquivo YAML ideal com base nos arquivos que ele realmente precisou acessar, mantendo credenciais e chaves críticas fora da lista permitida por padrão.",
     cover_image: "",
     hero_image: "",
     gallery: [],

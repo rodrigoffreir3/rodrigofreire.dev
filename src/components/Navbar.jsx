@@ -38,15 +38,15 @@ export default function Navbar({ profile }) {
         <div className="logo">
           <Link
             to="/"
-            title={`${profile?.company_name || profile?.full_name || 'Rodrigo Freire'} Tech · Início`}
+            title={`${profile?.full_name || 'Rodrigo Freire'} · Início`}
             className="logo-link-stacked"
             onClick={() => setMobileMenuOpen(false)}
           >
             <span className="logo-title-main">
-              {profile?.company_name || (profile?.full_name ? `${profile.full_name} Tech` : 'Rodrigo Freire Tech')}
+              {profile?.full_name || 'Rodrigo Freire'}
             </span>
             <span className="logo-subtitle-desc">
-              {profile?.tagline || 'Desenvolvimento de Sistemas e Automações com Inteligência Artificial'}
+              {profile?.tagline || 'Serviços de TI e Informática · Porto Velho'}
             </span>
           </Link>
         </div>
@@ -58,17 +58,19 @@ export default function Navbar({ profile }) {
           </li>
 
           <li>
-            <a href="/#catalogo">Soluções & ERP</a>
+            <a href="/#servicos">O que eu resolvo</a>
           </li>
 
           <li>
-            <a href="/#ia-spotlight" className="menu-ia-link">
-              Automação com IA ✨
-            </a>
+            <a href="/#diferenciais">Diferenciais</a>
           </li>
 
           <li>
-            <a href="/#segmentos">Segmentos</a>
+            <a href="/#como-funciona">Como funciona</a>
+          </li>
+
+          <li>
+            <Link to="/sobre" className={isActive('/sobre') ? 'active' : ''}>Sobre</Link>
           </li>
 
           {/* DROPDOWN DE CASES / PROJETOS */}
@@ -90,7 +92,7 @@ export default function Navbar({ profile }) {
             {dropdownOpen && (
               <div className="dropdown-menu-box">
                 <Link to="/projetos" className="dropdown-link-all">
-                  ✦ Ver Todos os Cases de Sucesso
+                  ✦ Ver Todos os Cases
                 </Link>
                 <div className="dropdown-divider" />
                 {projects.map((proj) => (
@@ -118,7 +120,7 @@ export default function Navbar({ profile }) {
         {/* CTA NO HEADER DESKTOP & MOBILE TOGGLE */}
         <div className="header-actions-right">
           <a
-            href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá! Vim pelo site da RF Tech e gostaria de agendar um diagnóstico.')}`}
+            href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá Rodrigo! Gostaria de tirar uma dúvida sobre serviços de informática/TI.')}`}
             target="_blank"
             rel="noopener noreferrer"
             className="corp-btn-accent header-cta-btn"
@@ -148,29 +150,32 @@ export default function Navbar({ profile }) {
             <Link to="/" className={`mobile-nav-link ${isActive('/') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
               Início
             </Link>
-            <a href="/#catalogo" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
-              Soluções & ERP
+            <a href="/#servicos" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
+              O que eu resolvo
             </a>
-            <a href="/#ia-spotlight" className="mobile-nav-link menu-ia-link" onClick={() => setMobileMenuOpen(false)}>
-              Automação com IA ✨
+            <a href="/#diferenciais" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
+              Diferenciais
             </a>
-            <a href="/#segmentos" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
-              Segmentos Atendidos
+            <a href="/#como-funciona" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
+              Como funciona
             </a>
+            <Link to="/sobre" className={`mobile-nav-link ${isActive('/sobre') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
+              Sobre mim
+            </Link>
             <Link to="/projetos" className={`mobile-nav-link ${location.pathname.startsWith('/projetos') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
               Cases de Sucesso
             </Link>
             <Link to="/blog" className={`mobile-nav-link ${location.pathname.startsWith('/blog') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
-              Blog & Insights
+              Blog & Artigos
             </Link>
             <Link to="/contato" className={`mobile-nav-link ${isActive('/contato') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
-              Fale Conosco
+              Contato Direto
             </Link>
 
             <div className="mobile-drawer-divider" />
 
             <a
-              href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá! Vim pelo site da RF Tech e gostaria de agendar um diagnóstico.')}`}
+              href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá Rodrigo! Gostaria de tirar uma dúvida sobre serviços de informática/TI.')}`}
               target="_blank"
               rel="noopener noreferrer"
               className="corp-btn-accent mobile-drawer-cta"

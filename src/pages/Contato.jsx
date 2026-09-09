@@ -1,58 +1,65 @@
 import React from 'react';
-import { MessageSquare, Mail, ShieldCheck, Sparkles } from 'lucide-react';
+import { MessageSquare, Mail, ShieldCheck, Sparkles, MapPin } from 'lucide-react';
 import GithubIcon from '../components/GithubIcon';
 
 export default function Contato({ profile }) {
-  const whatsappUrl = `https://wa.me/${profile?.whatsapp_number || '5569992782919'}?text=${encodeURIComponent('Olá Rodrigo! Gostaria de solicitar um orçamento para um projeto.')}`;
+  const phone = profile?.whatsapp_number || '5569992782919';
+  const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent('Olá Rodrigo! Vim pelo seu site e gostaria de conversar sobre um serviço para o meu comércio.')}`;
 
   return (
     <div className="portfolio-container" style={{ paddingTop: '2.5rem' }}>
       
       {/* HEADER */}
-      <div className="section-header-corp" style={{ marginBottom: '3.5rem' }}>
-        <div className="corp-badge">
-          <Sparkles size={14} />
-          <span>Canais de Atendimento</span>
-        </div>
-        <h2>Contato & Atendimento Direto</h2>
-        <p>Tire dúvidas técnicas, solicite propostas para plataformas web, automações de IA ou consultoria de infraestrutura.</p>
+      <div className="section-head-center" style={{ marginBottom: '3.5rem' }}>
+        <span className="section-tag-pill">
+          <Sparkles size={14} style={{ display: 'inline', marginRight: '4px' }} />
+          Canais de Atendimento
+        </span>
+        <h1 className="section-title-large">Contato & Atendimento Direto</h1>
+        <p className="section-desc-subtle">
+          Tire dúvidas, peça um orçamento sem compromisso ou chame para resolver um problema no computador, impressora ou sistema da sua empresa em Porto Velho.
+        </p>
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem', marginBottom: '4rem' }}>
         
         {/* CARD WHATSAPP (CANAL PRINCIPAL) */}
-        <div className="service-card-corp" style={{ border: '1px solid var(--primary-border)', background: 'linear-gradient(135deg, rgba(17, 24, 39, 0.8), rgba(30, 58, 138, 0.4))' }}>
-          <div className="service-icon-box" style={{ background: 'rgba(37, 211, 102, 0.15)', color: '#25d366', borderColor: 'rgba(37, 211, 102, 0.3)' }}>
+        <div className="service-card-liquid" style={{ border: '1px solid var(--primary-border)', display: 'flex', flexDirection: 'column' }}>
+          <div className="service-icon-wrapper" style={{ background: 'rgba(37, 211, 102, 0.15)', color: '#25d366', borderColor: 'rgba(37, 211, 102, 0.3)' }}>
             <MessageSquare size={24} />
           </div>
-          <div className="corp-badge" style={{ alignSelf: 'flex-start', marginBottom: '0.65rem' }}>Canal Rápido · 24/7</div>
-          <h3>WhatsApp Direto</h3>
-          <p>Canal prioritário para agendamento de reuniões, alinhamento de escopo e suporte técnico com Rodrigo Freire.</p>
+          <div className="corp-badge" style={{ alignSelf: 'flex-start', margin: '1rem 0 0.65rem' }}>Resposta Rápida</div>
+          <h3 style={{ fontSize: '1.3rem', marginBottom: '0.75rem', color: 'var(--text-heading)' }}>WhatsApp Direto</h3>
+          <p style={{ fontSize: '0.95rem', color: 'var(--text-body)', lineHeight: '1.6', marginBottom: '1.75rem' }}>
+            Canal prioritário para tirar dúvidas, pedir orçamento ou solicitar socorro técnico para o seu comércio diretamente com Rodrigo Freire.
+          </p>
           
           <a
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="corp-btn corp-btn-primary"
-            style={{ marginTop: 'auto', background: '#25d366', borderColor: '#25d366' }}
+            className="corp-btn-accent"
+            style={{ marginTop: 'auto', background: '#25d366', borderColor: '#25d366', justifyContent: 'center' }}
           >
-            Abrir Conversa no WhatsApp →
+            <MessageSquare size={16} /> Abrir Conversa no WhatsApp →
           </a>
         </div>
 
         {/* CARD E-MAIL & GITHUB */}
-        <div className="service-card-corp">
-          <div className="service-icon-box">
-            <Mail size={24} />
+        <div className="service-card-liquid" style={{ display: 'flex', flexDirection: 'column' }}>
+          <div className="service-icon-wrapper">
+            <Mail size={24} color="var(--color-dark-teal)" />
           </div>
-          <div className="corp-badge" style={{ alignSelf: 'flex-start', marginBottom: '0.65rem' }}>Propostas Formais</div>
-          <h3>E-mail & Redes</h3>
-          <p>Para envio de editais, termos de confidencialidade (NDA) ou especificações técnicas detalhadas de projetos.</p>
+          <div className="corp-badge" style={{ alignSelf: 'flex-start', margin: '1rem 0 0.65rem' }}>Documentos & Propostas</div>
+          <h3 style={{ fontSize: '1.3rem', marginBottom: '0.75rem', color: 'var(--text-heading)' }}>E-mail & Redes</h3>
+          <p style={{ fontSize: '0.95rem', color: 'var(--text-body)', lineHeight: '1.6', marginBottom: '1.75rem' }}>
+            Para envio de notas, contratos, termos de prestação de serviços ou orçamentos formais por escrito.
+          </p>
           
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginTop: 'auto' }}>
             <a
               href={`mailto:${profile?.email || 'contato@rodrigofreire.dev'}`}
-              className="corp-btn corp-btn-secondary"
+              className="corp-btn-outline-glass"
               style={{ justifyContent: 'flex-start' }}
             >
               <Mail size={16} /> {profile?.email || 'contato@rodrigofreire.dev'}
@@ -63,7 +70,7 @@ export default function Contato({ profile }) {
                 href={profile.github_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="corp-btn corp-btn-secondary"
+                className="corp-btn-outline-glass"
                 style={{ justifyContent: 'flex-start' }}
               >
                 <GithubIcon size={16} /> GitHub (@rodrigoffreir3)
@@ -75,13 +82,13 @@ export default function Contato({ profile }) {
       </div>
 
       {/* BANNER DE INFORMAÇÕES DE CREDIBILIDADE */}
-      <div className="comparison-card-corp">
+      <div className="service-card-liquid" style={{ padding: '2rem 2.5rem', marginBottom: '4rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-          <ShieldCheck size={24} style={{ color: '#60a5fa' }} />
-          <h4 style={{ margin: 0, fontSize: '1.2rem' }}>Segurança & Sigilo Profissional</h4>
+          <ShieldCheck size={24} style={{ color: 'var(--color-dark-teal)' }} />
+          <h4 style={{ margin: 0, fontSize: '1.25rem', color: 'var(--text-heading)' }}>Compromisso, Segurança & Sigilo</h4>
         </div>
-        <p style={{ color: 'var(--text-body)', margin: 0, lineHeight: '1.6' }}>
-          Todos os projetos, códigos-fonte e dados de negócio dos clientes são protegidos sob rigoroso sigilo e boas práticas de engenharia de software e segurança da informação.
+        <p style={{ color: 'var(--text-body)', margin: 0, lineHeight: '1.7', fontSize: '0.98rem' }}>
+          Todos os dados, arquivos e planilhas da sua empresa são tratados com sigilo profissional absoluto, responsabilidade e respeito ao seu negócio.
         </p>
       </div>
 

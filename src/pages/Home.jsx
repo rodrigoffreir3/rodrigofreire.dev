@@ -1,336 +1,159 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { DEFAULT_SERVICES } from '../data/defaultData';
 import {
-  DEFAULT_SERVICES,
-  DEFAULT_SEGMENTS,
-  DEFAULT_PAINS,
-  DEFAULT_STEPS,
-  DEFAULT_FAQS,
-  DEFAULT_SOLUTIONS_STRIP
-} from '../data/defaultData';
-import AiChatSimulator from '../components/AiChatSimulator';
-import {
-  LayoutDashboard,
-  Zap,
-  FileText,
-  Boxes,
-  TrendingUp,
-  UtensilsCrossed,
-  Truck,
-  Clock,
+  Wrench,
   ShoppingCart,
-  Code2,
-  BrainCircuit,
-  Bot,
-  Sparkles,
-  ArrowRight,
+  FileSpreadsheet,
+  Zap,
   ShieldCheck,
-  ChevronDown,
-  ChevronUp,
-  MessageSquare,
   CheckCircle2,
-  PhoneCall
+  MessageSquare,
+  ArrowRight,
+  ArrowDown,
+  MapPin,
+  Clock,
+  Send
 } from 'lucide-react';
 
 const ICON_MAP = {
-  LayoutDashboard,
-  Zap,
-  FileText,
-  Boxes,
-  TrendingUp,
-  UtensilsCrossed,
-  Truck,
-  Clock,
+  Wrench,
   ShoppingCart,
-  Code2,
-  BrainCircuit,
-  Bot
+  FileSpreadsheet,
+  Zap,
+  ShieldCheck,
+  CheckCircle2
 };
 
-export default function Home({ profile, projects = [], posts = [] }) {
-  const [selectedCategory, setSelectedCategory] = useState('todos');
-  const [openFaqIndex, setOpenFaqIndex] = useState(0);
+export default function Home({ profile }) {
+  const phone = profile?.whatsapp_number || '5569992782919';
 
-  // Formulário de diagnóstico
+  // Formulário simplificado de contato / socorro
   const [formData, setFormData] = useState({
     nome: '',
     whatsapp: '',
     empresa: '',
-    segmento: 'varejo',
-    dor_principal: 'estoque'
+    problema: ''
   });
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    const phone = profile?.whatsapp_number || '5569992782919';
-    const text = `Olá! Gostaria de solicitar um diagnóstico gratuito para minha empresa.\n\n*Nome:* ${formData.nome}\n*Empresa:* ${formData.empresa}\n*Segmento:* ${formData.segmento}\n*Principal Desafio:* ${formData.dor_principal}`;
+    const text = `Olá Rodrigo! Vim pelo seu site e preciso de ajuda com um problema:\n\n*Nome:* ${formData.nome}\n*WhatsApp:* ${formData.whatsapp}\n*Empresa/Comércio:* ${formData.empresa || 'Não informado'}\n*O que está acontecendo:* ${formData.problema}`;
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
   };
-
-  const filteredServices = selectedCategory === 'todos'
-    ? DEFAULT_SERVICES
-    : DEFAULT_SERVICES.filter((s) => s.category === selectedCategory);
-
-  const phone = profile?.whatsapp_number || '5569992782919';
 
   return (
     <div className="home-enterprise-wrapper">
 
       {/* ============================================================
-         1. HERO EXECUTIVO HIGH-TECH COM APPLE LIQUID GLASS
+         BLOCO 1: ABERTURA (ACIMA DA DOBRA) — FOCO NA DOR REAL
          ============================================================ */}
       <section className="corp-hero-enterprise" id="inicio">
-        <div className="hero-enterprise-inner">
-          <div className="hero-enterprise-copy">
-            <div className="hero-pill-badge">
-              <Sparkles size={14} />
-              <span>Soluções Empresariais Integradas + IA Aplicada</span>
+        <div className="hero-enterprise-inner" style={{ gridTemplateColumns: '1fr', maxWidth: '880px', margin: '0 auto', textAlign: 'center' }}>
+          <div className="hero-enterprise-copy" style={{ alignItems: 'center' }}>
+            
+            <div className="hero-pill-badge" style={{ margin: '0 auto 1.5rem' }}>
+              <MapPin size={14} />
+              <span>Atendimento em Porto Velho · Presencial e Remoto</span>
             </div>
 
-            <h1 className="hero-enterprise-title">
-              Controle total da sua operação. Da gestão de estoque ao <span className="highlight-cyan">atendimento com IA</span>.
+            <h1 className="hero-enterprise-title" style={{ fontSize: 'clamp(2.1rem, 4.5vw, 3.4rem)', lineHeight: '1.2', marginBottom: '1.5rem' }}>
+              Seu sistema travou, o computador do caixa não liga ou aquele problema que ninguém resolve <span className="highlight-cyan">já virou rotina?</span>
             </h1>
 
-            <p className="hero-enterprise-desc">
-              {profile?.lead_bio || "Elimine o caos de planilhas soltas e perdas invisíveis de receita. Implementamos sistemas ERP completos, frente de caixa com PIX dinâmico e agentes de inteligência artificial sob medida."}
+            <p className="hero-enterprise-desc" style={{ fontSize: '1.2rem', lineHeight: '1.7', maxWidth: '780px', margin: '0 auto 2rem', color: 'var(--text-body)' }}>
+              Eu atendo aqui em Porto Velho, falo direto com você no WhatsApp, sem atendente intermediário, sem call center e sem chamado que desaparece.
             </p>
 
-            <div className="hero-pain-chips-row">
-              <span className="hero-pain-chip-item">Estoque sem furos</span>
-              <span className="hero-pain-chip-item">Caixa com lucro real</span>
-              <span className="hero-pain-chip-item">Atendimento IA 24/7</span>
-              <span className="hero-pain-chip-item">Notas fiscais sem travar</span>
+            <div className="hero-pain-chips-row" style={{ justifyContent: 'center', marginBottom: '2.5rem', flexWrap: 'wrap' }}>
+              <span className="hero-pain-chip-item">✓ Atendimento em Porto Velho</span>
+              <span className="hero-pain-chip-item">✓ Orçamento claro antes de começar</span>
+              <span className="hero-pain-chip-item">✓ Explicação simples em português</span>
+              <span className="hero-pain-chip-item">✓ Resposta rápida no WhatsApp</span>
             </div>
 
-            <div className="hero-actions-row">
-              <a href="#diagnostico" className="corp-btn-accent">
-                🚀 Solicitar Diagnóstico Gratuito
-              </a>
-              <a href="#ia-spotlight" className="corp-btn-outline-glass">
-                Ver Simulação de IA →
-              </a>
+            <div className="hero-actions-row" style={{ justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
               <a
-                href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá! Gostaria de conhecer as soluções para minha empresa.')}`}
+                href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá Rodrigo! Vi seu site e preciso de ajuda com um problema no meu comércio/computador.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="corp-btn-outline-glass"
+                className="corp-btn-accent"
+                style={{ fontSize: '1.05rem', padding: '0.9rem 2rem' }}
               >
-                <MessageSquare size={16} /> WhatsApp Direto
+                <MessageSquare size={18} /> Falar com Rodrigo no WhatsApp
+              </a>
+
+              <a href="#servicos" className="corp-btn-outline-glass" style={{ fontSize: '1.05rem', padding: '0.9rem 1.8rem' }}>
+                Ver o que eu resolvo <ArrowDown size={16} />
               </a>
             </div>
 
-            <div className="hero-metrics-bar">
-              <div className="hero-metric-item">
-                <strong>12+</strong>
-                <span>Módulos Integrados</span>
-              </div>
-              <div className="hero-metric-item">
-                <strong>100%</strong>
-                <span>Implantação Assistida</span>
-              </div>
-              <div className="hero-metric-item">
-                <strong>24/7</strong>
-                <span>Automação com IA</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Visual Hero Mockup */}
-          <div className="hero-visual-card">
-            <div className="hero-screen-header">
-              <span className="screen-dot dot-red" />
-              <span className="screen-dot dot-yellow" />
-              <span className="screen-dot dot-green" />
-              <small style={{ color: 'var(--text-muted)', marginLeft: 'auto', fontSize: '0.72rem', fontWeight: 600 }}>
-                painel-executivo.rftech.app
-              </small>
-            </div>
-
-            <div className="hero-kpi-grid">
-              <div className="kpi-card">
-                <small>Faturamento Hoje</small>
-                <strong>R$ 14.820,00</strong>
-                <span>▲ 18.4% vs semana anterior</span>
-              </div>
-              <div className="kpi-card">
-                <small>Estoque & Reposição</small>
-                <strong>98.2% Regular</strong>
-                <span>0 rupturas críticas</span>
-              </div>
-              <div className="kpi-card">
-                <small>PIX no PDV</small>
-                <strong>312 Transações</strong>
-                <span>Confirmação em 1.4s</span>
-              </div>
-              <div className="kpi-card">
-                <small>WhatsApp Bot IA</small>
-                <strong>84 Leads Atendidos</strong>
-                <span>24/7 sem fila de espera</span>
-              </div>
-            </div>
-
-            <div className="hero-security-status-bar">
-              <div className="hero-security-status-left">
-                <ShieldCheck size={18} color="var(--color-cyan-teal)" />
-                <span>Conexão Segura SEFAZ & Banco Central</span>
-              </div>
-              <span className="hero-security-status-badge">ONLINE</span>
-            </div>
           </div>
         </div>
       </section>
 
       {/* ============================================================
-         2. FAIXA DE SOLUÇÕES RÁPIDAS (STRIP)
+         BLOCO 2: O QUE EU RESOLVO (6 SERVIÇOS PRÁTICOS)
          ============================================================ */}
-      <section className="solutions-strip-bar">
-        <div className="solutions-strip-inner">
-          {DEFAULT_SOLUTIONS_STRIP.map((item, idx) => (
-            <a key={idx} href={item.href || "#catalogo"} className="strip-item-chip">
-              <strong>{item.title}</strong>
-              <span>{item.desc}</span>
-            </a>
-          ))}
-        </div>
-      </section>
-
-      {/* ============================================================
-         3. DORES DO CLIENTE (ONDE VOCÊ PERDE DINHEIRO E CONTROLE)
-         ============================================================ */}
-      <section className="section-pains-container">
+      <section className="section-services-catalog" id="servicos" style={{ paddingTop: '5rem', paddingBottom: '5rem' }}>
         <div className="section-head-center">
-          <span className="section-tag-pill">Diagnóstico Operacional</span>
-          <h2 className="section-title-large">Onde sua empresa está perdendo dinheiro agora?</h2>
+          <span className="section-tag-pill">Serviços em Porto Velho</span>
+          <h2 className="section-title-large">O que eu resolvo no dia a dia da sua empresa</h2>
           <p className="section-desc-subtle">
-            Problemas invisíveis na rotina comercial corroem a sua margem de lucro e geram retrabalho diário para você e sua equipe.
+            Sem empurrar coisas caras que você não precisa. Serviços diretos e pontuais para destravar o seu comércio e deixar você trabalhar em paz.
           </p>
         </div>
 
-        <div className="pains-grid-cards">
-          {DEFAULT_PAINS.map((pain) => (
-            <div key={pain.id} className="pain-card-item">
-              <div className="pain-icon-cross">✕</div>
-              <h3>{pain.title}</h3>
-              <p>{pain.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+        <div className="services-catalog-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '2rem', marginTop: '3rem' }}>
+          {DEFAULT_SERVICES.map((service) => {
+            const IconComponent = ICON_MAP[service.icon] || Wrench;
+            const message = service.whatsapp_msg || `Olá Rodrigo! Gostaria de conversar sobre: ${service.title}`;
 
-      {/* ============================================================
-         4. METODOLOGIA EM 4 PASSOS
-         ============================================================ */}
-      <section className="section-methodology-bg">
-        <div className="methodology-inner">
-          <div className="section-head-center">
-            <span className="section-tag-pill">
-              Metodologia de Sucesso
-            </span>
-            <h2 className="section-title-large">
-              4 passos para sair do improviso e assumir o controle total
-            </h2>
-            <p className="section-desc-subtle">
-              Não vendemos apenas software solto. Acompanhamos sua equipe em cada etapa para garantir resultados práticos.
-            </p>
-          </div>
-
-          <div className="methodology-grid-steps">
-            {DEFAULT_STEPS.map((step) => (
-              <div key={step.step} className="method-step-card">
-                <div className="step-num-badge">{step.step}</div>
-                <h3>{step.title}</h3>
-                <p>{step.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============================================================
-         5. CATÁLOGO DE MÓDULOS & SOLUÇÕES (FILTRÁVEL)
-         ============================================================ */}
-      <section className="section-services-catalog" id="catalogo">
-        <div className="section-head-center">
-          <span className="section-tag-pill">Soluções Corporativas</span>
-          <h2 className="section-title-large">Módulos especializados para cada rotina do seu negócio</h2>
-          <p className="section-desc-subtle">
-            Arquitetura modular e integrada: comece resolvendo a dor mais urgente e adicione novos módulos conforme sua empresa cresce.
-          </p>
-        </div>
-
-        {/* Filtros de Categoria */}
-        <div className="catalog-filter-tabs">
-          <button
-            onClick={() => setSelectedCategory('todos')}
-            className={`catalog-tab-btn ${selectedCategory === 'todos' ? 'active' : ''}`}
-          >
-            Todos os Módulos
-          </button>
-          <button
-            onClick={() => setSelectedCategory('erp')}
-            className={`catalog-tab-btn ${selectedCategory === 'erp' ? 'active' : ''}`}
-          >
-            Gestão & ERP
-          </button>
-          <button
-            onClick={() => setSelectedCategory('pdv')}
-            className={`catalog-tab-btn ${selectedCategory === 'pdv' ? 'active' : ''}`}
-          >
-            Frente de Caixa (PDV)
-          </button>
-          <button
-            onClick={() => setSelectedCategory('ia')}
-            className={`catalog-tab-btn ${selectedCategory === 'ia' ? 'active' : ''}`}
-          >
-            Inteligência Artificial ✨
-          </button>
-          <button
-            onClick={() => setSelectedCategory('fiscal')}
-            className={`catalog-tab-btn ${selectedCategory === 'fiscal' ? 'active' : ''}`}
-          >
-            Fiscal & Tributário
-          </button>
-          <button
-            onClick={() => setSelectedCategory('software')}
-            className={`catalog-tab-btn ${selectedCategory === 'software' ? 'active' : ''}`}
-          >
-            Sob Medida & Apps
-          </button>
-        </div>
-
-        {/* Grid de Serviços */}
-        <div className="services-catalog-grid">
-          {filteredServices.map((service) => {
-            const IconComponent = ICON_MAP[service.icon] || LayoutDashboard;
             return (
-              <div key={service.id} className="service-card-liquid">
+              <div key={service.id} className="service-card-liquid" style={{ display: 'flex', flexDirection: 'column' }}>
                 <div className="service-card-header">
                   <div className="service-icon-wrapper">
-                    <IconComponent size={24} />
+                    <IconComponent size={22} />
                   </div>
                   <span className="service-card-tag">{service.tag}</span>
                 </div>
 
-                <h3>{service.title}</h3>
-                <p>{service.description}</p>
+                <h3 style={{ fontSize: '1.3rem', marginBottom: '1rem', color: 'var(--text-heading)' }}>
+                  {service.title}
+                </h3>
 
-                {service.highlights && (
-                  <ul className="service-highlights-list">
-                    {service.highlights.map((h, i) => (
-                      <li key={i}>{h}</li>
-                    ))}
-                  </ul>
-                )}
+                {/* Dor */}
+                <div style={{ marginBottom: '0.85rem' }}>
+                  <p style={{ fontSize: '0.94rem', color: 'var(--text-body)', lineHeight: '1.6', margin: 0 }}>
+                    <strong style={{ color: '#ef4444' }}>O problema: </strong>
+                    {service.pain}
+                  </p>
+                </div>
 
-                <div className="service-card-footer">
-                  <span className="service-price-label">{service.price_tag}</span>
+                {/* Solução */}
+                <div style={{ marginBottom: '1rem' }}>
+                  <p style={{ fontSize: '0.94rem', color: 'var(--text-body)', lineHeight: '1.6', margin: 0 }}>
+                    <strong style={{ color: 'var(--color-dark-teal)' }}>O que eu faço: </strong>
+                    {service.solution}
+                  </p>
+                </div>
+
+                {/* Ganho Concreto */}
+                <div style={{ marginTop: 'auto', padding: '0.85rem 1rem', background: 'rgba(0, 245, 212, 0.08)', borderRadius: '12px', border: '1px solid rgba(0, 245, 212, 0.2)', marginBottom: '1.25rem' }}>
+                  <p style={{ fontSize: '0.9rem', color: 'var(--text-heading)', lineHeight: '1.5', margin: 0 }}>
+                    <strong>Ganho concreto: </strong>
+                    {service.gain}
+                  </p>
+                </div>
+
+                <div className="service-card-footer" style={{ paddingTop: '0.75rem', borderTop: '1px solid var(--color-gray-ui)' }}>
                   <a
-                    href={`https://wa.me/${phone}?text=${encodeURIComponent(`Olá! Tenho interesse no módulo: ${service.title}`)}`}
+                    href={`https://wa.me/${phone}?text=${encodeURIComponent(message)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="service-btn-contact"
+                    style={{ width: '100%', justifyContent: 'center' }}
                   >
-                    Detalhes <ArrowRight size={14} />
+                    Pedir ajuda com isso <ArrowRight size={14} />
                   </a>
                 </div>
               </div>
@@ -340,187 +163,159 @@ export default function Home({ profile, projects = [], posts = [] }) {
       </section>
 
       {/* ============================================================
-         6. DESTAQUE ESPECIAL: AUTOMAÇÃO COM IA & WHATSAPP BOT COM SIMULADOR
+         BLOCO 3: POR QUE EU, E NÃO O SUPORTE QUE VOCÊ JÁ TENTOU
          ============================================================ */}
-      <section className="section-ai-spotlight" id="ia-spotlight">
-        <div className="ai-spotlight-inner">
-          <div className="ai-spotlight-copy">
-            <span className="section-tag-pill">
-              Inovação Exclusiva
-            </span>
-            <h2>Atendimento 24/7 e Automação de Processos com Inteligência Artificial</h2>
-            <p>
-              Substitua robôs arcaicos por agentes de IA com compreensão de linguagem natural. Seu cliente envia áudios ou textos livres e a IA consulta o estoque, envia o código PIX e registra o pedido no seu ERP em tempo real.
+      <section className="section-pains-container" id="diferenciais" style={{ paddingTop: '5rem', paddingBottom: '5rem', background: 'var(--color-off-white)' }}>
+        <div className="section-head-center">
+          <span className="section-tag-pill">Diferenciais Reais</span>
+          <h2 className="section-title-large">Por que me chamar em vez de esperar pelo suporte comum?</h2>
+          <p className="section-desc-subtle">
+            Quem tem comércio em Porto Velho conhece a dor de abrir chamado em empresa de fora e ficar dias esperando uma resposta enquanto a fila do caixa só aumenta.
+          </p>
+        </div>
+
+        <div className="pains-grid-cards" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginTop: '2.5rem' }}>
+          
+          <div className="pain-card-item" style={{ borderColor: 'rgba(11, 74, 79, 0.15)', background: '#FFFFFF' }}>
+            <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
+              <MessageSquare size={22} color="var(--color-dark-teal)" />
+            </div>
+            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Atendimento direto comigo</h3>
+            <p style={{ fontSize: '0.92rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
+              Você fala direto com a pessoa que faz o serviço e resolve o problema. Sem atendentes intermediários, sem protocolo demorado e sem precisar explicar a mesma história dez vezes para pessoas diferentes.
+            </p>
+          </div>
+
+          <div className="pain-card-item" style={{ borderColor: 'rgba(11, 74, 79, 0.15)', background: '#FFFFFF' }}>
+            <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
+              <MapPin size={22} color="var(--color-dark-teal)" />
+            </div>
+            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Presença local em Porto Velho</h3>
+            <p style={{ fontSize: '0.92rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
+              Moro e atendo aqui na cidade. Se o problema não puder ser resolvido pelo computador à distância, eu me desloco até o seu estabelecimento para resolver pessoalmente no seu balcão.
+            </p>
+          </div>
+
+          <div className="pain-card-item" style={{ borderColor: 'rgba(11, 74, 79, 0.15)', background: '#FFFFFF' }}>
+            <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
+              <CheckCircle2 size={22} color="var(--color-dark-teal)" />
+            </div>
+            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Falo a sua língua</h3>
+            <p style={{ fontSize: '0.92rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
+              Nada de palavras complicadas para parecer difícil. Eu explico em português claro o que estragou, por que aconteceu e o que fiz para consertar, para você entender exatamente o que está pagando.
+            </p>
+          </div>
+
+          <div className="pain-card-item" style={{ borderColor: 'rgba(11, 74, 79, 0.15)', background: '#FFFFFF' }}>
+            <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
+              <Clock size={22} color="var(--color-dark-teal)" />
+            </div>
+            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Menos tempo de loja parada</h3>
+            <p style={{ fontSize: '0.92rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
+              Comércio não pode esperar dias por socorro. Meu foco é fazer seu computador, impressora ou planilha voltarem a funcionar o mais rápido possível para você não perder faturamento.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ============================================================
+         BLOCO 4: COMO FUNCIONA NA PRÁTICA (3 PASSOS HONESTOS)
+         ============================================================ */}
+      <section className="section-methodology-bg" id="como-funciona" style={{ paddingTop: '5rem', paddingBottom: '5rem' }}>
+        <div className="methodology-inner">
+          <div className="section-head-center">
+            <span className="section-tag-pill">Sem Burocracia</span>
+            <h2 className="section-title-large">Como funciona para resolver o seu problema</h2>
+            <p className="section-desc-subtle">
+              Três passos simples e transparentes do primeiro contato até o serviço entregue.
+            </p>
+          </div>
+
+          <div className="methodology-grid-steps" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem', marginTop: '3rem' }}>
+            
+            <div className="method-step-card" style={{ background: '#FFFFFF', padding: '2rem', borderRadius: '18px' }}>
+              <div className="step-num-badge">01</div>
+              <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem' }}>Conversa no WhatsApp</h3>
+              <p style={{ fontSize: '0.93rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
+                Você me manda uma mensagem contando o que está acontecendo no seu computador, impressora, planilha ou na loja. É rápido e sem burocracia.
+              </p>
+            </div>
+
+            <div className="method-step-card" style={{ background: '#FFFFFF', padding: '2rem', borderRadius: '18px' }}>
+              <div className="step-num-badge">02</div>
+              <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem' }}>Orçamento claro antes de começar</h3>
+              <p style={{ fontSize: '0.93rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
+                Eu analiso a situação e passo para você o valor exato do serviço e o prazo necessário antes de mexer em qualquer coisa. Você aprova e não tem surpresa na conta.
+              </p>
+            </div>
+
+            <div className="method-step-card" style={{ background: '#FFFFFF', padding: '2rem', borderRadius: '18px' }}>
+              <div className="step-num-badge">03</div>
+              <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem' }}>Problema resolvido com explicação</h3>
+              <p style={{ fontSize: '0.93rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
+                Executo o conserto ou a configuração, testo junto com você e mostro o que foi feito para a sua empresa seguir trabalhando com tranquilidade.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================
+         BLOCO 5: CHAMADA FINAL & FORMULÁRIO SIMPLIFICADO
+         ============================================================ */}
+      <section className="section-diagnostic-contact" id="contato" style={{ paddingTop: '5rem', paddingBottom: '6rem' }}>
+        <div className="diagnostic-contact-inner" style={{ maxWidth: '1080px', margin: '0 auto' }}>
+          <div>
+            <span className="section-tag-pill">Atendimento Direto</span>
+            <h2 className="section-title-large">Vamos resolver aquele problema do seu comércio hoje?</h2>
+            <p className="section-desc-subtle" style={{ marginBottom: '1.75rem' }}>
+              Fale diretamente comigo pelo WhatsApp. Conte o que está acontecendo e eu respondo com o que pode ser feito para resolver.
             </p>
 
-            <div className="ai-features-checks">
-              <div className="ai-feature-row">
-                <div className="ai-feature-icon-badge">✓</div>
-                <div>
-                  <strong>Compreensão Contextual Profunda (NLP)</strong>
-                  <span>Entende gírias, erros de digitação e mensagens de áudio sem menus travados.</span>
-                </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', marginBottom: '2rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: 'var(--color-dark-teal)', fontWeight: '600' }}>
+                <CheckCircle2 size={18} /> Atendimento em Porto Velho e região
               </div>
-              <div className="ai-feature-row">
-                <div className="ai-feature-icon-badge">✓</div>
-                <div>
-                  <strong>Conexão em Tempo Real com o Banco de Dados</strong>
-                  <span>Verifica saldo de produtos, tabela de preços e limite de crédito na hora.</span>
-                </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: 'var(--color-dark-teal)', fontWeight: '600' }}>
+                <CheckCircle2 size={18} /> Você fala direto com o Rodrigo, sem robôs
               </div>
-              <div className="ai-feature-row">
-                <div className="ai-feature-icon-badge">✓</div>
-                <div>
-                  <strong>Treinamento Corporativo In-Company</strong>
-                  <span>Capacitamos seu time operacional para extrair eficiência máxima de IAs generativas.</span>
-                </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: 'var(--color-dark-teal)', fontWeight: '600' }}>
+                <CheckCircle2 size={18} /> Orçamento justo e sem compromisso
               </div>
             </div>
 
             <a
-              href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá! Quero conhecer a automação com Inteligência Artificial e WhatsApp Bot para minha empresa.')}`}
+              href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá Rodrigo! Gostaria de tirar uma dúvida sobre um serviço para o meu comércio.')}`}
               target="_blank"
               rel="noopener noreferrer"
               className="corp-btn-accent"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.85rem 1.8rem' }}
             >
-              🚀 Quero um WhatsApp Bot de IA para minha Empresa
+              <MessageSquare size={18} /> Chamar no WhatsApp Agora
             </a>
           </div>
 
-          {/* Simulador Interativo */}
-          <div className="ai-spotlight-demo">
-            <AiChatSimulator />
-          </div>
-        </div>
-      </section>
-
-      {/* ============================================================
-         7. SEGMENTOS ATENDIDOS
-         ============================================================ */}
-      <section className="section-segments-container" id="segmentos">
-        <div className="section-head-center">
-          <span className="section-tag-pill">Soluções por Ramo de Atuação</span>
-          <h2 className="section-title-large">Tecnologia adaptada ao dia a dia do seu segmento</h2>
-          <p className="section-desc-subtle">
-            Cada tipo de negócio possui particularidades fiscais, operacionais e de balcão. Nossos sistemas já vêm configurados para sua área.
-          </p>
-        </div>
-
-        <div className="segments-grid-cards">
-          {DEFAULT_SEGMENTS.map((seg) => (
-            <div key={seg.id} className="segment-card-item">
-              <h3>{seg.title}</h3>
-              <p>{seg.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ============================================================
-         8. TRANSPARÊNCIA & PLANO BASE DE ENTRADA
-         ============================================================ */}
-      <section className="section-pricing-base">
-        <div className="pricing-base-card">
-          <span className="pricing-badge-pill">Estrutura Transparente</span>
-          <h2 style={{ fontSize: '2rem', color: 'var(--text-heading)', marginBottom: '0.75rem' }}>
-            Comece com o essencial e escale com segurança
-          </h2>
-          <p style={{ color: 'var(--text-body)', fontSize: '0.95rem' }}>
-            Implantação com migração de dados, configuração inicial do banco e treinamento dedicado para toda a sua equipe.
-          </p>
-
-          <div className="pricing-features-grid">
-            <div className="pricing-feature-check">Cadastro de produtos e clientes</div>
-            <div className="pricing-feature-check">Frente de caixa (PDV) rápido</div>
-            <div className="pricing-feature-check">Emissão integrada de NF-e e NFC-e</div>
-            <div className="pricing-feature-check">Controle financeiro de contas</div>
-            <div className="pricing-feature-check">Relatórios de faturamento e lucro</div>
-            <div className="pricing-feature-check">Suporte técnico consultivo</div>
-          </div>
-
-          <a href="#diagnostico" className="corp-btn-accent pricing-cta-btn">
-            Solicitar Proposta para Minha Empresa
-          </a>
-        </div>
-      </section>
-
-      {/* ============================================================
-         9. PERGUNTAS FREQUENTES (FAQ COM ACORDEÃO)
-         ============================================================ */}
-      <section className="section-faq-container" id="faq">
-        <div className="section-head-center">
-          <span className="section-tag-pill">Tire suas dúvidas</span>
-          <h2 className="section-title-large">Perguntas Frequentes</h2>
-          <p className="section-desc-subtle">
-            Tudo o que você precisa saber antes de contratar seu sistema ou automação com IA.
-          </p>
-        </div>
-
-        <div className="faq-accordion-list">
-          {DEFAULT_FAQS.map((faq, index) => {
-            const isOpen = openFaqIndex === index;
-            return (
-              <div key={index} className="faq-item-accordion">
-                <button
-                  onClick={() => setOpenFaqIndex(isOpen ? -1 : index)}
-                  className="faq-summary-btn"
-                  aria-expanded={isOpen}
-                >
-                  <span>{faq.q}</span>
-                  {isOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
-                </button>
-                {isOpen && (
-                  <div className="faq-answer-body">
-                    <p>{faq.a}</p>
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* ============================================================
-         10. DIAGNÓSTICO GRATUITO & CONTATO DIRETO
-         ============================================================ */}
-      <section className="section-diagnostic-contact" id="diagnostico">
-        <div className="diagnostic-contact-inner">
-          <div>
-            <span className="section-tag-pill">Comece Agora</span>
-            <h2 className="section-title-large">Solicite um Diagnóstico Gratuito da sua Operação</h2>
-            <p className="section-desc-subtle" style={{ marginBottom: '1.5rem' }}>
-              Nossos especialistas entram em contato pelo WhatsApp para entender o volume da sua loja, identificar onde ocorrem perdas e sugerir os módulos exatos para sua empresa crescer.
-            </p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-dark-teal)', fontWeight: '600' }}>
-                <CheckCircle2 size={18} /> Sem compromisso ou custos ocultos
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-dark-teal)', fontWeight: '600' }}>
-                <CheckCircle2 size={18} /> Atendimento ágil e direto pelo WhatsApp
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-dark-teal)', fontWeight: '600' }}>
-                <CheckCircle2 size={18} /> Plano de implantação sob medida para seu tamanho
-              </div>
-            </div>
-          </div>
-
           <form onSubmit={handleFormSubmit} className="diagnostic-form-glass">
-            <h3 style={{ fontSize: '1.3rem', marginBottom: '1.25rem' }}>Preencha para receber o contato</h3>
+            <h3 style={{ fontSize: '1.25rem', marginBottom: '1.25rem', color: 'var(--text-heading)' }}>
+              Ou deixe sua mensagem rápida
+            </h3>
 
             <div className="form-group-item">
-              <label className="form-label-corp">Seu Nome Completo</label>
+              <label className="form-label-corp">Seu Nome</label>
               <input
                 type="text"
                 required
                 value={formData.nome}
                 onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
-                placeholder="Ex: João da Silva"
+                placeholder="Ex: Carlos Oliveira"
                 className="form-input-corp"
               />
             </div>
 
             <div className="form-group-item">
-              <label className="form-label-corp">WhatsApp com DDD</label>
+              <label className="form-label-corp">Seu WhatsApp com DDD</label>
               <input
                 type="tel"
                 required
@@ -532,36 +327,31 @@ export default function Home({ profile, projects = [], posts = [] }) {
             </div>
 
             <div className="form-group-item">
-              <label className="form-label-corp">Nome da sua Empresa</label>
+              <label className="form-label-corp">Nome da sua Loja ou Empresa (opcional)</label>
               <input
                 type="text"
                 value={formData.empresa}
                 onChange={(e) => setFormData({ ...formData, empresa: e.target.value })}
-                placeholder="Ex: Supermercado Central"
+                placeholder="Ex: Mercadinho Avenida"
                 className="form-input-corp"
               />
             </div>
 
             <div className="form-group-item">
-              <label className="form-label-corp">Segmento Principal</label>
-              <select
-                value={formData.segmento}
-                onChange={(e) => setFormData({ ...formData, segmento: e.target.value })}
-                className="form-select-corp"
-              >
-                <option value="varejo">Comércio & Lojas em Geral</option>
-                <option value="padaria">Padaria / Confeitaria</option>
-                <option value="restaurante">Restaurante / Bar / Food</option>
-                <option value="supermercado">Supermercado / Mercearia</option>
-                <option value="distribuidora">Distribuidora / Atacado</option>
-                <option value="construcao">Material de Construção</option>
-                <option value="oficina">Oficina Mecânica / Autopeças</option>
-                <option value="servicos">Prestação de Serviços / Outros</option>
-              </select>
+              <label className="form-label-corp">O que está acontecendo? (Descreva o problema)</label>
+              <textarea
+                required
+                rows={3}
+                value={formData.problema}
+                onChange={(e) => setFormData({ ...formData, problema: e.target.value })}
+                placeholder="Ex: O computador do caixa está travando toda hora quando tento imprimir nota..."
+                className="form-input-corp"
+                style={{ resize: 'vertical' }}
+              />
             </div>
 
-            <button type="submit" className="corp-btn-accent" style={{ width: '100%', marginTop: '0.5rem' }}>
-              Solicitar Diagnóstico via WhatsApp 🚀
+            <button type="submit" className="corp-btn-accent" style={{ width: '100%', marginTop: '0.5rem', justifyContent: 'center' }}>
+              <Send size={16} /> Enviar Mensagem no WhatsApp
             </button>
           </form>
         </div>

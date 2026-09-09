@@ -1,76 +1,140 @@
 import React from 'react';
-import { ShieldCheck, Cpu, Code2, Server, Award, Sparkles } from 'lucide-react';
+import { MapPin, Sparkles, MessageSquare, CheckCircle2, FileCheck } from 'lucide-react';
 
 export default function Sobre({ profile }) {
+  const phone = profile?.whatsapp_number || '5569992782919';
+  const avatarUrl = profile?.avatar_url || '/foto_perfil.jpeg';
+
   return (
     <div className="portfolio-container" style={{ paddingTop: '2.5rem' }}>
       
       {/* HEADER DA SEÇÃO */}
-      <div className="section-header-corp" style={{ marginBottom: '3.5rem' }}>
-        <div className="corp-badge">
-          <Sparkles size={14} />
-          <span>Perfil & Trajetória</span>
-        </div>
-        <h2>Sobre Rodrigo Freire</h2>
-        <p>Especialista em soluções de tecnologia, automação inteligente e sistemas de alta confiabilidade para empresas.</p>
+      <div className="section-head-center" style={{ marginBottom: '3.5rem' }}>
+        <span className="section-tag-pill">
+          <Sparkles size={14} style={{ display: 'inline', marginRight: '4px' }} />
+          Perfil & Atendimento Local
+        </span>
+        <h1 className="section-title-large">Sobre Rodrigo Freire</h1>
+        <p className="section-desc-subtle">
+          Serviços de informática, computadores e internet para o pequeno e médio comércio em Porto Velho.
+        </p>
       </div>
 
-      {/* CARD PRINCIPAL COM FOTO / AVATAR */}
-      <div className="about-section-corp" style={{ marginBottom: '3.5rem' }}>
-        <div className="about-grid">
-          <div className="about-avatar-box">
-            {profile?.avatar_url ? (
-              <img src={profile.avatar_url} alt={profile.full_name} style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }} />
-            ) : (
-              "RF"
-            )}
+      {/* CARD PRINCIPAL COM FOTO REAL E APRESENTAÇÃO PESSOAL */}
+      <div
+        className="service-card-liquid"
+        style={{
+          padding: '2.5rem',
+          marginBottom: '3.5rem',
+          display: 'flex',
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          gap: '2.5rem',
+          alignItems: 'center'
+        }}
+      >
+        {/* Moldura da Foto */}
+        <div
+          style={{
+            flex: '0 0 auto',
+            width: '220px',
+            height: '220px',
+            margin: '0 auto',
+            borderRadius: '24px',
+            overflow: 'hidden',
+            boxShadow: '0 12px 32px rgba(11, 74, 79, 0.15)',
+            border: '2px solid rgba(0, 245, 212, 0.4)'
+          }}
+        >
+          <img
+            src={avatarUrl}
+            alt="Rodrigo Freire, profissional de TI em Porto Velho"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              display: 'block'
+            }}
+          />
+        </div>
+
+        {/* Texto de Apresentação */}
+        <div style={{ flex: '1 1 340px' }}>
+          <div className="corp-badge" style={{ marginBottom: '0.85rem' }}>
+            Porto Velho · Rondônia
           </div>
-          <div className="about-text">
-            <div className="corp-badge">Compromisso com Resultados</div>
-            <h3>{profile?.full_name || "Rodrigo Freire"}</h3>
-            <p>{profile?.about_text || "Com ampla experiência na modernização de processos operacionais e criação de sistemas robustos, desenvolvemos tecnologia que resolve os problemas diários de empresas que buscam reduzir custos, evitar falhas e acelerar vendas."}</p>
-          </div>
+          <h2 style={{ fontSize: '1.8rem', color: 'var(--text-heading)', marginBottom: '1rem' }}>
+            Atendimento direto com quem resolve
+          </h2>
+          <p style={{ fontSize: '1.02rem', lineHeight: '1.7', color: 'var(--text-body)', marginBottom: '1rem' }}>
+            Moro em Porto Velho e presto serviços de informática e tecnologia diretamente para empresas e comerciantes da nossa cidade. Atendo tanto presencialmente, indo até a sua loja ou escritório quando necessário, quanto à distância para resolver urgências com agilidade.
+          </p>
+          <p style={{ fontSize: '1.02rem', lineHeight: '1.7', color: 'var(--text-body)', marginBottom: '1rem' }}>
+            Minha formação combina duas áreas complementares: sou graduado em Direito e estou em formação em Análise e Desenvolvimento de Sistemas. Para você que é empresário, essa bagagem jurídica se traduz em vantagens práticas: rigor com contratos, clareza sobre o que está sendo contratado, cumprimento rigoroso de prazos e sigilo absoluto com os dados e informações do seu negócio.
+          </p>
+          <p style={{ fontSize: '1.02rem', lineHeight: '1.7', color: 'var(--text-body)', marginBottom: '1rem' }}>
+            Também desenvolvo um sistema próprio de proteção para computadores e servidores com registro oficial no Instituto Nacional da Propriedade Industrial (INPI sob o processo nº 512025006506-0), o que comprova minha dedicação técnica e a seriedade com que conduzo cada trabalho.
+          </p>
+          <p style={{ fontSize: '1.02rem', lineHeight: '1.7', color: 'var(--text-body)', margin: 0 }}>
+            O que você contrata comigo é atendimento direto de ponta a ponta: você fala comigo no WhatsApp, eu analiso a situação, explico em português claro o que precisa ser feito e resolvo. Sem intermediários, sem termos complicados e sem deixar a sua empresa esperando.
+          </p>
         </div>
       </div>
 
-      {/* BLOCOS DE PILARES DE ATUAÇÃO */}
-      <div className="services-grid-corp" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', marginBottom: '4rem' }}>
+      {/* BLOCOS DE COMPROMISSOS DE ATUAÇÃO */}
+      <div className="services-catalog-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem', marginBottom: '4rem' }}>
         
-        <div className="service-card-corp">
-          <div className="service-icon-box"><ShieldCheck size={22} /></div>
-          <h3>Segurança Operacional & Proteção de Dados</h3>
-          <p>Proteção ativa contra perda de informações, fraudes e paradas imprevistas no seu negócio. Autor do sistema de defesa cibernética <strong>Imunno System</strong> registrado no INPI (Processo 512025006506-0).</p>
+        <div className="service-card-liquid">
+          <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
+            <MapPin size={22} color="var(--color-dark-teal)" />
+          </div>
+          <h3 style={{ fontSize: '1.25rem', marginBottom: '0.65rem' }}>Presença Local & Sem Intermediários</h3>
+          <p style={{ fontSize: '0.93rem', color: 'var(--text-body)', lineHeight: '1.6', margin: 0 }}>
+            Moro aqui e conheço a realidade do comércio de Porto Velho. Você fala direto comigo no WhatsApp e, se o computador do caixa travar ou a internet cair, eu me desloco até o seu balcão para resolver.
+          </p>
         </div>
 
-        <div className="service-card-corp">
-          <div className="service-icon-box"><Cpu size={22} /></div>
-          <h3>Eficiência de Custos & Alta Estabilidade</h3>
-          <p>Sistemas desenhados para suportar picos de faturamento sem travar os caixas da sua loja, cortando desperdícios de servidores e garantindo continuidade ininterrupta.</p>
+        <div className="service-card-liquid">
+          <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
+            <FileCheck size={22} color="var(--color-dark-teal)" />
+          </div>
+          <h3 style={{ fontSize: '1.25rem', marginBottom: '0.65rem' }}>Segurança Contratual & Sigilo</h3>
+          <p style={{ fontSize: '0.93rem', color: 'var(--text-body)', lineHeight: '1.6', margin: 0 }}>
+            Formação em Direito e registro de tecnologia no INPI. Todos os orçamentos são transparentes antes de iniciar o serviço, garantindo sigilo total das suas planilhas, notas fiscais e dados de clientes.
+          </p>
         </div>
 
-        <div className="service-card-corp">
-          <div className="service-icon-box"><Code2 size={22} /></div>
-          <h3>Sistemas de Gestão & Automação Inteligente</h3>
-          <p>Desenvolvimento e implantação de plataformas completas, integração de processos de ponta a ponta e inteligência artificial prática para impulsionar suas vendas e produtividade.</p>
+        <div className="service-card-liquid">
+          <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
+            <CheckCircle2 size={22} color="var(--color-dark-teal)" />
+          </div>
+          <h3 style={{ fontSize: '1.25rem', marginBottom: '0.65rem' }}>Explicação em Português Claro</h3>
+          <p style={{ fontSize: '0.93rem', color: 'var(--text-body)', lineHeight: '1.6', margin: 0 }}>
+            Sem palavras difíceis para justificar preço. Explico com clareza o que quebrou, o que fiz para consertar e como evitar que aconteça de novo, para você saber exatamente pelo que está pagando.
+          </p>
         </div>
 
       </div>
 
       {/* CTA DE CONTATO */}
-      <section className="cta-banner-corp">
-        <div className="corp-badge" style={{ background: 'rgba(255,255,255,0.1)', borderColor: 'rgba(255,255,255,0.2)', color: '#ffffff', marginBottom: '0.75rem' }}>
-          Agendar Conversa
+      <section className="diagnostic-contact-inner" style={{ background: 'var(--glass-crystal-bg)', border: '1px solid var(--glass-crystal-border)', borderRadius: '24px', padding: '3rem 2rem', textAlign: 'center', maxWidth: '840px', margin: '0 auto 4rem' }}>
+        <div className="corp-badge" style={{ margin: '0 auto 1rem' }}>
+          Atendimento Direto
         </div>
-        <h3 style={{ color: '#ffffff' }}>Vamos conversar sobre o seu negócio?</h3>
-        <p>Estou à disposição para entender os gargalos da sua operação, identificar oportunidades de automação e propor a solução ideal para o seu crescimento.</p>
+        <h3 style={{ fontSize: '1.8rem', color: 'var(--text-heading)', marginBottom: '1rem' }}>
+          Precisa destravar um computador ou rotina no seu comércio?
+        </h3>
+        <p style={{ fontSize: '1.05rem', color: 'var(--text-body)', maxWidth: '640px', margin: '0 auto 2rem', lineHeight: '1.6' }}>
+          Fale diretamente comigo pelo WhatsApp. Conte o que está acontecendo e eu respondo com a solução mais rápida para a sua empresa não ficar parada.
+        </p>
         <a
-          href={`https://wa.me/${profile?.whatsapp_number || '5569992782919'}?text=${encodeURIComponent('Olá Rodrigo! Gostaria de conversar sobre soluções de tecnologia e automação para minha empresa.')}`}
+          href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá Rodrigo! Li sua apresentação no site e gostaria de conversar sobre um serviço para o meu comércio.')}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="corp-btn corp-btn-primary"
-          style={{ fontSize: '1rem', padding: '0.85rem 2.2rem' }}
+          className="corp-btn-accent"
+          style={{ fontSize: '1rem', padding: '0.9rem 2.2rem', display: 'inline-flex', alignItems: 'center', gap: '0.6rem' }}
         >
-          Iniciar Conversa no WhatsApp →
+          <MessageSquare size={18} /> Falar com Rodrigo no WhatsApp →
         </a>
       </section>
 
