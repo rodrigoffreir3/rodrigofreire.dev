@@ -35,17 +35,17 @@ export default function Sobre({ profile }) {
           alignItems: 'center'
         }}
       >
-        {/* Moldura da Foto */}
+        {/* Moldura da Foto Circular */}
         <div
           style={{
             flex: '0 0 auto',
             width: '220px',
             height: '220px',
             margin: '0 auto',
-            borderRadius: '24px',
+            borderRadius: '50%',
             overflow: 'hidden',
-            boxShadow: '0 12px 32px rgba(11, 74, 79, 0.15)',
-            border: '2px solid rgba(0, 245, 212, 0.4)'
+            boxShadow: '0 16px 36px rgba(53, 51, 205, 0.22), 0 0 0 6px rgba(53, 51, 205, 0.08)',
+            border: '3px solid #3533cd'
           }}
         >
           <img
@@ -59,7 +59,8 @@ export default function Sobre({ profile }) {
               width: '100%',
               height: '100%',
               objectFit: 'cover',
-              display: 'block'
+              display: 'block',
+              borderRadius: '50%'
             }}
           />
         </div>
@@ -70,29 +71,41 @@ export default function Sobre({ profile }) {
             Porto Velho · Rondônia
           </div>
           <h2 style={{ fontSize: '1.8rem', color: 'var(--text-heading)', marginBottom: '1rem' }}>
-            Atendimento direto com quem resolve
+            Tecnologias amigáveis e atendimento direto
           </h2>
           <p style={{ fontSize: '1.02rem', lineHeight: '1.7', color: 'var(--text-body)', marginBottom: '1rem' }}>
-            Moro em Porto Velho e presto serviços de informática e tecnologia diretamente para empresas e comerciantes da nossa cidade. Atendo tanto presencialmente, indo até a sua loja ou escritório quando necessário, quanto à distância para resolver urgências com agilidade.
+            Moro em Porto Velho e presto serviços de tecnologia e informática diretamente para empresas e comerciantes da nossa cidade. Atendo tanto presencialmente, indo até a sua loja ou escritório quando necessário, quanto à distância para resolver urgências com agilidade.
           </p>
           <p style={{ fontSize: '1.02rem', lineHeight: '1.7', color: 'var(--text-body)', marginBottom: '1rem' }}>
             Minha formação combina duas áreas complementares: sou graduado em Direito e estou em formação em Análise e Desenvolvimento de Sistemas. Para você que é empresário, essa bagagem jurídica se traduz em vantagens práticas: rigor com contratos, clareza sobre o que está sendo contratado, cumprimento rigoroso de prazos e sigilo absoluto com os dados e informações do seu negócio.
           </p>
-          <p style={{ fontSize: '1.02rem', lineHeight: '1.7', color: 'var(--text-body)', marginBottom: '1rem' }}>
+          <p style={{ fontSize: '1.02rem', lineHeight: '1.7', color: 'var(--text-body)', marginBottom: '1.25rem' }}>
             Também desenvolvo um sistema próprio de proteção para computadores e servidores com registro oficial no Instituto Nacional da Propriedade Industrial (INPI sob o processo nº 512025006506-0), o que comprova minha dedicação técnica e a seriedade com que conduzo cada trabalho.
           </p>
-          <p style={{ fontSize: '1.02rem', lineHeight: '1.7', color: 'var(--text-body)', margin: 0 }}>
-            O que você contrata comigo é atendimento direto de ponta a ponta: você fala comigo no WhatsApp, eu analiso a situação, explico em português claro o que precisa ser feito e resolvo. Sem intermediários, sem termos complicados e sem deixar a sua empresa esperando.
-          </p>
+          <div style={{ padding: '1.25rem 1.5rem', background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.04) 0%, rgba(53, 51, 205, 0.08) 100%)', borderRadius: '16px', border: '1px solid rgba(53, 51, 205, 0.2)' }}>
+            <p style={{ fontSize: '1.02rem', lineHeight: '1.7', color: 'var(--text-heading)', margin: 0 }}>
+              O que você está comprando de mim são <strong>soluções tecnológicas amigáveis</strong>. Sou empenhado em mudar o paradigma de que tecnologia tem que ser complicada. Por isso, construo e implemento sistemas que conversam fácil com a sua empresa — fáceis de entender e de utilizar por qualquer colaborador, sem atrito. <strong>A simplicidade de sistemas é a bandeira que ergo</strong>.
+            </p>
+          </div>
         </div>
       </div>
 
       {/* BLOCOS DE COMPROMISSOS DE ATUAÇÃO */}
-      <div className="services-catalog-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem', marginBottom: '4rem' }}>
+      <div className="services-catalog-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.75rem', marginBottom: '4rem' }}>
         
         <div className="service-card-liquid">
           <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
-            <MapPin size={22} color="var(--color-dark-teal)" />
+            <Sparkles size={22} color="#3533cd" />
+          </div>
+          <h3 style={{ fontSize: '1.25rem', marginBottom: '0.65rem' }}>A Bandeira da Simplicidade</h3>
+          <p style={{ fontSize: '0.93rem', color: 'var(--text-body)', lineHeight: '1.6', margin: 0 }}>
+            Sistemas amigáveis e fáceis de operar. Se o software é confuso ou exige treinamento sem fim, ele rouba o seu tempo. Crio soluções que qualquer funcionário aprende em minutos.
+          </p>
+        </div>
+
+        <div className="service-card-liquid">
+          <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
+            <MapPin size={22} color="#3533cd" />
           </div>
           <h3 style={{ fontSize: '1.25rem', marginBottom: '0.65rem' }}>Presença Local & Sem Intermediários</h3>
           <p style={{ fontSize: '0.93rem', color: 'var(--text-body)', lineHeight: '1.6', margin: 0 }}>
@@ -102,21 +115,21 @@ export default function Sobre({ profile }) {
 
         <div className="service-card-liquid">
           <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
-            <FileCheck size={22} color="var(--color-dark-teal)" />
+            <FileCheck size={22} color="#3533cd" />
           </div>
-          <h3 style={{ fontSize: '1.25rem', marginBottom: '0.65rem' }}>Segurança Contratual & Sigilo</h3>
+          <h3 style={{ fontSize: '1.25rem', marginBottom: '0.65rem' }}>Segurança Contratual & INPI</h3>
           <p style={{ fontSize: '0.93rem', color: 'var(--text-body)', lineHeight: '1.6', margin: 0 }}>
-            Formação em Direito e registro de tecnologia no INPI. Todos os orçamentos são transparentes antes de iniciar o serviço, garantindo sigilo total dos seus sistemas, notas fiscais e dados de clientes.
+            Formação em Direito e tecnologia própria com registro no INPI. Todos os orçamentos são transparentes antes de iniciar o serviço, com sigilo total dos dados do seu negócio.
           </p>
         </div>
 
         <div className="service-card-liquid">
           <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
-            <CheckCircle2 size={22} color="var(--color-dark-teal)" />
+            <CheckCircle2 size={22} color="#3533cd" />
           </div>
           <h3 style={{ fontSize: '1.25rem', marginBottom: '0.65rem' }}>Explicação em Português Claro</h3>
           <p style={{ fontSize: '0.93rem', color: 'var(--text-body)', lineHeight: '1.6', margin: 0 }}>
-            Sem palavras difíceis para justificar preço. Explico com clareza o que quebrou, o que fiz para consertar e como evitar que aconteça de novo, para você saber exatamente pelo que está pagando.
+            Sem palavras difíceis para justificar preço. Explico com clareza o que aconteceu, o que fiz para consertar e como evitar que se repita, para você ter total controle do que está pagando.
           </p>
         </div>
 

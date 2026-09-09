@@ -53,35 +53,35 @@ export default function Home({ profile }) {
     <div className="home-enterprise-wrapper">
 
       {/* ============================================================
-         BLOCO 1: ABERTURA (ACIMA DA DOBRA) — FOCO NA DOR REAL
+         BLOCO 1: ABERTURA (ACIMA DA DOBRA) — TECNOLOGIAS AMIGÁVEIS
          ============================================================ */}
       <section className="corp-hero-enterprise" id="inicio">
-        <div className="hero-enterprise-inner" style={{ gridTemplateColumns: '1fr', maxWidth: '880px', margin: '0 auto', textAlign: 'center' }}>
+        <div className="hero-enterprise-inner" style={{ gridTemplateColumns: '1fr', maxWidth: '920px', margin: '0 auto', textAlign: 'center' }}>
           <div className="hero-enterprise-copy" style={{ alignItems: 'center' }}>
             
             <div className="hero-pill-badge" style={{ margin: '0 auto 1.5rem' }}>
-              <MapPin size={14} />
-              <span>Atendimento em Porto Velho · Presencial e Remoto</span>
+              <Sparkles size={14} />
+              <span>Soluções Tecnológicas Amigáveis · Porto Velho</span>
             </div>
 
-            <h1 className="hero-enterprise-title" style={{ fontSize: 'clamp(2.1rem, 4.5vw, 3.4rem)', lineHeight: '1.2', marginBottom: '1.5rem' }}>
-              Seu sistema travou, o computador do caixa não liga ou aquele problema que ninguém resolve <span className="highlight-cyan">já virou rotina?</span>
+            <h1 className="hero-enterprise-title" style={{ fontSize: 'clamp(2.1rem, 4.5vw, 3.3rem)', lineHeight: '1.2', marginBottom: '1.5rem' }}>
+              Chega de brigar com sistemas lentos ou difíceis: implemento <span className="highlight-cyan">soluções tecnológicas amigáveis</span> para sua empresa rodar sem atrito.
             </h1>
 
-            <p className="hero-enterprise-desc" style={{ fontSize: '1.2rem', lineHeight: '1.7', maxWidth: '780px', margin: '0 auto 2rem', color: 'var(--text-body)' }}>
-              Eu atendo aqui em Porto Velho, falo direto com você no WhatsApp, sem atendente intermediário, sem call center e sem chamado que desaparece.
+            <p className="hero-enterprise-desc" style={{ fontSize: '1.18rem', lineHeight: '1.7', maxWidth: '800px', margin: '0 auto 2rem', color: 'var(--text-body)' }}>
+              Mudo o paradigma de que tecnologia tem que ser complicada. Construo e implemento sistemas simples, fáceis de entender e rápidos de utilizar para sua equipe atender sem filas e sua empresa lucrar mais — com atendimento presencial em Porto Velho ou remoto imediato.
             </p>
 
             <div className="hero-pain-chips-row" style={{ justifyContent: 'center', marginBottom: '2.5rem', flexWrap: 'wrap' }}>
-              <span className="hero-pain-chip-item">✓ Atendimento em Porto Velho</span>
-              <span className="hero-pain-chip-item">✓ Orçamento claro antes de começar</span>
-              <span className="hero-pain-chip-item">✓ Explicação simples em português</span>
-              <span className="hero-pain-chip-item">✓ Resposta rápida no WhatsApp</span>
+              <span className="hero-pain-chip-item">✓ Sistemas amigáveis e fáceis de usar</span>
+              <span className="hero-pain-chip-item">✓ Fim de telas confusas e filas no caixa</span>
+              <span className="hero-pain-chip-item">✓ A simplicidade de sistemas como bandeira</span>
+              <span className="hero-pain-chip-item">✓ Atendimento direto com o Rodrigo</span>
             </div>
 
             <div className="hero-actions-row" style={{ justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
               <a
-                href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá Rodrigo! Vi seu site e preciso de ajuda com um problema no meu comércio/computador.')}`}
+                href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá Rodrigo! Vi seu site e gostaria de conhecer suas soluções tecnológicas amigáveis para a minha empresa.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="corp-btn-accent"
@@ -91,7 +91,7 @@ export default function Home({ profile }) {
               </a>
 
               <a href="#servicos" className="corp-btn-outline-glass" style={{ fontSize: '1.05rem', padding: '0.9rem 1.8rem' }}>
-                Ver o que eu resolvo <ArrowDown size={16} />
+                Ver Soluções Amigáveis <ArrowDown size={16} />
               </a>
             </div>
 
@@ -100,14 +100,60 @@ export default function Home({ profile }) {
       </section>
 
       {/* ============================================================
-         BLOCO 2: O QUE EU RESOLVO (6 SERVIÇOS PRÁTICOS)
+         MANIFESTO DE POSICIONAMENTO: A BANDEIRA DA SIMPLICIDADE
          ============================================================ */}
-      <section className="section-services-catalog" id="servicos" style={{ paddingTop: '5rem', paddingBottom: '5rem' }}>
+      <section style={{ padding: '0 1.5rem 3.5rem' }}>
+        <div
+          style={{
+            maxWidth: '1080px',
+            margin: '0 auto',
+            background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.03) 0%, rgba(53, 51, 205, 0.08) 100%)',
+            border: '1px solid rgba(53, 51, 205, 0.18)',
+            borderRadius: '24px',
+            padding: '2.5rem 2rem',
+            display: 'flex',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            gap: '2rem'
+          }}
+        >
+          <div style={{ flex: '1 1 500px' }}>
+            <span className="corp-badge" style={{ marginBottom: '0.85rem' }}>
+              A Bandeira que Ergo: Simplicidade de Sistemas
+            </span>
+            <h2 style={{ fontSize: '1.65rem', color: 'var(--text-heading)', marginBottom: '0.85rem', lineHeight: '1.3' }}>
+              Tecnologia boa é aquela que conversa fácil com a sua empresa.
+            </h2>
+            <p style={{ fontSize: '1.02rem', lineHeight: '1.7', color: 'var(--text-body)', margin: 0 }}>
+              Quando um sistema trava ou é difícil de mexer, o cliente na fila não vai culpar o software: ele vai reclamar da sua loja e não volta mais. Sou empenhado em mudar o paradigma de que tecnologia tem que ser complicada. Eu construo e implemento ferramentas intuitivas que qualquer colaborador entende no primeiro dia, trazendo agilidade real, eliminando filas e gerando mais dinheiro no caixa.
+            </p>
+          </div>
+          <div style={{ flex: '0 0 auto', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            <div style={{ padding: '0.85rem 1.3rem', background: '#FFFFFF', borderRadius: '14px', border: '1px solid rgba(53, 51, 205, 0.15)', boxShadow: '0 4px 12px rgba(0,0,0,0.03)', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              <CheckCircle2 size={18} color="#3533cd" />
+              <span style={{ fontWeight: '600', fontSize: '0.92rem', color: 'var(--text-heading)' }}>Fácil de entender e utilizar</span>
+            </div>
+            <div style={{ padding: '0.85rem 1.3rem', background: '#FFFFFF', borderRadius: '14px', border: '1px solid rgba(53, 51, 205, 0.15)', boxShadow: '0 4px 12px rgba(0,0,0,0.03)', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              <CheckCircle2 size={18} color="#3533cd" />
+              <span style={{ fontWeight: '600', fontSize: '0.92rem', color: 'var(--text-heading)' }}>Operação ágil sem atrito</span>
+            </div>
+            <div style={{ padding: '0.85rem 1.3rem', background: '#FFFFFF', borderRadius: '14px', border: '1px solid rgba(53, 51, 205, 0.15)', boxShadow: '0 4px 12px rgba(0,0,0,0.03)', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              <CheckCircle2 size={18} color="#3533cd" />
+              <span style={{ fontWeight: '600', fontSize: '0.92rem', color: 'var(--text-heading)' }}>Menos filas, mais lucro</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================
+         BLOCO 2: O QUE EU RESOLVO (CATÁLOGO DE SOLUÇÕES AMIGÁVEIS)
+         ============================================================ */}
+      <section className="section-services-catalog" id="servicos" style={{ paddingTop: '3rem', paddingBottom: '5rem' }}>
         <div className="section-head-center">
-          <span className="section-tag-pill">Serviços em Porto Velho</span>
-          <h2 className="section-title-large">O que eu resolvo no dia a dia da sua empresa</h2>
+          <span className="section-tag-pill">Soluções Tecnológicas Amigáveis</span>
+          <h2 className="section-title-large">Sistemas e serviços pensados para descomplicar a sua rotina</h2>
           <p className="section-desc-subtle">
-            Sem empurrar coisas caras que você não precisa. Serviços diretos e pontuais para destravar o seu comércio e deixar você trabalhar em paz.
+            Sem empurrar recursos complicados ou mensalidades abusivas. Soluções amigáveis criadas para falar a mesma língua da sua operação e facilitar a sua vida.
           </p>
         </div>
 
@@ -171,14 +217,14 @@ export default function Home({ profile }) {
       </section>
 
       {/* ============================================================
-         BLOCO 3: POR QUE EU, E NÃO O SUPORTE QUE VOCÊ JÁ TENTOU
+         BLOCO 3: O VALOR DA SIMPLICIDADE & DIFERENCIAIS
          ============================================================ */}
       <section className="section-pains-container" id="diferenciais" style={{ paddingTop: '5rem', paddingBottom: '5rem', background: 'var(--color-off-white)' }}>
         <div className="section-head-center">
-          <span className="section-tag-pill">Diferenciais Reais</span>
-          <h2 className="section-title-large">Por que me chamar em vez de esperar pelo suporte comum?</h2>
+          <span className="section-tag-pill">O Valor da Simplicidade</span>
+          <h2 className="section-title-large">Por que tecnologias amigáveis trazem mais lucro para sua empresa?</h2>
           <p className="section-desc-subtle">
-            Quem tem comércio em Porto Velho conhece a dor de abrir chamado em empresa de fora e ficar dias esperando uma resposta enquanto a fila do caixa só aumenta.
+            Mais importante do que apenas suporte técnico é contar com sistemas simples e amigáveis, que não travam o atendimento e eliminam a complicação da rotina.
           </p>
         </div>
 
@@ -186,31 +232,11 @@ export default function Home({ profile }) {
           
           <div className="pain-card-item" style={{ borderColor: 'rgba(53, 51, 205, 0.15)', background: '#FFFFFF' }}>
             <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
-              <MessageSquare size={22} color="#3533cd" />
+              <Gauge size={22} color="#3533cd" />
             </div>
-            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Atendimento direto comigo</h3>
+            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Fácil de entender e utilizar</h3>
             <p style={{ fontSize: '0.92rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
-              Você fala direto com a pessoa que faz o serviço e resolve o problema. Sem atendentes intermediários, sem protocolo demorado e sem precisar explicar a mesma história dez vezes para pessoas diferentes.
-            </p>
-          </div>
-
-          <div className="pain-card-item" style={{ borderColor: 'rgba(53, 51, 205, 0.15)', background: '#FFFFFF' }}>
-            <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
-              <MapPin size={22} color="#3533cd" />
-            </div>
-            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Presença local em Porto Velho</h3>
-            <p style={{ fontSize: '0.92rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
-              Moro e atendo aqui na cidade. Se o problema não puder ser resolvido pelo computador à distância, eu me desloco até o seu estabelecimento para resolver pessoalmente no seu balcão.
-            </p>
-          </div>
-
-          <div className="pain-card-item" style={{ borderColor: 'rgba(53, 51, 205, 0.15)', background: '#FFFFFF' }}>
-            <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
-              <CheckCircle2 size={22} color="#3533cd" />
-            </div>
-            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Falo a sua língua</h3>
-            <p style={{ fontSize: '0.92rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
-              Nada de palavras complicadas para parecer difícil. Eu explico em português claro o que estragou, por que aconteceu e o que fiz para consertar, para você entender exatamente o que está pagando.
+              Mudo o paradigma de que tecnologia precisa de manuais gigantescos e telas confusas. Crio ferramentas limpas e intuitivas que qualquer funcionário aprende em poucos minutos, acabando com erros operacionais.
             </p>
           </div>
 
@@ -218,9 +244,29 @@ export default function Home({ profile }) {
             <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
               <Clock size={22} color="#3533cd" />
             </div>
-            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Menos tempo de loja parada</h3>
+            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Atendimento ágil sem filas</h3>
             <p style={{ fontSize: '0.92rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
-              Comércio não pode esperar dias por socorro. Meu foco é fazer seu computador, impressora ou sistema voltarem a funcionar o mais rápido possível para você não perder faturamento.
+              Cliente esperando em fila por lentidão de software reclama da sua loja, não do programa. Sistemas rápidos e amigáveis destravam o caixa e deixam o cliente satisfeito, aumentando suas vendas diárias.
+            </p>
+          </div>
+
+          <div className="pain-card-item" style={{ borderColor: 'rgba(53, 51, 205, 0.15)', background: '#FFFFFF' }}>
+            <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
+              <Code2 size={22} color="#3533cd" />
+            </div>
+            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Solução sob medida para onde dói</h3>
+            <p style={{ fontSize: '0.92rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
+              Nada de empurrar sistemas de terceiros engessados e caros cheios de botões que você nunca vai usar. Examino a operação real da sua empresa e entrego a ferramenta exata que resolve o gargalo.
+            </p>
+          </div>
+
+          <div className="pain-card-item" style={{ borderColor: 'rgba(53, 51, 205, 0.15)', background: '#FFFFFF' }}>
+            <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
+              <MapPin size={22} color="#3533cd" />
+            </div>
+            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Atendimento local e direto comigo</h3>
+            <p style={{ fontSize: '0.92rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
+              Moro em Porto Velho e você fala diretamente com quem desenvolve e resolve. Se precisar, vou até o seu balcão; se for urgência, acesso remotamente na hora sem atendentes intermediários.
             </p>
           </div>
 
@@ -234,9 +280,9 @@ export default function Home({ profile }) {
         <div className="methodology-inner">
           <div className="section-head-center">
             <span className="section-tag-pill">Sem Burocracia</span>
-            <h2 className="section-title-large">Como funciona para resolver o seu problema</h2>
+            <h2 className="section-title-large">Como implementamos soluções simples no seu comércio</h2>
             <p className="section-desc-subtle">
-              Três passos simples e transparentes do primeiro contato até o serviço entregue.
+              Três passos diretos e transparentes para transformar sistemas complicados em uma rotina ágil.
             </p>
           </div>
 
@@ -244,25 +290,25 @@ export default function Home({ profile }) {
             
             <div className="method-step-card" style={{ background: '#FFFFFF', padding: '2rem', borderRadius: '18px' }}>
               <div className="step-num-badge">01</div>
-              <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem' }}>Conversa no WhatsApp</h3>
+              <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem' }}>Diagnóstico da dor real</h3>
               <p style={{ fontSize: '0.93rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
-                Você me manda uma mensagem contando o que está acontecendo no seu computador, impressora, sistema ou na loja. É rápido e sem burocracia.
+                Você me manda uma mensagem no WhatsApp contando o que trava no seu comércio — seja lentidão no caixa, software confuso ou processos manuais demorados.
               </p>
             </div>
 
             <div className="method-step-card" style={{ background: '#FFFFFF', padding: '2rem', borderRadius: '18px' }}>
               <div className="step-num-badge">02</div>
-              <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem' }}>Orçamento claro antes de começar</h3>
+              <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem' }}>Solução amigável e orçamento claro</h3>
               <p style={{ fontSize: '0.93rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
-                Eu analiso a situação e passo para você o valor exato do serviço e o prazo necessário antes de mexer em qualquer coisa. Você aprova e não tem surpresa na conta.
+                Apresento a solução exata para descomplicar a sua rotina, com valor fechado e prazo definido antes de iniciar qualquer trabalho. Sem surpresas na conta.
               </p>
             </div>
 
             <div className="method-step-card" style={{ background: '#FFFFFF', padding: '2rem', borderRadius: '18px' }}>
               <div className="step-num-badge">03</div>
-              <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem' }}>Problema resolvido com explicação</h3>
+              <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem' }}>Sistema rodando e operação fluida</h3>
               <p style={{ fontSize: '0.93rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
-                Executo o conserto ou a configuração, testo junto com você e mostro o que foi feito para a sua empresa seguir trabalhando com tranquilidade.
+                Coloco o sistema para rodar, oriento sua equipe de forma rápida e testo tudo no dia a dia. Simplicidade prática para a sua empresa lucrar em paz.
               </p>
             </div>
 
@@ -276,26 +322,26 @@ export default function Home({ profile }) {
       <section className="section-diagnostic-contact" id="contato" style={{ paddingTop: '5rem', paddingBottom: '6rem' }}>
         <div className="diagnostic-contact-inner" style={{ maxWidth: '1080px', margin: '0 auto' }}>
           <div>
-            <span className="section-tag-pill">Atendimento Direto</span>
-            <h2 className="section-title-large">Vamos resolver aquele problema do seu comércio hoje?</h2>
+            <span className="section-tag-pill">Soluções Tecnológicas Amigáveis</span>
+            <h2 className="section-title-large">Vamos descomplicar a tecnologia da sua empresa hoje?</h2>
             <p className="section-desc-subtle" style={{ marginBottom: '1.75rem' }}>
-              Fale diretamente comigo pelo WhatsApp. Conte o que está acontecendo e eu respondo com o que pode ser feito para resolver.
+              Fale diretamente comigo pelo WhatsApp. Conte onde está o gargalo da sua rotina e vamos colocar sistemas fáceis e amigáveis para rodar a favor do seu faturamento.
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', marginBottom: '2rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: 'var(--color-dark-teal)', fontWeight: '600' }}>
-                <CheckCircle2 size={18} /> Atendimento em Porto Velho e região
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#000000', fontWeight: '600' }}>
+                <CheckCircle2 size={18} color="#3533cd" /> Sistemas amigáveis: fáceis de entender e utilizar
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: 'var(--color-dark-teal)', fontWeight: '600' }}>
-                <CheckCircle2 size={18} /> Você fala direto com o Rodrigo, sem robôs
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#000000', fontWeight: '600' }}>
+                <CheckCircle2 size={18} color="#3533cd" /> Atendimento em Porto Velho (presencial ou remoto)
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: 'var(--color-dark-teal)', fontWeight: '600' }}>
-                <CheckCircle2 size={18} /> Orçamento justo e sem compromisso
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#000000', fontWeight: '600' }}>
+                <CheckCircle2 size={18} color="#3533cd" /> A simplicidade de sistemas como bandeira de trabalho
               </div>
             </div>
 
             <a
-              href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá Rodrigo! Gostaria de tirar uma dúvida sobre um serviço para o meu comércio.')}`}
+              href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá Rodrigo! Vi seu site e gostaria de conversar sobre soluções tecnológicas amigáveis para a minha empresa.')}`}
               target="_blank"
               rel="noopener noreferrer"
               className="corp-btn-accent"
@@ -307,7 +353,7 @@ export default function Home({ profile }) {
 
           <form onSubmit={handleFormSubmit} className="diagnostic-form-glass">
             <h3 style={{ fontSize: '1.25rem', marginBottom: '1.25rem', color: 'var(--text-heading)' }}>
-              Ou deixe sua mensagem rápida
+              Ou conte seu gargalo operacional
             </h3>
 
             <div className="form-group-item">
@@ -346,20 +392,20 @@ export default function Home({ profile }) {
             </div>
 
             <div className="form-group-item">
-              <label className="form-label-corp">O que está acontecendo? (Descreva o problema)</label>
+              <label className="form-label-corp">O que está acontecendo? (Onde está doendo na operação?)</label>
               <textarea
                 required
                 rows={3}
                 value={formData.problema}
                 onChange={(e) => setFormData({ ...formData, problema: e.target.value })}
-                placeholder="Ex: O computador do caixa está travando toda hora quando tento imprimir nota..."
+                placeholder="Ex: Nosso sistema é muito complicado, o caixa trava no meio do expediente e queremos algo mais simples, amigável e rápido..."
                 className="form-input-corp"
                 style={{ resize: 'vertical' }}
               />
             </div>
 
             <button type="submit" className="corp-btn-accent" style={{ width: '100%', marginTop: '0.5rem', justifyContent: 'center' }}>
-              <Send size={16} /> Enviar Mensagem no WhatsApp
+              <Send size={16} /> Solicitar Diagnóstico de Sistema Amigável
             </button>
           </form>
         </div>

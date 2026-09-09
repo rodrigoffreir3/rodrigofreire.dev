@@ -36,9 +36,9 @@ export const DEFAULT_HOME_SETTINGS = {
 export const DEFAULT_PROFILE = {
   full_name: "RODRIGOFREIRE.DEV",
   company_name: "Rodrigo Freire Tech",
-  tagline: "Serviços de TI e Informática · Porto Velho",
-  lead_bio: "Seu sistema travou, o computador do caixa não liga ou aquele problema que ninguém resolve virou rotina? Eu atendo aqui em Porto Velho, direto com você, sem call center e sem enrolação.",
-  about_text: "Sou profissional de tecnologia em Porto Velho, formado em Direito e cursando Análise e Desenvolvimento de Sistemas. Presto serviços de informática, computadores e internet direto com você, sem conversa difícil e com foco em deixar seu comércio funcionando.",
+  tagline: "Soluções Tecnológicas Amigáveis · Porto Velho",
+  lead_bio: "Chega de sistemas complicados e lentidão no comércio. Eu implemento soluções tecnológicas amigáveis e presto suporte direto em Porto Velho — sistemas fáceis de entender, rápidos de utilizar e sem enrolação.",
+  about_text: "Sou profissional de tecnologia em Porto Velho, formado em Direito e cursando Análise e Desenvolvimento de Sistemas. A simplicidade de sistemas é a bandeira que ergo: mudo o paradigma de que tecnologia tem que ser complicada e construo soluções amigáveis que conversam fácil com a sua empresa.",
   whatsapp_number: "5569992782919",
   inpi_record: "Registro INPI Nº 512025006506-0",
   avatar_url: "/foto_perfil.jpeg",
