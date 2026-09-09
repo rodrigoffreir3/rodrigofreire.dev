@@ -383,6 +383,137 @@ a {
   box-shadow: 0 12px 30px -4px rgba(11, 74, 79, 0.45);
 }
 
+.corp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 0.72rem 1.6rem;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+}
+
+.corp-btn-secondary {
+  background: rgba(255, 255, 255, 0.75);
+  color: var(--color-dark-teal) !important;
+  border: 1px solid rgba(11, 74, 79, 0.16);
+  box-shadow: 0 4px 12px rgba(11, 74, 79, 0.04);
+}
+
+.corp-btn-secondary:hover {
+  background: #FFFFFF;
+  border-color: var(--color-dark-teal);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(11, 74, 79, 0.08);
+}
+
+.corp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-dark-teal);
+  background: rgba(11, 74, 79, 0.08);
+  padding: 0.38rem 0.95rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(11, 74, 79, 0.12);
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.tech-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--color-cyan-teal);
+  background: rgba(0, 168, 150, 0.08);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-pill);
+}
+
+.hero-enterprise-copy {
+  display: flex;
+  flex-direction: column;
+}
+
+.back-link-corp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--color-dark-teal);
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: transform 0.2s ease;
+}
+
+.back-link-corp:hover {
+  transform: translateX(-3px);
+}
+
+.gallery-grid-corp {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.project-case-header {
+  margin-bottom: 2.5rem;
+}
+
+.project-hero-media {
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(11, 74, 79, 0.12);
+  margin-bottom: 2rem;
+}
+
+.project-hero-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.cta-banner-corp {
+  background: linear-gradient(135deg, var(--color-dark-teal), #08383C);
+  border-radius: var(--radius-xl);
+  padding: 3.5rem 2rem;
+  text-align: center;
+  color: #FFFFFF;
+  margin-top: 3.5rem;
+  box-shadow: 0 20px 48px -10px rgba(11, 74, 79, 0.35);
+}
+
+.cta-banner-corp h3 {
+  color: #FFFFFF;
+  font-size: 1.8rem;
+  margin-bottom: 0.85rem;
+}
+
+.cta-banner-corp p {
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  font-size: 1.05rem;
+}
+
+.lead {
+  font-size: 1.15rem;
+  line-height: 1.65;
+}
+
 /* ============================================================
    HEADER & NAVBAR · LIQUID GLASS LUPA EM LARGURA TOTAL
    ============================================================ */

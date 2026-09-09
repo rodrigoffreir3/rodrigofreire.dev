@@ -8,7 +8,7 @@ import GithubIcon from '../components/GithubIcon';
 export default function ProjectDetail({ projects, profile }) {
   const { slug } = useParams();
   const project = projects.find(p => p.slug === slug);
-  const phone = profile?.whatsapp_number || '5569992782919';
+  const phone = (profile?.whatsapp_number ? String(profile.whatsapp_number).replace(/\D/g, '') : '') || '5569992782919';
 
   if (!project) {
     return (

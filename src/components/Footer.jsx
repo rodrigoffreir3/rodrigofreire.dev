@@ -4,7 +4,7 @@ import { ShieldCheck, Lock, MessageSquare } from 'lucide-react';
 
 export default function Footer({ profile }) {
   const currentYear = new Date().getFullYear();
-  const phone = profile?.whatsapp_number || '5569992782919';
+  const phone = (profile?.whatsapp_number ? String(profile.whatsapp_number).replace(/\D/g, '') : '') || '5569992782919';
   const company = profile?.full_name || "Rodrigo Freire";
 
   return (
@@ -29,12 +29,12 @@ export default function Footer({ profile }) {
         <div className="footer-col">
           <h4>O que eu resolvo</h4>
           <ul className="footer-links-list">
-            <li><a href="/#servicos">Socorro técnico e computadores</a></li>
-            <li><a href="/#servicos">Site de vendas próprio</a></li>
-            <li><a href="/#servicos">Organização de planilhas</a></li>
-            <li><a href="/#servicos">Automação de tarefas manuais</a></li>
-            <li><a href="/#servicos">Cópia de segurança (Backup)</a></li>
-            <li><a href="/#servicos">Ajuda para escolher sistemas</a></li>
+            <li><Link to="/#servicos">Socorro técnico e computadores</Link></li>
+            <li><Link to="/#servicos">Site de vendas próprio</Link></li>
+            <li><Link to="/#servicos">Organização de planilhas</Link></li>
+            <li><Link to="/#servicos">Automação de tarefas manuais</Link></li>
+            <li><Link to="/#servicos">Cópia de segurança (Backup)</Link></li>
+            <li><Link to="/#servicos">Ajuda para escolher sistemas</Link></li>
           </ul>
         </div>
 
@@ -43,8 +43,8 @@ export default function Footer({ profile }) {
           <h4>Navegação</h4>
           <ul className="footer-links-list">
             <li><Link to="/">Início</Link></li>
-            <li><a href="/#diferenciais">Diferenciais</a></li>
-            <li><a href="/#como-funciona">Como funciona</a></li>
+            <li><Link to="/#diferenciais">Diferenciais</Link></li>
+            <li><Link to="/#como-funciona">Como funciona</Link></li>
             <li><Link to="/sobre">Sobre Rodrigo Freire</Link></li>
             <li><Link to="/projetos">Cases de Sucesso</Link></li>
             <li><Link to="/blog">Blog & Artigos</Link></li>

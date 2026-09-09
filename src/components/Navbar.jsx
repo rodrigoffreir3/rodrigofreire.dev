@@ -28,7 +28,7 @@ export default function Navbar({ profile }) {
   }, [location.pathname]);
 
   const isActive = (path) => location.pathname === path;
-  const phone = profile?.whatsapp_number || '5569992782919';
+  const phone = (profile?.whatsapp_number ? String(profile.whatsapp_number).replace(/\D/g, '') : '') || '5569992782919';
 
   return (
     <header className="header">
@@ -54,19 +54,19 @@ export default function Navbar({ profile }) {
         {/* MENU PRINCIPAL DESKTOP */}
         <ul className="menu desktop-menu">
           <li>
-            <Link to="/" className={isActive('/') ? 'active' : ''}>Início</Link>
+            <Link to="/" className={isActive('/') && !location.hash ? 'active' : ''}>Início</Link>
           </li>
 
           <li>
-            <a href="/#servicos">O que eu resolvo</a>
+            <Link to="/#servicos" className={location.hash === '#servicos' ? 'active' : ''}>O que eu resolvo</Link>
           </li>
 
           <li>
-            <a href="/#diferenciais">Diferenciais</a>
+            <Link to="/#diferenciais" className={location.hash === '#diferenciais' ? 'active' : ''}>Diferenciais</Link>
           </li>
 
           <li>
-            <a href="/#como-funciona">Como funciona</a>
+            <Link to="/#como-funciona" className={location.hash === '#como-funciona' ? 'active' : ''}>Como funciona</Link>
           </li>
 
           <li>
@@ -147,18 +147,18 @@ export default function Navbar({ profile }) {
       {mobileMenuOpen && (
         <div className="mobile-nav-drawer">
           <div className="mobile-drawer-content">
-            <Link to="/" className={`mobile-nav-link ${isActive('/') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
+            <Link to="/" className={`mobile-nav-link ${isActive('/') && !location.hash ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
               Início
             </Link>
-            <a href="/#servicos" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
+            <Link to="/#servicos" className={`mobile-nav-link ${location.hash === '#servicos' ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
               O que eu resolvo
-            </a>
-            <a href="/#diferenciais" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
+            </Link>
+            <Link to="/#diferenciais" className={`mobile-nav-link ${location.hash === '#diferenciais' ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
               Diferenciais
-            </a>
-            <a href="/#como-funciona" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
+            </Link>
+            <Link to="/#como-funciona" className={`mobile-nav-link ${location.hash === '#como-funciona' ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
               Como funciona
-            </a>
+            </Link>
             <Link to="/sobre" className={`mobile-nav-link ${isActive('/sobre') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
               Sobre mim
             </Link>

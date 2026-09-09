@@ -178,7 +178,7 @@ export default function AdmProfile({ profile: initialProfile, setProfile: update
               type="text"
               value={profile.avatar_url || ''}
               onChange={(e) => setProfile({ ...profile, avatar_url: e.target.value })}
-              placeholder="Ex: /images/rodrigo-avatar.png"
+              placeholder="Ex: /foto_perfil.jpeg"
               className="adm-input"
             />
           </div>

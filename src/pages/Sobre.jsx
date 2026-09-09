@@ -2,8 +2,10 @@ import React from 'react';
 import { MapPin, Sparkles, MessageSquare, CheckCircle2, FileCheck } from 'lucide-react';
 
 export default function Sobre({ profile }) {
-  const phone = profile?.whatsapp_number || '5569992782919';
-  const avatarUrl = profile?.avatar_url || '/foto_perfil.jpeg';
+  const phone = (profile?.whatsapp_number ? String(profile.whatsapp_number).replace(/\D/g, '') : '') || '5569992782919';
+  const avatarUrl = (profile?.avatar_url && !profile.avatar_url.includes('rodrigo-avatar'))
+    ? profile.avatar_url
+    : '/foto_perfil.jpeg';
 
   return (
     <div className="portfolio-container" style={{ paddingTop: '2.5rem' }}>
@@ -49,6 +51,10 @@ export default function Sobre({ profile }) {
           <img
             src={avatarUrl}
             alt="Rodrigo Freire, profissional de TI em Porto Velho"
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = '/foto_perfil.jpeg';
+            }}
             style={{
               width: '100%',
               height: '100%',

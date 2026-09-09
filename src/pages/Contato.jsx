@@ -3,7 +3,7 @@ import { MessageSquare, Mail, ShieldCheck, Sparkles, MapPin } from 'lucide-react
 import GithubIcon from '../components/GithubIcon';
 
 export default function Contato({ profile }) {
-  const phone = profile?.whatsapp_number || '5569992782919';
+  const phone = (profile?.whatsapp_number ? String(profile.whatsapp_number).replace(/\D/g, '') : '') || '5569992782919';
   const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent('Olá Rodrigo! Vim pelo seu site e gostaria de conversar sobre um serviço para o meu comércio.')}`;
 
   return (

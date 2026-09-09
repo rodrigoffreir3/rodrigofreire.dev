@@ -36,12 +36,23 @@ export default function App() {
   const cleanPath = location.pathname.toLowerCase().replace(/\/$/, '');
   const isAdmRoute = cleanPath.startsWith('/adm') || cleanPath === '/login';
 
-  // Garante que o usuário sempre inicie no topo da página ao trocar de rota
+  // Garante que o usuário sempre inicie no topo ao trocar de rota ou role até o #hash
   React.useEffect(() => {
-    if (!location.hash) {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      const scrollToTarget = () => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      };
+      scrollToTarget();
+      const timer = setTimeout(scrollToTarget, 120);
+      return () => clearTimeout(timer);
+    } else {
       window.scrollTo(0, 0);
     }
-  }, [location.pathname]);
+  }, [location.pathname, location.hash]);
 
   return (
     <>

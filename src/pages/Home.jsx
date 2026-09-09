@@ -25,7 +25,7 @@ const ICON_MAP = {
 };
 
 export default function Home({ profile }) {
-  const phone = profile?.whatsapp_number || '5569992782919';
+  const phone = (profile?.whatsapp_number ? String(profile.whatsapp_number).replace(/\D/g, '') : '') || '5569992782919';
 
   // Formulário simplificado de contato / socorro
   const [formData, setFormData] = useState({
@@ -38,7 +38,11 @@ export default function Home({ profile }) {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const text = `Olá Rodrigo! Vim pelo seu site e preciso de ajuda com um problema:\n\n*Nome:* ${formData.nome}\n*WhatsApp:* ${formData.whatsapp}\n*Empresa/Comércio:* ${formData.empresa || 'Não informado'}\n*O que está acontecendo:* ${formData.problema}`;
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
+    const targetUrl = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+    const win = window.open(targetUrl, '_blank', 'noopener,noreferrer');
+    if (!win || win.closed || typeof win.closed === 'undefined') {
+      window.location.href = targetUrl;
+    }
   };
 
   return (

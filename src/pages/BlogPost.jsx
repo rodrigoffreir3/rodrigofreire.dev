@@ -95,9 +95,9 @@ export default function BlogPost({ posts, profile }) {
           Autor & Consultoria
         </div>
         <h3 style={{ color: '#ffffff' }}>Gostou da análise e quer aplicar na sua empresa?</h3>
-        <p>Vamos estruturar a melhor arquitetura e engenharia de software para o seu desafio técnico.</p>
+        <p>Posso ajudar a estruturar a melhor solução técnica para o desafio da sua empresa.</p>
         <a
-          href={`https://wa.me/${profile?.whatsapp_number || '5569992782919'}?text=${encodeURIComponent(`Olá Rodrigo! Li o artigo "${post.title}" no seu blog e gostaria de conversar.`)}`}
+          href={`https://wa.me/${(profile?.whatsapp_number ? String(profile.whatsapp_number).replace(/\D/g, '') : '') || '5569992782919'}?text=${encodeURIComponent(`Olá Rodrigo! Li o artigo "${post.title}" no seu blog e gostaria de conversar.`)}`}
           target="_blank"
           rel="noopener noreferrer"
           className="corp-btn corp-btn-primary"
