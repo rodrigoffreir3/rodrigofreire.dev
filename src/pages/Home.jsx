@@ -14,7 +14,8 @@ import {
   ArrowDown,
   MapPin,
   Clock,
-  Send
+  Send,
+  Sparkles
 } from 'lucide-react';
 
 const ICON_MAP = {
