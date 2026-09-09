@@ -31,10 +31,10 @@ export default function Footer({ profile }) {
           <ul className="footer-links-list">
             <li><Link to="/#servicos">Socorro técnico e computadores</Link></li>
             <li><Link to="/#servicos">Site de vendas próprio</Link></li>
-            <li><Link to="/#servicos">Organização de planilhas</Link></li>
+            <li><Link to="/#servicos">Modernização da operação</Link></li>
             <li><Link to="/#servicos">Automação de tarefas manuais</Link></li>
             <li><Link to="/#servicos">Cópia de segurança (Backup)</Link></li>
-            <li><Link to="/#servicos">Ajuda para escolher sistemas</Link></li>
+            <li><Link to="/#servicos">Soluções sob medida</Link></li>
           </ul>
         </div>
 

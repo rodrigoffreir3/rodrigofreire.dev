@@ -7,6 +7,8 @@ import {
   Zap,
   ShieldCheck,
   CheckCircle2,
+  Gauge,
+  Code2,
   MessageSquare,
   ArrowRight,
   ArrowDown,
@@ -21,7 +23,9 @@ const ICON_MAP = {
   FileSpreadsheet,
   Zap,
   ShieldCheck,
-  CheckCircle2
+  CheckCircle2,
+  Gauge,
+  Code2
 };
 
 export default function Home({ profile }) {
@@ -216,7 +220,7 @@ export default function Home({ profile }) {
             </div>
             <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Menos tempo de loja parada</h3>
             <p style={{ fontSize: '0.92rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
-              Comércio não pode esperar dias por socorro. Meu foco é fazer seu computador, impressora ou planilha voltarem a funcionar o mais rápido possível para você não perder faturamento.
+              Comércio não pode esperar dias por socorro. Meu foco é fazer seu computador, impressora ou sistema voltarem a funcionar o mais rápido possível para você não perder faturamento.
             </p>
           </div>
 
@@ -242,7 +246,7 @@ export default function Home({ profile }) {
               <div className="step-num-badge">01</div>
               <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem' }}>Conversa no WhatsApp</h3>
               <p style={{ fontSize: '0.93rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
-                Você me manda uma mensagem contando o que está acontecendo no seu computador, impressora, planilha ou na loja. É rápido e sem burocracia.
+                Você me manda uma mensagem contando o que está acontecendo no seu computador, impressora, sistema ou na loja. É rápido e sem burocracia.
               </p>
             </div>
 

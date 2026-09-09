@@ -88,7 +88,7 @@ export default function Contato({ profile }) {
           <h4 style={{ margin: 0, fontSize: '1.25rem', color: 'var(--text-heading)' }}>Compromisso, Segurança & Sigilo</h4>
         </div>
         <p style={{ color: 'var(--text-body)', margin: 0, lineHeight: '1.7', fontSize: '0.98rem' }}>
-          Todos os dados, arquivos e planilhas da sua empresa são tratados com sigilo profissional absoluto, responsabilidade e respeito ao seu negócio.
+          Todos os dados, arquivos e sistemas da sua empresa são tratados com sigilo profissional absoluto, responsabilidade e respeito ao seu negócio.
         </p>
       </div>
 

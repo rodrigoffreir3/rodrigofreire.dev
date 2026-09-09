@@ -106,7 +106,7 @@ export default function Sobre({ profile }) {
           </div>
           <h3 style={{ fontSize: '1.25rem', marginBottom: '0.65rem' }}>Segurança Contratual & Sigilo</h3>
           <p style={{ fontSize: '0.93rem', color: 'var(--text-body)', lineHeight: '1.6', margin: 0 }}>
-            Formação em Direito e registro de tecnologia no INPI. Todos os orçamentos são transparentes antes de iniciar o serviço, garantindo sigilo total das suas planilhas, notas fiscais e dados de clientes.
+            Formação em Direito e registro de tecnologia no INPI. Todos os orçamentos são transparentes antes de iniciar o serviço, garantindo sigilo total dos seus sistemas, notas fiscais e dados de clientes.
           </p>
         </div>
 

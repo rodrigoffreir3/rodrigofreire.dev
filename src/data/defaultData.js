@@ -74,16 +74,16 @@ export const DEFAULT_SERVICES = [
     whatsapp_msg: "Olá Rodrigo! Gostaria de criar um site de vendas próprio para o meu negócio."
   },
   {
-    id: "organizacao-planilhas",
-    icon: "FileSpreadsheet",
-    tag: "CONTROLE FINANCEIRO",
-    title: "Organização de planilhas e controle do negócio",
-    short_desc: "Planilhas fáceis e automáticas para saber quanto entrou e quanto sobrou de lucro.",
-    description: "O controle do seu dinheiro e das suas mercadorias está espalhado em planilhas confusas que só uma pessoa entende, vivem desatualizadas ou dão erro na hora de somar? Eu organizo e padronizo suas planilhas com cálculos automáticos, deixando tudo fácil e intuitivo para qualquer funcionário preencher sem quebrar nada. Você bate o olho e sabe na hora quanto faturou no dia, o que tem para pagar e quanto realmente sobrou de lucro no fim do mês.",
-    pain: "O controle do seu dinheiro e das suas mercadorias está espalhado em planilhas confusas que só uma pessoa entende, vivem desatualizadas ou dão erro na hora de somar?",
-    solution: "Eu organizo e padronizo suas planilhas com cálculos automáticos, deixando tudo fácil e intuitivo para qualquer funcionário preencher sem quebrar nada.",
-    gain: "Você bate o olho e sabe na hora quanto faturou no dia, o que tem para pagar e quanto realmente sobrou de lucro no fim do mês.",
-    whatsapp_msg: "Olá Rodrigo! Preciso organizar as planilhas e controles financeiros da minha empresa."
+    id: "modernizacao-operacao",
+    icon: "Gauge",
+    tag: "OPERAÇÃO ÁGIL",
+    title: "Modernização da operação com sistemas fáceis e amigáveis",
+    short_desc: "Sistemas ágeis e fáceis de usar para agilizar o atendimento, acabar com filas e faturar mais.",
+    description: "Sua equipe perde tempo brigando com sistemas lentos, telas confusas que ninguém entende ou controles manuais improvisados? Quando o cliente fica esperando em fila por conta de sistema lento ou difícil de mexer, ele não vai reclamar do software: ele vai reclamar da sua loja e não volta mais. Eu modernizo a operação da sua empresa implementando sistemas amigáveis, fáceis de entender e utilizar. Sua equipe ganha agilidade e tempo, o atendimento flui sem travas e o cliente sai satisfeito, gerando mais vendas e dinheiro no caixa.",
+    pain: "Sua equipe perde tempo brigando com sistemas lentos, telas confusas que ninguém entende ou processos travados? Cliente preso em fila por causa de lentidão reclama da loja, não do sistema.",
+    solution: "Eu modernizo a operação da sua empresa implementando sistemas amigáveis, rápidos e fáceis de entender e utilizar por qualquer funcionário, eliminando gargalos no atendimento.",
+    gain: "Agilidade real e ganho de tempo na rotina. Atendimento rápido que acaba com filas, deixa o cliente feliz e traz mais dinheiro para a empresa.",
+    whatsapp_msg: "Olá Rodrigo! Gostaria de modernizar a operação da minha empresa com um sistema amigável e ágil."
   },
   {
     id: "automacao-tarefas",
@@ -110,16 +110,16 @@ export const DEFAULT_SERVICES = [
     whatsapp_msg: "Olá Rodrigo! Gostaria de configurar cópias de segurança (backup) para os dados da minha empresa."
   },
   {
-    id: "consultoria-sistemas",
-    icon: "CheckCircle2",
-    tag: "ORIENTAÇÃO PRÁTICA",
-    title: "Ajuda para escolher e implantar sistemas no comércio",
-    short_desc: "Apoio neutro para escolher o programa certo e não jogar dinheiro fora com mensalidades.",
-    description: "Quer colocar um programa de gestão ou vendas na sua loja, mas não sabe qual contratar e tem medo de pagar mensalidade cara por algo que não vai funcionar? Eu analiso a rotina real do seu comércio, ajudo a escolher a ferramenta do mercado que melhor resolve o seu problema e acompanho a instalação do começo ao fim. Você não joga dinheiro fora com sistemas errados e coloca para rodar apenas o que realmente ajuda o seu negócio a crescer.",
-    pain: "Quer colocar um programa de gestão ou vendas na sua loja, mas não sabe qual contratar e tem medo de pagar mensalidade cara por algo que não vai funcionar?",
-    solution: "Eu analiso a rotina real do seu comércio, ajudo a escolher a ferramenta do mercado que melhor resolve o seu problema e acompanho a instalação do começo ao fim.",
-    gain: "Você não joga dinheiro fora com sistemas errados e coloca para rodar apenas o que realmente ajuda o seu negócio a crescer.",
-    whatsapp_msg: "Olá Rodrigo! Gostaria de ajuda para escolher e implantar um sistema no meu comércio."
+    id: "solucao-personalizada",
+    icon: "Code2",
+    tag: "SOLUÇÃO SOB MEDIDA",
+    title: "Diagnóstico da operação e solução sob medida para sua empresa",
+    short_desc: "Examino onde está doendo no seu comércio e entrego a solução exata, pronta ou sob medida.",
+    description: "Sua empresa tem um gargalo ou problema operacional específico que nenhum programa genérico de mercado consegue resolver direito, forçando você a fazer gambiarras para o negócio funcionar? Eu não indico sistemas de terceiros com mensalidades abusivas e funções inúteis: eu examino a operação e a necessidade real da sua empresa — exatamente onde está doendo — e desenvolvo uma solução personalizada para o seu negócio, caso eu mesmo já não tenha uma solução pronta e validada em mãos.",
+    pain: "Sua empresa tem um gargalo ou problema operacional específico que nenhum programa genérico de mercado consegue resolver direito, travando o seu crescimento?",
+    solution: "Eu examino a operação e a necessidade real da sua empresa — onde está doendo — e entrego a solução exata: seja desenvolvendo um sistema sob medida ou aplicando uma solução própria que já tenho pronta.",
+    gain: "Um sistema feito sob medida para a dor exata do seu negócio, que resolve o gargalo de vez e elimina mensalidades caras por funções que você nunca usaria.",
+    whatsapp_msg: "Olá Rodrigo! Gostaria de um diagnóstico da operação da minha empresa para uma solução sob medida."
   }
 ];
 
