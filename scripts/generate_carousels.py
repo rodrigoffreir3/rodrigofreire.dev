@@ -12,13 +12,17 @@ POSTS_OUTPUT_DIR.mkdir(exist_ok=True)
 
 # Carrega imagens em base64
 with open(BASE_DIR / "public" / "logo-rfd.png", "rb") as f:
-    LOGO_B64 = base64.b64encode(f.read()).decode("utf-8")
+    LOGO_DARK_B64 = base64.b64encode(f.read()).decode("utf-8")
+
+with open(BASE_DIR / "public" / "logo-rfd-white.png", "rb") as f:
+    LOGO_WHITE_B64 = base64.b64encode(f.read()).decode("utf-8")
 
 with open(BASE_DIR / "public" / "foto_perfil.jpeg", "rb") as f:
     AVATAR_B64 = base64.b64encode(f.read()).decode("utf-8")
 
 def get_slide_html(slide_data, theme="dark", current_slide=1, total_slides=4):
     is_dark = (theme == "dark")
+    logo_b64 = LOGO_WHITE_B64 if is_dark else LOGO_DARK_B64
     bg_color = "#070709" if is_dark else "#FCFCFB"
     text_color = "#FFFFFF" if is_dark else "#000000"
     body_color = "#b8bcc4" if is_dark else "#2C3437"
@@ -343,7 +347,7 @@ def get_slide_html(slide_data, theme="dark", current_slide=1, total_slides=4):
   <div class="bg-glow"></div>
   <div class="header">
     <div class="logo-area">
-      <img src="data:image/png;base64,{LOGO_B64}" class="logo-img">
+      <img src="data:image/png;base64,{logo_b64}" class="logo-img">
       <span class="logo-text">RODRIGOFREIRE.DEV</span>
     </div>
     <div class="slide-badge">{badge_str}</div>
@@ -470,7 +474,7 @@ Com um site simples, o cliente compra com confiança e o contato dele é SEU.
     },
 
     # -------------------------------------------------------------------------
-    # POST 02: Socorro Técnico e Conserto de Computadores (Tema: Light)
+    # POST 02: Suporte Técnico & Estabilidade Empresarial (Tema: Light)
     # -------------------------------------------------------------------------
     {
         "folder": "post-02-socorro-tecnico",
@@ -478,108 +482,124 @@ Com um site simples, o cliente compra com confiança e o contato dele é SEU.
         "slides": [
             {
                 "type": "cover",
-                "tag": "CONSERTO & SUPORTE LOCAL",
-                "title": "O caixa travou e a fila <br><span class=\"highlight\">está aumentando?</span>",
-                "subtitle": "Computador parado no meio do expediente não é detalhe incômodo: é perda direta de clientes e dinheiro no caixa."
+                "tag": "SUPORTE DE TI EMPRESARIAL · PORTO VELHO",
+                "title": "Operação travada? <br><span class=\"highlight\">TI ágil para sua empresa não parar.</span>",
+                "subtitle": "Estabilidade técnica para seus caixas, computadores e rede comercial. Atendimento profissional direto com quem resolve."
             },
             {
                 "type": "content",
-                "tag": "O PROBLEMA",
-                "title": "Cliente na fila reclama <br><span class=\"highlight\">da loja, não do Windows.</span>",
-                "subtitle": "A dor de quem passa constrangimento no balcão por falha técnica.",
-                "body": "Impressora fiscal que não emite cupom, computador que reinicia sozinho ou internet que cai bem na hora de passar o cartão. O cliente não quer saber se o Windows atualizou: ele sai irritado e não volta mais.",
-                "highlight_label": "A Realidade do Comércio",
-                "highlight_text": "Tempo de loja parada é dinheiro jogado fora e imagem queimada na praça."
+                "tag": "O IMPACTO NO COMÉRCIO",
+                "title": "Instabilidade técnica custa <br><span class=\"highlight\">clientes e credibilidade.</span>",
+                "subtitle": "Quando o sistema do caixa oscila ou a rede cai, o cliente não espera.",
+                "body": "Falhas intermitentes, lentidão no fechamento e impressoras travando desgastam sua equipe e afastam quem está pronto para pagar. No comércio, cada minuto de balcão parado queima vendas e passa insegurança.",
+                "highlight_label": "A Realidade do Varejo",
+                "highlight_text": "Equipamento instável não é mero detalhe técnico: é perda silenciosa de faturamento diário."
             },
             {
                 "type": "content",
-                "tag": "A SOLUÇÃO",
-                "title": "Atendimento no balcão <br><span class=\"highlight\">ou remoto imediato.</span>",
-                "subtitle": "Moro em Porto Velho e resolvo direto com você, sem intermediários.",
-                "body": "Se for uma falha de sistema, acesso na hora à distância pelo computador. Se a máquina pifou fisicamente, vou até o seu comércio para consertar no seu balcão e colocar tudo para rodar de novo.",
-                "highlight_label": "Orçamento Honesto",
-                "highlight_text": "Valor fechado e explicado em português claro antes de mexer em qualquer parafuso."
+                "tag": "SOLUÇÃO PROFISSIONAL",
+                "title": "Resposta técnica rápida: <br><span class=\"highlight\">remoto imediato ou presencial.</span>",
+                "subtitle": "Diagnóstico preciso da causa raiz, sem enrolação e sem jargões vazios.",
+                "body": "Acesso remoto seguro em minutos para resolver urgências de sistema, ou atendimento presencial na sua empresa em Porto Velho para restabelecer computadores e redes. Orçamento transparente e explicado com clareza antes de qualquer intervenção.",
+                "highlight_label": "Padrão de Atendimento",
+                "highlight_text": "Zero terceirização, zero protocolo engessado. Você fala direto com o especialista."
             },
             {
                 "type": "cta",
-                "tag": "DESTRAVE SUA LOJA",
-                "title": "Seu computador parou? <br><span class=\"highlight\">Eu resolvo hoje.</span>",
-                "subtitle": "Não espere o movimento do dia virar prejuízo por conta de máquina travada.",
-                "body": "Me mande uma mensagem no WhatsApp contando o que aconteceu no seu computador, impressora ou rede. Respondo na hora para socorrer seu comércio."
+                "tag": "CONTINUIDADE DO NEGÓCIO",
+                "title": "Mantenha a infraestrutura <br><span class=\"highlight\">do seu negócio funcionando.</span>",
+                "subtitle": "Sua operação não pode ser refém de falhas técnicas imprevistas.",
+                "body": "Precisa de suporte ágil para seus caixas, computadores ou rede comercial? Me envie uma mensagem no WhatsApp. Diagnóstico rápido e atendimento pontual."
             }
         ],
-        "caption": """O computador do caixa travou bem no meio do expediente? 🛑
+        "caption": """Sua operação comercial não pode parar por instabilidade de TI. 🖥️⚡
 
-Quem tem comércio em Porto Velho sabe o desespero: cliente esperando, impressora fiscal sem responder, maquininha fora e a fila só aumentando.
+No comércio e nas empresas de Porto Velho, quando o computador do caixa trava, a rede oscila ou a impressora fiscal não responde, o prejuízo é imediato: filas se formam, a equipe fica estressada e o cliente vai embora insatisfeito.
 
-O pior de tudo: o cliente não vai culpar a Microsoft ou a operadora de internet. Ele vai reclamar da sua loja e pensar duas vezes antes de voltar.
+Você não precisa de protocolos demorados de suporte corporativo e nem de atendimentos improvisados que não resolvem a causa raiz.
 
-Eu presto socorro técnico presencial e remoto aqui em Porto Velho:
-✅ Atendimento rápido direto comigo no WhatsApp (sem atendente robô)
-✅ Se der para resolver à distância, acesso na hora
-✅ Se for equipamento físico, vou até o seu balcão
-✅ Orçamento claro e explicado em português antes de começar
+Ofereço suporte de TI ágil e profissional direto para empresas:
+✅ Diagnóstico técnico rápido e preciso da infraestrutura
+✅ Acesso remoto seguro e imediato para destravar emergências
+✅ Atendimento presencial na sua empresa em Porto Velho
+✅ Manutenção preventiva e corretiva para caixas, PCs e rede
+✅ Orçamento prévio e transparente, sem termos técnicos vazios
 
-Sua loja não pode parar. Salve este post para quando a emergência bater ou chame agora pelo link da bio!
+Estabilidade técnica é o que garante que seu cliente pague e saia satisfeito.
 
-#portovelho #suportetecnico #manutencaodecomputadores #comerciolocal #pvh #ti #rodrigofreiretech"""
+💡 Salve este post para ter um contato de confiança ou chame agora pelo link da bio para avaliar a TI da sua empresa!
+
+#suporteti #tiportovelho #portovelho #pvh #gestaoempresarial #infraestruturati #rodrigofreiretech #comerciopvh"""
     },
 
     # -------------------------------------------------------------------------
-    # POST 03: Site seu, onde o cliente compra com confiança (Tema: Dark)
+    # POST 03: TikTok Shop vs Loja Online Própria (Tema: Dark)
     # -------------------------------------------------------------------------
     {
-        "folder": "post-03-site-vendas",
+        "folder": "post-03-tiktok-shop-vs-loja-propria",
         "theme": "dark",
         "slides": [
             {
                 "type": "cover",
-                "tag": "VENDAS PELA INTERNET",
-                "title": "Vende pelo direct, mas sente que <br><span class=\"highlight\">está perdendo compras?</span>",
-                "subtitle": "Como um site próprio simples transmite segurança para o cliente gastar mais no seu comércio."
+                "tag": "ESTRATÉGIA DE VENDAS ONLINE",
+                "title": "TikTok Shop vs Loja Própria: <br><span class=\"highlight\">qual o melhor para você?</span>",
+                "subtitle": "Vender por impulso no app ou estruturar sua própria base? Entenda as diferenças reais para tomar a melhor decisão."
             },
             {
                 "type": "content",
-                "tag": "O PROBLEMA",
-                "title": "A desconfiança de quem <br><span class=\"highlight\">compra pela primeira vez.</span>",
-                "subtitle": "Compras de tíquete maior exigem mais do que uma foto bonita no feed.",
-                "body": "Você posta, o cliente se interessa, mas na hora de passar o Pix ele some. Muitas vezes ele foi ao Google pesquisar sobre a sua empresa e não encontrou um site. A insegurança fala mais alto e ele desiste.",
-                "highlight_label": "O Risco",
-                "highlight_text": "Sem endereço próprio na web, sua empresa parece passageira para quem não te conhece."
+                "tag": "PRINCIPAIS DIFERENÇAS",
+                "title": "Descoberta e Conversão vs <br><span class=\"highlight\">Controle e Margens.</span>",
+                "subtitle": "Entenda o que muda na prática entre os dois modelos.",
+                "body": "<strong>Descoberta e Conversão:</strong> O TikTok Shop encurta o caminho entre ver o vídeo e comprar com checkout nativo no app. O e-commerce próprio depende de levar tráfego qualificado para fora das redes.<br><br><strong>Controle e Margens:</strong> No TikTok Shop você paga comissões maiores e joga sob as regras do algoritmo. Na loja própria você controla as regras, margens e o pós-venda.<br><br><strong>Estratégia de Afiliados:</strong> O TikTok facilita parcerias nativas com criadores. Na loja própria, exige ferramentas externas.",
+                "highlight_label": "Diferença Fundamental",
+                "highlight_text": "No app você converte por impulso e conveniência; no site próprio você constrói valor de marca e controle."
             },
             {
                 "type": "content",
-                "tag": "A SOLUÇÃO",
-                "title": "Site simples e ágil, <br><span class=\"highlight\">integrado às suas redes.</span>",
-                "subtitle": "Nada de lojas virtuais pesadas com 300 menus que ninguém usa.",
-                "body": "Desenvolvo um site direto ao ponto, onde o cliente compra com cupom exclusivo de quem veio do seu Instagram. O cliente fecha a compra em 2 minutos e sente segurança imediata para pagar.",
-                "highlight_label": "Ganho Real",
-                "highlight_text": "Você vende com mais lucro, constrói sua base de clientes e não paga taxas de marketplaces."
+                "tag": "QUAL ESCOLHER?",
+                "title": "O canal ideal para cada <br><span class=\"highlight\">estratégia de negócio.</span>",
+                "subtitle": "Não existe 'melhor ou pior' absoluto: existe o foco do seu momento.",
+                "body": "<strong>TikTok Shop é ideal se:</strong><br>Seu produto é altamente visual, com forte apelo de demonstração, potencial viral ou se você aposta em lives e vídeos curtos frequentes para vender.<br><br><strong>E-commerce Próprio é indispensável se:</strong><br>Você quer construir marca no longo prazo, ter a lista de clientes para recompra e não depender das políticas de nenhuma plataforma de terceiros.",
+                "highlight_label": "Visão Estratégica",
+                "highlight_text": "Vendas por impulso geram caixa imediato; clientes fiéis geram faturamento previsível."
+            },
+            {
+                "type": "content",
+                "tag": "A MELHOR ESTRATÉGIA",
+                "title": "O modelo complementar: <br><span class=\"highlight\">una a força dos dois.</span>",
+                "subtitle": "Você não precisa escolher apenas um canal de vendas.",
+                "body": "Em vez de tratar como concorrentes, muitos negócios usam ambos de forma complementar:<br><br>O <strong>TikTok Shop</strong> atua como um <strong>canal de aquisição rápida</strong>, aproveitando o momento de empolgação do consumidor. O <strong>e-commerce próprio</strong> cuida da <strong>retenção, relacionamento duradouro e compras recorrentes</strong> com margem máxima.",
+                "highlight_label": "O Ciclo Híbrido",
+                "highlight_text": "Use o app para atrair novos compradores e fidelize no seu site próprio com margem cheia."
             },
             {
                 "type": "cta",
-                "tag": "VENDER MAIS",
-                "title": "Pronto para ter o seu <br><span class=\"highlight\">próprio endereço na web?</span>",
-                "subtitle": "Um site que trabalha junto com o seu Instagram para aumentar suas vendas diárias.",
-                "body": "Fale comigo no WhatsApp. Analiso o seu negócio e monto uma estrutura simples e amigável para sua loja vender mais pela internet."
+                "tag": "ESTRUTURA DE VENDAS",
+                "title": "Pronto para estruturar <br><span class=\"highlight\">as suas vendas online?</span>",
+                "subtitle": "Integração profissional entre redes sociais e loja própria sob medida.",
+                "body": "Quer planejar a estratégia ideal para a sua empresa em Porto Velho e ter um e-commerce próprio ágil, seguro e sem complicações? Fale direto comigo no WhatsApp pelo link da bio."
             }
         ],
-        "caption": """Você vende bem pelo Instagram, mas sente que muitos clientes somem na hora de fechar? 💳
+        "caption": """TikTok Shop ou Loja Online Própria: onde vale mais a pena vender? 🛍️📲
 
-Isso acontece principalmente com clientes de primeira viagem ou em compras de valor mais alto. A pessoa quer ter certeza absoluta de que sua loja é real antes de soltar o Pix.
+Não existe "melhor ou pior" absoluto: o TikTok Shop e o e-commerce próprio têm propostas diferentes e funcionam muito bem quando você entende a lógica de cada um.
 
-A solução não é montar uma loja virtual gigante e cara de gerenciar. É ter um site próprio simples, bonito e rápido, integrado com as suas redes sociais.
+🔍 Principais Diferenças:
+1. Descoberta e Conversão: O TikTok Shop reduz a distância entre ver o produto e comprar com um checkout nativo no app. O e-commerce próprio depende de levar tráfego para fora das redes sociais para converter.
+2. Controle e Margens: No TikTok Shop, você paga comissões mais altas e joga sob as regras do algoritmo. Na loja própria, você controla as regras, as margens e a experiência de pós-venda.
+3. Estratégia de Afiliados: O TikTok Shop facilita parcerias com criadores com seu programa nativo de afiliados. No e-commerce tradicional, gerenciar afiliados exige mais esforço e ferramentas externas.
 
-Vantagens práticas:
-🔹 O cliente pesquisa seu nome no Google e acha seu site oficial
-🔹 Mais segurança para o consumidor fechar compras de tíquete maior
-🔹 Os dados do cliente ficam salvos com você para você vender de novo
-🔹 Cada venda é 100% sua, sem taxas de plataformas comendo sua margem
+🎯 Qual Escolher?
+• TikTok Shop: Ideal se o seu produto é altamente visual, viral ou se você aposta em lives e vídeos curtos para vender.
+• E-commerce Próprio: Indispensável se você quer construir marca no longo prazo, ter a lista de clientes para recompra e não depender de nenhuma plataforma de terceiros.
 
-Quer um site sob medida para o seu comércio em Porto Velho?
-👉 Chame no WhatsApp pelo link da bio!
+💡 A Melhor Estratégia:
+Em vez de escolher apenas um, muitos negócios usam os dois de forma complementar: o TikTok Shop funciona como canal de aquisição rápida, enquanto o e-commerce próprio cuida da retenção e do relacionamento duradouro com o cliente.
 
-#ecommercepvh #vendasinstagram #portovelho #sitesprofissionais #rodrigofreiretech #tecnologiasamigaveis"""
+Quer estruturar uma loja própria rápida, segura e sob medida para a sua empresa em Porto Velho?
+👉 Mande uma mensagem no WhatsApp pelo link da bio!
+
+#tiktokshop #ecommerce #lojavirtual #marketingdigital #portovelho #rondonia #vendasdigitais #rodrigofreiretech"""
     },
 
     # -------------------------------------------------------------------------
@@ -823,19 +843,19 @@ Vamos bater um papo sobre a sua operação?
             },
             {
                 "type": "content",
-                "tag": "FORMAÇÃO & RIGOR",
-                "title": "Direito + Tecnologia: <br><span class=\"highlight\">o que você ganha com isso?</span>",
-                "subtitle": "Uma combinação que traz segurança prática para o empresário local.",
-                "body": "Sou graduado em Direito e estou em formação em Análise e Desenvolvimento de Sistemas. Para você que tem empresa, isso se traduz em vantagens diretas: rigor com contratos, orçamentos 100% transparentes, cumprimento estrito de prazos e sigilo absoluto com os dados da sua loja.",
-                "highlight_label": "Compromisso",
-                "highlight_text": "Zero conversa fiada e clareza total sobre o que você está contratando."
+                "tag": "FORMAÇÃO & LGPD",
+                "title": "Direito + Tecnologia: <br><span class=\"highlight\">uma combinação incomum.</span>",
+                "subtitle": "O que você ganha com a união entre a área jurídica e o desenvolvimento?",
+                "body": "Sou graduado em Direito e estou em formação em Análise e Desenvolvimento de Sistemas (ADS). Pode parecer uma combinação inusitada, mas ela entrega um diferencial raro: <strong>domínio prático da LGPD</strong> para proteger o cadastro de clientes da sua empresa contra vazamentos e multas, somado a contratos transparentes, rigor técnico e cumprimento estrito de prazos.",
+                "highlight_label": "Segurança Jurídica & Técnica",
+                "highlight_text": "Tecnologia com conformidade legal: seus sistemas blindados contra riscos e passivos."
             },
             {
                 "type": "content",
                 "tag": "PROPÓSITO DE MARCA",
                 "title": "A simplicidade de sistemas <br><span class=\"highlight\">é a bandeira que ergo.</span>",
                 "subtitle": "Tecnologia boa é aquela que conversa fácil com a sua empresa.",
-                "body": "Também desenvolvo tecnologia própria com registro oficial no INPI (Nº 512025006506-0). Sou empenhado em mudar o paradigma de que tecnologia precisa ser complicada. Construo ferramentas que qualquer atendente aprende no primeiro olhar.",
+                "body": "Também desenvolvo tecnologia própria com registro oficial no INPI (Nº 512025006506-0). Sou empenhado em mudar o paradigma de que tecnologia precisa ser complicada. Construo ferramentas amigáveis que qualquer atendente aprende no primeiro olhar.",
                 "highlight_label": "Foco no Resultado",
                 "highlight_text": "Sistemas amigáveis geram agilidade no atendimento e colocam mais dinheiro no seu caixa."
             },
@@ -843,30 +863,30 @@ Vamos bater um papo sobre a sua operação?
                 "type": "cta",
                 "tag": "ATENDIMENTO DIRETO",
                 "title": "Você fala direto com <br><span class=\"highlight\">quem resolve.</span>",
-                "subtitle": "Sem atendentes intermediários, sem robôs e sem chamado que desaparece.",
-                "body": "Moro aqui em Porto Velho e atendo tanto no balcão da sua loja quanto à distância. Salve este post e mande uma mensagem no WhatsApp para tomar um café e conversar sobre a sua empresa!"
+                "subtitle": "Sem intermediários, sem robôs e sem protocolos burocráticos.",
+                "body": "Moro aqui em Porto Velho e atendo tanto presencialmente na sua empresa quanto à distância. Salve este post e mande uma mensagem no WhatsApp para conversar sobre a sua operação!"
             }
         ],
         "caption": """Prazer, sou o Rodrigo Freire! 👋
 
-Moro aqui em Porto Velho e presto serviços de tecnologia, informática e desenvolvimento de sistemas diretamente para empresários e comerciantes da nossa cidade.
+Moro aqui em Porto Velho e desenvolvo soluções de tecnologia, sistemas e suporte técnico sob medida para empresários e comerciantes da nossa cidade.
 
-Minha formação combina duas áreas complementares: sou graduado em Direito e estou em formação em Análise e Desenvolvimento de Sistemas (ADS).
+Minha trajetória traz uma união que muitos acham curiosa: sou graduado em Direito e estou em formação em Análise e Desenvolvimento de Sistemas (ADS).
 
-O que isso significa na prática para a sua empresa?
-📜 Contratos claros e orçamentos transparentes antes de qualquer serviço
-⏱️ Cumprimento rigoroso de prazos acordados
-🔒 Sigilo profissional absoluto com dados e notas da sua empresa
-💡 Explicação sempre em português claro, sem jargão técnico para justificar preço
+O que essa combinação incomum significa para a sua empresa na prática?
+🛡️ Domínio prático da LGPD: sistemas e bancos de dados implementados com proteção real às informações de clientes, evitando multas e vazamentos
+📜 Rigor contratual e orçamentos 100% transparentes antes de qualquer serviço
+⏱️ Cumprimento estrito de prazos acordados
+🔒 Sigilo profissional e confidencialidade absoluta
+💡 Explicação sempre em português claro, sem jargões para inflar preços
 
-Ergo a bandeira da SIMPLICIDADE DE SISTEMAS: tecnologia existe para acelerar o seu comércio e colocar mais dinheiro no seu caixa, não para gerar complicação.
+Ergo a bandeira das TECNOLOGIAS AMIGÁVEIS: software e suporte existem para simplificar sua vida e fazer seu comércio faturar mais, sem dor de cabeça.
 
-Você fala direto comigo no WhatsApp e, se precisar, vou até o seu balcão resolver.
+Você fala direto comigo no WhatsApp e, quando necessário, vou até o seu balcão resolver.
 
-Gostou? Salve este post para quando precisar de socorro técnico ou tecnologia amigável na sua empresa!
-👉 WhatsApp no link da bio.
+Gostou? Salve este post para ter um parceiro de tecnologia confiável e me chame no WhatsApp pelo link da bio!
 
-#portovelho #rondonia #pvh #tiportovelho #tecnologiaamigavel #rodrigofreiretech #empreendedorismolocal"""
+#portovelho #rondonia #pvh #lgpd #direitotecnologia #tecnologiaamigavel #rodrigofreiretech #empreendedorismo"""
     },
 
     # -------------------------------------------------------------------------
