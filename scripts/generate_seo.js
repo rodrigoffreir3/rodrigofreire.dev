@@ -345,28 +345,18 @@ function prerenderRoutes() {
       }
     ];
 
-    if (post.slug === 'vendo-bem-instagram-preciso-site') {
+    if (post.faq && Array.isArray(post.faq) && post.faq.length > 0) {
       postSchemas.push({
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
-        'mainEntity': [
-          {
-            '@type': 'Question',
-            'name': 'Vendo bem no Instagram, ainda preciso de um site próprio?',
-            'acceptedAnswer': {
-              '@type': 'Answer',
-              'text': 'Se você vende apenas para clientes recorrentes que já confiam no direct, pode não precisar no início. Porém, um site próprio é indispensável para passar credibilidade a novos clientes que pesquisam no Google antes de compras de maior valor, atender a exigências fiscais/cadastrais e manter sua base de contatos protegida sem depender exclusivamente dos algoritmos das redes sociais.'
-            }
-          },
-          {
-            '@type': 'Question',
-            'name': 'Quando vale a pena criar um site para quem já vende em redes sociais?',
-            'acceptedAnswer': {
-              '@type': 'Answer',
-              'text': 'Vale a pena quando clientes perguntam por um site antes de fechar compras maiores, quando há percepção de clientes que somem antes do pagamento por falta de confiança, ou quando o lojista deseja alcançar novos públicos fora da sua rede atual com controle total da carteira de clientes.'
-            }
+        'mainEntity': post.faq.map(item => ({
+          '@type': 'Question',
+          'name': item.question,
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': item.answer
           }
-        ]
+        }))
       });
     }
 
