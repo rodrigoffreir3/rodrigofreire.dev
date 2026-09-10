@@ -18,7 +18,7 @@ export default function Sobre({ profile }) {
         </span>
         <h1 className="section-title-large">Sobre Rodrigo Freire</h1>
         <p className="section-desc-subtle">
-          Serviços de informática, computadores e internet para o pequeno e médio comércio em Porto Velho.
+          TI empresarial de alto padrão, conformidade com a LGPD e tecnologias amigáveis para empresas em Porto Velho.
         </p>
       </div>
 
@@ -71,20 +71,20 @@ export default function Sobre({ profile }) {
             Porto Velho · Rondônia
           </div>
           <h2 style={{ fontSize: '1.8rem', color: 'var(--text-heading)', marginBottom: '1rem' }}>
-            Tecnologias amigáveis e atendimento direto
+            TI empresarial, tecnologias amigáveis e atendimento direto
           </h2>
           <p style={{ fontSize: '1.02rem', lineHeight: '1.7', color: 'var(--text-body)', marginBottom: '1rem' }}>
-            Moro em Porto Velho e presto serviços de tecnologia e informática diretamente para empresas e comerciantes da nossa cidade. Atendo tanto presencialmente, indo até a sua loja ou escritório quando necessário, quanto à distância para resolver urgências com agilidade.
+            Moro em Porto Velho e presto serviços de tecnologia empresarial, estabilidade de caixas PDV (ponto de venda no balcão) e desenvolvimento de sistemas diretamente para empresas e comerciantes da nossa cidade. Atendo tanto presencialmente na sua empresa quanto via acesso remoto imediato (conexão segura à distância pelo computador) para resolver urgências com agilidade.
           </p>
           <p style={{ fontSize: '1.02rem', lineHeight: '1.7', color: 'var(--text-body)', marginBottom: '1rem' }}>
-            Minha formação combina duas áreas complementares: sou graduado em Direito e estou em formação em Análise e Desenvolvimento de Sistemas. Para você que é empresário, essa bagagem jurídica se traduz em vantagens práticas: rigor com contratos, clareza sobre o que está sendo contratado, cumprimento rigoroso de prazos e sigilo absoluto com os dados e informações do seu negócio.
+            Minha formação combina duas áreas complementares que raramente andam juntas: sou graduado em Direito e estou em formação em Análise e Desenvolvimento de Sistemas (ADS). Para você que é empresário, essa bagagem jurídica e técnica se traduz em vantagens práticas e de alto nível: <strong>domínio prático da LGPD (Lei Geral de Proteção de Dados, para blindar seu negócio contra vazamentos e autuações)</strong>, contratos 100% transparentes, rigor em prazos acordados e sigilo profissional absoluto com as informações da sua empresa.
           </p>
           <p style={{ fontSize: '1.02rem', lineHeight: '1.7', color: 'var(--text-body)', marginBottom: '1.25rem' }}>
-            Também desenvolvo um sistema próprio de proteção para computadores e servidores com registro oficial no Instituto Nacional da Propriedade Industrial (INPI sob o processo nº 512025006506-0), o que comprova minha dedicação técnica e a seriedade com que conduzo cada trabalho.
+            Também desenvolvo tecnologia própria com registro oficial no Instituto Nacional da Propriedade Industrial (INPI sob o processo nº 512025006506-0), o que comprova minha capacidade técnica e o compromisso sério com cada solução implementada.
           </p>
           <div style={{ padding: '1.25rem 1.5rem', background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.04) 0%, rgba(53, 51, 205, 0.08) 100%)', borderRadius: '16px', border: '1px solid rgba(53, 51, 205, 0.2)' }}>
             <p style={{ fontSize: '1.02rem', lineHeight: '1.7', color: 'var(--text-heading)', margin: 0 }}>
-              O que você está comprando de mim são <strong>soluções tecnológicas amigáveis</strong>. Sou empenhado em mudar o paradigma de que tecnologia tem que ser complicada. Por isso, construo e implemento sistemas que conversam fácil com a sua empresa — fáceis de entender e de utilizar por qualquer colaborador, sem atrito. <strong>A simplicidade de sistemas é a bandeira que ergo</strong>.
+              O que você contrata de mim é <strong>estabilidade técnica e tecnologias amigáveis</strong>. Sou empenhado em mudar o paradigma de que tecnologia corporativa precisa ser complicada. Construo e implemento ferramentas que conversam fácil com a sua empresa — fáceis de operar por qualquer atendente, sem atrito. <strong>A simplicidade de sistemas é a bandeira que ergo</strong>.
             </p>
           </div>
         </div>
@@ -99,7 +99,7 @@ export default function Sobre({ profile }) {
           </div>
           <h3 style={{ fontSize: '1.25rem', marginBottom: '0.65rem' }}>A Bandeira da Simplicidade</h3>
           <p style={{ fontSize: '0.93rem', color: 'var(--text-body)', lineHeight: '1.6', margin: 0 }}>
-            Sistemas amigáveis e fáceis de operar. Se o software é confuso ou exige treinamento sem fim, ele rouba o seu tempo. Crio soluções que qualquer funcionário aprende em minutos.
+            Sistemas amigáveis e fáceis de operar. Se o software exige treinamento sem fim, ele rouba o seu tempo. Crio soluções que qualquer funcionário aprende em minutos.
           </p>
         </div>
 
@@ -109,7 +109,7 @@ export default function Sobre({ profile }) {
           </div>
           <h3 style={{ fontSize: '1.25rem', marginBottom: '0.65rem' }}>Presença Local & Sem Intermediários</h3>
           <p style={{ fontSize: '0.93rem', color: 'var(--text-body)', lineHeight: '1.6', margin: 0 }}>
-            Moro aqui e conheço a realidade do comércio de Porto Velho. Você fala direto comigo no WhatsApp e, se o computador do caixa travar ou a internet cair, eu me desloco até o seu balcão para resolver.
+            Moro aqui e conheço a realidade do comércio de Porto Velho. Você fala direto comigo no WhatsApp e, se o caixa PDV (ponto de venda) travar ou a rede oscilar, atendo imediatamente à distância ou vou até o seu balcão.
           </p>
         </div>
 
@@ -117,9 +117,9 @@ export default function Sobre({ profile }) {
           <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
             <FileCheck size={22} color="#3533cd" />
           </div>
-          <h3 style={{ fontSize: '1.25rem', marginBottom: '0.65rem' }}>Segurança Contratual & INPI</h3>
+          <h3 style={{ fontSize: '1.25rem', marginBottom: '0.65rem' }}>Segurança Contratual, INPI & LGPD</h3>
           <p style={{ fontSize: '0.93rem', color: 'var(--text-body)', lineHeight: '1.6', margin: 0 }}>
-            Formação em Direito e tecnologia própria com registro no INPI. Todos os orçamentos são transparentes antes de iniciar o serviço, com sigilo total dos dados do seu negócio.
+            Graduação em Direito somada à tecnologia: domínio da LGPD (Lei Geral de Proteção de Dados) para blindar seu negócio, contratos transparentes e tecnologia registrada no INPI.
           </p>
         </div>
 
@@ -129,7 +129,7 @@ export default function Sobre({ profile }) {
           </div>
           <h3 style={{ fontSize: '1.25rem', marginBottom: '0.65rem' }}>Explicação em Português Claro</h3>
           <p style={{ fontSize: '0.93rem', color: 'var(--text-body)', lineHeight: '1.6', margin: 0 }}>
-            Sem palavras difíceis para justificar preço. Explico com clareza o que aconteceu, o que fiz para consertar e como evitar que se repita, para você ter total controle do que está pagando.
+            Sem jargões para justificar preço. Quando um termo técnico em inglês for indispensável, explico entre parênteses o que ele significa para você ter total controle do que está contratando.
           </p>
         </div>
 

@@ -15,7 +15,8 @@ import {
   MapPin,
   Clock,
   Send,
-  Sparkles
+  Sparkles,
+  Activity
 } from 'lucide-react';
 
 const ICON_MAP = {
@@ -26,7 +27,8 @@ const ICON_MAP = {
   ShieldCheck,
   CheckCircle2,
   Gauge,
-  Code2
+  Code2,
+  Activity
 };
 
 export default function Home({ profile }) {
@@ -54,35 +56,35 @@ export default function Home({ profile }) {
     <div className="home-enterprise-wrapper">
 
       {/* ============================================================
-         BLOCO 1: ABERTURA (ACIMA DA DOBRA) — TECNOLOGIAS AMIGÁVEIS
+         BLOCO 1: ABERTURA (ACIMA DA DOBRA) — TI EMPRESARIAL & TECNOLOGIAS AMIGÁVEIS
          ============================================================ */}
       <section className="corp-hero-enterprise" id="inicio">
-        <div className="hero-enterprise-inner" style={{ gridTemplateColumns: '1fr', maxWidth: '920px', margin: '0 auto', textAlign: 'center' }}>
+        <div className="hero-enterprise-inner" style={{ gridTemplateColumns: '1fr', maxWidth: '940px', margin: '0 auto', textAlign: 'center' }}>
           <div className="hero-enterprise-copy" style={{ alignItems: 'center' }}>
             
             <div className="hero-pill-badge" style={{ margin: '0 auto 1.5rem' }}>
               <Sparkles size={14} />
-              <span>Soluções Tecnológicas Amigáveis · Porto Velho</span>
+              <span>TI Empresarial de Alto Padrão & Soluções Amigáveis · Porto Velho</span>
             </div>
 
             <h1 className="hero-enterprise-title" style={{ fontSize: 'clamp(2.1rem, 4.5vw, 3.3rem)', lineHeight: '1.2', marginBottom: '1.5rem' }}>
-              Chega de brigar com sistemas lentos ou difíceis: implemento <span className="highlight-cyan">soluções tecnológicas amigáveis</span> para sua empresa rodar sem atrito.
+              Sua empresa não pode parar por falha técnica: implemento <span className="highlight-cyan">TI empresarial ágil e sistemas amigáveis</span> para sua operação nunca travar.
             </h1>
 
-            <p className="hero-enterprise-desc" style={{ fontSize: '1.18rem', lineHeight: '1.7', maxWidth: '800px', margin: '0 auto 2rem', color: 'var(--text-body)' }}>
-              Mudo o paradigma de que tecnologia tem que ser complicada. Construo e implemento sistemas simples, fáceis de entender e rápidos de utilizar para sua equipe atender sem filas e sua empresa lucrar mais — com atendimento presencial em Porto Velho ou remoto imediato.
+            <p className="hero-enterprise-desc" style={{ fontSize: '1.16rem', lineHeight: '1.7', maxWidth: '820px', margin: '0 auto 2rem', color: 'var(--text-body)' }}>
+              Estabilidade técnica para caixas PDV (ponto de venda / balcão da loja), computadores e rede comercial, com conformidade prática com a LGPD (Lei Geral de Proteção de Dados, para blindar seu negócio contra multas e vazamentos) e sistemas simples de operar. Menos atrito técnico, atendimento rápido sem filas e mais lucro no seu caixa — com atendimento empresarial em Porto Velho ou remoto imediato (conexão à distância segura).
             </p>
 
             <div className="hero-pain-chips-row" style={{ justifyContent: 'center', marginBottom: '2.5rem', flexWrap: 'wrap' }}>
-              <span className="hero-pain-chip-item">✓ Sistemas amigáveis e fáceis de usar</span>
-              <span className="hero-pain-chip-item">✓ Fim de telas confusas e filas no caixa</span>
-              <span className="hero-pain-chip-item">✓ A simplicidade de sistemas como bandeira</span>
+              <span className="hero-pain-chip-item">✓ Estabilidade para caixas PDV e redes</span>
+              <span className="hero-pain-chip-item">✓ Sistemas amigáveis que qualquer atendente domina</span>
+              <span className="hero-pain-chip-item">✓ Proteção de dados e conformidade LGPD</span>
               <span className="hero-pain-chip-item">✓ Atendimento direto com o Rodrigo</span>
             </div>
 
             <div className="hero-actions-row" style={{ justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
               <a
-                href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá Rodrigo! Vi seu site e gostaria de conhecer suas soluções tecnológicas amigáveis para a minha empresa.')}`}
+                href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá Rodrigo! Vi seu site e gostaria de conhecer suas soluções de TI empresarial e sistemas amigáveis para a minha empresa.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="corp-btn-accent"
@@ -92,7 +94,7 @@ export default function Home({ profile }) {
               </a>
 
               <a href="#servicos" className="corp-btn-outline-glass" style={{ fontSize: '1.05rem', padding: '0.9rem 1.8rem' }}>
-                Ver Soluções Amigáveis <ArrowDown size={16} />
+                Ver Soluções Empresariais <ArrowDown size={16} />
               </a>
             </div>
 
@@ -120,27 +122,27 @@ export default function Home({ profile }) {
         >
           <div style={{ flex: '1 1 500px' }}>
             <span className="corp-badge" style={{ marginBottom: '0.85rem' }}>
-              A Bandeira que Ergo: Simplicidade de Sistemas
+              A Bandeira que Ergo: Simplicidade & Continuidade
             </span>
             <h2 style={{ fontSize: '1.65rem', color: 'var(--text-heading)', marginBottom: '0.85rem', lineHeight: '1.3' }}>
-              Tecnologia boa é aquela que conversa fácil com a sua empresa.
+              Tecnologia boa é aquela que conversa fácil com a sua empresa e protege seu faturamento.
             </h2>
             <p style={{ fontSize: '1.02rem', lineHeight: '1.7', color: 'var(--text-body)', margin: 0 }}>
-              Quando um sistema trava ou é difícil de mexer, o cliente na fila não vai culpar o software: ele vai reclamar da sua loja e não volta mais. Sou empenhado em mudar o paradigma de que tecnologia tem que ser complicada. Eu construo e implemento ferramentas intuitivas que qualquer colaborador entende no primeiro dia, trazendo agilidade real, eliminando filas e gerando mais dinheiro no caixa.
+              Quando um caixa trava ou o sistema é confuso, o cliente na fila não culpa o software: ele reclama da sua loja e não volta mais. Sou empenhado em mudar o paradigma de que tecnologia corporativa precisa ser complicada ou custar fortunas em mensalidades. Eu construo e implemento ferramentas intuitivas e suporte de alto padrão, garantindo que sua equipe opere sem atrito, seus dados fiquem protegidos sob a LGPD (Lei Geral de Proteção de Dados) e o lucro entre no caixa todos os dias.
             </p>
           </div>
           <div style={{ flex: '0 0 auto', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
             <div style={{ padding: '0.85rem 1.3rem', background: '#FFFFFF', borderRadius: '14px', border: '1px solid rgba(53, 51, 205, 0.15)', boxShadow: '0 4px 12px rgba(0,0,0,0.03)', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
               <CheckCircle2 size={18} color="#3533cd" />
-              <span style={{ fontWeight: '600', fontSize: '0.92rem', color: 'var(--text-heading)' }}>Fácil de entender e utilizar</span>
+              <span style={{ fontWeight: '600', fontSize: '0.92rem', color: 'var(--text-heading)' }}>Sistemas fáceis de operar no 1º dia</span>
             </div>
             <div style={{ padding: '0.85rem 1.3rem', background: '#FFFFFF', borderRadius: '14px', border: '1px solid rgba(53, 51, 205, 0.15)', boxShadow: '0 4px 12px rgba(0,0,0,0.03)', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
               <CheckCircle2 size={18} color="#3533cd" />
-              <span style={{ fontWeight: '600', fontSize: '0.92rem', color: 'var(--text-heading)' }}>Operação ágil sem atrito</span>
+              <span style={{ fontWeight: '600', fontSize: '0.92rem', color: 'var(--text-heading)' }}>Estabilidade para caixas PDV e redes</span>
             </div>
             <div style={{ padding: '0.85rem 1.3rem', background: '#FFFFFF', borderRadius: '14px', border: '1px solid rgba(53, 51, 205, 0.15)', boxShadow: '0 4px 12px rgba(0,0,0,0.03)', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
               <CheckCircle2 size={18} color="#3533cd" />
-              <span style={{ fontWeight: '600', fontSize: '0.92rem', color: 'var(--text-heading)' }}>Menos filas, mais lucro</span>
+              <span style={{ fontWeight: '600', fontSize: '0.92rem', color: 'var(--text-heading)' }}>Conformidade com a LGPD e sem filas</span>
             </div>
           </div>
         </div>
@@ -151,10 +153,10 @@ export default function Home({ profile }) {
          ============================================================ */}
       <section className="section-services-catalog" id="servicos" style={{ paddingTop: '3rem', paddingBottom: '5rem' }}>
         <div className="section-head-center">
-          <span className="section-tag-pill">Soluções Tecnológicas Amigáveis</span>
-          <h2 className="section-title-large">Sistemas e serviços pensados para descomplicar a sua rotina</h2>
+          <span className="section-tag-pill">Soluções Corporativas & Amigáveis</span>
+          <h2 className="section-title-large">Sistemas e serviços pensados para sua empresa rodar e lucrar</h2>
           <p className="section-desc-subtle">
-            Sem empurrar recursos complicados ou mensalidades abusivas. Soluções amigáveis criadas para falar a mesma língua da sua operação e facilitar a sua vida.
+            Sem empurrar recursos complicados ou mensalidades abusivas. Soluções estruturadas para falar a mesma língua da sua operação e garantir estabilidade real.
           </p>
         </div>
 
@@ -222,10 +224,10 @@ export default function Home({ profile }) {
          ============================================================ */}
       <section className="section-pains-container" id="diferenciais" style={{ paddingTop: '5rem', paddingBottom: '5rem', background: 'var(--color-off-white)' }}>
         <div className="section-head-center">
-          <span className="section-tag-pill">O Valor da Simplicidade</span>
-          <h2 className="section-title-large">Por que tecnologias amigáveis trazem mais lucro para sua empresa?</h2>
+          <span className="section-tag-pill">Padrão de Atendimento</span>
+          <h2 className="section-title-large">Por que TI empresarial de alto padrão gera mais lucro para sua empresa?</h2>
           <p className="section-desc-subtle">
-            Mais importante do que apenas suporte técnico é contar com sistemas simples e amigáveis, que não travam o atendimento e eliminam a complicação da rotina.
+            Mais do que consertos pontuais, sua empresa ganha continuidade de vendas, proteção jurídica e sistemas que qualquer funcionário opera sem complicação.
           </p>
         </div>
 
@@ -235,9 +237,9 @@ export default function Home({ profile }) {
             <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
               <Gauge size={22} color="#3533cd" />
             </div>
-            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Fácil de entender e utilizar</h3>
+            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Fácil de entender e operar</h3>
             <p style={{ fontSize: '0.92rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
-              Mudo o paradigma de que tecnologia precisa de manuais gigantescos e telas confusas. Crio ferramentas limpas e intuitivas que qualquer funcionário aprende em poucos minutos, acabando com erros operacionais.
+              Mudo o paradigma de telas confusas que exigem semanas de treino. Crio e implemento ferramentas limpas que qualquer funcionário aprende em poucos minutos, eliminando erros no caixa.
             </p>
           </div>
 
@@ -245,19 +247,19 @@ export default function Home({ profile }) {
             <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
               <Clock size={22} color="#3533cd" />
             </div>
-            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Atendimento ágil sem filas</h3>
+            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Estabilidade e balcão sem filas</h3>
             <p style={{ fontSize: '0.92rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
-              Cliente esperando em fila por lentidão de software reclama da sua loja, não do programa. Sistemas rápidos e amigáveis destravam o caixa e deixam o cliente satisfeito, aumentando suas vendas diárias.
+              Cliente parado em fila por instabilidade técnica desiste da compra e queima a imagem da loja. Infraestrutura estável destrava caixas PDV (ponto de venda no balcão) e acelera o fechamento diário.
             </p>
           </div>
 
           <div className="pain-card-item" style={{ borderColor: 'rgba(53, 51, 205, 0.15)', background: '#FFFFFF' }}>
             <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
-              <Code2 size={22} color="#3533cd" />
+              <ShieldCheck size={22} color="#3533cd" />
             </div>
-            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Solução sob medida para onde dói</h3>
+            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Blindagem Jurídica & LGPD</h3>
             <p style={{ fontSize: '0.92rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
-              Nada de empurrar sistemas de terceiros engessados e caros cheios de botões que você nunca vai usar. Examino a operação real da sua empresa e entrego a ferramenta exata que resolve o gargalo.
+              Formação em Direito somada à tecnologia: garantia de domínio prático da LGPD (Lei Geral de Proteção de Dados) para blindar os cadastros da sua empresa contra multas, vazamentos e processos judiciais.
             </p>
           </div>
 
@@ -267,7 +269,7 @@ export default function Home({ profile }) {
             </div>
             <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Atendimento local e direto comigo</h3>
             <p style={{ fontSize: '0.92rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
-              Moro em Porto Velho e você fala diretamente com quem desenvolve e resolve. Se precisar, vou até o seu balcão; se for urgência, acesso remotamente na hora sem atendentes intermediários.
+              Moro em Porto Velho e você fala diretamente com quem resolve. Em emergências, acesso remoto imediato (conexão segura à distância pelo computador) ou atendimento presencial direto no seu balcão.
             </p>
           </div>
 
