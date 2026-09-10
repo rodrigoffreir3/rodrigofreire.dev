@@ -8,6 +8,13 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     
+    <!-- Redirecionamento defensivo de pages.dev para o domínio definitivo rodrigofreire.dev.br -->
+    <script>
+      if (window.location.hostname && window.location.hostname.endsWith('pages.dev')) {
+        window.location.replace('https://rodrigofreire.dev.br' + window.location.pathname + window.location.search + window.location.hash);
+      }
+    </script>
+    
     <!-- Primary Meta Tags -->
     <title>Rodrigo Freire · TI Empresarial de Alto Nível — Porto Velho</title>
     <meta name="title" content="Rodrigo Freire · TI Empresarial de Alto Nível — Porto Velho" />

@@ -59,6 +59,24 @@ ${allUrls.map(u => `  <url>
   console.log(`✅ sitemap.xml gerado com sucesso contendo ${allUrls.length} rotas!`);
 }
 
+function escapeAttr(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
 // 2. HELPER PARA INJETAR METATAGS ESTÁTICAS NO HTML (CA-2 / CA-3)
 function injectMetaTags(htmlTemplate, {
   title,
@@ -71,22 +89,25 @@ function injectMetaTags(htmlTemplate, {
   jsonLdList = []
 }) {
   let html = htmlTemplate;
+  const safeTitle = escapeHtml(title);
+  const safeTitleAttr = escapeAttr(title);
+  const safeDescAttr = escapeAttr(description);
 
   // Substituir Title
-  html = html.replace(/<title>.*?<\/title>/s, `<title>${title}</title>`);
+  html = html.replace(/<title>.*?<\/title>/s, `<title>${safeTitle}</title>`);
 
   // Substituir Meta Title
-  html = html.replace(/<meta\s+name=["']title["'].*?>/s, `<meta name="title" content="${title}" />`);
+  html = html.replace(/<meta\s+name=["']title["'].*?>/s, `<meta name="title" content="${safeTitleAttr}" />`);
 
   // Substituir Meta Description
-  html = html.replace(/<meta\s+name=["']description["'].*?>/s, `<meta name="description" content="${description}" />`);
+  html = html.replace(/<meta\s+name=["']description["'].*?>/s, `<meta name="description" content="${safeDescAttr}" />`);
 
   // Substituir Canonical
   html = html.replace(/<link\s+rel=["']canonical["'].*?>/s, `<link rel="canonical" href="${canonicalUrl}" />`);
 
   // Substituir Open Graph
-  html = html.replace(/<meta\s+property=["']og:title["'].*?>/s, `<meta property="og:title" content="${title}" />`);
-  html = html.replace(/<meta\s+property=["']og:description["'].*?>/s, `<meta property="og:description" content="${description}" />`);
+  html = html.replace(/<meta\s+property=["']og:title["'].*?>/s, `<meta property="og:title" content="${safeTitleAttr}" />`);
+  html = html.replace(/<meta\s+property=["']og:description["'].*?>/s, `<meta property="og:description" content="${safeDescAttr}" />`);
   html = html.replace(/<meta\s+property=["']og:url["'].*?>/s, `<meta property="og:url" content="${canonicalUrl}" />`);
   html = html.replace(/<meta\s+property=["']og:type["'].*?>/s, `<meta property="og:type" content="${ogType}" />`);
   html = html.replace(/<meta\s+property=["']og:image["'].*?>/s, `<meta property="og:image" content="${imageUrl}" />`);
@@ -102,8 +123,8 @@ function injectMetaTags(htmlTemplate, {
   }
 
   // Substituir Twitter Cards
-  html = html.replace(/<meta\s+name=["']twitter:title["'].*?>/s, `<meta name="twitter:title" content="${title}" />`);
-  html = html.replace(/<meta\s+name=["']twitter:description["'].*?>/s, `<meta name="twitter:description" content="${description}" />`);
+  html = html.replace(/<meta\s+name=["']twitter:title["'].*?>/s, `<meta name="twitter:title" content="${safeTitleAttr}" />`);
+  html = html.replace(/<meta\s+name=["']twitter:description["'].*?>/s, `<meta name="twitter:description" content="${safeDescAttr}" />`);
   html = html.replace(/<meta\s+name=["']twitter:image["'].*?>/s, `<meta name="twitter:image" content="${imageUrl}" />`);
   html = html.replace(/<meta\s+name=["']twitter:url["'].*?>/s, `<meta name="twitter:url" content="${canonicalUrl}" />`);
 
