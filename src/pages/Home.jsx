@@ -18,6 +18,7 @@ import {
   Sparkles,
   Activity
 } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const ICON_MAP = {
   Wrench,
@@ -52,8 +53,45 @@ export default function Home({ profile }) {
     }
   };
 
+  const homeJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    'name': 'Rodrigo Freire — TI Empresarial & Tecnologias Amigáveis',
+    'image': 'https://rodrigofreire.dev.br/og-default.png',
+    'url': 'https://rodrigofreire.dev.br',
+    'telephone': '+5569992782919',
+    'priceRange': '$$',
+    'address': {
+      '@type': 'PostalAddress',
+      'addressLocality': 'Porto Velho',
+      'addressRegion': 'RO',
+      'addressCountry': 'BR'
+    },
+    'geo': {
+      '@type': 'GeoCoordinates',
+      'latitude': -8.7619,
+      'longitude': -63.9039
+    },
+    'openingHoursSpecification': {
+      '@type': 'OpeningHoursSpecification',
+      'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      'opens': '08:00',
+      'closes': '18:00'
+    },
+    'sameAs': [
+      'https://github.com/rodrigofreiredesouza'
+    ],
+    'description': 'Consultoria e suporte em TI empresarial de alto nível em Porto Velho - RO. Atendimento ágil, redes seguras, conformidade com a LGPD e desenvolvimento de sistemas sob medida.'
+  };
+
   return (
     <div className="home-enterprise-wrapper">
+      <SEO
+        title="Rodrigo Freire · TI Empresarial de Alto Nível — Porto Velho"
+        description="Consultoria e suporte em TI empresarial de alto padrão em Porto Velho - RO. Atendimento ágil, redes seguras, conformidade com a LGPD e desenvolvimento de sistemas sob medida."
+        canonicalPath="/"
+        jsonLd={homeJsonLd}
+      />
 
       {/* ============================================================
          BLOCO 1: ABERTURA (ACIMA DA DOBRA) — TI EMPRESARIAL & TECNOLOGIAS AMIGÁVEIS

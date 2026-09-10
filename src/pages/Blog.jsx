@@ -1,13 +1,39 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { BookOpen } from 'lucide-react';
+import SEO from '../components/SEO';
 
 export default function Blog({ posts = [] }) {
   // Ordena os posts do mais recente para o mais antigo
   const sortedPosts = [...posts].sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
 
+  const blogBreadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      {
+        '@type': 'ListItem',
+        'position': 1,
+        'name': 'Início',
+        'item': 'https://rodrigofreire.dev.br'
+      },
+      {
+        '@type': 'ListItem',
+        'position': 2,
+        'name': 'Blog',
+        'item': 'https://rodrigofreire.dev.br/blog'
+      }
+    ]
+  };
+
   return (
     <div className="portfolio-container">
+      <SEO
+        title="Blog & Publicações Técnicas · Rodrigo Freire — Porto Velho"
+        description="Artigos e análises sobre TI empresarial, conformidade com a LGPD, inteligência artificial, arquitetura de sistemas e segurança da informação."
+        canonicalPath="/blog"
+        jsonLd={blogBreadcrumbJsonLd}
+      />
       
       {/* HEADER DO BLOG */}
       <div style={{ marginBottom: '3.5rem', textAlign: 'center' }}>

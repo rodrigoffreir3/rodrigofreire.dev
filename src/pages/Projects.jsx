@@ -1,10 +1,36 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Sparkles, ArrowRight } from 'lucide-react';
+import SEO from '../components/SEO';
 
 export default function Projects({ projects = [] }) {
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      {
+        '@type': 'ListItem',
+        'position': 1,
+        'name': 'Início',
+        'item': 'https://rodrigofreire.dev.br'
+      },
+      {
+        '@type': 'ListItem',
+        'position': 2,
+        'name': 'Projetos',
+        'item': 'https://rodrigofreire.dev.br/projetos'
+      }
+    ]
+  };
+
   return (
     <div className="portfolio-container" style={{ maxWidth: '1280px', margin: '0 auto', padding: '3.5rem 1.5rem 6rem' }}>
+      <SEO
+        title="Projetos & Engenharia de Sistemas · Rodrigo Freire — Porto Velho"
+        description="Conheça os sistemas desenvolvidos por Rodrigo Freire: segurança da informação, patentes no INPI, ferramentas para comércio e computação científica."
+        canonicalPath="/projetos"
+        jsonLd={breadcrumbJsonLd}
+      />
       
       {/* HEADER DA PÁGINA */}
       <div className="section-head-center">

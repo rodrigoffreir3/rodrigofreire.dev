@@ -11,21 +11,21 @@ import ProtectedRoute from './components/ProtectedRoute';
 
 // Public Pages
 import Home from './pages/Home';
-import Projects from './pages/Projects';
-import ProjectDetail from './pages/ProjectDetail';
-import Blog from './pages/Blog';
-import BlogPost from './pages/BlogPost';
-import Sobre from './pages/Sobre';
-import Contato from './pages/Contato';
-import Login from './pages/Login';
-import NotFound from './pages/NotFound';
+const Projects = React.lazy(() => import('./pages/Projects'));
+const ProjectDetail = React.lazy(() => import('./pages/ProjectDetail'));
+const Blog = React.lazy(() => import('./pages/Blog'));
+const BlogPost = React.lazy(() => import('./pages/BlogPost'));
+const Sobre = React.lazy(() => import('./pages/Sobre'));
+const Contato = React.lazy(() => import('./pages/Contato'));
+const Login = React.lazy(() => import('./pages/Login'));
+const NotFound = React.lazy(() => import('./pages/NotFound'));
 
 // CMS Admin Pages
-import AdmDashboard from './pages/adm/AdmDashboard';
-import AdmStyle from './pages/adm/AdmStyle';
-import AdmProjects from './pages/adm/AdmProjects';
-import AdmPosts from './pages/adm/AdmPosts';
-import AdmProfile from './pages/adm/AdmProfile';
+const AdmDashboard = React.lazy(() => import('./pages/adm/AdmDashboard'));
+const AdmStyle = React.lazy(() => import('./pages/adm/AdmStyle'));
+const AdmProjects = React.lazy(() => import('./pages/adm/AdmProjects'));
+const AdmPosts = React.lazy(() => import('./pages/adm/AdmPosts'));
+const AdmProfile = React.lazy(() => import('./pages/adm/AdmProfile'));
 
 export default function App() {
   const location = useLocation();
@@ -62,16 +62,18 @@ export default function App() {
           <Navbar profile={profile} />
           
           <main style={{ minHeight: '80vh', width: '100%' }}>
-            <Routes>
-              <Route path="/" element={<Home profile={profile} projects={projects} posts={posts} />} />
-              <Route path="/projetos" element={<Projects projects={projects} />} />
-              <Route path="/projetos/:slug" element={<ProjectDetail projects={projects} profile={profile} />} />
-              <Route path="/blog" element={<Blog posts={posts} />} />
-              <Route path="/blog/:slug" element={<BlogPost posts={posts} profile={profile} />} />
-              <Route path="/sobre" element={<Sobre profile={profile} />} />
-              <Route path="/contato" element={<Contato profile={profile} />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+            <React.Suspense fallback={<div style={{ minHeight: '80vh' }} />}>
+              <Routes>
+                <Route path="/" element={<Home profile={profile} projects={projects} posts={posts} />} />
+                <Route path="/projetos" element={<Projects projects={projects} />} />
+                <Route path="/projetos/:slug" element={<ProjectDetail projects={projects} profile={profile} />} />
+                <Route path="/blog" element={<Blog posts={posts} />} />
+                <Route path="/blog/:slug" element={<BlogPost posts={posts} profile={profile} />} />
+                <Route path="/sobre" element={<Sobre profile={profile} />} />
+                <Route path="/contato" element={<Contato profile={profile} />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </React.Suspense>
           </main>
 
           {/* Rodapé 100% largura total */}
@@ -81,24 +83,26 @@ export default function App() {
           <WhatsAppButton number={profile?.whatsapp_number} />
         </MultiLayerCanvas>
       ) : (
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route
-            path="/adm"
-            element={
-              <ProtectedRoute>
-                <AdmDashboard profile={profile} />
-              </ProtectedRoute>
-            }
-          >
-            <Route index element={<AdmStyle settings={settings} setSettings={setSettings} />} />
-            <Route path="estilo" element={<AdmStyle settings={settings} setSettings={setSettings} />} />
-            <Route path="projetos" element={<AdmProjects projects={projects} setProjects={setProjects} />} />
-            <Route path="posts" element={<AdmPosts posts={posts} setPosts={setPosts} />} />
-            <Route path="perfil" element={<AdmProfile profile={profile} setProfile={setProfile} />} />
-          </Route>
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <React.Suspense fallback={<div style={{ minHeight: '100vh' }} />}>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route
+              path="/adm"
+              element={
+                <ProtectedRoute>
+                  <AdmDashboard profile={profile} />
+                </ProtectedRoute>
+              }
+            >
+              <Route index element={<AdmStyle settings={settings} setSettings={setSettings} />} />
+              <Route path="estilo" element={<AdmStyle settings={settings} setSettings={setSettings} />} />
+              <Route path="projetos" element={<AdmProjects projects={projects} setProjects={setProjects} />} />
+              <Route path="posts" element={<AdmPosts posts={posts} setPosts={setPosts} />} />
+              <Route path="perfil" element={<AdmProfile profile={profile} setProfile={setProfile} />} />
+            </Route>
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </React.Suspense>
       )}
     </>
   );

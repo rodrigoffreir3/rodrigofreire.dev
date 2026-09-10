@@ -15,9 +15,10 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+          'vendor-react': ['react', 'react-dom', 'react-router-dom', 'react-helmet-async'],
           'vendor-supabase': ['@supabase/supabase-js'],
-          'vendor-markdown': ['react-markdown', 'remark-gfm', '@uiw/react-md-editor'],
+          'vendor-markdown': ['react-markdown', 'remark-gfm'],
+          'vendor-editor': ['@uiw/react-md-editor'],
           'vendor-icons': ['lucide-react']
         }
       }

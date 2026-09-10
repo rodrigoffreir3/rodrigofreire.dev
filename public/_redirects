@@ -1,0 +1,8 @@
+# Cloudflare Pages _redirects
+# Redirecionamento 301 definitivo do domínio legado/staging pages.dev para o domínio oficial
+https://rodrigofreire.pages.dev/* https://rodrigofreire.dev.br/:splat 301!
+http://rodrigofreire.dev.br/* https://rodrigofreire.dev.br/:splat 301!
+https://www.rodrigofreire.dev.br/* https://rodrigofreire.dev.br/:splat 301!
+
+# Fallback para rotas SPA se nenhum arquivo estático existir
+/* /index.html 200

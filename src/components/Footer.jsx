@@ -17,6 +17,7 @@ export default function Footer({ profile }) {
             <img
               src="/icon-512.png"
               alt="RODRIGOFREIRE.DEV"
+              loading="lazy"
               style={{ height: '28px', width: 'auto', display: 'block' }}
             />
           </div>

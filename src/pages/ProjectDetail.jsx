@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { ArrowLeft, Sparkles, MessageSquare, CheckCircle2 } from 'lucide-react';
 import GithubIcon from '../components/GithubIcon';
+import SEO from '../components/SEO';
 
 export default function ProjectDetail({ projects, profile }) {
   const { slug } = useParams();
@@ -24,8 +25,58 @@ export default function ProjectDetail({ projects, profile }) {
   const hasRealCover = project.cover_image && !project.cover_image.includes('placeholder') && !project.cover_image.includes('mock');
   const realGallery = (project.gallery || []).filter(item => item.image && !item.image.includes('placeholder'));
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      {
+        '@type': 'ListItem',
+        'position': 1,
+        'name': 'Início',
+        'item': 'https://rodrigofreire.dev.br'
+      },
+      {
+        '@type': 'ListItem',
+        'position': 2,
+        'name': 'Projetos',
+        'item': 'https://rodrigofreire.dev.br/projetos'
+      },
+      {
+        '@type': 'ListItem',
+        'position': 3,
+        'name': project.title,
+        'item': `https://rodrigofreire.dev.br/projetos/${project.slug}`
+      }
+    ]
+  };
+
+  const softwareJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    'name': project.title,
+    'description': project.summary,
+    'applicationCategory': 'BusinessApplication',
+    'operatingSystem': 'Windows, Linux, Web',
+    'author': {
+      '@type': 'Person',
+      'name': 'Rodrigo Freire'
+    },
+    'offers': {
+      '@type': 'Offer',
+      'price': '0',
+      'priceCurrency': 'BRL'
+    }
+  };
+
   return (
     <article className="project-case-page" style={{ maxWidth: '960px', margin: '0 auto', padding: '2.5rem 1.5rem 6rem' }}>
+      <SEO
+        title={`${project.title} · Rodrigo Freire — Porto Velho`}
+        description={project.summary}
+        canonicalPath={`/projetos/${project.slug}`}
+        image={hasRealCover ? project.cover_image : undefined}
+        jsonLd={[breadcrumbJsonLd, softwareJsonLd]}
+      />
       
       {/* NAVEGAÇÃO DE RETORNO */}
       <div style={{ marginBottom: '1.75rem' }}>
@@ -52,7 +103,7 @@ export default function ProjectDetail({ projects, profile }) {
         {/* Renderiza imagem apenas se for real e configurada no CMS */}
         {hasRealCover && (
           <div className="project-hero-media" style={{ borderRadius: '20px', overflow: 'hidden', boxShadow: '0 16px 40px rgba(11, 74, 79, 0.12)', marginBottom: '2.5rem' }}>
-            <img src={project.cover_image} alt={`${project.title} Preview`} style={{ width: '100%', height: 'auto', display: 'block' }} />
+            <img src={project.cover_image} alt={`${project.title} Preview`} loading="lazy" style={{ width: '100%', height: 'auto', display: 'block' }} />
           </div>
         )}
       </header>

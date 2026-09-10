@@ -1,5 +1,6 @@
 import React from 'react';
 import { MapPin, Sparkles, MessageSquare, CheckCircle2, FileCheck } from 'lucide-react';
+import SEO from '../components/SEO';
 
 export default function Sobre({ profile }) {
   const phone = (profile?.whatsapp_number ? String(profile.whatsapp_number).replace(/\D/g, '') : '') || '5569992782919';
@@ -7,8 +8,40 @@ export default function Sobre({ profile }) {
     ? profile.avatar_url
     : '/foto_perfil.jpeg';
 
+  const personJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    'name': 'Rodrigo Freire',
+    'jobTitle': 'Especialista em TI Empresarial e Desenvolvedor de Software',
+    'description': 'Profissional de TI empresarial de alto nível em Porto Velho - RO, bacharel em Direito e graduando em Análise e Desenvolvimento de Sistemas (ADS). Criador de sistemas patenteados no INPI.',
+    'url': 'https://rodrigofreire.dev.br/sobre',
+    'image': 'https://rodrigofreire.dev.br/foto_perfil.jpeg',
+    'address': {
+      '@type': 'PostalAddress',
+      'addressLocality': 'Porto Velho',
+      'addressRegion': 'RO',
+      'addressCountry': 'BR'
+    },
+    'sameAs': [
+      'https://github.com/rodrigofreiredesouza'
+    ],
+    'knowsAbout': [
+      'TI Empresarial',
+      'Segurança da Informação',
+      'LGPD',
+      'Desenvolvimento de Software',
+      'Propriedade Intelectual (INPI)'
+    ]
+  };
+
   return (
     <div className="portfolio-container" style={{ paddingTop: '2.5rem' }}>
+      <SEO
+        title="Sobre Rodrigo Freire · TI Empresarial & Inovação — Porto Velho"
+        description="Conheça Rodrigo Freire: formação em Direito e Análise de Sistemas, patente no INPI e foco em TI empresarial de alto nível e conformidade com a LGPD em Porto Velho."
+        canonicalPath="/sobre"
+        jsonLd={personJsonLd}
+      />
       
       {/* HEADER DA SEÇÃO */}
       <div className="section-head-center" style={{ marginBottom: '3.5rem' }}>
@@ -51,6 +84,7 @@ export default function Sobre({ profile }) {
           <img
             src={avatarUrl}
             alt="Rodrigo Freire, profissional de TI em Porto Velho"
+            loading="lazy"
             onError={(e) => {
               e.currentTarget.onerror = null;
               e.currentTarget.src = '/foto_perfil.jpeg';

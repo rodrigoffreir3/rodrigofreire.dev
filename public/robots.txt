@@ -1,0 +1,43 @@
+# robots.txt para https://rodrigofreire.dev.br
+# Permissões explícitas para buscadores e motores de IA generativa (GEO/AEO)
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Crawlers de Inteligência Artificial e Modelos de Linguagem
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Regras gerais
+User-agent: *
+Allow: /
+Disallow: /adm
+Disallow: /adm/
+Disallow: /login
+
+# Apontamento do Sitemap oficial
+Sitemap: https://rodrigofreire.dev.br/sitemap.xml

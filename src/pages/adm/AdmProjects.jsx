@@ -336,7 +336,7 @@ export default function AdmProjects({ projects, setProjects }) {
             <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
               <div style={{ width: '60px', height: '40px', borderRadius: '8px', overflow: 'hidden', background: 'rgba(11, 74, 79, 0.08)', flexShrink: 0 }}>
                 {proj.cover_image ? (
-                  <img src={proj.cover_image} alt={proj.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <img src={proj.cover_image} alt={proj.title} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 ) : (
                   <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)' }}><ImageIcon size={18} /></div>
                 )}

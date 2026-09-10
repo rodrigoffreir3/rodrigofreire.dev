@@ -1,13 +1,39 @@
 import React from 'react';
 import { MessageSquare, Mail, ShieldCheck, Sparkles, MapPin } from 'lucide-react';
 import GithubIcon from '../components/GithubIcon';
+import SEO from '../components/SEO';
 
 export default function Contato({ profile }) {
   const phone = (profile?.whatsapp_number ? String(profile.whatsapp_number).replace(/\D/g, '') : '') || '5569992782919';
   const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent('Olá Rodrigo! Vim pelo seu site e gostaria de conversar sobre um serviço para o meu comércio.')}`;
 
+  const contactJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    'name': 'Contato & Atendimento Direto — Rodrigo Freire',
+    'description': 'Canais diretos de atendimento de TI empresarial, suporte técnico emergencial e consultoria em Porto Velho - RO.',
+    'url': 'https://rodrigofreire.dev.br/contato',
+    'mainEntity': {
+      '@type': 'LocalBusiness',
+      'name': 'Rodrigo Freire — TI Empresarial',
+      'telephone': `+${phone}`,
+      'address': {
+        '@type': 'PostalAddress',
+        'addressLocality': 'Porto Velho',
+        'addressRegion': 'RO',
+        'addressCountry': 'BR'
+      }
+    }
+  };
+
   return (
     <div className="portfolio-container" style={{ paddingTop: '2.5rem' }}>
+      <SEO
+        title="Contato & Atendimento Direto · Rodrigo Freire — Porto Velho"
+        description="Fale diretamente com Rodrigo Freire via WhatsApp ou e-mail para suporte de TI empresarial, manutenção de servidores e consultoria em Porto Velho."
+        canonicalPath="/contato"
+        jsonLd={contactJsonLd}
+      />
       
       {/* HEADER */}
       <div className="section-head-center" style={{ marginBottom: '3.5rem' }}>
