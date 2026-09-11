@@ -68,13 +68,7 @@ export default function MultiLayerCanvas({ settings, children }) {
         />
       )}
 
-      {/* 3. CAMADA AMBIENTE APPLE MESH (Orbs de Luz Fluidos para Refração Líquida Cristalina) */}
-      <div className="apple-ambient-container" aria-hidden="true" style={{ position: 'fixed', inset: 0, zIndex: 2, pointerEvents: 'none', overflow: 'hidden' }}>
-        <div className="apple-ambient-orb orb-primary" />
-        <div className="apple-ambient-orb orb-secondary" />
-        <div className="apple-ambient-orb orb-accent" />
-        <div className="apple-ambient-orb orb-warm" />
-      </div>
+
 
       {/* 4. CAMADA SECUNDÁRIA (ex: Nuvens no rodapé ou texturas de horizonte) */}
       {secondary_bg_url && (

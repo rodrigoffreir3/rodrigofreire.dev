@@ -147,86 +147,7 @@ a {
   text-decoration: none;
 }
 
-/* ============================================================
-   APPLE AMBIENT MESH (LUZES ORGÂNICAS SOB O VIDRO CRISTAL)
-   Proporciona refração líquida e visibilidade através dos cards
-   ============================================================ */
-.apple-ambient-container {
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 2;
-}
 
-.apple-ambient-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(85px);
-  pointer-events: none;
-  will-change: transform, opacity;
-  opacity: 0.65;
-}
-
-.orb-primary {
-  width: 720px;
-  height: 720px;
-  top: -100px;
-  right: -100px;
-  background: radial-gradient(circle, rgba(53, 51, 205, 0.32) 0%, rgba(53, 51, 205, 0.12) 50%, transparent 70%);
-  animation: floatOrb1 22s ease-in-out infinite alternate;
-}
-
-.orb-secondary {
-  width: 850px;
-  height: 850px;
-  top: 35%;
-  left: -200px;
-  background: radial-gradient(circle, rgba(0, 0, 0, 0.15) 0%, rgba(53, 51, 205, 0.08) 50%, transparent 70%);
-  animation: floatOrb2 26s ease-in-out infinite alternate;
-}
-
-.orb-accent {
-  width: 750px;
-  height: 750px;
-  bottom: 10%;
-  right: -80px;
-  background: radial-gradient(circle, rgba(53, 51, 205, 0.25) 0%, rgba(30, 27, 180, 0.12) 50%, transparent 70%);
-  animation: floatOrb3 24s ease-in-out infinite alternate;
-}
-
-.orb-warm {
-  width: 650px;
-  height: 650px;
-  top: 70%;
-  left: 20%;
-  background: radial-gradient(circle, rgba(251, 146, 60, 0.25) 0%, rgba(244, 63, 94, 0.15) 50%, transparent 70%);
-  animation: floatOrb4 28s ease-in-out infinite alternate;
-}
-
-@keyframes floatOrb1 {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-60px, 80px) scale(1.08); }
-  100% { transform: translate(40px, -40px) scale(0.95); }
-}
-
-@keyframes floatOrb2 {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(80px, -70px) scale(1.1); }
-  100% { transform: translate(-50px, 60px) scale(0.92); }
-}
-
-@keyframes floatOrb3 {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-70px, -50px) scale(1.05); }
-  100% { transform: translate(50px, 70px) scale(0.95); }
-}
-
-@keyframes floatOrb4 {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(60px, 60px) scale(1.12); }
-  100% { transform: translate(-40px, -50px) scale(0.9); }
-}
 
 /* ============================================================
    CLASSES UTILITÁRIAS DE VIDRO LÍQUIDO CRISTALINO
@@ -261,57 +182,7 @@ a {
   transform: translateY(-4px) translateZ(0);
 }
 
-/* Efeito de Reflexo de Luz Líquida (Shimmer Glint) ao passar o mouse */
-.crystal-liquid-glass::after,
-.service-card-liquid::after,
-.pain-card-item::after,
-.method-step-card::after,
-.risk-card::after,
-.fde-card::after,
-.diagnostic-info-card::after,
-.diagnostic-form-glass::after,
-.about-commitments-card::after,
-.about-photo-wrapper::after,
-.segment-card-item::after,
-.pricing-base-card::after,
-.hero-visual-card::after,
-.apple-liquid-glass::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -130%;
-  width: 120%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.04) 25%,
-    rgba(255, 255, 255, 0.35) 50%,
-    rgba(255, 255, 255, 0.04) 75%,
-    transparent 100%
-  );
-  transform: skewX(-20deg);
-  transition: left 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-  pointer-events: none;
-  z-index: 5;
-}
 
-.crystal-liquid-glass:hover::after,
-.service-card-liquid:hover::after,
-.pain-card-item:hover::after,
-.method-step-card:hover::after,
-.risk-card:hover::after,
-.fde-card:hover::after,
-.diagnostic-info-card:hover::after,
-.diagnostic-form-glass:hover::after,
-.about-commitments-card:hover::after,
-.about-photo-wrapper:hover::after,
-.segment-card-item:hover::after,
-.pricing-base-card:hover::after,
-.hero-visual-card:hover::after,
-.apple-liquid-glass:hover::after {
-  left: 150%;
-}
 
 /* ============================================================
    BOTÕES CORPORATIVOS CRISTALINOS
@@ -2546,14 +2417,6 @@ a {
     width: 100%;
   }
 
-  /* OTIMIZAÇÃO CRÍTICA DE PERFORMANCE MOBILE (ELIMINA ENGASGOS / 60-120 FPS FLUIDO) */
-  .apple-ambient-orb {
-    animation: none !important;
-    filter: blur(45px) !important;
-    opacity: 0.35 !important;
-    will-change: auto !important;
-  }
-
   .crystal-liquid-glass,
   .service-card-liquid,
   .pain-card-item,
@@ -2570,20 +2433,6 @@ a {
     background: rgba(255, 255, 255, 0.82) !important;
     will-change: auto !important;
     transform: translateZ(0);
-  }
-
-  /* Desativa repintura contínua de shimmer de hover no touch */
-  .crystal-liquid-glass::after,
-  .service-card-liquid::after,
-  .pain-card-item::after,
-  .method-step-card::after,
-  .risk-card::after,
-  .fde-card::after,
-  .diagnostic-info-card::after,
-  .diagnostic-form-glass::after,
-  .about-commitments-card::after,
-  .about-photo-wrapper::after {
-    display: none !important;
   }
 
   /* Seções fora de viewport não consomem ciclos de renderização */
