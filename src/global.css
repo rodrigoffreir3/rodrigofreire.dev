@@ -268,9 +268,13 @@ a {
 .service-card-liquid::after,
 .pain-card-item::after,
 .method-step-card::after,
+.risk-card::after,
+.diagnostic-info-card::after,
+.diagnostic-form-glass::after,
+.about-commitments-card::after,
+.about-photo-wrapper::after,
 .segment-card-item::after,
 .pricing-base-card::after,
-.diagnostic-form-glass::after,
 .hero-visual-card::after,
 .apple-liquid-glass::after {
   content: '';
@@ -297,9 +301,13 @@ a {
 .service-card-liquid:hover::after,
 .pain-card-item:hover::after,
 .method-step-card:hover::after,
+.risk-card:hover::after,
+.diagnostic-info-card:hover::after,
+.diagnostic-form-glass:hover::after,
+.about-commitments-card:hover::after,
+.about-photo-wrapper:hover::after,
 .segment-card-item:hover::after,
 .pricing-base-card:hover::after,
-.diagnostic-form-glass:hover::after,
 .hero-visual-card:hover::after,
 .apple-liquid-glass:hover::after {
   left: 150%;
@@ -1946,6 +1954,31 @@ a {
   align-items: center;
 }
 
+.diagnostic-info-card {
+  position: relative;
+  overflow: hidden;
+  padding: 2.6rem;
+  background: var(--glass-crystal-bg);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  backdrop-filter: blur(28px) saturate(200%);
+  border: 1px solid var(--glass-crystal-border);
+  border-top: 1.5px solid var(--glass-crystal-border-top);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--glass-crystal-specular), var(--glass-crystal-shadow);
+  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.diagnostic-info-card:hover {
+  background: var(--glass-crystal-bg-hover);
+  border-color: var(--glass-crystal-border-hover);
+  border-top-color: #FFFFFF;
+  box-shadow: var(--glass-crystal-hover-sh);
+}
+
 .diagnostic-form-glass {
   position: relative;
   overflow: hidden;
@@ -2511,16 +2544,67 @@ a {
   .pains-grid-cards,
   .methodology-grid-steps,
   .services-catalog-grid,
+  .risks-grid,
   .segments-grid-cards {
     grid-template-columns: 1fr;
     gap: 1rem;
     width: 100%;
   }
 
+  /* OTIMIZAÇÃO CRÍTICA DE PERFORMANCE MOBILE (ELIMINA ENGASGOS / 60-120 FPS FLUIDO) */
+  .apple-ambient-orb {
+    animation: none !important;
+    filter: blur(45px) !important;
+    opacity: 0.35 !important;
+    will-change: auto !important;
+  }
+
+  .crystal-liquid-glass,
+  .service-card-liquid,
+  .pain-card-item,
+  .method-step-card,
+  .risk-card,
+  .diagnostic-info-card,
+  .diagnostic-form-glass,
+  .about-presentation-card,
+  .about-photo-wrapper,
+  .about-commitments-card {
+    -webkit-backdrop-filter: blur(10px) !important;
+    backdrop-filter: blur(10px) !important;
+    background: rgba(255, 255, 255, 0.82) !important;
+    will-change: auto !important;
+    transform: translateZ(0);
+  }
+
+  /* Desativa repintura contínua de shimmer de hover no touch */
+  .crystal-liquid-glass::after,
+  .service-card-liquid::after,
+  .pain-card-item::after,
+  .method-step-card::after,
+  .risk-card::after,
+  .diagnostic-info-card::after,
+  .diagnostic-form-glass::after,
+  .about-commitments-card::after,
+  .about-photo-wrapper::after {
+    display: none !important;
+  }
+
+  /* Seções fora de viewport não consomem ciclos de renderização */
+  .section-risks,
+  .section-services-catalog,
+  .section-pains-container,
+  .section-methodology-bg,
+  .section-diagnostic-contact {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 420px;
+  }
+
   .service-card-liquid,
   .method-step-card,
   .segment-card-item,
-  .pain-card-item {
+  .pain-card-item,
+  .risk-card,
+  .diagnostic-info-card {
     padding: 1.4rem 1.15rem;
     width: 100%;
     box-sizing: border-box;
@@ -3002,18 +3086,19 @@ a {
   background: var(--glass-crystal-bg);
   -webkit-backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
   backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
-  border: 1px solid rgba(220, 38, 38, 0.22);
-  border-top: 2px solid rgba(220, 38, 38, 0.75);
+  border: 1px solid rgba(220, 38, 38, 0.20);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.95);
   border-radius: var(--radius-lg);
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+  box-shadow: var(--glass-crystal-specular), 0 16px 36px -10px rgba(220, 38, 38, 0.08);
   transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .risk-card:hover {
   background: var(--glass-crystal-bg-hover);
   border-color: rgba(220, 38, 38, 0.45);
+  border-top-color: #FFFFFF;
   transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(220, 38, 38, 0.08);
+  box-shadow: 0 20px 48px -10px rgba(220, 38, 38, 0.14), var(--glass-crystal-hover-sh);
 }
 
 .risk-card-header {
@@ -3195,11 +3280,22 @@ a {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background: #FFFFFF;
-  border: 1px solid rgba(53, 51, 205, 0.12);
+  background: var(--glass-crystal-bg);
+  -webkit-backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
+  backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
+  border: 1px solid var(--glass-crystal-border);
+  border-top: 1.5px solid var(--glass-crystal-border-top);
   border-radius: 22px;
   padding: 2rem 1.5rem;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--glass-crystal-specular), var(--glass-crystal-shadow);
+  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-photo-wrapper:hover {
+  background: var(--glass-crystal-bg-hover);
+  border-color: var(--glass-crystal-border-hover);
+  border-top-color: #FFFFFF;
+  box-shadow: var(--glass-crystal-hover-sh);
 }
 
 @media (max-width: 860px) {
@@ -3252,13 +3348,24 @@ a {
 
 .about-commitments-card {
   flex: 1 1 420px;
-  background: #FFFFFF;
-  border: 1px solid rgba(53, 51, 205, 0.16);
+  background: var(--glass-crystal-bg);
+  -webkit-backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
+  backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
+  border: 1px solid var(--glass-crystal-border);
+  border-top: 1.5px solid var(--glass-crystal-border-top);
   border-radius: 22px;
   padding: 2.25rem;
-  box-shadow: 0 12px 32px rgba(53, 51, 205, 0.05);
+  box-shadow: var(--glass-crystal-specular), var(--glass-crystal-shadow);
   display: flex;
   flex-direction: column;
+  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-commitments-card:hover {
+  background: var(--glass-crystal-bg-hover);
+  border-color: var(--glass-crystal-border-hover);
+  border-top-color: #FFFFFF;
+  box-shadow: var(--glass-crystal-hover-sh);
 }
 
 .commitments-card-header {

@@ -292,7 +292,7 @@ export default function Home({ profile }) {
       {/* ============================================================
          BLOCO 3: COMPROMISSO & PADRÃO DE ATENDIMENTO
          ============================================================ */}
-      <section className="section-pains-container" id="diferenciais" style={{ paddingTop: '5rem', paddingBottom: '5rem', background: 'var(--color-off-white)' }}>
+      <section className="section-pains-container" id="diferenciais" style={{ paddingTop: '5rem', paddingBottom: '5rem' }}>
         <div className="section-head-center">
           <span className="section-tag-pill">Compromisso & Padrão de Atendimento</span>
           <h2 className="section-title-large">Por que contar com um responsável técnico dedicado gera mais segurança e retorno?</h2>
@@ -303,7 +303,7 @@ export default function Home({ profile }) {
 
         <div className="pains-grid-cards" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginTop: '2.5rem' }}>
           
-          <div className="pain-card-item" style={{ borderColor: 'rgba(53, 51, 205, 0.15)', background: '#FFFFFF' }}>
+          <div className="pain-card-item">
             <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
               <Gauge size={22} color="#3533cd" />
             </div>
@@ -313,7 +313,7 @@ export default function Home({ profile }) {
             </p>
           </div>
 
-          <div className="pain-card-item" style={{ borderColor: 'rgba(53, 51, 205, 0.15)', background: '#FFFFFF' }}>
+          <div className="pain-card-item">
             <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
               <Clock size={22} color="#3533cd" />
             </div>
@@ -323,7 +323,7 @@ export default function Home({ profile }) {
             </p>
           </div>
 
-          <div className="pain-card-item" style={{ borderColor: 'rgba(53, 51, 205, 0.15)', background: '#FFFFFF' }}>
+          <div className="pain-card-item">
             <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
               <ShieldCheck size={22} color="#3533cd" />
             </div>
@@ -333,7 +333,7 @@ export default function Home({ profile }) {
             </p>
           </div>
 
-          <div className="pain-card-item" style={{ borderColor: 'rgba(53, 51, 205, 0.15)', background: '#FFFFFF' }}>
+          <div className="pain-card-item">
             <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
               <MapPin size={22} color="#3533cd" />
             </div>
@@ -361,7 +361,7 @@ export default function Home({ profile }) {
 
           <div className="methodology-grid-steps" style={{ marginTop: '3rem' }}>
             {DEFAULT_STEPS.map((step) => (
-              <div key={step.number} className="method-step-card" style={{ background: '#FFFFFF', padding: '2rem 1.8rem', borderRadius: '18px' }}>
+              <div key={step.number} className="method-step-card">
                 <div className="step-num-badge">{step.number}</div>
                 <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem' }}>{step.title}</h3>
                 <p style={{ fontSize: '0.93rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
@@ -378,22 +378,26 @@ export default function Home({ profile }) {
          ============================================================ */}
       <section className="section-diagnostic-contact" id="contato" style={{ paddingTop: '5rem', paddingBottom: '6rem' }}>
         <div className="diagnostic-contact-inner" style={{ maxWidth: '1080px', margin: '0 auto' }}>
-          <div>
-            <span className="section-tag-pill">Decisão de Continuidade & Risco</span>
-            <h2 className="section-title-large">Descobrir uma vulnerabilidade no dia da pane custa muito mais caro que prevenir.</h2>
-            <p className="section-desc-subtle" style={{ marginBottom: '1.75rem' }}>
-              Fale diretamente comigo pelo WhatsApp para uma avaliação transparente da sua operação. Identificamos o que precisa de proteção imediata, com escopo e preço fechados por escrito antes de qualquer início.
-            </p>
+          <div className="diagnostic-info-card">
+            <div>
+              <span className="section-tag-pill">Decisão de Continuidade & Risco</span>
+              <h2 className="section-title-large" style={{ fontSize: 'clamp(1.75rem, 2.5vw, 2.25rem)' }}>
+                Descobrir uma vulnerabilidade no dia da pane custa muito mais caro que prevenir.
+              </h2>
+              <p className="section-desc-subtle" style={{ marginBottom: '1.75rem' }}>
+                Fale diretamente comigo pelo WhatsApp para uma avaliação transparente da sua operação. Identificamos o que precisa de proteção imediata, com escopo e preço fechados por escrito antes de qualquer início.
+              </p>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', marginBottom: '2rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#000000', fontWeight: '600' }}>
-                <CheckCircle2 size={18} color="#3533cd" /> Avaliação prática de equipamentos, rede e rotinas manuais da equipe
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#000000', fontWeight: '600' }}>
-                <CheckCircle2 size={18} color="#3533cd" /> Escopo fechado e orçamento definido por escrito antes de começar
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#000000', fontWeight: '600' }}>
-                <CheckCircle2 size={18} color="#3533cd" /> Atendimento direto com o Rodrigo em Porto Velho (presencial ou remoto seguro)
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', marginBottom: '2rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#000000', fontWeight: '600' }}>
+                  <CheckCircle2 size={18} color="#3533cd" /> Avaliação prática de equipamentos, rede e rotinas manuais da equipe
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#000000', fontWeight: '600' }}>
+                  <CheckCircle2 size={18} color="#3533cd" /> Escopo fechado e orçamento definido por escrito antes de começar
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#000000', fontWeight: '600' }}>
+                  <CheckCircle2 size={18} color="#3533cd" /> Atendimento direto com o Rodrigo em Porto Velho (presencial ou remoto seguro)
+                </div>
               </div>
             </div>
 
@@ -402,7 +406,7 @@ export default function Home({ profile }) {
               target="_blank"
               rel="noopener noreferrer"
               className="corp-btn-accent"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.85rem 1.8rem' }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.85rem 1.8rem', width: 'fit-content' }}
             >
               <MessageSquare size={18} /> Solicitar Avaliação da Operação
             </a>
