@@ -37,34 +37,38 @@
   --text-light:          #FCFCFB;
 
   /* =========================================================================
-     TRUE CRYSTAL LIQUID GLASS TOKENS (Translúcido Puro · Semitransparência Real)
-     Transparência pura de cristal sem pintar de branco. O fundo e os orbs
-     fluidos passam livremente através da lâmina com refração óptica.
+     SISTEMA DE 3 PESOS DE SUPERFÍCIE (RF-4)
+     Nível 0: Plano (--bg-page, sem borda, sem sombra)
+     Nível 1: Cartão (#FFFFFF, borda 1px solid rgba(0,0,0,0.08), sombra 0 1px 2px rgba(0,0,0,0.04), raio --radius-md)
+     Nível 2: Destaque (#000000, texto #FCFCFB, sem borda - CTA principal)
      ========================================================================= */
-  --glass-crystal-bg:          rgba(255, 255, 255, 0.12);
-  --glass-crystal-bg-subtle:   rgba(255, 255, 255, 0.06);
-  --glass-crystal-bg-hover:    rgba(255, 255, 255, 0.22);
-  --glass-crystal-border:      rgba(255, 255, 255, 0.45);
-  --glass-crystal-border-top:  rgba(255, 255, 255, 0.82);
-  --glass-crystal-border-hover: rgba(255, 255, 255, 0.88);
-  --glass-crystal-subtle:      rgba(53, 51, 205, 0.08);
+  --surface-level-0:           var(--bg-page);
+  --surface-level-1-bg:        #FFFFFF;
+  --surface-level-1-border:    rgba(0, 0, 0, 0.08);
+  --surface-level-1-border-hover: rgba(0, 0, 0, 0.18);
+  --surface-level-1-shadow:    0 1px 2px rgba(0, 0, 0, 0.04);
+  --surface-level-2-bg:        #000000;
+  --surface-level-2-text:      #FCFCFB;
 
-  --glass-crystal-blur:        20px;
-  --glass-crystal-saturate:    190%;
-
-  --glass-crystal-specular:    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.90),
-                               inset 0 -1px 2px 0 rgba(53, 51, 205, 0.04),
-                               inset 0 0 18px 0 rgba(255, 255, 255, 0.12);
-  --glass-crystal-shadow:      0 16px 40px -10px rgba(53, 51, 205, 0.08), 0 2px 8px -2px rgba(0, 0, 0, 0.04);
-  --glass-crystal-hover-sh:    0 24px 56px -12px rgba(53, 51, 205, 0.16),
-                               inset 0 1.5px 2px 0 rgba(255, 255, 255, 1),
-                               inset 0 0 22px 0 rgba(255, 255, 255, 0.22);
+  /* Aliases para compatibilidade legada convertidos para Nível 1 */
+  --glass-crystal-bg:          #FFFFFF;
+  --glass-crystal-bg-subtle:   #FFFFFF;
+  --glass-crystal-bg-hover:    #FFFFFF;
+  --glass-crystal-border:      rgba(0, 0, 0, 0.08);
+  --glass-crystal-border-top:  rgba(0, 0, 0, 0.08);
+  --glass-crystal-border-hover: rgba(0, 0, 0, 0.18);
+  --glass-crystal-subtle:      rgba(0, 0, 0, 0.04);
+  --glass-crystal-blur:        0px;
+  --glass-crystal-saturate:    100%;
+  --glass-crystal-specular:    none;
+  --glass-crystal-shadow:      0 1px 2px rgba(0, 0, 0, 0.04);
+  --glass-crystal-hover-sh:    0 1px 2px rgba(0, 0, 0, 0.04);
 
   --radius-xs:           8px;
   --radius-sm:           12px;
-  --radius-md:           18px;
-  --radius-lg:           24px;
-  --radius-xl:           32px;
+  --radius-md:           14px;
+  --radius-lg:           20px;
+  --radius-xl:           28px;
   --radius-pill:         999px;
 
   --font-heading:        'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -150,68 +154,55 @@ a {
 
 
 /* ============================================================
-   CLASSES UTILITÁRIAS DE VIDRO LÍQUIDO CRISTALINO
+   SUPERFÍCIES DE NÍVEL 1 (CARTÃO SÓLIDO SÓBRIO)
    ============================================================ */
 .apple-liquid-glass,
 .crystal-liquid-glass,
 .glass-panel {
   position: relative;
-  background: var(--glass-crystal-bg);
-  -webkit-backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
-  backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
-  border: 1px solid var(--glass-crystal-border);
-  border-top: 1.5px solid var(--glass-crystal-border-top);
-  box-shadow: var(--glass-crystal-specular), var(--glass-crystal-shadow);
-  border-radius: var(--radius-lg);
-  transform: translateZ(0);
-  will-change: transform;
+  background: var(--surface-level-1-bg);
+  border: 1px solid var(--surface-level-1-border);
+  box-shadow: var(--surface-level-1-shadow);
+  border-radius: var(--radius-md);
   overflow: hidden;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.3s ease,
-              background 0.3s ease;
+  transition: border-color 0.25s ease;
 }
 
 .apple-liquid-glass:hover,
 .crystal-liquid-glass:hover,
 .glass-panel:hover {
-  background: var(--glass-crystal-bg-hover);
-  border-color: var(--glass-crystal-border-hover);
-  border-top-color: #FFFFFF;
-  box-shadow: var(--glass-crystal-hover-sh);
-  transform: translateY(-4px) translateZ(0);
+  border-color: var(--surface-level-1-border-hover);
 }
 
 
 
 /* ============================================================
-   BOTÕES CORPORATIVOS CRISTALINOS
+   BOTÕES CORPORATIVOS
    ============================================================ */
 .corp-btn-accent {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.55rem;
-  background: linear-gradient(90deg, #000000 0%, #3533cd 100%);
+  background: #000000;
   color: #FFFFFF !important;
   font-family: var(--font-heading);
-  font-weight: 800;
+  font-weight: 700;
   font-size: 0.95rem;
   padding: 0.78rem 1.75rem;
   border-radius: var(--radius-pill);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 0 10px 26px -4px rgba(53, 51, 205, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+  border: 1px solid #000000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.2s ease;
   text-decoration: none;
   max-width: 100%;
   box-sizing: border-box;
 }
 
 .corp-btn-accent:hover {
-  background: linear-gradient(90deg, #151515 0%, #4644e8 100%);
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 14px 34px -4px rgba(53, 51, 205, 0.48), inset 0 1px 1.5px rgba(255, 255, 255, 0.7);
+  background: #1f1f1f;
+  border-color: #1f1f1f;
 }
 
 .corp-btn-outline-glass {
@@ -219,30 +210,24 @@ a {
   align-items: center;
   justify-content: center;
   gap: 0.55rem;
-  background: rgba(255, 255, 255, 0.15);
-  color: #3533cd !important;
+  background: #FFFFFF;
+  color: var(--color-brand-ink) !important;
   font-family: var(--font-heading);
-  font-weight: 700;
+  font-weight: 600;
   font-size: 0.95rem;
   padding: 0.78rem 1.75rem;
   border-radius: var(--radius-pill);
-  border: 1px solid rgba(53, 51, 205, 0.25);
-  border-top: 1.5px solid rgba(255, 255, 255, 0.85);
-  -webkit-backdrop-filter: blur(18px) saturate(180%);
-  backdrop-filter: blur(18px) saturate(180%);
-  box-shadow: 0 6px 18px rgba(53, 51, 205, 0.08), inset 0 1px 1.5px rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all 0.2s ease;
   text-decoration: none;
 }
 
 .corp-btn-outline-glass:hover {
-  background: rgba(255, 255, 255, 0.28);
-  border-color: #3533cd;
-  border-top-color: #FFFFFF;
-  color: #000000 !important;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(53, 51, 205, 0.15), inset 0 1px 2px rgba(255, 255, 255, 1);
+  background: #FFFFFF;
+  border-color: rgba(0, 0, 0, 0.25);
+  color: var(--color-brand-blue) !important;
 }
 
 .corp-btn-primary {
@@ -264,7 +249,6 @@ a {
 
 .corp-btn-primary:hover {
   background: linear-gradient(90deg, #151515 0%, #4644e8 100%);
-  transform: translateY(-2px);
   box-shadow: 0 12px 30px -4px rgba(53, 51, 205, 0.45);
 }
 
@@ -295,7 +279,6 @@ a {
 .corp-btn-secondary:hover {
   background: #FFFFFF;
   border-color: var(--color-brand-ink);
-  transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
@@ -371,24 +354,28 @@ a {
   display: block;
 }
 
+/* ============================================================
+   SUPERFÍCIE DE NÍVEL 2 (DESTAQUE CTA PRINCIPAL)
+   ============================================================ */
 .cta-banner-corp {
-  background: linear-gradient(90deg, #000000 0%, #3533cd 100%);
-  border-radius: var(--radius-xl);
+  background: var(--surface-level-2-bg);
+  border-radius: var(--radius-lg);
   padding: 3.5rem 2rem;
   text-align: center;
-  color: #FFFFFF;
+  color: var(--surface-level-2-text);
   margin-top: 3.5rem;
-  box-shadow: 0 20px 48px -10px rgba(53, 51, 205, 0.35);
+  border: none;
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.16);
 }
 
 .cta-banner-corp h3 {
-  color: #FFFFFF;
-  font-size: 1.8rem;
+  color: var(--surface-level-2-text);
+  font-size: 2rem;
   margin-bottom: 0.85rem;
 }
 
 .cta-banner-corp p {
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(252, 252, 251, 0.82);
   max-width: 600px;
   margin: 0 auto 2rem;
   font-size: 1.05rem;
@@ -400,7 +387,7 @@ a {
 }
 
 /* ============================================================
-   HEADER & NAVBAR · LIQUID GLASS LUPA EM LARGURA TOTAL
+   HEADER & NAVBAR · ÚNICO BLUR DISCRETO PERMITIDO (<=12px)
    ============================================================ */
 .header {
   position: sticky;
@@ -409,11 +396,11 @@ a {
   right: 0;
   width: 100%;
   z-index: 1000;
-  background: rgba(252, 252, 251, 0.40);
-  -webkit-backdrop-filter: blur(28px) saturate(210%);
-  backdrop-filter: blur(28px) saturate(210%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.65);
-  box-shadow: 0 10px 32px -10px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  background: rgba(252, 252, 251, 0.90);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
   transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -453,8 +440,7 @@ a {
 }
 
 .logo-link-stacked:hover .navbar-brand-logo-img {
-  transform: translateY(-1px);
-  opacity: 0.95;
+  opacity: 0.90;
 }
 
 .logo-title-main {
@@ -554,12 +540,10 @@ a {
   transform: translateX(-50%);
   width: 280px;
   max-width: 92vw;
-  background: rgba(252, 252, 251, 0.94);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(0, 0, 0, 0.14);
-  border-radius: 16px;
-  box-shadow: 0 20px 48px -8px rgba(0, 0, 0, 0.15), 0 2px 6px rgba(0, 0, 0, 0.04);
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: var(--radius-md);
+  box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
   padding: 0.75rem;
   display: flex;
   flex-direction: column;
@@ -667,16 +651,13 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.16);
-  -webkit-backdrop-filter: blur(18px) saturate(180%);
-  backdrop-filter: blur(18px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-top: 1.5px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
   color: var(--color-brand-ink);
   font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   padding: 0.45rem 1rem;
   border-radius: var(--radius-pill);
@@ -719,12 +700,9 @@ a {
   gap: 0.5rem;
   padding: 0.45rem 0.95rem;
   border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.14);
-  -webkit-backdrop-filter: blur(18px) saturate(180%);
-  backdrop-filter: blur(18px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  border-top: 1.5px solid rgba(255, 255, 255, 0.75);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03), inset 0 1px 1.5px rgba(255, 255, 255, 0.9);
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
   color: var(--text-body);
   font-size: 0.82rem;
   font-weight: 600;
@@ -771,17 +749,14 @@ a {
   font-weight: 600;
 }
 
-/* Mockup Visual Hero - Cockpit de Vidro Líquido Cristalino */
+/* Mockup Visual Hero - Painel Cockpit Nível 1 */
 .hero-visual-card {
   position: relative;
   padding: 1.6rem;
-  background: rgba(255, 255, 255, 0.14);
-  -webkit-backdrop-filter: blur(30px) saturate(200%);
-  backdrop-filter: blur(30px) saturate(200%);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-top: 1.5px solid rgba(255, 255, 255, 0.85);
-  border-radius: var(--radius-xl);
-  box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.1), inset 0 1.5px 2px rgba(255, 255, 255, 0.95);
+  background: var(--surface-level-1-bg);
+  border: 1px solid var(--surface-level-1-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--surface-level-1-shadow);
 }
 
 .hero-screen-header {
@@ -811,14 +786,11 @@ a {
 }
 
 .kpi-card {
-  background: rgba(255, 255, 255, 0.18);
-  -webkit-backdrop-filter: blur(16px);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-top: 1.5px solid rgba(255, 255, 255, 0.85);
+  background: var(--bg-page);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   padding: 1.1rem;
   border-radius: var(--radius-md);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+  box-shadow: none;
 }
 
 .kpi-card small {
@@ -844,9 +816,8 @@ a {
 
 .hero-security-status-bar {
   padding: 0.85rem 1rem;
-  background: rgba(255, 255, 255, 0.22);
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  border-top: 1.5px solid rgba(255, 255, 255, 0.85);
+  background: var(--bg-page);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -909,24 +880,18 @@ a {
   display: flex;
   flex-direction: column;
   padding: 0.85rem 1.15rem;
-  background: rgba(255, 255, 255, 0.14);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  border-top: 1.5px solid rgba(255, 255, 255, 0.75);
+  background: var(--surface-level-1-bg);
+  border: 1px solid var(--surface-level-1-border);
   border-radius: var(--radius-sm);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03), inset 0 1px 1px rgba(255, 255, 255, 0.9);
-  transition: all 0.25s ease;
+  box-shadow: var(--surface-level-1-shadow);
+  transition: border-color 0.25s ease;
   text-decoration: none;
   box-sizing: border-box;
 }
 
 .strip-item-chip:hover {
-  background: rgba(255, 255, 255, 0.25);
-  border-color: rgba(255, 255, 255, 0.9);
-  border-top-color: #FFFFFF;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 1);
+  background: var(--surface-level-1-bg);
+  border-color: var(--surface-level-1-border-hover);
 }
 
 .strip-item-chip strong {
@@ -994,22 +959,15 @@ a {
   position: relative;
   overflow: hidden;
   padding: 1.85rem 1.6rem;
-  background: var(--glass-crystal-bg);
-  -webkit-backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
-  backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
-  border: 1px solid var(--glass-crystal-border);
-  border-top: 1.5px solid var(--glass-crystal-border-top);
+  background: var(--surface-level-1-bg);
+  border: 1px solid var(--surface-level-1-border);
   border-radius: var(--radius-md);
-  box-shadow: var(--glass-crystal-specular), var(--glass-crystal-shadow);
-  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--surface-level-1-shadow);
+  transition: border-color 0.25s ease;
 }
 
 .pain-card-item:hover {
-  background: var(--glass-crystal-bg-hover);
-  border-color: var(--glass-crystal-border-hover);
-  border-top-color: #FFFFFF;
-  transform: translateY(-4px) translateZ(0);
-  box-shadow: 0 20px 44px -8px rgba(239, 68, 68, 0.12), var(--glass-crystal-hover-sh);
+  border-color: var(--surface-level-1-border-hover);
 }
 
 .pain-icon-cross {
@@ -1066,22 +1024,15 @@ a {
   position: relative;
   overflow: hidden;
   padding: 2.2rem 1.8rem;
-  background: var(--glass-crystal-bg);
-  -webkit-backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
-  backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
-  border: 1px solid var(--glass-crystal-border);
-  border-top: 1.5px solid var(--glass-crystal-border-top);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--glass-crystal-specular), var(--glass-crystal-shadow);
-  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  background: var(--surface-level-1-bg);
+  border: 1px solid var(--surface-level-1-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--surface-level-1-shadow);
+  transition: border-color 0.25s ease;
 }
 
 .method-step-card:hover {
-  background: var(--glass-crystal-bg-hover);
-  border-color: var(--glass-crystal-border-hover);
-  border-top-color: #FFFFFF;
-  transform: translateY(-4px);
-  box-shadow: var(--glass-crystal-hover-sh);
+  border-color: var(--surface-level-1-border-hover);
 }
 
 .step-num-badge {
@@ -1128,27 +1079,22 @@ a {
 .catalog-tab-btn {
   padding: 0.6rem 1.25rem;
   border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.15);
-  -webkit-backdrop-filter: blur(16px);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-top: 1.5px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+  background: var(--surface-level-1-bg);
+  border: 1px solid var(--surface-level-1-border);
+  box-shadow: var(--surface-level-1-shadow);
   font-family: var(--font-heading);
   font-size: 0.88rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--text-body);
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all 0.2s ease;
 }
 
 .filter-pill-corp:hover,
 .catalog-tab-btn:hover {
-  background: rgba(255, 255, 255, 0.28);
-  border-color: rgba(255, 255, 255, 0.85);
-  border-top-color: #FFFFFF;
+  background: var(--surface-level-1-bg);
+  border-color: var(--surface-level-1-border-hover);
   color: var(--color-brand-ink);
-  transform: translateY(-1px);
 }
 
 .filter-pill-corp.active,
@@ -1156,7 +1102,7 @@ a {
   background: var(--color-brand-ink);
   border-color: var(--color-brand-ink);
   color: #FFFFFF;
-  box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.25);
 }
 
 .services-catalog-grid {
@@ -1171,22 +1117,15 @@ a {
   display: flex;
   flex-direction: column;
   padding: 2.2rem;
-  background: var(--glass-crystal-bg);
-  -webkit-backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
-  backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
-  border: 1px solid var(--glass-crystal-border);
-  border-top: 1.5px solid var(--glass-crystal-border-top);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--glass-crystal-specular), var(--glass-crystal-shadow);
-  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  background: var(--surface-level-1-bg);
+  border: 1px solid var(--surface-level-1-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--surface-level-1-shadow);
+  transition: border-color 0.25s ease;
 }
 
 .service-card-liquid:hover {
-  background: var(--glass-crystal-bg-hover);
-  border-color: var(--glass-crystal-border-hover);
-  border-top-color: #FFFFFF;
-  transform: translateY(-5px) translateZ(0);
-  box-shadow: var(--glass-crystal-hover-sh);
+  border-color: var(--surface-level-1-border-hover);
 }
 
 .service-card-header {
@@ -1200,12 +1139,8 @@ a {
   width: 48px;
   height: 48px;
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.22);
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  border-top: 1.5px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 0 4px 12px rgba(53, 51, 205, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+  background: rgba(53, 51, 205, 0.06);
+  border: 1px solid rgba(53, 51, 205, 0.12);
   color: #3533cd;
   display: flex;
   align-items: center;
@@ -1363,18 +1298,14 @@ a {
   color: var(--text-muted);
 }
 
-/* AI Chat Simulator Card - Puro Vidro Cristalino Fosco */
-/* AI Chat Simulator Card - Puro Vidro Cristalino Fosco */
+/* AI Chat Simulator Card - Superfície Nível 1 */
 .ai-chat-simulator-card {
   position: relative;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.14);
-  -webkit-backdrop-filter: blur(30px) saturate(200%);
-  backdrop-filter: blur(30px) saturate(200%);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-top: 1.5px solid rgba(255, 255, 255, 0.85);
-  border-radius: var(--radius-xl);
-  box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.1), inset 0 1.5px 2px rgba(255, 255, 255, 0.95);
+  background: var(--surface-level-1-bg);
+  border: 1px solid var(--surface-level-1-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--surface-level-1-shadow);
   display: flex;
   flex-direction: column;
   height: 520px;
@@ -1382,8 +1313,8 @@ a {
 
 .ai-chat-header {
   padding: 1rem 1.25rem;
-  background: rgba(255, 255, 255, 0.18);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  background: var(--surface-level-1-bg);
+  border-bottom: 1px solid var(--surface-level-1-border);
   display: flex;
   align-items: center;
   gap: 0.85rem;
@@ -1619,9 +1550,8 @@ a {
 }
 
 .ai-chat-send-btn:not(:disabled):hover {
-  background: #08383C;
-  transform: scale(1.08);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  background: var(--color-brand-blue);
+  box-shadow: 0 4px 14px rgba(53, 51, 205, 0.3);
 }
 
 /* ============================================================
@@ -1643,22 +1573,15 @@ a {
   position: relative;
   overflow: hidden;
   padding: 2rem;
-  background: var(--glass-crystal-bg);
-  -webkit-backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
-  backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
-  border: 1px solid var(--glass-crystal-border);
-  border-top: 1.5px solid var(--glass-crystal-border-top);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--glass-crystal-specular), var(--glass-crystal-shadow);
-  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  background: var(--surface-level-1-bg);
+  border: 1px solid var(--surface-level-1-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--surface-level-1-shadow);
+  transition: border-color 0.25s ease;
 }
 
 .segment-card-item:hover {
-  background: var(--glass-crystal-bg-hover);
-  border-color: var(--glass-crystal-border-hover);
-  border-top-color: #FFFFFF;
-  transform: translateY(-4px);
-  box-shadow: var(--glass-crystal-hover-sh);
+  border-color: var(--surface-level-1-border-hover);
 }
 
 .segment-card-item h3 {
@@ -1674,7 +1597,7 @@ a {
 }
 
 /* ============================================================
-   SEÇÃO PLANO BASE & TRANSPARÊNCIA EM VIDRO CRISTALINO
+   SEÇÃO PLANO BASE & TRANSPARÊNCIA
    ============================================================ */
 .section-pricing-base {
   background: transparent;
@@ -1687,22 +1610,16 @@ a {
   max-width: 720px;
   margin: 0 auto;
   padding: 3.5rem 2.8rem;
-  background: var(--glass-crystal-bg);
-  -webkit-backdrop-filter: blur(28px) saturate(200%);
-  backdrop-filter: blur(28px) saturate(200%);
-  border: 1px solid var(--glass-crystal-border);
-  border-top: 1.5px solid var(--glass-crystal-border-top);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--glass-crystal-specular), var(--glass-crystal-shadow);
+  background: var(--surface-level-1-bg);
+  border: 1px solid var(--surface-level-1-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--surface-level-1-shadow);
   text-align: center;
-  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color 0.25s ease;
 }
 
 .pricing-base-card:hover {
-  background: var(--glass-crystal-bg-hover);
-  border-color: var(--glass-crystal-border-hover);
-  border-top-color: #FFFFFF;
-  box-shadow: var(--glass-crystal-hover-sh);
+  border-color: var(--surface-level-1-border-hover);
 }
 
 .pricing-badge-pill {
@@ -1763,21 +1680,16 @@ a {
 }
 
 .faq-item-accordion {
-  background: var(--glass-crystal-bg);
-  -webkit-backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
-  backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
-  border: 1px solid var(--glass-crystal-border);
-  border-top: 1.5px solid var(--glass-crystal-border-top);
+  background: var(--surface-level-1-bg);
+  border: 1px solid var(--surface-level-1-border);
   border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: var(--glass-crystal-specular), 0 8px 24px -4px rgba(0, 0, 0, 0.04);
-  transition: all 0.25s ease;
+  box-shadow: var(--surface-level-1-shadow);
+  transition: border-color 0.25s ease;
 }
 
 .faq-item-accordion:hover {
-  background: var(--glass-crystal-bg-hover);
-  border-color: var(--glass-crystal-border-hover);
-  border-top-color: #FFFFFF;
+  border-color: var(--surface-level-1-border-hover);
 }
 
 .faq-summary-btn {
@@ -1824,14 +1736,11 @@ a {
   position: relative;
   overflow: hidden;
   padding: 2.6rem;
-  background: var(--glass-crystal-bg);
-  -webkit-backdrop-filter: blur(28px) saturate(200%);
-  backdrop-filter: blur(28px) saturate(200%);
-  border: 1px solid var(--glass-crystal-border);
-  border-top: 1.5px solid var(--glass-crystal-border-top);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--glass-crystal-specular), var(--glass-crystal-shadow);
-  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  background: var(--surface-level-1-bg);
+  border: 1px solid var(--surface-level-1-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--surface-level-1-shadow);
+  transition: border-color 0.25s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1839,31 +1748,22 @@ a {
 }
 
 .diagnostic-info-card:hover {
-  background: var(--glass-crystal-bg-hover);
-  border-color: var(--glass-crystal-border-hover);
-  border-top-color: #FFFFFF;
-  box-shadow: var(--glass-crystal-hover-sh);
+  border-color: var(--surface-level-1-border-hover);
 }
 
 .diagnostic-form-glass {
   position: relative;
   overflow: hidden;
   padding: 2.6rem;
-  background: var(--glass-crystal-bg);
-  -webkit-backdrop-filter: blur(28px) saturate(200%);
-  backdrop-filter: blur(28px) saturate(200%);
-  border: 1px solid var(--glass-crystal-border);
-  border-top: 1.5px solid var(--glass-crystal-border-top);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--glass-crystal-specular), var(--glass-crystal-shadow);
-  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  background: var(--surface-level-1-bg);
+  border: 1px solid var(--surface-level-1-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--surface-level-1-shadow);
+  transition: border-color 0.25s ease;
 }
 
 .diagnostic-form-glass:hover {
-  background: var(--glass-crystal-bg-hover);
-  border-color: var(--glass-crystal-border-hover);
-  border-top-color: #FFFFFF;
-  box-shadow: var(--glass-crystal-hover-sh);
+  border-color: var(--surface-level-1-border-hover);
 }
 
 .form-group-item {
@@ -1882,11 +1782,8 @@ a {
   width: 100%;
   padding: 0.85rem 1.15rem;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-top: 1.5px solid rgba(255, 255, 255, 0.8);
-  background: rgba(255, 255, 255, 0.18);
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: #FFFFFF;
   color: var(--text-heading);
   font-size: 0.92rem;
   outline: none;
@@ -1896,8 +1793,8 @@ a {
 
 .form-input-corp:focus, .form-select-corp:focus {
   border-color: var(--color-brand-ink);
-  background: rgba(255, 255, 255, 0.32);
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
 }
 
 /* ============================================================
@@ -2046,21 +1943,18 @@ a {
     width: 44px;
     height: 44px;
     border-radius: 12px;
-    background: rgba(255, 255, 255, 0.22);
-    -webkit-backdrop-filter: blur(16px);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.55);
-    border-top: 1.5px solid rgba(255, 255, 255, 0.85);
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.12);
     color: var(--color-brand-ink);
     cursor: pointer;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
     transition: all 0.2s ease;
     flex-shrink: 0;
   }
 
   .mobile-menu-toggle-btn:hover {
-    background: rgba(255, 255, 255, 0.35);
-    transform: scale(1.05);
+    background: #FFFFFF;
+    border-color: rgba(0, 0, 0, 0.25);
   }
 
   .mobile-nav-drawer {
@@ -2070,11 +1964,9 @@ a {
     left: 0;
     right: 0;
     width: 100%;
-    background: rgba(252, 252, 251, 0.96);
-    -webkit-backdrop-filter: blur(30px) saturate(210%);
-    backdrop-filter: blur(30px) saturate(210%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.9);
-    box-shadow: 0 24px 50px -10px rgba(0, 0, 0, 0.14);
+    background: #FCFCFB;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.12);
     padding: 1.25rem 1.5rem 2rem;
     z-index: 1100;
     max-height: calc(100vh - 75px);
@@ -2417,23 +2309,6 @@ a {
     width: 100%;
   }
 
-  .crystal-liquid-glass,
-  .service-card-liquid,
-  .pain-card-item,
-  .method-step-card,
-  .risk-card,
-  .fde-card,
-  .diagnostic-info-card,
-  .diagnostic-form-glass,
-  .about-presentation-card,
-  .about-photo-wrapper,
-  .about-commitments-card {
-    -webkit-backdrop-filter: blur(10px) !important;
-    backdrop-filter: blur(10px) !important;
-    background: rgba(255, 255, 255, 0.82) !important;
-    will-change: auto !important;
-    transform: translateZ(0);
-  }
 
   /* Seções fora de viewport não consomem ciclos de renderização */
   .section-risks,
@@ -2636,25 +2511,15 @@ a {
   display: flex;
   flex-direction: column;
   padding: 2.25rem 2rem;
-  background: var(--glass-crystal-bg);
-  -webkit-backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
-  backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
-  border: 1px solid var(--glass-crystal-border);
-  border-top: 1.5px solid var(--glass-crystal-border-top);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--glass-crystal-specular), var(--glass-crystal-shadow);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.3s ease,
-              background 0.3s ease;
+  background: var(--surface-level-1-bg);
+  border: 1px solid var(--surface-level-1-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--surface-level-1-shadow);
+  transition: border-color 0.25s ease;
 }
 
 .blog-card-corp:hover {
-  background: var(--glass-crystal-bg-hover);
-  border-color: var(--glass-crystal-border-hover);
-  border-top-color: #FFFFFF;
-  box-shadow: var(--glass-crystal-hover-sh);
-  transform: translateY(-4px);
+  border-color: var(--surface-level-1-border-hover);
 }
 
 .blog-card-corp h4 {
@@ -2691,15 +2556,13 @@ a {
 }
 
 .project-section-box {
-  background: var(--glass-crystal-bg);
-  -webkit-backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
-  backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
-  border: 1px solid var(--glass-crystal-border);
-  border-top: 1.5px solid var(--glass-crystal-border-top);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--glass-crystal-specular), var(--glass-crystal-shadow);
+  background: var(--surface-level-1-bg);
+  border: 1px solid var(--surface-level-1-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--surface-level-1-shadow);
   margin-top: 2rem;
   margin-bottom: 2rem;
+  padding: 2.5rem 2rem;
 }
 
 .project-prose {
@@ -2782,10 +2645,8 @@ a {
 }
 
 .adm-header {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-  background: rgba(252, 252, 251, 0.75);
-  -webkit-backdrop-filter: blur(28px) saturate(210%);
-  backdrop-filter: blur(28px) saturate(210%);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  background: #FCFCFB;
   padding: 0.85rem 1.75rem;
   display: flex;
   justify-content: space-between;
@@ -2793,7 +2654,7 @@ a {
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
 .adm-body-wrapper {
@@ -2906,7 +2767,6 @@ a {
 .adm-table-item:hover {
   background: var(--glass-crystal-bg-hover);
   border-color: var(--glass-crystal-border-hover);
-  transform: translateY(-2px);
 }
 
 /* =============================================================================
@@ -2931,22 +2791,15 @@ a {
   display: flex;
   flex-direction: column;
   padding: 2.2rem;
-  background: var(--glass-crystal-bg);
-  -webkit-backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
-  backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
+  background: var(--surface-level-1-bg);
   border: 1px solid rgba(220, 38, 38, 0.20);
-  border-top: 1.5px solid rgba(255, 255, 255, 0.95);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--glass-crystal-specular), 0 16px 36px -10px rgba(220, 38, 38, 0.08);
-  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: var(--radius-md);
+  box-shadow: var(--surface-level-1-shadow);
+  transition: border-color 0.25s ease;
 }
 
 .risk-card:hover {
-  background: var(--glass-crystal-bg-hover);
   border-color: rgba(220, 38, 38, 0.45);
-  border-top-color: #FFFFFF;
-  transform: translateY(-4px);
-  box-shadow: 0 20px 48px -10px rgba(220, 38, 38, 0.14), var(--glass-crystal-hover-sh);
 }
 
 .risk-card-header {
@@ -3034,22 +2887,15 @@ a {
   display: flex;
   flex-direction: column;
   padding: 2.3rem 2rem;
-  background: var(--glass-crystal-bg);
-  -webkit-backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
-  backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
-  border: 1px solid var(--glass-crystal-border);
-  border-top: 1.5px solid var(--glass-crystal-border-top);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--glass-crystal-specular), var(--glass-crystal-shadow);
-  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  background: var(--surface-level-1-bg);
+  border: 1px solid var(--surface-level-1-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--surface-level-1-shadow);
+  transition: border-color 0.25s ease;
 }
 
 .fde-card:hover {
-  background: var(--glass-crystal-bg-hover);
-  border-color: var(--glass-crystal-border-hover);
-  border-top-color: #FFFFFF;
-  transform: translateY(-4px);
-  box-shadow: var(--glass-crystal-hover-sh);
+  border-color: var(--surface-level-1-border-hover);
 }
 
 .fde-card-traditional {
@@ -3061,16 +2907,13 @@ a {
 }
 
 .fde-card-featured {
-  border: 1.5px solid rgba(53, 51, 205, 0.45);
-  border-top: 2.5px solid #3533cd;
-  box-shadow: 0 16px 40px -10px rgba(53, 51, 205, 0.16), var(--glass-crystal-specular);
-  background: rgba(255, 255, 255, 0.88);
+  border: 1.5px solid rgba(53, 51, 205, 0.35);
+  box-shadow: 0 4px 16px -2px rgba(53, 51, 205, 0.12);
+  background: #FFFFFF;
 }
 
 .fde-card-featured:hover {
-  border-color: #3533cd;
-  border-top-color: #FFFFFF;
-  box-shadow: 0 22px 50px -10px rgba(53, 51, 205, 0.25), var(--glass-crystal-hover-sh);
+  border-color: var(--color-brand-blue);
 }
 
 .fde-card-header {
@@ -3276,13 +3119,12 @@ a {
    ============================================================================= */
 
 .about-presentation-card {
-  background: var(--glass-crystal-bg, rgba(255, 255, 255, 0.85));
-  border: 1px solid var(--glass-crystal-border, rgba(53, 51, 205, 0.12));
-  border-radius: 24px;
+  background: var(--surface-level-1-bg);
+  border: 1px solid var(--surface-level-1-border);
+  border-radius: var(--radius-lg);
   padding: 2.75rem;
   margin-bottom: 3.5rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-  backdrop-filter: blur(16px);
+  box-shadow: var(--surface-level-1-shadow);
 }
 
 .about-presentation-title {
@@ -3326,22 +3168,16 @@ a {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background: var(--glass-crystal-bg);
-  -webkit-backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
-  backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
-  border: 1px solid var(--glass-crystal-border);
-  border-top: 1.5px solid var(--glass-crystal-border-top);
-  border-radius: 22px;
+  background: var(--surface-level-1-bg);
+  border: 1px solid var(--surface-level-1-border);
+  border-radius: var(--radius-md);
   padding: 2rem 1.5rem;
-  box-shadow: var(--glass-crystal-specular), var(--glass-crystal-shadow);
-  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--surface-level-1-shadow);
+  transition: border-color 0.25s ease;
 }
 
 .about-photo-wrapper:hover {
-  background: var(--glass-crystal-bg-hover);
-  border-color: var(--glass-crystal-border-hover);
-  border-top-color: #FFFFFF;
-  box-shadow: var(--glass-crystal-hover-sh);
+  border-color: var(--surface-level-1-border-hover);
 }
 
 @media (max-width: 860px) {
@@ -3394,24 +3230,18 @@ a {
 
 .about-commitments-card {
   flex: 1 1 420px;
-  background: var(--glass-crystal-bg);
-  -webkit-backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
-  backdrop-filter: blur(var(--glass-crystal-blur)) saturate(var(--glass-crystal-saturate));
-  border: 1px solid var(--glass-crystal-border);
-  border-top: 1.5px solid var(--glass-crystal-border-top);
-  border-radius: 22px;
+  background: var(--surface-level-1-bg);
+  border: 1px solid var(--surface-level-1-border);
+  border-radius: var(--radius-md);
   padding: 2.25rem;
-  box-shadow: var(--glass-crystal-specular), var(--glass-crystal-shadow);
+  box-shadow: var(--surface-level-1-shadow);
   display: flex;
   flex-direction: column;
-  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color 0.25s ease;
 }
 
 .about-commitments-card:hover {
-  background: var(--glass-crystal-bg-hover);
-  border-color: var(--glass-crystal-border-hover);
-  border-top-color: #FFFFFF;
-  box-shadow: var(--glass-crystal-hover-sh);
+  border-color: var(--surface-level-1-border-hover);
 }
 
 .commitments-card-header {
