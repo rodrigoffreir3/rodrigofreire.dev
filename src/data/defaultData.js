@@ -30,7 +30,20 @@ export const DEFAULT_HOME_SETTINGS = {
   bg_page: "#FCFCFB",             // Claude Chat Warm White
   bg_page_subtle: "#F0EFEA",      // Cinza Quente UI
   text_heading_color: "#000000",  // Preto
-  text_body_color: "#2C3437"
+  text_body_color: "#2C3437",
+  // Textos do Hero Institucional B2B (SPEC-SITE-005)
+  hero_badge: "TI Empresarial de Alto Padrão · Porto Velho",
+  hero_title: "Sua empresa não pode parar. Cuido da tecnologia para manter sua operação funcionando e seus dados protegidos.",
+  hero_desc: "Estabilidade para computadores e redes comerciais, rotinas automáticas para eliminar retrabalho em planilhas e presença digital com controle total da sua carteira de clientes. Atendimento direto comigo em Porto Velho ou remoto seguro, com escopo e preço fechados por escrito antes de começar.",
+  hero_chips: [
+    "✓ Continuidade operacional e dados protegidos",
+    "✓ Automação de rotinas manuais da equipe",
+    "✓ Plataformas próprias e presença digital",
+    "✓ Atendimento direto com o Rodrigo"
+  ],
+  hero_primary_cta: "Solicitar avaliação da sua operação",
+  hero_whatsapp_msg: "Olá Rodrigo! Gostaria de solicitar uma avaliação da operação de tecnologia da minha empresa.",
+  hero_secondary_cta: "Conhecer os 3 pilares de atuação"
 };
 
 export const DEFAULT_PROFILE = {
@@ -49,79 +62,119 @@ export const DEFAULT_PROFILE = {
   linkedin_url: ""
 };
 
-// 6 SOLUÇÕES DE TI EMPRESARIAL & TECNOLOGIAS AMIGÁVEIS EM PORTO VELHO
+// =============================================================================
+// SEÇÃO DE RISCOS OPERACIONAIS: O CUSTO DE NÃO AGIR (SPEC-SITE-005 RF-2)
+// =============================================================================
+export const DEFAULT_RISKS = [
+  {
+    id: "backup-nao-testado",
+    icon: "ShieldAlert",
+    tag: "RISCO 01",
+    title: "Dado sem cópia testada",
+    description: "Backup que nunca foi restaurado não é backup. Uma pane de disco, exclusão acidental ou vírus levam junto anos de histórico de vendas, cadastro de clientes e contas a receber.",
+    consequence: "Perda irreversível do histórico contábil e financeiro, gerando paralisia imediata da operação."
+  },
+  {
+    id: "trabalho-manual",
+    icon: "Clock",
+    tag: "RISCO 02",
+    title: "Hora de funcionário em trabalho manual",
+    description: "Equipe copiando e colando informações entre planilhas e sistemas todos os dias. Um processo lento, caro e sujeito a erros de digitação e fechamento que custam caro.",
+    consequence: "Salários pagos para retrabalho de digitação manual e fechamentos atrasados toda semana."
+  },
+  {
+    id: "sistema-fora-do-ar",
+    icon: "AlertOctagon",
+    tag: "RISCO 03",
+    title: "Sistema fora do ar em horário de pico",
+    description: "Caixas travados e rede comercial oscilando no momento de maior movimento da loja causam filas no balcão, atraso de entregas e clientes que desistem e vão para o concorrente.",
+    consequence: "Prejuízo direto no faturamento do dia e desgaste da imagem comercial da sua empresa."
+  }
+];
+
+// =============================================================================
+// 3 PILARES DE TI EMPRESARIAL & CONTINUIDADE OPERACIONAL (SPEC-SITE-005 RF-1)
+// =============================================================================
 export const DEFAULT_SERVICES = [
   {
-    id: "socorro-tecnico",
-    icon: "Activity",
-    tag: "SUPORTE DE TI EMPRESARIAL",
-    title: "Estabilidade técnica e suporte ágil de TI para sua empresa",
-    short_desc: "Sua operação não para: suporte profissional para caixas PDV (ponto de venda), computadores e rede comercial.",
-    description: "Quando o computador do caixa PDV (ponto de venda / balcão) trava em pleno movimento, a impressora fiscal para de emitir cupom ou a internet comercial oscila na hora de passar o cartão, o prejuízo é imediato: filas se formam, a equipe se estressa e o cliente vai embora sem pagar. Presto suporte de TI empresarial presencial no balcão da sua empresa em Porto Velho ou via acesso remoto imediato (conexão segura à distância pelo computador) para identificar a causa raiz e restabelecer sua operação com rapidez. Orçamento transparente e explicado em português claro antes de qualquer intervenção.",
-    pain: "O computador do caixa PDV (ponto de venda) trava no meio do expediente, a impressora fiscal não emite cupom ou a rede da loja oscila bem na hora de passar o cartão?",
-    solution: "Presto suporte técnico empresarial presencial no balcão da sua empresa em Porto Velho ou via acesso remoto imediato (conexão segura à distância pelo computador). Diagnóstico ágil da causa raiz, sem enrolação e sem termos técnicos difíceis.",
-    gain: "Operação comercial estável, fechamento contínuo de vendas sem filas e a segurança de falar direto com o especialista sempre que precisar, sem intermediários.",
-    whatsapp_msg: "Olá Rodrigo! Gostaria de um atendimento profissional de suporte de TI empresarial para a minha empresa."
-  },
-  {
-    id: "site-vendas",
-    icon: "ShoppingCart",
-    tag: "VENDAS DIGITAIS & MARGEM CHEIA",
-    title: "Loja online própria: venda com margem cheia e clientes fiéis",
-    short_desc: "Site simples e rápido integrado ao seu Instagram e TikTok para fechar compras com total segurança.",
-    description: "Vender apenas pelo direct (mensagens privadas das redes sociais) ou depender 100% de plataformas de terceiros custa caro: você paga comissões abusivas, joga sob as regras do algoritmo (as fórmulas automáticas que decidem quem vê seus posts) e não é dono dos dados do seu cliente. Desenvolvo uma loja online própria, rápida e sem menus confusos, integrada diretamente ao seu Instagram e TikTok. O cliente descobre seu produto no vídeo e conclui a compra no seu ambiente oficial com confiança imediata e checkout nativo (finalização rápida de pagamento no site).",
-    pain: "Você atrai clientes pelo Instagram ou TikTok, mas na hora de fechar uma compra de maior valor o cliente desconfia por você não ter um site oficial? Ou já está cansado de pagar comissões altas para marketplaces (shoppings virtuais de terceiros)?",
-    solution: "Desenvolvo uma loja online própria, rápida e objetiva, integrada com as suas redes sociais. O cliente descobre seu produto no feed e fecha no seu ambiente oficial com cupom exclusivo e segurança imediata.",
-    gain: "Você vende com margem cheia (sem taxas de plataformas externas comendo seu lucro), retém o contato (WhatsApp e e-mail) do cliente para recompras contínuas e constrói autoridade de marca sólida no longo prazo.",
-    whatsapp_msg: "Olá Rodrigo! Gostaria de estruturar uma loja própria de vendas para a minha empresa."
-  },
-  {
-    id: "modernizacao-operacao",
-    icon: "Gauge",
-    tag: "OPERAÇÃO ÁGIL & PRODUTIVIDADE",
-    title: "Modernização operacional com sistemas simples e amigáveis",
-    short_desc: "Sistemas intuitivos para acelerar o atendimento, acabar com filas e faturar mais todo dia.",
-    description: "Sua equipe perde tempo precioso brigando com sistemas lentos, telas confusas ou controles manuais improvisados? Quando o cliente fica preso na fila por lentidão de software, ele não reclama do sistema: ele reclama da sua loja e não volta mais. Eu modernizo a operação da sua empresa implementando sistemas amigáveis, rápidos e fáceis de entender. Qualquer colaborador aprende a operar no primeiro dia, sem semanas de adaptação.",
-    pain: "Sua equipe perde tempo brigando com sistemas lentos, telas confusas que ninguém entende ou processos travados? Cliente preso em fila por lentidão de software culpa a loja, não o sistema.",
-    solution: "Modernizo a rotina da sua empresa implementando sistemas simples, rápidos e fáceis de operar por qualquer funcionário, eliminando gargalos no balcão.",
-    gain: "Agilidade real no atendimento, fim das filas no caixa, redução drástica de erros operacionais e mais dinheiro entrando na empresa.",
-    whatsapp_msg: "Olá Rodrigo! Gostaria de modernizar a operação da minha empresa com um sistema amigável e ágil."
-  },
-  {
-    id: "automacao-tarefas",
-    icon: "Zap",
-    tag: "ECONOMIA DE TEMPO & EFICIÊNCIA",
-    title: "Automação de rotinas manuais e tarefas repetitivas",
-    short_desc: "Elimine o retrabalho chato de copiar dados, preencher planilhas e fechar relatórios na mão.",
-    description: "Você ou seus colaboradores perdem horas do expediente copiando dados de um sistema para outro, preenchendo as mesmas planilhas todo dia ou conferindo relatórios manualmente? Eu crio rotinas automáticas no seu computador para executar essas tarefas repetitivas em poucos segundos com um único clique. Sua equipe ganha horas produtivas no dia para focar no que realmente traz faturamento: atender bem e vender mais.",
-    pain: "Você ou sua equipe perdem horas preciosas copiando dados entre telas, preenchendo planilhas repetitivas ou conferindo fechamentos na mão?",
-    solution: "Crio automações personalizadas no seu computador para executar essas tarefas demoradas em poucos segundos com um único clique.",
-    gain: "Horas livres no expediente para sua equipe focar em vendas e atendimento, com eliminação de erros humanos em cálculos e digitação.",
-    whatsapp_msg: "Olá Rodrigo! Gostaria de automatizar tarefas manuais repetitivas na minha empresa."
-  },
-  {
-    id: "seguranca-backup",
+    id: "continuidade-sustentacao",
     icon: "ShieldCheck",
-    tag: "PROTEÇÃO DE DADOS & LGPD",
-    title: "Cópia de segurança (backup) e proteção de dados da sua empresa",
-    short_desc: "Se o equipamento queimar ou sofrer vírus, seus cadastros, notas e histórico continuam 100% salvos.",
-    description: "Se o computador principal da sua loja queimar, for roubado ou sofrer um ataque de vírus amanhã de manhã, você perde anos de notas fiscais, cadastros confidenciais de clientes e contas a receber? Configuro rotinas automáticas e diárias de backup (cópia de segurança protegida) para que seus dados fiquem salvos em ambiente seguro todos os dias, sem depender de memória humana. Tudo alinhado às boas práticas da LGPD (Lei Geral de Proteção de Dados) para garantir sigilo e conformidade legal.",
-    pain: "Se o computador principal da sua empresa parar de funcionar ou for infectado por vírus amanhã, você perde todo o histórico financeiro e o cadastro dos seus clientes?",
-    solution: "Configuro rotinas diárias e automáticas de backup (cópia de segurança protegida) em nuvem ou disco externo seguro, com sigilo estrito e sem você precisar lembrar de nada.",
-    gain: "Conformidade prática com as exigências da LGPD (Lei Geral de Proteção de Dados) para evitar multas, recuperação rápida da máquina em minutos e zero prejuízo com perda de dados vitais.",
-    whatsapp_msg: "Olá Rodrigo! Gostaria de configurar proteção de dados e rotinas de backup para a minha empresa."
+    tag: "PILAR 01 · CONTINUIDADE & SUSTENTAÇÃO",
+    title: "Continuidade e Sustentação da Operação",
+    focus: "A operação não para e os dados da empresa não se perdem.",
+    short_desc: "Rotina preventiva, backups testados e suporte ágil para caixas, computadores e rede comercial.",
+    description: "Quando o computador do caixa trava no pico do movimento, a impressora para de emitir cupom ou a internet comercial oscila, o prejuízo é imediato: filas de clientes descontentes, estresse da equipe e vendas que somem. Presto atendimento presencial em Porto Velho ou via acesso remoto imediato (conexão segura à distância pelo computador) com prazo de retorno acordado por escrito. Implemento manutenção preventiva periódica e rotinas de backup com teste real de restauração, blindando seus cadastros e seu histórico financeiro sob conformidade prática com a LGPD (Lei Geral de Proteção de Dados, para blindar seu negócio contra vazamentos e multas).",
+    pain: "Computadores do caixa ou escritório travando no meio do expediente, internet oscilando bem na hora de passar o cartão ou receio constante de perder cadastros e notas fiscais por falta de backup seguro?",
+    solution: "Assumo a responsabilidade técnica pela sua infraestrutura: executo manutenção preventiva em computadores e rede, configuro rotinas automáticas de backup com teste de recuperação e presto atendimento rápido a falhas com prazo de retorno acordado por escrito.",
+    deliverables: [
+      "Rotina de backup automático com teste real de restauração periódica para garantir recuperação imediata",
+      "Manutenção preventiva de computadores, rede comercial e servidores para antecipar falhas",
+      "Atendimento ágil a falhas operacionais com prazo de retorno acordado por escrito"
+    ],
+    gain: "Caixas e computadores operando estáveis sem filas, histórico financeiro 100% protegido contra perdas e a segurança de contar com um responsável direto pela sua operação.",
+    whatsapp_msg: "Olá Rodrigo! Gostaria de solicitar uma avaliação para o pilar de Continuidade e Sustentação na minha empresa."
   },
   {
-    id: "solucao-personalizada",
-    icon: "Code2",
-    tag: "SOLUÇÃO SOB MEDIDA & CONSULTORIA",
-    title: "Diagnóstico operacional e desenvolvimento de solução sob medida",
-    short_desc: "Identifico exatamente onde a operação está sangrando tempo ou dinheiro e entrego a ferramenta exata.",
-    description: "Sua empresa tem um gargalo ou processo comercial específico que nenhum software pronto de mercado atende direito, obrigando você a criar controles improvisados para o negócio não travar? Não empurro sistemas genéricos de terceiros com mensalidades caras e funções inúteis: eu examino a rotina real da sua empresa aqui em Porto Velho e desenvolvo a solução personalizada que resolve a dor exata, eliminando custos desnecessários.",
-    pain: "Sua empresa tem um gargalo operacional específico que nenhum programa pronto de mercado consegue resolver, forçando você a fazer gambiarras no dia a dia?",
-    solution: "Examino a operação real da sua empresa no balcão e entrego a solução exata: seja desenvolvendo um software sob medida ou aplicando uma ferramenta própria validada.",
-    gain: "Um sistema que fala a língua exata da sua loja, resolve o gargalo de vez e elimina mensalidades abusivas por ferramentas que você nunca usaria.",
-    whatsapp_msg: "Olá Rodrigo! Gostaria de um diagnóstico da operação da minha empresa para uma solução sob medida."
+    id: "automacao-integracao",
+    icon: "Zap",
+    tag: "PILAR 02 · AUTOMAÇÃO & INTEGRAÇÃO",
+    title: "Automação e Integração de Processos",
+    focus: "Eliminar trabalho manual repetitivo que consome horas da equipe e gera erros de digitação.",
+    short_desc: "Integração entre sistemas, relatórios automáticos e fim do retrabalho diário em planilhas.",
+    description: "Sua equipe perde horas preciosas copiando dados de um sistema para o outro, preenchendo planilhas manuais ou conferindo relatórios no olho? Trabalho manual em excesso é caro, lento e gera falhas de fechamento que drenam o caixa silenciosamente. Conecto sistemas operacionais que hoje não conversam e crio rotinas automáticas no seu computador para substituir controles improvisados e gerar relatórios consolidados em poucos segundos, liberando tempo útil para a equipe vender mais.",
+    pain: "Colaboradores gastando horas do expediente copiando informações entre planilhas e telas, fazendo contas à mão e gerando relatórios demorados toda semana?",
+    solution: "Conecto sistemas que hoje operam isolados e crio rotinas automáticas personalizadas para substituir tarefas repetitivas, planilhas duplicadas e conferências manuais.",
+    deliverables: [
+      "Integração entre sistemas operacionais e financeiros que hoje não conversam entre si",
+      "Substituição de controles manuais e planilhas improvisadas por rotinas automáticas",
+      "Relatórios consolidados gerados sozinhos, sem ninguém precisar montar manualmente toda semana"
+    ],
+    gain: "Horas livres de trabalho manual devolvidas para a equipe focar em atendimento e vendas, com eliminação de erros de digitação e retrabalho operacional.",
+    whatsapp_msg: "Olá Rodrigo! Gostaria de solicitar uma avaliação para o pilar de Automação e Integração na minha empresa."
+  },
+  {
+    id: "plataformas-presenca-digital",
+    icon: "ShoppingCart",
+    tag: "PILAR 03 · PLATAFORMAS & PRESENÇA DIGITAL",
+    title: "Plataformas e Presença Digital",
+    focus: "Vendas com margem cheia, controle da carteira de clientes e sistemas que funcionam.",
+    short_desc: "Site ou loja própria integrada aos seus canais de venda e consultoria independente de sistemas.",
+    description: "Vender somente por redes sociais ou depender exclusivamente de plataformas e marketplaces (shoppings virtuais de terceiros) deixa seu negócio vulnerável a comissões abusivas, mudanças de algoritmo e perda de contato com quem já comprou. Desenvolvo sites institucionais e lojas online próprias, rápidas e sem menus confusos, integradas ao WhatsApp e às suas redes atuais. Além disso, presto consultoria técnica independente para ajudar sua empresa a escolher e implantar sistemas de terceiros adequados ao seu segmento, sem empurrar ferramentas caras ou desnecessárias.",
+    pain: "Clientes que desconfiam antes de fechar compras de maior valor por você não ter um canal oficial próprio, comissões altas comendo sua margem ou dificuldade para escolher um software de mercado que realmente atenda sua rotina?",
+    solution: "Desenvolvo um site institucional ou loja online própria, rápida e objetiva, integrada aos canais que você já usa, e oriento tecnicamente a implantação de softwares de mercado no seu negócio.",
+    deliverables: [
+      "Site institucional ou loja online própria, sem menus confusos e fácil de navegar",
+      "Integração direta com o WhatsApp e os canais de venda que sua empresa já utiliza",
+      "Apoio técnico independente na escolha e implantação de softwares de terceiros"
+    ],
+    gain: "Vendas diretas com margem cheia (sem taxas de terceiros comendo seu lucro), base própria de clientes protegida para recompras e credibilidade para fechar negócios maiores.",
+    whatsapp_msg: "Olá Rodrigo! Gostaria de solicitar uma avaliação para o pilar de Plataformas e Presença Digital na minha empresa."
+  }
+];
+
+// =============================================================================
+// MÉTODO EM 4 ETAPAS COM ESCOPO FECHADO (SPEC-SITE-005 RF-4)
+// =============================================================================
+export const DEFAULT_STEPS = [
+  {
+    number: "01",
+    title: "Avaliação",
+    description: "Conversa direta e levantamento prático do que sua empresa possui hoje: equipamentos, computadores, rede comercial, onde os dados estão guardados e quais tarefas operacionais ainda são manuais."
+  },
+  {
+    number: "02",
+    title: "Prioridade",
+    description: "Definição clara do que resolver primeiro, por ordem de risco operacional e retorno prático. Escopo e preço fechados por escrito antes de iniciar qualquer serviço."
+  },
+  {
+    number: "03",
+    title: "Execução",
+    description: "Implementação direta do que foi combinado, com explicação transparente em português claro do que está sendo feito e por quê, sem jargões complicados de tecnologia."
+  },
+  {
+    number: "04",
+    title: "Acompanhamento",
+    description: "Entrega testada na rotina diária da empresa, com clareza total sobre o que fica sob sustentação contínua e o que é entrega única concluída."
   }
 ];
 

@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
-import { DEFAULT_SERVICES } from '../data/defaultData';
+import { 
+  DEFAULT_SERVICES, 
+  DEFAULT_RISKS, 
+  DEFAULT_STEPS, 
+  DEFAULT_HOME_SETTINGS 
+} from '../data/defaultData';
 import {
   Wrench,
   ShoppingCart,
-  FileSpreadsheet,
   Zap,
   ShieldCheck,
   CheckCircle2,
   Gauge,
-  Code2,
   MessageSquare,
   ArrowRight,
   ArrowDown,
@@ -16,26 +19,28 @@ import {
   Clock,
   Send,
   Sparkles,
-  Activity
+  ShieldAlert,
+  AlertOctagon,
+  Check
 } from 'lucide-react';
 import SEO from '../components/SEO';
 
 const ICON_MAP = {
   Wrench,
   ShoppingCart,
-  FileSpreadsheet,
   Zap,
   ShieldCheck,
   CheckCircle2,
   Gauge,
-  Code2,
-  Activity
+  Clock,
+  ShieldAlert,
+  AlertOctagon
 };
 
 export default function Home({ profile }) {
   const phone = (profile?.whatsapp_number ? String(profile.whatsapp_number).replace(/\D/g, '') : '') || '5569992782919';
 
-  // Formulário simplificado de contato / socorro
+  // Formulário de solicitação de avaliação operacional
   const [formData, setFormData] = useState({
     nome: '',
     whatsapp: '',
@@ -45,7 +50,7 @@ export default function Home({ profile }) {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    const text = `Olá Rodrigo! Vim pelo seu site e preciso de ajuda com um problema:\n\n*Nome:* ${formData.nome}\n*WhatsApp:* ${formData.whatsapp}\n*Empresa/Comércio:* ${formData.empresa || 'Não informado'}\n*O que está acontecendo:* ${formData.problema}`;
+    const text = `Olá Rodrigo! Vim pelo seu site e gostaria de solicitar uma avaliação operacional:\n\n*Nome:* ${formData.nome}\n*WhatsApp:* ${formData.whatsapp}\n*Empresa/Comércio:* ${formData.empresa || 'Não informado'}\n*O que precisa de atenção:* ${formData.problema}`;
     const targetUrl = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
     const win = window.open(targetUrl, '_blank', 'noopener,noreferrer');
     if (!win || win.closed || typeof win.closed === 'undefined') {
@@ -79,10 +84,23 @@ export default function Home({ profile }) {
       'closes': '18:00'
     },
     'sameAs': [
-      'https://github.com/rodrigofreiredesouza'
+      'https://github.com/rodrigoffreir3'
     ],
-    'description': 'Consultoria e suporte em TI empresarial de alto nível em Porto Velho - RO. Atendimento ágil, redes seguras, conformidade com a LGPD e desenvolvimento de sistemas sob medida.'
+    'description': 'Consultoria e suporte em TI empresarial de alto padrão em Porto Velho - RO. Atendimento ágil, redes seguras, conformidade com a LGPD e desenvolvimento de sistemas sob medida.'
   };
+
+  const heroBadge = DEFAULT_HOME_SETTINGS.hero_badge || 'TI Empresarial de Alto Padrão · Porto Velho';
+  const heroTitle = DEFAULT_HOME_SETTINGS.hero_title || 'Sua empresa não pode parar. Cuido da tecnologia para manter sua operação funcionando e seus dados protegidos.';
+  const heroDesc = DEFAULT_HOME_SETTINGS.hero_desc || 'Estabilidade para computadores e redes comerciais, rotinas automáticas para eliminar retrabalho em planilhas e presença digital com controle total da sua carteira de clientes. Atendimento direto comigo em Porto Velho ou remoto seguro, com escopo e preço fechados por escrito antes de começar.';
+  const heroChips = DEFAULT_HOME_SETTINGS.hero_chips || [
+    '✓ Continuidade operacional e dados protegidos',
+    '✓ Automação de rotinas manuais da equipe',
+    '✓ Plataformas próprias e presença digital',
+    '✓ Atendimento direto com o Rodrigo'
+  ];
+  const heroPrimaryCta = DEFAULT_HOME_SETTINGS.hero_primary_cta || 'Solicitar avaliação da sua operação';
+  const heroWhatsappMsg = DEFAULT_HOME_SETTINGS.hero_whatsapp_msg || 'Olá Rodrigo! Gostaria de solicitar uma avaliação da operação de tecnologia da minha empresa.';
+  const heroSecondaryCta = DEFAULT_HOME_SETTINGS.hero_secondary_cta || 'Conhecer os 3 pilares de atuação';
 
   return (
     <div className="home-enterprise-wrapper">
@@ -94,7 +112,7 @@ export default function Home({ profile }) {
       />
 
       {/* ============================================================
-         BLOCO 1: ABERTURA (ACIMA DA DOBRA) — TI EMPRESARIAL & TECNOLOGIAS AMIGÁVEIS
+         BLOCO 1: ABERTURA (HERO B2B INSTITUCIONAL) — SPEC-SITE-005 RF-3
          ============================================================ */}
       <section className="corp-hero-enterprise" id="inicio">
         <div className="hero-enterprise-inner" style={{ gridTemplateColumns: '1fr', maxWidth: '940px', margin: '0 auto', textAlign: 'center' }}>
@@ -102,37 +120,36 @@ export default function Home({ profile }) {
             
             <div className="hero-pill-badge" style={{ margin: '0 auto 1.5rem' }}>
               <Sparkles size={14} />
-              <span>TI Empresarial de Alto Padrão & Soluções Amigáveis · Porto Velho</span>
+              <span>{heroBadge}</span>
             </div>
 
             <h1 className="hero-enterprise-title" style={{ fontSize: 'clamp(2.1rem, 4.5vw, 3.3rem)', lineHeight: '1.2', marginBottom: '1.5rem' }}>
-              Sua empresa não pode parar por falha técnica: implemento <span className="highlight-cyan">TI empresarial ágil e sistemas amigáveis</span> para sua operação nunca travar.
+              Sua empresa não pode parar. Cuido da tecnologia para manter sua <span className="highlight-cyan">operação funcionando</span> e seus dados protegidos.
             </h1>
 
             <p className="hero-enterprise-desc" style={{ fontSize: '1.16rem', lineHeight: '1.7', maxWidth: '820px', margin: '0 auto 2rem', color: 'var(--text-body)' }}>
-              Estabilidade técnica para caixas PDV (ponto de venda / balcão da loja), computadores e rede comercial, com conformidade prática com a LGPD (Lei Geral de Proteção de Dados, para blindar seu negócio contra multas e vazamentos) e sistemas simples de operar. Menos atrito técnico, atendimento rápido sem filas e mais lucro no seu caixa — com atendimento empresarial em Porto Velho ou remoto imediato (conexão à distância segura).
+              {heroDesc}
             </p>
 
             <div className="hero-pain-chips-row" style={{ justifyContent: 'center', marginBottom: '2.5rem', flexWrap: 'wrap' }}>
-              <span className="hero-pain-chip-item">✓ Estabilidade para caixas PDV e redes</span>
-              <span className="hero-pain-chip-item">✓ Sistemas amigáveis que qualquer atendente domina</span>
-              <span className="hero-pain-chip-item">✓ Proteção de dados e conformidade LGPD</span>
-              <span className="hero-pain-chip-item">✓ Atendimento direto com o Rodrigo</span>
+              {heroChips.map((chip, idx) => (
+                <span key={idx} className="hero-pain-chip-item">{chip}</span>
+              ))}
             </div>
 
             <div className="hero-actions-row" style={{ justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
               <a
-                href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá Rodrigo! Vi seu site e gostaria de conhecer suas soluções de TI empresarial e sistemas amigáveis para a minha empresa.')}`}
+                href={`https://wa.me/${phone}?text=${encodeURIComponent(heroWhatsappMsg)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="corp-btn-accent"
                 style={{ fontSize: '1.05rem', padding: '0.9rem 2rem' }}
               >
-                <MessageSquare size={18} /> Falar com Rodrigo no WhatsApp
+                <MessageSquare size={18} /> {heroPrimaryCta}
               </a>
 
               <a href="#servicos" className="corp-btn-outline-glass" style={{ fontSize: '1.05rem', padding: '0.9rem 1.8rem' }}>
-                Ver Soluções Empresariais <ArrowDown size={16} />
+                {heroSecondaryCta} <ArrowDown size={16} />
               </a>
             </div>
 
@@ -141,60 +158,51 @@ export default function Home({ profile }) {
       </section>
 
       {/* ============================================================
-         MANIFESTO DE POSICIONAMENTO: A BANDEIRA DA SIMPLICIDADE
+         SEÇÃO DE RISCOS: O CUSTO DE NÃO AGIR (SPEC-SITE-005 RF-2)
          ============================================================ */}
-      <section style={{ padding: '0 1.5rem 3.5rem' }}>
-        <div
-          style={{
-            maxWidth: '1080px',
-            margin: '0 auto',
-            background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.03) 0%, rgba(53, 51, 205, 0.08) 100%)',
-            border: '1px solid rgba(53, 51, 205, 0.18)',
-            borderRadius: '24px',
-            padding: '2.5rem 2rem',
-            display: 'flex',
-            flexWrap: 'wrap',
-            alignItems: 'center',
-            gap: '2rem'
-          }}
-        >
-          <div style={{ flex: '1 1 500px' }}>
-            <span className="corp-badge" style={{ marginBottom: '0.85rem' }}>
-              A Bandeira que Ergo: Simplicidade & Continuidade
-            </span>
-            <h2 style={{ fontSize: '1.65rem', color: 'var(--text-heading)', marginBottom: '0.85rem', lineHeight: '1.3' }}>
-              Tecnologia boa é aquela que conversa fácil com a sua empresa e protege seu faturamento.
-            </h2>
-            <p style={{ fontSize: '1.02rem', lineHeight: '1.7', color: 'var(--text-body)', margin: 0 }}>
-              Quando um caixa trava ou o sistema é confuso, o cliente na fila não culpa o software: ele reclama da sua loja e não volta mais. Sou empenhado em mudar o paradigma de que tecnologia corporativa precisa ser complicada ou custar fortunas em mensalidades. Eu construo e implemento ferramentas intuitivas e suporte de alto padrão, garantindo que sua equipe opere sem atrito, seus dados fiquem protegidos sob a LGPD (Lei Geral de Proteção de Dados) e o lucro entre no caixa todos os dias.
-            </p>
-          </div>
-          <div style={{ flex: '0 0 auto', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-            <div style={{ padding: '0.85rem 1.3rem', background: '#FFFFFF', borderRadius: '14px', border: '1px solid rgba(53, 51, 205, 0.15)', boxShadow: '0 4px 12px rgba(0,0,0,0.03)', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-              <CheckCircle2 size={18} color="#3533cd" />
-              <span style={{ fontWeight: '600', fontSize: '0.92rem', color: 'var(--text-heading)' }}>Sistemas fáceis de operar no 1º dia</span>
-            </div>
-            <div style={{ padding: '0.85rem 1.3rem', background: '#FFFFFF', borderRadius: '14px', border: '1px solid rgba(53, 51, 205, 0.15)', boxShadow: '0 4px 12px rgba(0,0,0,0.03)', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-              <CheckCircle2 size={18} color="#3533cd" />
-              <span style={{ fontWeight: '600', fontSize: '0.92rem', color: 'var(--text-heading)' }}>Estabilidade para caixas PDV e redes</span>
-            </div>
-            <div style={{ padding: '0.85rem 1.3rem', background: '#FFFFFF', borderRadius: '14px', border: '1px solid rgba(53, 51, 205, 0.15)', boxShadow: '0 4px 12px rgba(0,0,0,0.03)', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-              <CheckCircle2 size={18} color="#3533cd" />
-              <span style={{ fontWeight: '600', fontSize: '0.92rem', color: 'var(--text-heading)' }}>Conformidade com a LGPD e sem filas</span>
-            </div>
-          </div>
+      <section className="section-risks" id="riscos">
+        <div className="section-head-center">
+          <span className="section-tag-pill" style={{ color: '#dc2626', borderColor: 'rgba(220, 38, 38, 0.25)', background: 'rgba(220, 38, 38, 0.08)' }}>
+            O Custo de Não Agir
+          </span>
+          <h2 className="section-title-large">Três vulnerabilidades operacionais que sangram caixa antes de você notar</h2>
+          <p className="section-desc-subtle">
+            Na rotina comercial, o prejuízo raramente avisa com antecedência. Identificar onde a empresa está exposta é o primeiro passo para garantir estabilidade real.
+          </p>
+        </div>
+
+        <div className="risks-grid">
+          {DEFAULT_RISKS.map((risk) => {
+            const IconComp = ICON_MAP[risk.icon] || ShieldAlert;
+            return (
+              <div key={risk.id} className="risk-card">
+                <div className="risk-card-header">
+                  <div className="risk-card-icon">
+                    <IconComp size={22} />
+                  </div>
+                  <span className="risk-card-tag">{risk.tag}</span>
+                </div>
+                <h3 className="risk-card-title">{risk.title}</h3>
+                <p className="risk-card-text">{risk.description}</p>
+                <div className="risk-card-consequence">
+                  <strong>Consequência direta: </strong>
+                  {risk.consequence}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </section>
 
       {/* ============================================================
-         BLOCO 2: O QUE EU RESOLVO (CATÁLOGO DE SOLUÇÕES AMIGÁVEIS)
+         BLOCO 2: OS 3 PILARES DE ATUAÇÃO B2B (SPEC-SITE-005 RF-1)
          ============================================================ */}
       <section className="section-services-catalog" id="servicos" style={{ paddingTop: '3rem', paddingBottom: '5rem' }}>
         <div className="section-head-center">
-          <span className="section-tag-pill">Soluções Corporativas & Amigáveis</span>
-          <h2 className="section-title-large">Sistemas e serviços pensados para sua empresa rodar e lucrar</h2>
+          <span className="section-tag-pill">Pilares de Atuação B2B</span>
+          <h2 className="section-title-large">Três pilares estruturados para a sua empresa não parar</h2>
           <p className="section-desc-subtle">
-            Sem empurrar recursos complicados ou mensalidades abusivas. Soluções estruturadas para falar a mesma língua da sua operação e garantir estabilidade real.
+            Sem promessas vazias, ferramentas desnecessárias ou mensalidades abusivas. Escopo fechado, método claro e responsabilidade técnica direta sobre a sua operação.
           </p>
         </div>
 
@@ -212,30 +220,54 @@ export default function Home({ profile }) {
                   <span className="service-card-tag">{service.tag}</span>
                 </div>
 
-                <h3 style={{ fontSize: '1.3rem', marginBottom: '1rem', color: 'var(--text-heading)' }}>
+                <h3 style={{ fontSize: '1.3rem', marginBottom: '0.85rem', color: 'var(--text-heading)' }}>
                   {service.title}
                 </h3>
 
-                {/* Dor */}
+                {service.focus && (
+                  <div className="service-focus-badge">
+                    <Sparkles size={15} />
+                    <span>{service.focus}</span>
+                  </div>
+                )}
+
+                {/* Gargalo */}
                 <div style={{ marginBottom: '0.85rem' }}>
                   <p style={{ fontSize: '0.94rem', color: 'var(--text-body)', lineHeight: '1.6', margin: 0 }}>
-                    <strong style={{ color: '#ef4444' }}>O problema: </strong>
+                    <strong style={{ color: '#ef4444' }}>O gargalo: </strong>
                     {service.pain}
                   </p>
                 </div>
 
-                {/* Solução */}
+                {/* O que eu assumo */}
                 <div style={{ marginBottom: '1rem' }}>
                   <p style={{ fontSize: '0.94rem', color: 'var(--text-body)', lineHeight: '1.6', margin: 0 }}>
-                    <strong style={{ color: '#3533cd' }}>O que eu faço: </strong>
+                    <strong style={{ color: '#3533cd' }}>O que eu assumo: </strong>
                     {service.solution}
                   </p>
                 </div>
 
+                {/* Entregas do Pilar */}
+                {service.deliverables && service.deliverables.length > 0 && (
+                  <div className="service-deliverables-box">
+                    <div className="service-deliverables-title">
+                      <Check size={14} /> Entregas incluídas neste pilar:
+                    </div>
+                    <ul className="service-deliverables-list">
+                      {service.deliverables.map((item, idx) => (
+                        <li key={idx} className="service-deliverable-item">
+                          <CheckCircle2 size={15} />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
                 {/* Ganho Concreto */}
                 <div style={{ marginTop: 'auto', padding: '0.85rem 1rem', background: 'rgba(53, 51, 205, 0.06)', borderRadius: '12px', border: '1px solid rgba(53, 51, 205, 0.2)', marginBottom: '1.25rem' }}>
                   <p style={{ fontSize: '0.9rem', color: 'var(--text-heading)', lineHeight: '1.5', margin: 0 }}>
-                    <strong>Ganho concreto: </strong>
+                    <strong>Resultado prático: </strong>
                     {service.gain}
                   </p>
                 </div>
@@ -248,7 +280,7 @@ export default function Home({ profile }) {
                     className="service-btn-contact"
                     style={{ width: '100%', justifyContent: 'center' }}
                   >
-                    Pedir ajuda com isso <ArrowRight size={14} />
+                    Solicitar avaliação deste pilar <ArrowRight size={14} />
                   </a>
                 </div>
               </div>
@@ -258,14 +290,14 @@ export default function Home({ profile }) {
       </section>
 
       {/* ============================================================
-         BLOCO 3: O VALOR DA SIMPLICIDADE & DIFERENCIAIS
+         BLOCO 3: COMPROMISSO & PADRÃO DE ATENDIMENTO
          ============================================================ */}
       <section className="section-pains-container" id="diferenciais" style={{ paddingTop: '5rem', paddingBottom: '5rem', background: 'var(--color-off-white)' }}>
         <div className="section-head-center">
-          <span className="section-tag-pill">Padrão de Atendimento</span>
-          <h2 className="section-title-large">Por que TI empresarial de alto padrão gera mais lucro para sua empresa?</h2>
+          <span className="section-tag-pill">Compromisso & Padrão de Atendimento</span>
+          <h2 className="section-title-large">Por que contar com um responsável técnico dedicado gera mais segurança e retorno?</h2>
           <p className="section-desc-subtle">
-            Mais do que consertos pontuais, sua empresa ganha continuidade de vendas, proteção jurídica e sistemas que qualquer funcionário opera sem complicação.
+            Mais do que consertos pontuais quando algo quebra, sua empresa ganha continuidade nas vendas, blindagem jurídica e ferramentas que a equipe opera sem complicação.
           </p>
         </div>
 
@@ -275,9 +307,9 @@ export default function Home({ profile }) {
             <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
               <Gauge size={22} color="#3533cd" />
             </div>
-            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Fácil de entender e operar</h3>
+            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Fácil de operar no primeiro dia</h3>
             <p style={{ fontSize: '0.92rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
-              Mudo o paradigma de telas confusas que exigem semanas de treino. Crio e implemento ferramentas limpas que qualquer funcionário aprende em poucos minutos, eliminando erros no caixa.
+              Elimino telas confusas que exigem semanas de treino. Implemento e oriento sobre ferramentas limpas que qualquer colaborador aprende em poucos minutos, acabando com erros operacionais.
             </p>
           </div>
 
@@ -287,7 +319,7 @@ export default function Home({ profile }) {
             </div>
             <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Estabilidade e balcão sem filas</h3>
             <p style={{ fontSize: '0.92rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
-              Cliente parado em fila por instabilidade técnica desiste da compra e queima a imagem da loja. Infraestrutura estável destrava caixas PDV (ponto de venda no balcão) e acelera o fechamento diário.
+              Cliente parado em fila por instabilidade técnica desiste da compra e queima a reputação da loja. Infraestrutura estável destrava caixas PDV (ponto de venda no balcão) e protege seu faturamento diário.
             </p>
           </div>
 
@@ -295,9 +327,9 @@ export default function Home({ profile }) {
             <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
               <ShieldCheck size={22} color="#3533cd" />
             </div>
-            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Blindagem Jurídica & LGPD</h3>
+            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Blindagem jurídica e LGPD</h3>
             <p style={{ fontSize: '0.92rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
-              Formação em Direito somada à tecnologia: garantia de domínio prático da LGPD (Lei Geral de Proteção de Dados) para blindar os cadastros da sua empresa contra multas, vazamentos e processos judiciais.
+              Formação em Direito somada à tecnologia: garantia de domínio prático da LGPD (Lei Geral de Proteção de Dados, para blindar seu negócio contra vazamentos e multas) e contratos formais com sigilo estrito.
             </p>
           </div>
 
@@ -305,9 +337,9 @@ export default function Home({ profile }) {
             <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
               <MapPin size={22} color="#3533cd" />
             </div>
-            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Atendimento local e direto comigo</h3>
+            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Atendimento direto comigo em Porto Velho</h3>
             <p style={{ fontSize: '0.92rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
-              Moro em Porto Velho e você fala diretamente com quem resolve. Em emergências, acesso remoto imediato (conexão segura à distância pelo computador) ou atendimento presencial direto no seu balcão.
+              Moro em Porto Velho e você fala diretamente com quem resolve, sem intermediários nem chamados esquecidos. Atendimento presencial no seu balcão ou acesso remoto imediato e seguro.
             </p>
           </div>
 
@@ -315,86 +347,70 @@ export default function Home({ profile }) {
       </section>
 
       {/* ============================================================
-         BLOCO 4: COMO FUNCIONA NA PRÁTICA (3 PASSOS HONESTOS)
+         BLOCO 4: MÉTODO EM 4 ETAPAS COM ESCOPO FECHADO (SPEC-SITE-005 RF-4)
          ============================================================ */}
       <section className="section-methodology-bg" id="como-funciona" style={{ paddingTop: '5rem', paddingBottom: '5rem' }}>
         <div className="methodology-inner">
           <div className="section-head-center">
-            <span className="section-tag-pill">Sem Burocracia</span>
-            <h2 className="section-title-large">Como implementamos soluções simples no seu comércio</h2>
+            <span className="section-tag-pill">Método de Trabalho</span>
+            <h2 className="section-title-large">Quatro etapas claras, com escopo e valor fechados antes de começar</h2>
             <p className="section-desc-subtle">
-              Três passos diretos e transparentes para transformar sistemas complicados em uma rotina ágil.
+              Processo transparente e previsível: você sabe exatamente o que será feito, o prazo e o investimento antes de qualquer intervenção técnica.
             </p>
           </div>
 
-          <div className="methodology-grid-steps" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem', marginTop: '3rem' }}>
-            
-            <div className="method-step-card" style={{ background: '#FFFFFF', padding: '2rem', borderRadius: '18px' }}>
-              <div className="step-num-badge">01</div>
-              <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem' }}>Diagnóstico da dor real</h3>
-              <p style={{ fontSize: '0.93rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
-                Você me manda uma mensagem no WhatsApp contando o que trava no seu comércio — seja lentidão no caixa, software confuso ou processos manuais demorados.
-              </p>
-            </div>
-
-            <div className="method-step-card" style={{ background: '#FFFFFF', padding: '2rem', borderRadius: '18px' }}>
-              <div className="step-num-badge">02</div>
-              <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem' }}>Solução amigável e orçamento claro</h3>
-              <p style={{ fontSize: '0.93rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
-                Apresento a solução exata para descomplicar a sua rotina, com valor fechado e prazo definido antes de iniciar qualquer trabalho. Sem surpresas na conta.
-              </p>
-            </div>
-
-            <div className="method-step-card" style={{ background: '#FFFFFF', padding: '2rem', borderRadius: '18px' }}>
-              <div className="step-num-badge">03</div>
-              <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem' }}>Sistema rodando e operação fluida</h3>
-              <p style={{ fontSize: '0.93rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
-                Coloco o sistema para rodar, oriento sua equipe de forma rápida e testo tudo no dia a dia. Simplicidade prática para a sua empresa lucrar em paz.
-              </p>
-            </div>
-
+          <div className="methodology-grid-steps" style={{ marginTop: '3rem' }}>
+            {DEFAULT_STEPS.map((step) => (
+              <div key={step.number} className="method-step-card" style={{ background: '#FFFFFF', padding: '2rem 1.8rem', borderRadius: '18px' }}>
+                <div className="step-num-badge">{step.number}</div>
+                <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem' }}>{step.title}</h3>
+                <p style={{ fontSize: '0.93rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
+                  {step.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ============================================================
-         BLOCO 5: CHAMADA FINAL & FORMULÁRIO SIMPLIFICADO
+         BLOCO 5: DECISÃO DE NEGÓCIO & AVALIAÇÃO OPERACIONAL (SPEC-SITE-005 RF-5)
          ============================================================ */}
       <section className="section-diagnostic-contact" id="contato" style={{ paddingTop: '5rem', paddingBottom: '6rem' }}>
         <div className="diagnostic-contact-inner" style={{ maxWidth: '1080px', margin: '0 auto' }}>
           <div>
-            <span className="section-tag-pill">Soluções Tecnológicas Amigáveis</span>
-            <h2 className="section-title-large">Vamos descomplicar a tecnologia da sua empresa hoje?</h2>
+            <span className="section-tag-pill">Decisão de Continuidade & Risco</span>
+            <h2 className="section-title-large">Descobrir uma vulnerabilidade no dia da pane custa muito mais caro que prevenir.</h2>
             <p className="section-desc-subtle" style={{ marginBottom: '1.75rem' }}>
-              Fale diretamente comigo pelo WhatsApp. Conte onde está o gargalo da sua rotina e vamos colocar sistemas fáceis e amigáveis para rodar a favor do seu faturamento.
+              Fale diretamente comigo pelo WhatsApp para uma avaliação transparente da sua operação. Identificamos o que precisa de proteção imediata, com escopo e preço fechados por escrito antes de qualquer início.
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', marginBottom: '2rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#000000', fontWeight: '600' }}>
-                <CheckCircle2 size={18} color="#3533cd" /> Sistemas amigáveis: fáceis de entender e utilizar
+                <CheckCircle2 size={18} color="#3533cd" /> Avaliação prática de equipamentos, rede e rotinas manuais da equipe
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#000000', fontWeight: '600' }}>
-                <CheckCircle2 size={18} color="#3533cd" /> Atendimento em Porto Velho (presencial ou remoto)
+                <CheckCircle2 size={18} color="#3533cd" /> Escopo fechado e orçamento definido por escrito antes de começar
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#000000', fontWeight: '600' }}>
-                <CheckCircle2 size={18} color="#3533cd" /> A simplicidade de sistemas como bandeira de trabalho
+                <CheckCircle2 size={18} color="#3533cd" /> Atendimento direto com o Rodrigo em Porto Velho (presencial ou remoto seguro)
               </div>
             </div>
 
             <a
-              href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá Rodrigo! Vi seu site e gostaria de conversar sobre soluções tecnológicas amigáveis para a minha empresa.')}`}
+              href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá Rodrigo! Gostaria de solicitar uma avaliação da operação de tecnologia da minha empresa.')}`}
               target="_blank"
               rel="noopener noreferrer"
               className="corp-btn-accent"
               style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.85rem 1.8rem' }}
             >
-              <MessageSquare size={18} /> Chamar no WhatsApp Agora
+              <MessageSquare size={18} /> Solicitar Avaliação da Operação
             </a>
           </div>
 
           <form onSubmit={handleFormSubmit} className="diagnostic-form-glass">
             <h3 style={{ fontSize: '1.25rem', marginBottom: '1.25rem', color: 'var(--text-heading)' }}>
-              Ou conte seu gargalo operacional
+              Ou agende uma avaliação da sua operação
             </h3>
 
             <div className="form-group-item">
@@ -427,26 +443,26 @@ export default function Home({ profile }) {
                 type="text"
                 value={formData.empresa}
                 onChange={(e) => setFormData({ ...formData, empresa: e.target.value })}
-                placeholder="Ex: Mercadinho Avenida"
+                placeholder="Ex: Comercial Rondônia"
                 className="form-input-corp"
               />
             </div>
 
             <div className="form-group-item">
-              <label className="form-label-corp">O que está acontecendo? (Onde está doendo na operação?)</label>
+              <label className="form-label-corp">O que precisa de atenção na sua operação?</label>
               <textarea
                 required
                 rows={3}
                 value={formData.problema}
                 onChange={(e) => setFormData({ ...formData, problema: e.target.value })}
-                placeholder="Ex: Nosso sistema é muito complicado, o caixa trava no meio do expediente e queremos algo mais simples, amigável e rápido..."
+                placeholder="Ex: Computadores lentos no balcão, perda de tempo com planilhas manuais da equipe, receio de perder dados por falta de backup..."
                 className="form-input-corp"
                 style={{ resize: 'vertical' }}
               />
             </div>
 
             <button type="submit" className="corp-btn-accent" style={{ width: '100%', marginTop: '0.5rem', justifyContent: 'center' }}>
-              <Send size={16} /> Solicitar Diagnóstico de Sistema Amigável
+              <Send size={16} /> Solicitar Avaliação Operacional
             </button>
           </form>
         </div>
