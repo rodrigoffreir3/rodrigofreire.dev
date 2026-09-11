@@ -3,7 +3,8 @@ import {
   DEFAULT_SERVICES, 
   DEFAULT_RISKS, 
   DEFAULT_STEPS, 
-  DEFAULT_HOME_SETTINGS 
+  DEFAULT_HOME_SETTINGS,
+  DEFAULT_FDE_COMPARISON 
 } from '../data/defaultData';
 import {
   Wrench,
@@ -21,7 +22,8 @@ import {
   Sparkles,
   ShieldAlert,
   AlertOctagon,
-  Check
+  Check,
+  XCircle
 } from 'lucide-react';
 import SEO from '../components/SEO';
 
@@ -105,14 +107,14 @@ export default function Home({ profile }) {
   return (
     <div className="home-enterprise-wrapper">
       <SEO
-        title="Rodrigo Freire · TI Empresarial de Alto Nível — Porto Velho"
-        description="Consultoria e suporte em TI empresarial de alto padrão em Porto Velho - RO. Atendimento ágil, redes seguras, conformidade com a LGPD e desenvolvimento de sistemas sob medida."
+        title="Rodrigo Freire · Engenharia na Linha de Frente (Forward Deployed Engineer) — Porto Velho"
+        description="Engenharia de TI na linha de frente da sua empresa em Porto Velho. Atuação direta, automação de processos manuais, estabilidade de caixas e redes comerciais com escopo fechado por escrito."
         canonicalPath="/"
         jsonLd={homeJsonLd}
       />
 
       {/* ============================================================
-         BLOCO 1: ABERTURA (HERO B2B INSTITUCIONAL) — SPEC-SITE-005 RF-3
+         BLOCO 1: ABERTURA (HERO B2B INSTITUCIONAL) — CARRO-CHEFE FDE
          ============================================================ */}
       <section className="corp-hero-enterprise" id="inicio">
         <div className="hero-enterprise-inner" style={{ gridTemplateColumns: '1fr', maxWidth: '940px', margin: '0 auto', textAlign: 'center' }}>
@@ -124,7 +126,7 @@ export default function Home({ profile }) {
             </div>
 
             <h1 className="hero-enterprise-title" style={{ fontSize: 'clamp(2.1rem, 4.5vw, 3.3rem)', lineHeight: '1.2', marginBottom: '1.5rem' }}>
-              Sua empresa não pode parar. Cuido da tecnologia para manter sua <span className="highlight-cyan">operação funcionando</span> e seus dados protegidos.
+              Um engenheiro dedicado na linha de frente da sua empresa para <span className="highlight-cyan">destravar processos</span> e garantir que sua operação nunca pare.
             </h1>
 
             <p className="hero-enterprise-desc" style={{ fontSize: '1.16rem', lineHeight: '1.7', maxWidth: '820px', margin: '0 auto 2rem', color: 'var(--text-body)' }}>
@@ -148,7 +150,7 @@ export default function Home({ profile }) {
                 <MessageSquare size={18} /> {heroPrimaryCta}
               </a>
 
-              <a href="#servicos" className="corp-btn-outline-glass" style={{ fontSize: '1.05rem', padding: '0.9rem 1.8rem' }}>
+              <a href="#linha-de-frente" className="corp-btn-outline-glass" style={{ fontSize: '1.05rem', padding: '0.9rem 1.8rem' }}>
                 {heroSecondaryCta} <ArrowDown size={16} />
               </a>
             </div>
@@ -191,6 +193,133 @@ export default function Home({ profile }) {
               </div>
             );
           })}
+        </div>
+      </section>
+
+      {/* ============================================================
+         CARRO-CHEFE: O MODELO DE ENGENHARIA NA LINHA DE FRENTE (FDE)
+         ============================================================ */}
+      <section className="section-fde-model" id="linha-de-frente">
+        <div className="section-head-center">
+          <span className="section-tag-pill">
+            <Sparkles size={14} style={{ display: 'inline', marginRight: '4px' }} />
+            Carro-Chefe · Engenharia na Linha de Frente
+          </span>
+          <h2 className="section-title-large">
+            Por que ter um Engenheiro na Linha de Frente muda o patamar da sua empresa?
+          </h2>
+          <p className="section-desc-subtle">
+            No mercado de tecnologia moderna, <strong>Forward Deployed Engineer</strong> (em tradução livre, <em>"Engenheiro Alocado na Linha de Frente"</em>) é o especialista técnico sênior que sai do isolamento das telas abstratas para atuar diretamente dentro da operação da sua empresa. Veja a diferença prática para o seu negócio:
+          </p>
+        </div>
+
+        <div className="fde-comparison-grid">
+          {/* CARD 1: SUPORTE TRADICIONAL */}
+          <div className="fde-card fde-card-traditional">
+            <div className="fde-card-header">
+              <div className="fde-card-icon traditional">
+                <AlertOctagon size={22} />
+              </div>
+              <span className="fde-card-tag traditional">Suporte Reativo</span>
+            </div>
+            <h3 className="fde-card-title">O Técnico de Suporte Comum</h3>
+            <p className="fde-card-focus">
+              "Espera o equipamento queimar ou o sistema cair para tentar consertar."
+            </p>
+            <div className="fde-points-list">
+              <div className="fde-point-item negative">
+                <XCircle size={18} className="fde-point-icon" color="#94a3b8" />
+                <span>Atuação 100% reativa: só aparece após a pane ou o prejuízo financeiro.</span>
+              </div>
+              <div className="fde-point-item negative">
+                <XCircle size={18} className="fde-point-icon" color="#94a3b8" />
+                <span>Limitado a conserto de hardware básico (troca de peças e formatação simples).</span>
+              </div>
+              <div className="fde-point-item negative">
+                <XCircle size={18} className="fde-point-icon" color="#94a3b8" />
+                <span>Não entende os fluxos de trabalho da equipe nem sabe criar automações de sistemas.</span>
+              </div>
+              <div className="fde-point-item negative">
+                <XCircle size={18} className="fde-point-icon" color="#94a3b8" />
+                <span>Nenhum compromisso formal com a continuidade do seu faturamento.</span>
+              </div>
+            </div>
+            <div className="fde-card-conclusion traditional">
+              ⚠️ <strong>Resultado:</strong> Apaga incêndios pontuais, mas a causa raiz continua gerando novas paradas.
+            </div>
+          </div>
+
+          {/* CARD 2: PROGRAMADOR DISTANTE */}
+          <div className="fde-card fde-card-distant">
+            <div className="fde-card-header">
+              <div className="fde-card-icon distant">
+                <Clock size={22} />
+              </div>
+              <span className="fde-card-tag distant">Desenvolvedor Distante</span>
+            </div>
+            <h3 className="fde-card-title">A Agência ou Programador Remoto</h3>
+            <p className="fde-card-focus">
+              "Constrói sistemas fechados sem nunca ter visto a rotina real do seu balcão."
+            </p>
+            <div className="fde-points-list">
+              <div className="fde-point-item negative">
+                <XCircle size={18} className="fde-point-icon" color="#d97706" />
+                <span>Fica isolado atrás de um monitor sem contato com o chão da sua empresa.</span>
+              </div>
+              <div className="fde-point-item negative">
+                <XCircle size={18} className="fde-point-icon" color="#d97706" />
+                <span>Muitas vezes empurra ferramentas complexas que exigem mais digitação manual dos funcionários.</span>
+              </div>
+              <div className="fde-point-item negative">
+                <XCircle size={18} className="fde-point-icon" color="#d97706" />
+                <span>Ignora problemas físicos de rede comercial, impressoras fiscais e caixas travando.</span>
+              </div>
+              <div className="fde-point-item negative">
+                <XCircle size={18} className="fde-point-icon" color="#d97706" />
+                <span>Atendimento por fila impessoal de tickets (chamados de suporte) que demoram dias para ter retorno.</span>
+              </div>
+            </div>
+            <div className="fde-card-conclusion distant">
+              ⏳ <strong>Resultado:</strong> Sistemas caros e distantes da realidade operacional da sua equipe.
+            </div>
+          </div>
+
+          {/* CARD 3: FORWARD DEPLOYED ENGINEER (RODRIGO FREIRE) */}
+          <div className="fde-card fde-card-featured">
+            <div className="fde-card-header">
+              <div className="fde-card-icon featured">
+                <Sparkles size={22} />
+              </div>
+              <span className="fde-card-tag featured">★ Carro-Chefe · Linha de Frente</span>
+            </div>
+            <h3 className="fde-card-title" style={{ color: '#000000' }}>
+              Engenheiro na Linha de Frente <span style={{ fontSize: '0.82em', color: '#3533cd', display: 'block' }}>(Forward Deployed Engineer)</span>
+            </h3>
+            <p className="fde-card-focus" style={{ color: '#3533cd', fontWeight: '600' }}>
+              "Atuação direta dentro do seu negócio para destravar processos e blindar sua operação."
+            </p>
+            <div className="fde-points-list">
+              <div className="fde-point-item positive">
+                <CheckCircle2 size={18} className="fde-point-icon" color="#3533cd" />
+                <span><strong>Presença de campo:</strong> diagnóstico e atuação técnica presencial em Porto Velho ou remoto seguro.</span>
+              </div>
+              <div className="fde-point-item positive">
+                <CheckCircle2 size={18} className="fde-point-icon" color="#3533cd" />
+                <span><strong>Engenharia de ponta a ponta:</strong> infraestrutura estável + automação de rotinas + conexão entre sistemas.</span>
+              </div>
+              <div className="fde-point-item positive">
+                <CheckCircle2 size={18} className="fde-point-icon" color="#3533cd" />
+                <span><strong>Fim do trabalho manual:</strong> rotinas que integram seus sistemas e geram relatórios consolidados em segundos.</span>
+              </div>
+              <div className="fde-point-item positive">
+                <CheckCircle2 size={18} className="fde-point-icon" color="#3533cd" />
+                <span><strong>Responsabilidade técnica direta:</strong> escopo fechado por escrito, base jurídica e sigilo estrito de dados sob a LGPD.</span>
+              </div>
+            </div>
+            <div className="fde-card-conclusion featured">
+              🛡️ <strong>Resultado:</strong> Operação contínua, equipe produtiva sem retrabalho e faturamento protegido.
+            </div>
+          </div>
         </div>
       </section>
 

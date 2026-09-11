@@ -31,27 +31,27 @@ export const DEFAULT_HOME_SETTINGS = {
   bg_page_subtle: "#F0EFEA",      // Cinza Quente UI
   text_heading_color: "#000000",  // Preto
   text_body_color: "#2C3437",
-  // Textos do Hero Institucional B2B (SPEC-SITE-005)
-  hero_badge: "TI Empresarial de Alto Padrão · Porto Velho",
-  hero_title: "Sua empresa não pode parar. Cuido da tecnologia para manter sua operação funcionando e seus dados protegidos.",
-  hero_desc: "Estabilidade para computadores e redes comerciais, rotinas automáticas para eliminar retrabalho em planilhas e presença digital com controle total da sua carteira de clientes. Atendimento direto comigo em Porto Velho ou remoto seguro, com escopo e preço fechados por escrito antes de começar.",
+  // Textos do Hero Institucional B2B (Carro-Chefe: Forward Deployed Engineer)
+  hero_badge: "Engenharia de TI na Linha de Frente · Forward Deployed Engineer",
+  hero_title: "Um engenheiro dedicado na linha de frente da sua empresa para destravar processos e garantir que sua operação nunca pare.",
+  hero_desc: "Diferente do suporte reativo que só aparece após o prejuízo ou do desenvolvedor distante que não conhece sua rotina: eu atuo diretamente dentro do seu negócio em Porto Velho. Conecto sistemas que hoje não conversam, automatizo o trabalho manual da equipe e assumo a responsabilidade técnica contínua pela sua operação.",
   hero_chips: [
-    "✓ Continuidade operacional e dados protegidos",
-    "✓ Automação de rotinas manuais da equipe",
-    "✓ Plataformas próprias e presença digital",
-    "✓ Atendimento direto com o Rodrigo"
+    "✓ Diagnóstico técnico direto na sua operação em Porto Velho",
+    "✓ Automação de processos manuais e conexão entre sistemas",
+    "✓ Estabilidade para caixas, rede comercial e dados protegidos",
+    "✓ Responsável técnico dedicado com escopo fechado por escrito"
   ],
-  hero_primary_cta: "Solicitar avaliação da sua operação",
-  hero_whatsapp_msg: "Olá Rodrigo! Gostaria de solicitar uma avaliação da operação de tecnologia da minha empresa.",
-  hero_secondary_cta: "Conhecer os 3 pilares de atuação"
+  hero_primary_cta: "Solicitar avaliação técnica na sua empresa",
+  hero_whatsapp_msg: "Olá Rodrigo! Gostaria de agendar uma avaliação técnica na linha de frente da minha empresa.",
+  hero_secondary_cta: "Entender o modelo de atuação"
 };
 
 export const DEFAULT_PROFILE = {
   full_name: "RODRIGOFREIRE.DEV",
   company_name: "Rodrigo Freire Tech",
-  tagline: "TI Empresarial & Continuidade Operacional · Porto Velho",
-  lead_bio: "Assumo a responsabilidade técnica para manter sua empresa funcionando e seus dados protegidos. Atendimento direto em Porto Velho com escopo fechado antes de começar, rotinas preventivas de backup e foco no que realmente importa: seu faturamento não parar.",
-  about_text: "Moro em Porto Velho e atendo comércios e empresas locais que precisam de estabilidade técnica no dia a dia. Minha função é direta: garantir que seus computadores, caixas e rede comercial operem sem travamentos e que as informações do seu negócio estejam sempre protegidas e recuperáveis.\n\nMinha formação une duas áreas que trazem garantias concretas ao empresário: sou graduado em Direito e estou em formação em Análise e Desenvolvimento de Sistemas (ADS). Essa base jurídica me dá um cuidado redobrado com o que vai por escrito em contrato, leitura atenta de termos e respeito rigoroso às informações sigilosas e aos dados de clientes da sua empresa sob a LGPD (Lei Geral de Proteção de Dados, para blindar seu negócio contra vazamentos e multas). Também desenvolvi tecnologia própria para proteção de servidores com registro oficial no INPI (Instituto Nacional da Propriedade Industrial, sob o processo nº 512025006506-0).\n\nPara mim, tecnologia é meio, não fim. O que importa não é o software pelo software, mas a tranquilidade de saber que sua equipe tem ferramentas fáceis de operar, que o caixa não trava na hora da venda e que você tem um responsável direto para atender seu chamado quando algo sair do esperado.",
+  tagline: "Engenharia de TI na Linha de Frente · Forward Deployed Engineer em Porto Velho",
+  lead_bio: "Atuo como Forward Deployed Engineer (Engenheiro Alocado na Linha de Frente — o especialista técnico sênior que entra direto na sua empresa para diagnosticar gargalos, integrar sistemas e blindar sua operação). Presença direta em Porto Velho com escopo fechado por escrito e foco no que realmente importa: seu faturamento não parar.",
+  about_text: "Moro em Porto Velho e atendo comércios e empresas locais que precisam de estabilidade técnica no dia a dia. Minha especialidade é atuar como Forward Deployed Engineer (Engenheiro Alocado na Linha de Frente — a função mais valorizada da tecnologia moderna, que une código de ponta à realidade prática do negócio). Em vez de ficar isolado atrás de um monitor criando código abstrato ou atendendo chamados superficiais, eu coloco minha capacidade técnica de engenharia e minha base jurídica diretamente a serviço da operação da sua empresa.\n\nMinha formação une duas áreas que trazem garantias concretas ao empresário: sou graduado em Direito e estou em formação em Análise e Desenvolvimento de Sistemas (ADS). Essa base jurídica me dá um cuidado redobrado com o que vai por escrito em contrato, leitura atenta de termos e respeito rigoroso às informações sigilosas e aos dados de clientes da sua empresa sob a LGPD (Lei Geral de Proteção de Dados, para blindar seu negócio contra vazamentos e multas). Também desenvolvi tecnologia própria para proteção de servidores com registro oficial no INPI (Instituto Nacional da Propriedade Industrial, sob o processo nº 512025006506-0).\n\nPara mim, tecnologia é meio, não fim. O que importa não é o software pelo software, mas a tranquilidade de saber que sua equipe tem ferramentas fáceis de operar, que o caixa não trava na hora da venda e que você tem um engenheiro dedicado para atender e resolver diretamente quando algo sair do esperado.",
   whatsapp_number: "5569992782919",
   inpi_record: "Registro INPI Nº 512025006506-0",
   avatar_url: "/foto_perfil.jpeg",
@@ -120,6 +120,36 @@ export const DEFAULT_RISKS = [
     title: "Sistema fora do ar em horário de pico",
     description: "Caixas travados e rede comercial oscilando no momento de maior movimento da loja causam filas no balcão, atraso de entregas e clientes que desistem e vão para o concorrente.",
     consequence: "Prejuízo direto no faturamento do dia e desgaste da imagem comercial da sua empresa."
+  }
+];
+
+// =============================================================================
+// COMPARATIVO EXECUTIVO: O MODELO DE ENGENHARIA NA LINHA DE FRENTE (FDE)
+// =============================================================================
+export const DEFAULT_FDE_COMPARISON = [
+  {
+    criterion: "Postura e Atendimento",
+    traditional_support: "Reativo: só aparece depois que o computador queimou ou a rede caiu, conserta pontualmente e vai embora sem resolver a causa raiz.",
+    distant_dev: "Teórico e distante: fica fechado atrás de uma tela remota, sem nunca ter pisado no balcão ou visto a rotina real dos funcionários.",
+    fde_rodrigo: "Proativo e presente: atua diretamente dentro da sua empresa em Porto Velho, diagnosticando e resolvendo gargalos antes que gerem prejuízo."
+  },
+  {
+    criterion: "Escopo de Solução",
+    traditional_support: "Limitado a hardware básico (troca de peças e formatação), sem visão de processos ou capacidade de integrar softwares.",
+    distant_dev: "Apenas código fechado ou pacotes genéricos de prateleira que a sua equipe tem dificuldade de alimentar e operar no dia a dia.",
+    fde_rodrigo: "Engenharia de ponta a ponta: infraestrutura estável de rede e caixas + conexão inteligente entre sistemas + rotinas automáticas sob medida."
+  },
+  {
+    criterion: "Trabalho Manual e Processos",
+    traditional_support: "Ignora o fluxo operacional: não entende de fechamento de caixa, planilhas duplicadas ou perda de tempo dos colaboradores.",
+    distant_dev: "Muitas vezes cria sistemas burocráticos que aumentam o retrabalho e exigem ainda mais digitação manual da equipe.",
+    fde_rodrigo: "Elimina o retrabalho: integra sistemas que hoje não conversam e automatiza tarefas manuais em poucos segundos."
+  },
+  {
+    criterion: "Responsabilidade e Contrato",
+    traditional_support: "Nenhum compromisso formal com a continuidade do faturamento nem garantia de retorno rápido a falhas.",
+    distant_dev: "Atendimento por fila impessoal de chamados ou tickets (pedidos eletrônicos de suporte), onde cada dúvida ou pane demora dias para ter retorno.",
+    fde_rodrigo: "Responsável técnico direto e dedicado, com escopo fechado por escrito e compromisso contratual de sigilo e continuidade."
   }
 ];
 
