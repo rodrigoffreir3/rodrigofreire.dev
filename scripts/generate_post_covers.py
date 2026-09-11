@@ -190,9 +190,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       letter-spacing: -0.03em;
       margin-bottom: 16px;
       max-width: 1050px;
-      background: linear-gradient(180deg, #FFFFFF 30%, #C4C8D8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #FFFFFF;
     }}
 
     p.subtext {{
