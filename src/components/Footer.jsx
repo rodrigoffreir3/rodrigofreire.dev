@@ -13,16 +13,16 @@ export default function Footer({ profile }) {
         
         {/* COLUNA 1: PERFIL & BIO */}
         <div className="footer-col">
-          <div style={{ background: 'rgba(255, 255, 255, 0.07)', padding: '0.45rem 0.85rem', borderRadius: '10px', display: 'inline-block', marginBottom: '1rem', border: '1px solid rgba(53, 51, 205, 0.3)' }}>
+          <div style={{ marginBottom: '1.25rem' }}>
             <img
-              src="/icon-512.png"
-              alt="RODRIGOFREIRE.DEV"
+              src={profile?.logo_dark_url || "/RODRIGO.FREIRE BRANCA (800 x 200 px).png"}
+              alt="Rodrigo Freire"
               loading="lazy"
-              style={{ height: '28px', width: 'auto', display: 'block' }}
+              style={{ height: '32px', width: 'auto', display: 'block' }}
             />
           </div>
           <p style={{ fontSize: '0.9rem', color: 'rgba(248, 250, 252, 0.72)', lineHeight: '1.65', marginBottom: '1.25rem' }}>
-            Serviços de informática, computadores e internet para comércios e empresas em Porto Velho. Atendimento direto e suporte presencial no seu estabelecimento.
+            TI empresarial, estabilidade operacional e proteção de dados para empresas e comércios em Porto Velho. Atendimento direto e presencial no seu estabelecimento.
           </p>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.35rem 0.75rem', background: 'rgba(53, 51, 205, 0.15)', border: '1px solid rgba(53, 51, 205, 0.4)', borderRadius: '999px', color: '#6866ff', fontSize: '0.75rem', fontWeight: '700' }}>
             <ShieldCheck size={14} />
@@ -34,12 +34,11 @@ export default function Footer({ profile }) {
         <div className="footer-col">
           <h4>O que eu resolvo</h4>
           <ul className="footer-links-list">
-            <li><Link to="/#servicos">Socorro técnico e computadores</Link></li>
-            <li><Link to="/#servicos">Site de vendas próprio</Link></li>
-            <li><Link to="/#servicos">Modernização da operação</Link></li>
-            <li><Link to="/#servicos">Automação de tarefas manuais</Link></li>
-            <li><Link to="/#servicos">Cópia de segurança (Backup)</Link></li>
-            <li><Link to="/#servicos">Soluções sob medida</Link></li>
+            <li><Link to="/#servicos">Continuidade e sustentação</Link></li>
+            <li><Link to="/#servicos">Automação e integração</Link></li>
+            <li><Link to="/#servicos">Plataformas e presença digital</Link></li>
+            <li><Link to="/#riscos">Prevenção de riscos operacionais</Link></li>
+            <li><Link to="/#contato">Avaliação operacional</Link></li>
           </ul>
         </div>
 

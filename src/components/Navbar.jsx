@@ -38,17 +38,17 @@ export default function Navbar({ profile }) {
         <div className="logo">
           <Link
             to="/"
-            title="RODRIGOFREIRE.DEV · Início"
+            title="Rodrigo Freire · Início"
             className="logo-link-stacked"
             onClick={() => setMobileMenuOpen(false)}
           >
             <img
-              src="/icon-512.png"
-              alt="RODRIGOFREIRE.DEV"
+              src={profile?.logo_url || "/RODRIGO.FREIRE COLORIDA (800 x 200 px).png"}
+              alt="Rodrigo Freire"
               className="navbar-brand-logo-img"
             />
             <span className="logo-subtitle-desc">
-              {profile?.tagline || 'Serviços de TI e Informática · Porto Velho'}
+              {profile?.tagline || 'TI Empresarial & Continuidade Operacional · Porto Velho'}
             </span>
           </Link>
         </div>

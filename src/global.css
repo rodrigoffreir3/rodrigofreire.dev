@@ -2280,6 +2280,11 @@ a {
     min-width: 0;
   }
 
+  .navbar-brand-logo-img {
+    height: 28px;
+    max-width: 150px;
+  }
+
   .logo-title-main {
     font-size: 1.05rem;
     line-height: 1.2;
