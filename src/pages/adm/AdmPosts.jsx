@@ -240,13 +240,13 @@ export default function AdmPosts({ posts, setPosts }) {
               />
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1.5rem', borderTop: '1px solid rgba(11, 74, 79, 0.12)', paddingTop: '1.25rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1.5rem', borderTop: '1px solid rgba(0, 0, 0, 0.12)', paddingTop: '1.25rem' }}>
               <label style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', cursor: 'pointer' }}>
                 <input
                   type="checkbox"
                   checked={formData.is_published}
                   onChange={(e) => setFormData({ ...formData, is_published: e.target.checked })}
-                  style={{ width: '20px', height: '20px', accentColor: 'var(--color-dark-teal)' }}
+                  style={{ width: '20px', height: '20px', accentColor: 'var(--color-brand-ink)' }}
                 />
                 <span style={{ fontWeight: '600', color: 'var(--text-heading)' }}>Publicar Imediatamente no Blog</span>
               </label>

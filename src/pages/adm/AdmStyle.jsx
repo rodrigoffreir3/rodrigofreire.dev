@@ -87,7 +87,7 @@ export default function AdmStyle({ settings: initialSettings, setSettings: updat
            ========================================================================= */}
         <div className="glass-panel" style={{ padding: '1.85rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '1.25rem' }}>
-            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(11, 74, 79, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-dark-teal)' }}>
+            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(0, 0, 0, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-brand-ink)' }}>
               <Layers size={18} />
             </div>
             <h3 style={{ fontSize: '1.25rem', fontWeight: '700', margin: 0, color: 'var(--text-heading)' }}>
@@ -157,7 +157,7 @@ export default function AdmStyle({ settings: initialSettings, setSettings: updat
            ========================================================================= */}
         <div className="glass-panel" style={{ padding: '1.85rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '1.25rem' }}>
-            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(11, 74, 79, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-dark-teal)' }}>
+            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(0, 0, 0, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-brand-ink)' }}>
               <Sparkles size={18} />
             </div>
             <h3 style={{ fontSize: '1.25rem', fontWeight: '700', margin: 0, color: 'var(--text-heading)' }}>
@@ -220,7 +220,7 @@ export default function AdmStyle({ settings: initialSettings, setSettings: updat
                 max="100"
                 value={Math.round((settings.hero_char_opacity ?? 1) * 100)}
                 onChange={(e) => setSettings({ ...settings, hero_char_opacity: Number(e.target.value) / 100 })}
-                style={{ width: '100%', height: '8px', accentColor: 'var(--color-dark-teal)', marginTop: '0.8rem', cursor: 'pointer' }}
+                style={{ width: '100%', height: '8px', accentColor: 'var(--color-brand-ink)', marginTop: '0.8rem', cursor: 'pointer' }}
               />
             </div>
 
@@ -232,7 +232,7 @@ export default function AdmStyle({ settings: initialSettings, setSettings: updat
            ========================================================================= */}
         <div className="glass-panel" style={{ padding: '1.85rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '1.25rem' }}>
-            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(11, 74, 79, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-dark-teal)' }}>
+            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(0, 0, 0, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-brand-ink)' }}>
               <Layers size={18} />
             </div>
             <h3 style={{ fontSize: '1.25rem', fontWeight: '700', margin: 0, color: 'var(--text-heading)' }}>
@@ -277,7 +277,7 @@ export default function AdmStyle({ settings: initialSettings, setSettings: updat
                 max="100"
                 value={Math.round((settings.secondary_bg_opacity ?? 0.9) * 100)}
                 onChange={(e) => setSettings({ ...settings, secondary_bg_opacity: Number(e.target.value) / 100 })}
-                style={{ width: '100%', height: '8px', accentColor: 'var(--color-dark-teal)', marginTop: '0.8rem', cursor: 'pointer' }}
+                style={{ width: '100%', height: '8px', accentColor: 'var(--color-brand-ink)', marginTop: '0.8rem', cursor: 'pointer' }}
               />
             </div>
           </div>
@@ -288,7 +288,7 @@ export default function AdmStyle({ settings: initialSettings, setSettings: updat
            ========================================================================= */}
         <div className="glass-panel" style={{ padding: '1.85rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '1.25rem' }}>
-            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(11, 74, 79, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-dark-teal)' }}>
+            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(0, 0, 0, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-brand-ink)' }}>
               <Sliders size={18} />
             </div>
             <h3 style={{ fontSize: '1.25rem', fontWeight: '700', margin: 0, color: 'var(--text-heading)' }}>
@@ -297,7 +297,7 @@ export default function AdmStyle({ settings: initialSettings, setSettings: updat
           </div>
 
           {/* TOGGLE DELIMITAÇÃO EXPLÍCITA VS FLUTUANTE */}
-          <div style={{ padding: '1.25rem', borderRadius: '12px', background: 'rgba(11, 74, 79, 0.03)', border: '1px solid rgba(11, 74, 79, 0.12)', marginBottom: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
+          <div style={{ padding: '1.25rem', borderRadius: '12px', background: 'rgba(0, 0, 0, 0.03)', border: '1px solid rgba(0, 0, 0, 0.12)', marginBottom: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
             <div>
               <div style={{ fontWeight: '700', fontSize: '1rem', color: 'var(--text-heading)' }}>
                 Delimitação com Caixa de Vidro ao Centro
@@ -314,9 +314,9 @@ export default function AdmStyle({ settings: initialSettings, setSettings: updat
                 type="checkbox"
                 checked={!!settings.content_has_border}
                 onChange={(e) => setSettings({ ...settings, content_has_border: e.target.checked })}
-                style={{ width: '22px', height: '22px', accentColor: 'var(--color-dark-teal)', cursor: 'pointer' }}
+                style={{ width: '22px', height: '22px', accentColor: 'var(--color-brand-ink)', cursor: 'pointer' }}
               />
-              <span style={{ fontWeight: '600', color: 'var(--color-dark-teal)' }}>
+              <span style={{ fontWeight: '600', color: 'var(--color-brand-ink)' }}>
                 {settings.content_has_border ? 'Com Moldura' : 'Sem Moldura'}
               </span>
             </label>
@@ -330,7 +330,7 @@ export default function AdmStyle({ settings: initialSettings, setSettings: updat
                   <label className="adm-label">
                     Nível de Desfoque de Vidro (Blur):
                   </label>
-                  <span style={{ fontWeight: '700', color: 'var(--color-dark-teal)' }}>{settings.content_blur_level || 20}px</span>
+                  <span style={{ fontWeight: '700', color: 'var(--color-brand-ink)' }}>{settings.content_blur_level || 20}px</span>
                 </div>
                 <input
                   type="range"
@@ -338,7 +338,7 @@ export default function AdmStyle({ settings: initialSettings, setSettings: updat
                   max="40"
                   value={settings.content_blur_level || 20}
                   onChange={(e) => setSettings({ ...settings, content_blur_level: Number(e.target.value) })}
-                  style={{ width: '100%', height: '8px', accentColor: 'var(--color-dark-teal)', cursor: 'pointer' }}
+                  style={{ width: '100%', height: '8px', accentColor: 'var(--color-brand-ink)', cursor: 'pointer' }}
                 />
               </div>
 
@@ -358,7 +358,7 @@ export default function AdmStyle({ settings: initialSettings, setSettings: updat
         </div>
 
         {/* BOTÃO DE SALVAR NO RODAPÉ */}
-        <div style={{ position: 'sticky', bottom: '20px', zIndex: 50, background: 'rgba(252, 252, 251, 0.92)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', padding: '1rem 1.5rem', borderRadius: '16px', border: '1px solid rgba(11, 74, 79, 0.15)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxShadow: '0 12px 36px rgba(11, 74, 79, 0.12)' }}>
+        <div style={{ position: 'sticky', bottom: '20px', zIndex: 50, background: 'rgba(252, 252, 251, 0.92)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', padding: '1rem 1.5rem', borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.15)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxShadow: '0 12px 36px rgba(0, 0, 0, 0.12)' }}>
           <span style={{ fontSize: '0.88rem', color: 'var(--text-muted)' }}>
             As alterações são aplicadas e salvas diretamente no banco.
           </span>

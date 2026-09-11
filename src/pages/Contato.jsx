@@ -74,7 +74,7 @@ export default function Contato({ profile }) {
         {/* CARD E-MAIL & GITHUB */}
         <div className="service-card-liquid" style={{ display: 'flex', flexDirection: 'column' }}>
           <div className="service-icon-wrapper">
-            <Mail size={24} color="var(--color-dark-teal)" />
+            <Mail size={24} color="var(--color-brand-ink)" />
           </div>
           <div className="corp-badge" style={{ alignSelf: 'flex-start', margin: '1rem 0 0.65rem' }}>Documentos & Propostas</div>
           <h3 style={{ fontSize: '1.3rem', marginBottom: '0.75rem', color: 'var(--text-heading)' }}>E-mail & Redes</h3>
@@ -110,7 +110,7 @@ export default function Contato({ profile }) {
       {/* BANNER DE INFORMAÇÕES DE CREDIBILIDADE */}
       <div className="service-card-liquid" style={{ padding: '2rem 2.5rem', marginBottom: '4rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-          <ShieldCheck size={24} style={{ color: 'var(--color-dark-teal)' }} />
+          <ShieldCheck size={24} style={{ color: 'var(--color-brand-ink)' }} />
           <h4 style={{ margin: 0, fontSize: '1.25rem', color: 'var(--text-heading)' }}>Compromisso, Segurança & Sigilo</h4>
         </div>
         <p style={{ color: 'var(--text-body)', margin: 0, lineHeight: '1.7', fontSize: '0.98rem' }}>

@@ -95,7 +95,7 @@ export default function ColorIntensityPicker({ label, value, onChange }) {
   return (
     <div style={{
       background: "rgba(255, 255, 255, 0.55)",
-      border: "1px solid rgba(11, 74, 79, 0.12)",
+      border: "1px solid rgba(0, 0, 0, 0.12)",
       borderRadius: "16px",
       padding: "1.25rem",
       marginBottom: "1.25rem",
@@ -120,8 +120,8 @@ export default function ColorIntensityPicker({ label, value, onChange }) {
             height: "56px",
             borderRadius: "12px",
             overflow: "hidden",
-            border: "2px solid rgba(11, 74, 79, 0.2)",
-            boxShadow: "0 4px 14px rgba(11, 74, 79, 0.08)",
+            border: "2px solid rgba(0, 0, 0, 0.2)",
+            boxShadow: "0 4px 14px rgba(0, 0, 0, 0.08)",
             cursor: "pointer"
           }}>
             <input
@@ -148,7 +148,7 @@ export default function ColorIntensityPicker({ label, value, onChange }) {
         <div style={{ flex: "1 1 220px", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <span style={{ fontSize: "0.85rem", color: "var(--text-body)", fontWeight: "500" }}>Intensidade / Opacidade:</span>
-            <span style={{ fontWeight: "700", color: "var(--color-dark-teal)", fontSize: "0.95rem" }}>{alphaPercent}%</span>
+            <span style={{ fontWeight: "700", color: "var(--color-brand-ink)", fontSize: "0.95rem" }}>{alphaPercent}%</span>
           </div>
           <input
             type="range"
@@ -160,7 +160,7 @@ export default function ColorIntensityPicker({ label, value, onChange }) {
               width: "100%",
               height: "8px",
               borderRadius: "4px",
-              accentColor: "var(--color-dark-teal)",
+              accentColor: "var(--color-brand-ink)",
               cursor: "pointer"
             }}
           />
@@ -177,13 +177,13 @@ export default function ColorIntensityPicker({ label, value, onChange }) {
             width: "60px",
             height: "56px",
             borderRadius: "12px",
-            border: "2px solid rgba(11, 74, 79, 0.2)",
+            border: "2px solid rgba(0, 0, 0, 0.2)",
             backgroundImage: "linear-gradient(45deg, #cbd5e1 25%, transparent 25%), linear-gradient(-45deg, #cbd5e1 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #cbd5e1 75%), linear-gradient(-45deg, transparent 75%, #cbd5e1 75%)",
             backgroundSize: "12px 12px",
             backgroundPosition: "0 0, 0 6px, 6px -6px, -6px 0px",
             position: "relative",
             overflow: "hidden",
-            boxShadow: "0 4px 14px rgba(11, 74, 79, 0.08)"
+            boxShadow: "0 4px 14px rgba(0, 0, 0, 0.08)"
           }}>
             <div style={{
               width: "100%",
@@ -207,7 +207,7 @@ export default function ColorIntensityPicker({ label, value, onChange }) {
           style={{
             flex: 1,
             padding: "0.45rem 0.85rem",
-            color: "var(--color-dark-teal)",
+            color: "var(--color-brand-ink)",
             fontFamily: "monospace",
             fontSize: "0.85rem",
             fontWeight: "600"
@@ -216,7 +216,7 @@ export default function ColorIntensityPicker({ label, value, onChange }) {
       </div>
 
       {/* 5. Atalhos Práticos de Cores Pré-definidas */}
-      <div style={{ marginTop: "1rem", borderTop: "1px solid rgba(11, 74, 79, 0.08)", paddingTop: "0.8rem" }}>
+      <div style={{ marginTop: "1rem", borderTop: "1px solid rgba(0, 0, 0, 0.08)", paddingTop: "0.8rem" }}>
         <span style={{ display: "block", fontSize: "0.78rem", color: "var(--text-muted)", marginBottom: "0.5rem" }}>
           Paletas Rápidas & Liquid Glass:
         </span>
@@ -230,7 +230,7 @@ export default function ColorIntensityPicker({ label, value, onChange }) {
                 padding: "0.3rem 0.65rem",
                 fontSize: "0.75rem",
                 borderRadius: "999px",
-                border: "1px solid rgba(11, 74, 79, 0.15)",
+                border: "1px solid rgba(0, 0, 0, 0.15)",
                 background: "rgba(255, 255, 255, 0.75)",
                 color: "var(--text-body)",
                 cursor: "pointer",
@@ -247,7 +247,7 @@ export default function ColorIntensityPicker({ label, value, onChange }) {
                 height: "12px",
                 borderRadius: "50%",
                 backgroundColor: preset.value,
-                border: "1px solid rgba(11, 74, 79, 0.2)",
+                border: "1px solid rgba(0, 0, 0, 0.2)",
                 display: "inline-block"
               }} />
               {preset.name}

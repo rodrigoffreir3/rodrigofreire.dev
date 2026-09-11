@@ -120,7 +120,7 @@ export default function BlogPost({ posts, profile }) {
       
       {/* NAVEGAÇÃO DE VOLTA */}
       <div style={{ margin: '1.5rem 0 1rem 0' }}>
-        <Link to="/blog" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem', color: 'var(--color-dark-teal)', textDecoration: 'none', fontSize: '0.92rem', fontWeight: '600' }}>
+        <Link to="/blog" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem', color: 'var(--color-brand-ink)', textDecoration: 'none', fontSize: '0.92rem', fontWeight: '600' }}>
           <ArrowLeft size={16} /> Voltar para o Blog
         </Link>
       </div>

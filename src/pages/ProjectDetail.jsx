@@ -102,7 +102,7 @@ export default function ProjectDetail({ projects, profile }) {
 
         {/* Renderiza imagem apenas se for real e configurada no CMS */}
         {hasRealCover && (
-          <div className="project-hero-media" style={{ borderRadius: '20px', overflow: 'hidden', boxShadow: '0 16px 40px rgba(11, 74, 79, 0.12)', marginBottom: '2.5rem' }}>
+          <div className="project-hero-media" style={{ borderRadius: '20px', overflow: 'hidden', boxShadow: '0 16px 40px rgba(0, 0, 0, 0.12)', marginBottom: '2.5rem' }}>
             <img src={project.cover_image} alt={`${project.title} Preview`} loading="lazy" style={{ width: '100%', height: 'auto', display: 'block' }} />
           </div>
         )}
@@ -172,7 +172,7 @@ export default function ProjectDetail({ projects, profile }) {
             target="_blank"
             rel="noopener noreferrer"
             className="corp-btn-outline-glass"
-            style={{ padding: '0.85rem 1.8rem', fontSize: '0.95rem', borderRadius: '999px', color: 'var(--color-dark-teal) !important', background: 'var(--color-off-white)', borderColor: 'var(--color-dark-teal)' }}
+            style={{ padding: '0.85rem 1.8rem', fontSize: '0.95rem', borderRadius: '999px', color: 'var(--color-brand-ink) !important', background: 'var(--color-off-white)', borderColor: 'var(--color-brand-ink)' }}
           >
             <GithubIcon size={18} /> GitHub do Projeto
           </a>

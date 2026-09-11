@@ -127,7 +127,7 @@ export default function AdmProfile({ profile: initialProfile, setProfile: update
           <div>
             <label className="adm-label">Registro de Software no INPI</label>
             <div style={{ position: 'relative' }}>
-              <ShieldCheck size={16} style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: 'var(--color-dark-teal)' }} />
+              <ShieldCheck size={16} style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: 'var(--color-brand-ink)' }} />
               <input
                 type="text"
                 value={profile.inpi_record || ''}
@@ -199,7 +199,7 @@ export default function AdmProfile({ profile: initialProfile, setProfile: update
           </div>
         </div>
 
-        <div style={{ marginTop: '1rem', borderTop: '1px solid rgba(11, 74, 79, 0.12)', paddingTop: '1.25rem' }}>
+        <div style={{ marginTop: '1rem', borderTop: '1px solid rgba(0, 0, 0, 0.12)', paddingTop: '1.25rem' }}>
           <button
             type="submit"
             disabled={saving}

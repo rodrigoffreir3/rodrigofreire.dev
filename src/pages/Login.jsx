@@ -40,7 +40,7 @@ export default function Login() {
       <div className="glass-panel" style={{ maxWidth: '440px', width: '100%', padding: '2.75rem 2.25rem' }}>
         
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-          <div style={{ width: '56px', height: '56px', borderRadius: '16px', background: 'rgba(11, 74, 79, 0.08)', border: '1px solid rgba(11, 74, 79, 0.16)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1rem auto', color: 'var(--color-dark-teal)' }}>
+          <div style={{ width: '56px', height: '56px', borderRadius: '16px', background: 'rgba(0, 0, 0, 0.08)', border: '1px solid rgba(0, 0, 0, 0.16)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1rem auto', color: 'var(--color-brand-ink)' }}>
             <Lock size={26} />
           </div>
           <h2 style={{ fontSize: '1.6rem', fontWeight: '800', margin: '0 0 0.4rem 0', color: 'var(--text-heading)' }}>Painel Administrativo</h2>
@@ -103,8 +103,8 @@ export default function Login() {
 
         </form>
 
-        <div style={{ marginTop: '2rem', textAlign: 'center', borderTop: '1px solid rgba(11, 74, 79, 0.1)', paddingTop: '1.25rem' }}>
-          <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', color: 'var(--color-dark-teal)', fontSize: '0.88rem', fontWeight: '600', textDecoration: 'none' }}>
+        <div style={{ marginTop: '2rem', textAlign: 'center', borderTop: '1px solid rgba(0, 0, 0, 0.1)', paddingTop: '1.25rem' }}>
+          <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', color: 'var(--color-brand-ink)', fontSize: '0.88rem', fontWeight: '600', textDecoration: 'none' }}>
             <ArrowLeft size={14} /> Voltar para o site público
           </Link>
         </div>

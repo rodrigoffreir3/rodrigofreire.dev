@@ -5,7 +5,7 @@ export default function MultiLayerCanvas({ settings, children }) {
     bg_image_url = '',
     bg_image_size = 'cover',
     bg_image_repeat = 'no-repeat',
-    overlay_color = 'rgba(11, 74, 79, 0.08)',
+    overlay_color = 'rgba(0, 0, 0, 0.08)',
     
     hero_char_url = '',
     hero_char_position = 'bottom-right',

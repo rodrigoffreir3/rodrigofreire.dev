@@ -67,8 +67,8 @@ export default function Projects({ projects = [] }) {
                       fontWeight: '700',
                       padding: '0.2rem 0.6rem',
                       borderRadius: '999px',
-                      background: 'rgba(11, 74, 79, 0.06)',
-                      color: 'var(--color-dark-teal)'
+                      background: 'rgba(0, 0, 0, 0.06)',
+                      color: 'var(--color-brand-ink)'
                     }}
                   >
                     {t}

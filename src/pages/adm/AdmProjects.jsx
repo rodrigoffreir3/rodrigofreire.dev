@@ -295,7 +295,7 @@ export default function AdmProjects({ projects, setProjects }) {
                   type="checkbox"
                   checked={formData.is_featured}
                   onChange={(e) => setFormData({ ...formData, is_featured: e.target.checked })}
-                  style={{ width: '20px', height: '20px', accentColor: 'var(--color-dark-teal)' }}
+                  style={{ width: '20px', height: '20px', accentColor: 'var(--color-brand-ink)' }}
                 />
                 <span style={{ fontWeight: '600', color: 'var(--text-heading)' }}>Destacar em Largura Total na Home</span>
               </label>
@@ -312,7 +312,7 @@ export default function AdmProjects({ projects, setProjects }) {
               </div>
             </div>
 
-            <div style={{ display: 'flex', gap: '1rem', marginTop: '1.5rem', borderTop: '1px solid rgba(11, 74, 79, 0.12)', paddingTop: '1.25rem' }}>
+            <div style={{ display: 'flex', gap: '1rem', marginTop: '1.5rem', borderTop: '1px solid rgba(0, 0, 0, 0.12)', paddingTop: '1.25rem' }}>
               <button
                 type="submit"
                 disabled={saving}
@@ -334,7 +334,7 @@ export default function AdmProjects({ projects, setProjects }) {
           <div key={proj.id} className="glass-panel" style={{ padding: '1.25rem 1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
             
             <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
-              <div style={{ width: '60px', height: '40px', borderRadius: '8px', overflow: 'hidden', background: 'rgba(11, 74, 79, 0.08)', flexShrink: 0 }}>
+              <div style={{ width: '60px', height: '40px', borderRadius: '8px', overflow: 'hidden', background: 'rgba(0, 0, 0, 0.08)', flexShrink: 0 }}>
                 {proj.cover_image ? (
                   <img src={proj.cover_image} alt={proj.title} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 ) : (
