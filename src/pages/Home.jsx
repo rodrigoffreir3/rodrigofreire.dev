@@ -150,7 +150,7 @@ export default function Home({ profile }) {
                 <MessageSquare size={18} /> {heroPrimaryCta}
               </a>
 
-              <a href="#linha-de-frente" className="corp-btn-outline-glass" style={{ fontSize: '1.05rem', padding: '0.9rem 1.8rem' }}>
+              <a href="#linha-de-frente" className="corp-link-text">
                 {heroSecondaryCta} <ArrowDown size={16} />
               </a>
             </div>
@@ -534,7 +534,7 @@ export default function Home({ profile }) {
               href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá Rodrigo! Gostaria de solicitar uma avaliação da operação de tecnologia da minha empresa.')}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="corp-btn-accent"
+              className="corp-btn-outline-glass"
               style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.85rem 1.8rem', width: 'fit-content' }}
             >
               <MessageSquare size={18} /> Solicitar Avaliação da Operação
