@@ -3134,3 +3134,200 @@ a {
   margin-top: 2px;
   color: #3533cd;
 }
+
+/* =============================================================================
+   PÁGINA SOBRE: REPOSICIONAMENTO INSTITUCIONAL B2B (SPEC-SITE-005-B)
+   ============================================================================= */
+
+.about-presentation-card {
+  background: var(--glass-crystal-bg, rgba(255, 255, 255, 0.85));
+  border: 1px solid var(--glass-crystal-border, rgba(53, 51, 205, 0.12));
+  border-radius: 24px;
+  padding: 2.75rem;
+  margin-bottom: 3.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  backdrop-filter: blur(16px);
+}
+
+.about-presentation-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-heading, #000000);
+  margin-bottom: 1.25rem;
+  line-height: 1.3;
+}
+
+.about-presentation-text {
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: var(--text-body, #2C3437);
+  margin-bottom: 1.2rem;
+}
+
+.about-presentation-text:last-of-type {
+  margin-bottom: 0;
+}
+
+.about-commitments-section {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+@media (max-width: 860px) {
+  .about-commitments-section {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.about-photo-wrapper {
+  flex: 0 0 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: #FFFFFF;
+  border: 1px solid rgba(53, 51, 205, 0.12);
+  border-radius: 22px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.04);
+}
+
+@media (max-width: 860px) {
+  .about-photo-wrapper {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 380px;
+  }
+}
+
+.about-photo-frame {
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  border: 3px solid #3533cd;
+  box-shadow: 0 12px 30px rgba(53, 51, 205, 0.2), 0 0 0 5px rgba(53, 51, 205, 0.08);
+}
+
+.about-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.about-photo-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-heading, #000000);
+  margin-bottom: 0.25rem;
+}
+
+.about-photo-role {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #3533cd;
+  margin-bottom: 0.75rem;
+}
+
+.about-photo-location {
+  font-size: 0.85rem;
+  color: var(--text-muted, #556066);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
+.about-commitments-card {
+  flex: 1 1 420px;
+  background: #FFFFFF;
+  border: 1px solid rgba(53, 51, 205, 0.16);
+  border-radius: 22px;
+  padding: 2.25rem;
+  box-shadow: 0 12px 32px rgba(53, 51, 205, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.commitments-card-header {
+  margin-bottom: 1.75rem;
+}
+
+.commitments-card-header h3 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text-heading, #000000);
+  margin-bottom: 0.35rem;
+  letter-spacing: -0.01em;
+}
+
+.commitments-card-header p {
+  font-size: 0.92rem;
+  color: var(--text-muted, #556066);
+  margin: 0;
+}
+
+.commitments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  flex: 1;
+}
+
+.commitment-item {
+  padding: 1.1rem 1.25rem;
+  background: var(--bg-page-subtle, #F0EFEA);
+  border-radius: 14px;
+  border-left: 3px solid #3533cd;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.commitment-item:hover {
+  transform: translateX(4px);
+  border-left-color: #000000;
+}
+
+.commitment-title {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--text-heading, #000000);
+  margin: 0 0 0.35rem 0;
+}
+
+.commitment-text {
+  font-size: 0.91rem;
+  line-height: 1.55;
+  color: var(--text-body, #2C3437);
+  margin: 0;
+}
+
+.commitments-card-footer {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.commitments-card-footer-name {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text-heading, #000000);
+}
+
+.commitments-card-footer-role {
+  font-size: 0.85rem;
+  color: var(--text-muted, #556066);
+  font-weight: 500;
+}
+

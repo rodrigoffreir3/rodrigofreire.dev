@@ -184,15 +184,15 @@ function prerenderRoutes() {
   const pages = [
     {
       dir: 'sobre',
-      title: 'Sobre Rodrigo Freire · TI Empresarial & Inovação — Porto Velho',
-      description: 'Conheça Rodrigo Freire: formação em Direito e Análise de Sistemas, patente no INPI e foco em TI empresarial de alto nível e conformidade com a LGPD em Porto Velho.',
+      title: 'Sobre Rodrigo Freire · TI Empresarial & Continuidade — Porto Velho',
+      description: 'Conheça Rodrigo Freire: formação em Direito e Análise de Sistemas, registro no INPI e foco em TI empresarial, continuidade operacional e proteção de dados em Porto Velho.',
       canonicalUrl: `${SITE_URL}/sobre`,
       jsonLd: {
         '@context': 'https://schema.org',
         '@type': 'Person',
         'name': 'Rodrigo Freire',
-        'jobTitle': 'Especialista em TI Empresarial e Desenvolvedor de Software',
-        'description': 'Profissional de TI empresarial de alto nível em Porto Velho - RO, bacharel em Direito e graduando em Análise e Desenvolvimento de Sistemas (ADS). Criador de sistemas patenteados no INPI.',
+        'jobTitle': 'Responsável Técnico de TI Empresarial',
+        'description': 'Profissional de TI empresarial e continuidade operacional em Porto Velho - RO. Formação em Direito e Análise de Sistemas, registro no INPI e foco em estabilidade e proteção de dados.',
         'url': `${SITE_URL}/sobre`,
         'image': `${SITE_URL}/foto_perfil.jpeg`,
         'address': {

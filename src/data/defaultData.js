@@ -49,9 +49,9 @@ export const DEFAULT_HOME_SETTINGS = {
 export const DEFAULT_PROFILE = {
   full_name: "RODRIGOFREIRE.DEV",
   company_name: "Rodrigo Freire Tech",
-  tagline: "TI Empresarial & Tecnologias Amigáveis · Porto Velho",
-  lead_bio: "Sua empresa não pode parar por falhas técnicas. Implemento suporte ágil de TI empresarial, conformidade prática com a LGPD (Lei Geral de Proteção de Dados, para blindar seu negócio contra vazamentos e multas) e sistemas amigáveis em Porto Velho — para seus caixas e computadores rodarem estáveis e sem atrito.",
-  about_text: "Sou profissional de tecnologia em Porto Velho, graduado em Direito e em formação em Análise e Desenvolvimento de Sistemas (ADS). Essa união incomum entrega garantias raras ao empresário: domínio prático da LGPD para proteger o cadastro de clientes e finanças da sua empresa contra riscos jurídicos, somado a contratos transparentes e rigor técnico. Ergo a bandeira da simplicidade de sistemas: tecnologia existe para acelerar seu comércio e colocar mais dinheiro no seu caixa.",
+  tagline: "TI Empresarial & Continuidade Operacional · Porto Velho",
+  lead_bio: "Assumo a responsabilidade técnica para manter sua empresa funcionando e seus dados protegidos. Atendimento direto em Porto Velho com escopo fechado antes de começar, rotinas preventivas de backup e foco no que realmente importa: seu faturamento não parar.",
+  about_text: "Moro em Porto Velho e atendo comércios e empresas locais que precisam de estabilidade técnica no dia a dia. Minha função é direta: garantir que seus computadores, caixas e rede comercial operem sem travamentos e que as informações do seu negócio estejam sempre protegidas e recuperáveis.\n\nMinha formação une duas áreas que trazem garantias concretas ao empresário: sou graduado em Direito e estou em formação em Análise e Desenvolvimento de Sistemas (ADS). Essa base jurídica me dá um cuidado redobrado com o que vai por escrito em contrato, leitura atenta de termos e respeito rigoroso às informações sigilosas e aos dados de clientes da sua empresa sob a LGPD (Lei Geral de Proteção de Dados, para blindar seu negócio contra vazamentos e multas). Também desenvolvi tecnologia própria para proteção de servidores com registro oficial no INPI (Instituto Nacional da Propriedade Industrial, sob o processo nº 512025006506-0).\n\nPara mim, tecnologia é meio, não fim. O que importa não é o software pelo software, mas a tranquilidade de saber que sua equipe tem ferramentas fáceis de operar, que o caixa não trava na hora da venda e que você tem um responsável direto para atender seu chamado quando algo sair do esperado.",
   whatsapp_number: "5569992782919",
   inpi_record: "Registro INPI Nº 512025006506-0",
   avatar_url: "/foto_perfil.jpeg",
@@ -61,6 +61,36 @@ export const DEFAULT_PROFILE = {
   github_url: "https://github.com/rodrigoffreir3",
   linkedin_url: ""
 };
+
+// =============================================================================
+// COMPROMISSOS DE ATUAÇÃO PROFISSIONAL (SPEC-SITE-005-B RF-2)
+// =============================================================================
+export const DEFAULT_COMMITMENTS = [
+  {
+    id: "plano-de-volta",
+    number: "01",
+    title: "Nada muda sem plano de volta",
+    description: "Antes de mexer em qualquer computador, rede ou rotina que sua empresa usa para trabalhar, eu garanto que dá para voltar ao estado anterior se algo não sair como esperado."
+  },
+  {
+    id: "dados-ficam-na-empresa",
+    number: "02",
+    title: "O que é da sua empresa fica na sua empresa",
+    description: "Dados de clientes, faturamento e movimentação financeira que eu acessar para realizar o trabalho não saem dali, com compromisso firmado por escrito em contrato, não apenas na palavra."
+  },
+  {
+    id: "solucao-manutivel",
+    number: "03",
+    title: "Solução que você consegue manter",
+    description: "Não uso ferramentas caras ou complicadas para parecer sofisticado. Se no futuro você precisar de outra pessoa para mexer, ela vai conseguir entender com clareza o que foi feito."
+  },
+  {
+    id: "quem-faz-atende",
+    number: "04",
+    title: "Quem faz é quem atende",
+    description: "Não existe fila impessoal de atendimento nem atendente que não conhece a sua rotina. Quem montou a solução é quem atende e resolve diretamente quando der problema."
+  }
+];
 
 // =============================================================================
 // SEÇÃO DE RISCOS OPERACIONAIS: O CUSTO DE NÃO AGIR (SPEC-SITE-005 RF-2)
