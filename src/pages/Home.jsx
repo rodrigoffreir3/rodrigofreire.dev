@@ -26,6 +26,7 @@ import {
   XCircle
 } from 'lucide-react';
 import SEO from '../components/SEO';
+import HeroMockup from '../components/HeroMockup';
 
 const ICON_MAP = {
   Wrench,
@@ -117,35 +118,34 @@ export default function Home({ profile }) {
          BLOCO 1: ABERTURA (HERO B2B INSTITUCIONAL) — CARRO-CHEFE FDE
          ============================================================ */}
       <section className="corp-hero-enterprise" id="inicio">
-        <div className="hero-enterprise-inner" style={{ gridTemplateColumns: '1fr', maxWidth: '940px', margin: '0 auto', textAlign: 'center' }}>
-          <div className="hero-enterprise-copy" style={{ alignItems: 'center' }}>
+        <div className="hero-enterprise-inner">
+          <div className="hero-enterprise-copy">
             
-            <div className="hero-pill-badge" style={{ margin: '0 auto 1.5rem' }}>
+            <div className="hero-pill-badge">
               <Sparkles size={14} />
               <span>{heroBadge}</span>
             </div>
 
-            <h1 className="hero-enterprise-title" style={{ fontSize: 'clamp(2.1rem, 4.5vw, 3.3rem)', lineHeight: '1.2', marginBottom: '1.5rem' }}>
+            <h1 className="hero-enterprise-title">
               Um engenheiro dedicado na linha de frente da sua empresa para <span className="highlight-cyan">destravar processos</span> e garantir que sua operação nunca pare.
             </h1>
 
-            <p className="hero-enterprise-desc" style={{ fontSize: '1.16rem', lineHeight: '1.7', maxWidth: '820px', margin: '0 auto 2rem', color: 'var(--text-body)' }}>
+            <p className="hero-enterprise-desc">
               {heroDesc}
             </p>
 
-            <div className="hero-pain-chips-row" style={{ justifyContent: 'center', marginBottom: '2.5rem', flexWrap: 'wrap' }}>
+            <div className="hero-pain-chips-row">
               {heroChips.map((chip, idx) => (
                 <span key={idx} className="hero-pain-chip-item">{chip}</span>
               ))}
             </div>
 
-            <div className="hero-actions-row" style={{ justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+            <div className="hero-actions-row">
               <a
                 href={`https://wa.me/${phone}?text=${encodeURIComponent(heroWhatsappMsg)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="corp-btn-accent"
-                style={{ fontSize: '1.05rem', padding: '0.9rem 2rem' }}
               >
                 <MessageSquare size={18} /> {heroPrimaryCta}
               </a>
@@ -155,6 +155,10 @@ export default function Home({ profile }) {
               </a>
             </div>
 
+          </div>
+
+          <div className="hero-enterprise-visual">
+            <HeroMockup />
           </div>
         </div>
       </section>
