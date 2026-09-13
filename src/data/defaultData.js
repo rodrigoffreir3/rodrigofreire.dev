@@ -475,3 +475,44 @@ export const DEFAULT_POSTS = [
     content_markdown: "# Bloquear o invasor na hora foi o pior conselho que eu segui\n\n*Por Rodrigo Freire — Pesquisa e Desenvolvimento em Deep Tech*\n\nSe você trabalha com infraestrutura, provavelmente aprendeu a mesma regra que eu: detectou processo malicioso, derruba na hora. Mata a conexão, encerra o processo, devolve um `Access Denied` sonoro. Eu segui essa regra por muito tempo achando que era o certo. Era rápido, era limpo, parecia profissional.\n\nDemorei a perceber o óbvio: **o bloqueio imediato é o melhor feedback que você pode dar ao atacante.**\n\nQuando o adversário é um script genérico ou uma varredura automática, tudo bem — a guilhotina funciona e custa pouco. O problema é o cenário que virou regra: ataques orquestrados por IA e ameaças persistentes. Se você bloqueia uma IA de ataque no instante em que ela pisa em falso, você acabou de ensinar ela. O bloqueio é o sinal de que existe uma barreira ali e que ela precisa ofuscar o próximo movimento. Você entra num jogo onde a defesa tem que acertar sempre e o atacante só precisa acertar uma vez. Esse jogo você perde no longo prazo.\n\nFoi apanhando dessa lógica que eu fui estudar uma abordagem diferente — não inventada por mim, mas emprestada da biologia: em vez de cortar, sufocar.\n\n## O custo escondido de dizer \"não\" rápido demais\n\nO que ninguém te conta quando você aprende a bloquear na hora é tudo que você joga fora junto.\n\nQuando você mata o processo instantaneamente, você perde a chance de ver a ameaça \"ligar para casa\". Perde o rastro do servidor de comando e controle. Perde a árvore genealógica de processos que te levaria até a origem real do ataque — o *paciente zero*. Você ganha a satisfação imediata de ter bloqueado, e paga com a cegueira sobre quem realmente entrou e por onde.\n\nA inversão de raciocínio é essa: e se, em vez de alertar o invasor, você deixasse ele continuar achando que venceu — só que dentro de uma simulação?\n\n## Sufocar em vez de cortar\n\nA ideia tem dois ganhos táticos que o bloqueio nunca te dá.\n\nO primeiro é envenenar o aprendizado do atacante. Se ele acessa arquivos de configuração e bancos de dados que parecem reais mas são forjados, o pipeline de uma IA atacante converge para uma solução errada. Ela gasta tempo e orçamento processando lixo que parece ouro. Você não barrou o ataque — você fez ele trabalhar contra si mesmo.\n\nO segundo é tempo. Manter o invasor ocupado numa simulação compra os milissegundos preciosos para rastrear toda a linhagem do ataque antes de arrancar a rede pela raiz. Você troca a satisfação imediata do bloqueio pela informação completa sobre a ameaça.\n\nPara que essa simulação seja convincente, ela precisa operar abaixo do nível do usuário, lá onde o sistema operacional não mente. Três camadas tornam isso possível:\n\n**A ilusão do sistema de arquivos.** Em vez de negar a leitura de credenciais, você injeta espelhos falsos no namespace restrito do invasor. Ele lê o que acha serem segredos — e são armadilhas perfeitas, enquanto a produção real segue intocada.\n\n**O silêncio de rede.** Cortar a conexão TCP avisa o atacante na hora. Aplicar descarte silencioso de pacotes atrelado ao grupo de processos dele faz a requisição pendurar num timeout infinito. Para ele, a internet só parece instável.\n\n**A asfixia de recursos.** Aqui está o golpe econômico. Em vez de matar um ataque que roda só em memória, você corta o tempo de processamento que o escalonador do sistema dá àquele grupo. O resultado é uma assimetria perfeita: as máquinas do atacante continuam queimando energia máxima para manter as requisições vivas, enquanto o seu servidor simplesmente esfria. Você reduz a sua conta enquanto derrete o bolso do invasor.\n\n## Onde essa abordagem tem limite (porque tem)\n\nNão vou vender isso como bala de prata. Decepção ativa é cara de construir e de manter — exige forjar ambientes falsos convincentes, e um atacante muito experiente pode farejar a simulação. Para a esmagadora maioria das ameaças comuns, o bom e velho bloqueio continua sendo a resposta certa, porque é barato e suficiente. A asfixia faz sentido para a fração de ameaças avançadas onde a informação sobre o atacante vale mais que a velocidade de barrá-lo. Aplicar isso em tudo seria over-engineering puro.\n\n## O que eu tirei disso\n\nA lição que ficou comigo vai além de segurança. Na cibersegurança moderna, a guerra é de atrito: vence quem inviabiliza o lado econômico do oponente primeiro. E o reflexo de \"dizer não o mais rápido possível\" — que parece força — muitas vezes é o que entrega informação de graça ao outro lado.\n\nParei de pensar em construir muros mais altos e passei a pensar em projetar areia movediça. Não se trata de sobreviver ao ataque. Se trata de fazer o atacante se arrepender amargamente do custo de ter tentado.\n\nSe você gerencia infraestrutura e ainda trata todo incidente como \"detectou, bloqueou\", vale a pergunta: quanta informação sobre quem está te atacando você está jogando fora junto com o processo que você matou?"
   }
 ];
+
+// =============================================================================
+// SPEC-SITE-007 RF-3: SLIDES DO HERO (MOCKUPS & ARGUMENTOS COMERCIAIS)
+// =============================================================================
+export const DEFAULT_HERO_SLIDES = [
+  {
+    id: 'loja-online',
+    label: 'Lojas Virtuais Próprias',
+    titulo: 'Venda maior sem comissão e cliente que volta.',
+    texto: 'Feche vendas de tíquete mais alto com controle sobre o que aparece e para quem. Você guarda o contato de quem comprou e não paga comissão de plataforma sobre cada pedido.',
+    mockupId: 'loja'
+  },
+  {
+    id: 'site-institucional',
+    label: 'Sites Institucionais',
+    titulo: 'Autoridade e credibilidade para fechar negócios maiores.',
+    texto: 'O cliente que vai fechar negócio com você procura seu nome antes. Site próprio é o que confirma que sua empresa é séria e trabalha junto com o que você já publica nas redes.',
+    mockupId: 'institucional'
+  },
+  {
+    id: 'pdv',
+    label: 'Sistemas de PDV & Balcão',
+    titulo: 'Venda registrada na hora sem travar a fila.',
+    texto: 'Registro rápido no balcão, sem menu dentro de menu, com o movimento do dia organizado sozinho ao final do expediente sem dor de cabeça.',
+    mockupId: 'pdv'
+  },
+  {
+    id: 'whatsapp',
+    label: 'Automação de WhatsApp',
+    titulo: 'Cliente respondido no mesmo instante 24h.',
+    texto: 'Resposta imediata fora do horário e enquanto a equipe está ocupada, mantendo o cliente interessado e a conversa andando até alguém assumir.',
+    mockupId: 'whatsapp'
+  },
+  {
+    id: 'erp',
+    label: 'Sistemas ERP & Painéis',
+    titulo: 'Estoque, vendas e finanças no mesmo lugar.',
+    texto: 'Sistemas que conversam entre si, eliminando retrabalho de preencher a mesma informação na mão em planilhas separadas toda semana.',
+    mockupId: 'erp'
+  }
+];

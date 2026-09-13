@@ -4,7 +4,8 @@ import {
   DEFAULT_RISKS, 
   DEFAULT_STEPS, 
   DEFAULT_HOME_SETTINGS,
-  DEFAULT_FDE_COMPARISON 
+  DEFAULT_FDE_COMPARISON,
+  DEFAULT_HERO_SLIDES 
 } from '../data/defaultData';
 import {
   Wrench,
@@ -26,8 +27,9 @@ import {
   XCircle
 } from 'lucide-react';
 import SEO from '../components/SEO';
-import HeroMockup from '../components/HeroMockup';
+import HeroCarousel from '../components/HeroMockups/HeroCarousel';
 import useScrollReveal from '../hooks/useScrollReveal';
+import useTypewriter from '../hooks/useTypewriter';
 
 const ICON_MAP = {
   Wrench,
@@ -44,6 +46,23 @@ const ICON_MAP = {
 export default function Home({ profile }) {
   useScrollReveal();
   const phone = (profile?.whatsapp_number ? String(profile.whatsapp_number).replace(/\D/g, '') : '') || '5569992782919';
+
+  // SPEC-SITE-007: Carrossel de 5 mockups e textos sincronizados
+  const [activeSlideIndex, setActiveSlideIndex] = useState(0);
+  const [isTextFading, setIsTextFading] = useState(false);
+
+  const heroSlides = DEFAULT_HERO_SLIDES;
+  const currentSlide = heroSlides[activeSlideIndex] || heroSlides[0];
+  const typedLabel = useTypewriter(currentSlide.label);
+
+  const handleSlideChange = (newIndex) => {
+    if (newIndex === activeSlideIndex) return;
+    setIsTextFading(true);
+    setTimeout(() => {
+      setActiveSlideIndex(newIndex);
+      setIsTextFading(false);
+    }, 180);
+  };
 
   // Formulário de solicitação de avaliação operacional
   const [formData, setFormData] = useState({
@@ -140,9 +159,25 @@ export default function Home({ profile }) {
               Um engenheiro dedicado na linha de frente da sua empresa para <span className="highlight-cyan">destravar processos</span> e garantir que sua operação nunca pare.
             </h1>
 
+            {/* SPEC-SITE-007 RF-4: Linha com efeito digitado (typewriter) */}
+            <div className="hero-typewriter-line" aria-hidden="true">
+              <span className="hero-typewriter-prefix">Na prática:</span>{' '}
+              <span className="hero-typewriter-text">{typedLabel}</span>
+              <span className="hero-typewriter-cursor" />
+            </div>
+
             <p className="hero-enterprise-desc">
               {heroDesc}
             </p>
+
+            {/* SPEC-SITE-007 RF-3: Bloco de Argumento Comercial Sincronizado */}
+            <div className={`hero-argument-box ${isTextFading ? 'fading' : ''}`}>
+              <div className="hero-argument-header">
+                <span className="hero-argument-tag">{currentSlide.label}</span>
+                <h2 className="hero-argument-title">{currentSlide.titulo}</h2>
+              </div>
+              <p className="hero-argument-desc">{currentSlide.texto}</p>
+            </div>
 
             <div className="hero-pain-chips-row">
               {heroChips.map((chip, idx) => (
@@ -168,7 +203,12 @@ export default function Home({ profile }) {
           </div>
 
           <div className="hero-enterprise-visual">
-            <HeroMockup />
+            <HeroCarousel 
+              slides={heroSlides}
+              activeIndex={activeSlideIndex}
+              onSelectIndex={handleSlideChange}
+              onSlideChange={handleSlideChange}
+            />
           </div>
         </div>
       </section>
@@ -191,7 +231,7 @@ export default function Home({ profile }) {
           {DEFAULT_RISKS.map((risk) => {
             const IconComp = ICON_MAP[risk.icon] || ShieldAlert;
             return (
-              <div key={risk.id} className="risk-card">
+              <div key={risk.id} className="risk-card stagger-card">
                 <div className="risk-card-header">
                   <div className="risk-card-icon">
                     <IconComp size={22} />
@@ -229,7 +269,7 @@ export default function Home({ profile }) {
 
         <div className="fde-comparison-grid">
           {/* CARD 1: SUPORTE TRADICIONAL */}
-          <div className="fde-card fde-card-traditional">
+          <div className="fde-card fde-card-traditional stagger-card">
             <div className="fde-card-header">
               <div className="fde-card-icon traditional">
                 <AlertOctagon size={22} />
@@ -264,7 +304,7 @@ export default function Home({ profile }) {
           </div>
 
           {/* CARD 2: PROGRAMADOR DISTANTE */}
-          <div className="fde-card fde-card-distant">
+          <div className="fde-card fde-card-distant stagger-card">
             <div className="fde-card-header">
               <div className="fde-card-icon distant">
                 <Clock size={22} />
@@ -299,7 +339,7 @@ export default function Home({ profile }) {
           </div>
 
           {/* CARD 3: FORWARD DEPLOYED ENGINEER (RODRIGO FREIRE) */}
-          <div className="fde-card fde-card-featured">
+          <div className="fde-card fde-card-featured stagger-card">
             <div className="fde-card-header">
               <div className="fde-card-icon featured">
                 <Sparkles size={22} />
@@ -355,7 +395,7 @@ export default function Home({ profile }) {
             const message = service.whatsapp_msg || `Olá Rodrigo! Gostaria de conversar sobre: ${service.title}`;
 
             return (
-              <div key={service.id} className="service-card-liquid" style={{ display: 'flex', flexDirection: 'column' }}>
+              <div key={service.id} className="service-card-liquid stagger-card" style={{ display: 'flex', flexDirection: 'column' }}>
                 <div className="service-card-header">
                   <div className="service-icon-wrapper">
                     <IconComponent size={22} />
@@ -446,7 +486,7 @@ export default function Home({ profile }) {
 
         <div className="pains-grid-cards" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginTop: '2.5rem' }}>
           
-          <div className="pain-card-item">
+          <div className="pain-card-item stagger-card">
             <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
               <Gauge size={22} color="#3533cd" />
             </div>
@@ -456,7 +496,7 @@ export default function Home({ profile }) {
             </p>
           </div>
 
-          <div className="pain-card-item">
+          <div className="pain-card-item stagger-card">
             <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
               <Clock size={22} color="#3533cd" />
             </div>
@@ -466,7 +506,7 @@ export default function Home({ profile }) {
             </p>
           </div>
 
-          <div className="pain-card-item">
+          <div className="pain-card-item stagger-card">
             <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
               <ShieldCheck size={22} color="#3533cd" />
             </div>
@@ -476,7 +516,7 @@ export default function Home({ profile }) {
             </p>
           </div>
 
-          <div className="pain-card-item">
+          <div className="pain-card-item stagger-card">
             <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
               <MapPin size={22} color="#3533cd" />
             </div>
@@ -504,7 +544,7 @@ export default function Home({ profile }) {
 
           <div className="methodology-grid-steps" style={{ marginTop: '3rem' }}>
             {DEFAULT_STEPS.map((step) => (
-              <div key={step.number} className="method-step-card">
+              <div key={step.number} className="method-step-card stagger-card">
                 <div className="step-num-badge">{step.number}</div>
                 <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem' }}>{step.title}</h3>
                 <p style={{ fontSize: '0.93rem', lineHeight: '1.6', color: 'var(--text-body)' }}>

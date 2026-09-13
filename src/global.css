@@ -826,9 +826,96 @@ a:focus-visible {
 }
 
 /* ============================================================
-   SPEC-SITE-005-C: MOCKUP ANIMADO NO HERO DA HOME
+   SPEC-SITE-007: CARROSSEL DE MOCKUPS, EFEITO DIGITADO & ARGUMENTOS
    ============================================================ */
 
+/* EFEITO DIGITADO NO HERO (RF-4) */
+.hero-typewriter-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-brand-ink);
+  margin-bottom: 0.85rem;
+  min-height: 24px;
+}
+
+.hero-typewriter-prefix {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.hero-typewriter-text {
+  color: var(--color-brand-blue);
+  font-weight: 700;
+  border-bottom: 2px solid rgba(53, 51, 205, 0.25);
+  padding-bottom: 1px;
+}
+
+.hero-typewriter-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background: var(--color-brand-blue);
+  margin-left: 2px;
+  animation: typewriterBlink 0.9s infinite;
+}
+
+@keyframes typewriterBlink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* BLOCO DE ARGUMENTO COMERCIAL SINCRONIZADO (RF-3) */
+.hero-argument-box {
+  position: relative;
+  margin: 1.1rem 0 1.5rem;
+  padding: 1.15rem 1.35rem;
+  background: #FFFFFF;
+  border: 1px solid rgba(53, 51, 205, 0.12);
+  border-left: 3px solid var(--color-brand-blue);
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.hero-argument-box.fading {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.hero-argument-header {
+  margin-bottom: 0.35rem;
+}
+
+.hero-argument-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-brand-blue);
+  margin-bottom: 0.25rem;
+}
+
+.hero-argument-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-brand-ink);
+  margin: 0 0 0.35rem;
+  line-height: 1.35;
+}
+
+.hero-argument-desc {
+  font-size: 0.9rem;
+  color: var(--text-body);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* CONTAINER & ORQUESTRADOR DO CARROSSEL (RF-2) */
 .hero-enterprise-visual {
   display: flex;
   justify-content: center;
@@ -838,17 +925,136 @@ a:focus-visible {
   margin: 0 auto;
 }
 
-.hero-mockup-wrapper {
+.hero-carousel-container {
   width: 100%;
   position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
+.hero-carousel-stage {
+  width: 100%;
+  position: relative;
+  min-height: 540px;
+  border-radius: 20px;
+}
+
+.hero-carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
+  will-change: transform, opacity;
+}
+
+.hero-carousel-slide.slide-active {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 2;
+  position: relative;
+}
+
+.hero-carousel-slide.slide-exit-left {
+  transform: translateX(-100%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-carousel-slide.slide-enter-right {
+  transform: translateX(100%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-carousel-slide.slide-hidden {
+  transform: translateX(100%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+  display: none;
+}
+
+/* NAVEGAÇÃO E INDICADORES DO CARROSSEL (CA-4 / CA-5) */
+.hero-carousel-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-top: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.hero-carousel-dot {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.85rem;
+  min-height: 44px;
+  min-width: 44px;
+  border-radius: var(--radius-pill);
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--text-body);
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease, color 0.18s ease;
+  box-sizing: border-box;
+}
+
+.hero-carousel-dot:hover {
+  border-color: var(--color-brand-blue);
+  color: var(--color-brand-ink);
+  transform: translateY(-1px);
+}
+
+.hero-carousel-dot:active {
+  transform: scale(0.97);
+}
+
+.hero-carousel-dot:focus-visible {
+  outline: 2px solid var(--color-brand-blue);
+  outline-offset: 3px;
+}
+
+.hero-carousel-dot.active {
+  background: var(--color-brand-ink);
+  color: #FFFFFF;
+  border-color: var(--color-brand-ink);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.hero-carousel-dot-inner {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.2);
+  transition: background 0.18s ease;
+  flex-shrink: 0;
+}
+
+.hero-carousel-dot.active .hero-carousel-dot-inner {
+  background: var(--color-brand-blue);
+}
+
+.hero-carousel-dot-text {
+  white-space: nowrap;
+}
+
+/* ============================================================
+   ESTRUTURA GERAL DOS MOCKUPS (MOLDURAS E JANELAS)
+   ============================================================ */
 .hero-mockup-window {
   width: 100%;
   max-width: 620px;
-  background: var(--surface-level-1-bg, #FFFFFF);
+  background: #FFFFFF;
   border: 1px solid var(--surface-level-1-border, rgba(0, 0, 0, 0.08));
   border-radius: 20px;
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.07), 0 2px 6px rgba(0, 0, 0, 0.03);
@@ -856,7 +1062,7 @@ a:focus-visible {
   box-sizing: border-box;
 }
 
-/* BLOCO 1: Barra de Janela do Navegador */
+/* BARRA DE JANELA DO NAVEGADOR (Comum aos mockups 1, 2 e 5) */
 .mockup-browser-bar {
   background: #F9FAFB;
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
@@ -923,7 +1129,9 @@ a:focus-visible {
   border-radius: 4px;
 }
 
-/* ÁREA INTERNA DA LOJA */
+/* ------------------------------------------------------------
+   MOCKUP 1: LOJA VIRTUAL
+   ------------------------------------------------------------ */
 .mockup-store-canvas {
   padding: 1.5rem 1.65rem 1.65rem;
   background: #FFFFFF;
@@ -932,7 +1140,6 @@ a:focus-visible {
   gap: 1.25rem;
 }
 
-/* BLOCO 2: Cabeçalho da Loja */
 .mockup-store-header {
   display: flex;
   align-items: center;
@@ -998,7 +1205,6 @@ a:focus-visible {
   background: var(--color-brand-blue);
 }
 
-/* BLOCO 3: Vitrine / Hero Banner da Loja */
 .mockup-store-hero {
   background: var(--corp-bg-subtle, #F0EFEA);
   border: 1px solid rgba(0, 0, 0, 0.04);
@@ -1061,7 +1267,6 @@ a:focus-visible {
   color: rgba(0, 0, 0, 0.25);
 }
 
-/* BLOCO 4: Grade de Três Produtos */
 .mockup-products-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1103,7 +1308,6 @@ a:focus-visible {
   border-radius: 4px;
 }
 
-/* BLOCO 5: Rodapé de Checkout Seguro */
 .mockup-checkout-bar {
   display: flex;
   align-items: center;
@@ -1142,27 +1346,882 @@ a:focus-visible {
   letter-spacing: 0.02em;
 }
 
-/* ============================================================
-   ANIMAÇÃO ESCALONADA EM LOOP (CSS PURO)
-   ============================================================ */
+/* ------------------------------------------------------------
+   MOCKUP 2: SITE INSTITUCIONAL
+   ------------------------------------------------------------ */
+.mockup-inst-canvas {
+  padding: 1.5rem 1.65rem 1.65rem;
+  background: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
 
-.mockup-anim-step-1 {
+.mockup-inst-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.mockup-inst-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.mockup-inst-badge {
+  background: var(--color-brand-ink);
+  color: #FFFFFF;
+  font-size: 0.74rem;
+  font-weight: 800;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  letter-spacing: 0.05em;
+}
+
+.mockup-inst-logoline {
+  width: 48px;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.mockup-inst-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.mockup-inst-cta-mini {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--color-brand-blue);
+  border: 1px solid rgba(53, 51, 205, 0.25);
+  padding: 0.32rem 0.75rem;
+  border-radius: var(--radius-pill);
+}
+
+.mockup-inst-hero {
+  background: var(--corp-bg-subtle, #F0EFEA);
+  border-radius: 16px;
+  padding: 1.5rem 1.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mockup-inst-tag {
+  width: 58px;
+  height: 7px;
+  background: var(--color-brand-blue);
+  border-radius: 4px;
+}
+
+.mockup-inst-title {
+  width: 85%;
+  height: 14px;
+  background: var(--color-brand-ink);
+  border-radius: 5px;
+}
+
+.mockup-inst-subtitle {
+  width: 65%;
+  height: 9px;
+  background: rgba(0, 0, 0, 0.18);
+  border-radius: 4px;
+}
+
+.mockup-inst-action-btn {
+  align-self: flex-start;
+  margin-top: 0.45rem;
+  background: var(--color-brand-blue);
+  color: #FFFFFF;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.48rem 1.1rem;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.mockup-inst-services {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.mockup-service-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 12px;
+  padding: 0.95rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mockup-service-icon {
+  color: var(--color-brand-blue);
+  margin-bottom: 0.2rem;
+}
+
+.mockup-service-title {
+  width: 75%;
+  height: 8px;
+  background: var(--color-brand-ink);
+  border-radius: 4px;
+}
+
+.mockup-service-line {
+  width: 90%;
+  height: 6px;
+  background: rgba(0, 0, 0, 0.14);
+  border-radius: 3px;
+}
+
+.mockup-service-line.short {
+  width: 60%;
+}
+
+.mockup-inst-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+.mockup-inst-footer-left {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.mockup-inst-footer-badge {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10B981;
+}
+
+.mockup-inst-footer-contact {
+  font-weight: 700;
+  color: var(--color-brand-ink);
+}
+
+/* ------------------------------------------------------------
+   MOCKUP 3: SISTEMA PDV (FRENTE DE CAIXA)
+   ------------------------------------------------------------ */
+.mockup-type-pdv {
+  background: #FFFFFF;
+}
+
+.mockup-pdv-appbar {
+  background: var(--color-brand-ink);
+  color: #FFFFFF;
+  padding: 0.85rem 1.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mockup-pdv-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.mockup-pdv-icon-badge {
+  background: var(--color-brand-blue);
+  color: #FFFFFF;
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mockup-pdv-title-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.mockup-pdv-station {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.mockup-pdv-sub {
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.mockup-pdv-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(16, 185, 129, 0.18);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #10B981;
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-pill);
+}
+
+.mockup-pdv-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10B981;
+}
+
+.mockup-pdv-body {
+  display: grid;
+  grid-template-columns: 1.35fr 0.85fr;
+  padding: 1.35rem;
+  gap: 1.25rem;
+  background: #F9FAFB;
+}
+
+.mockup-pdv-catalog {
+  display: flex;
+  flex-direction: column;
+  gap: 0.95rem;
+}
+
+.mockup-pdv-search-bar {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  padding: 0.55rem 0.85rem;
+  display: flex;
+  align-items: center;
+}
+
+.mockup-pdv-search-line {
+  width: 60%;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.mockup-pdv-products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.mockup-pdv-product-btn {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  padding: 1rem 0.65rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  transition: border-color 0.2s ease;
+}
+
+.mockup-pdv-product-btn.active {
+  border-color: var(--color-brand-blue);
+  box-shadow: 0 0 0 1px var(--color-brand-blue);
+  background: rgba(53, 51, 205, 0.03);
+}
+
+.mockup-pdv-btn-icon {
+  color: var(--color-brand-blue);
+}
+
+.mockup-pdv-btn-title {
+  width: 80%;
+  height: 7px;
+  background: var(--color-brand-ink);
+  border-radius: 4px;
+}
+
+.mockup-pdv-btn-price {
+  width: 50%;
+  height: 7px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.mockup-pdv-sidebar {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.mockup-pdv-ticket-header {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-brand-ink);
+  padding-bottom: 0.75rem;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.12);
+}
+
+.mockup-pdv-ticket-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 0.85rem 0;
+}
+
+.mockup-ticket-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mockup-ticket-bullet {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-brand-blue);
+  flex-shrink: 0;
+}
+
+.mockup-ticket-name {
+  flex: 1;
+  height: 7px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.mockup-ticket-name.short { width: 50%; }
+.mockup-ticket-name.mid { width: 70%; }
+
+.mockup-ticket-value {
+  width: 32px;
+  height: 7px;
+  background: var(--color-brand-ink);
+  border-radius: 4px;
+}
+
+.mockup-ticket-divider {
+  border-top: 1px dashed rgba(0, 0, 0, 0.14);
+  margin: 0.45rem 0;
+}
+
+.mockup-ticket-total-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.45rem 0;
+}
+
+.mockup-ticket-total-label {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--color-brand-ink);
+}
+
+.mockup-ticket-total-bar {
+  width: 58px;
+  height: 10px;
+  background: var(--color-brand-blue);
+  border-radius: 4px;
+}
+
+.mockup-pdv-checkout-btn {
+  background: #000000;
+  color: #FFFFFF;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* ------------------------------------------------------------
+   MOCKUP 4: AUTOMAÇÃO DE WHATSAPP
+   ------------------------------------------------------------ */
+.mockup-type-whatsapp {
+  background: #ECE5DD;
+  display: flex;
+  justify-content: center;
+}
+
+.mockup-phone-frame {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.mockup-phone-notch-bar {
+  background: #075E54;
+  padding: 0.45rem 1.25rem 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #FFFFFF;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.mockup-phone-speaker {
+  width: 44px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.mockup-phone-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #25D366;
+  display: inline-block;
+}
+
+.mockup-wa-header {
+  background: #075E54;
+  color: #FFFFFF;
+  padding: 0.65rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mockup-wa-contact {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.mockup-wa-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #128C7E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mockup-wa-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.mockup-wa-name {
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.mockup-wa-status {
+  font-size: 0.68rem;
+  color: #25D366;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.mockup-wa-status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #25D366;
+}
+
+.mockup-wa-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  color: #FFFFFF;
+}
+
+.mockup-wa-canvas {
+  padding: 1.15rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  min-height: 380px;
+}
+
+.mockup-wa-date-pill {
+  align-self: center;
+  background: rgba(0, 0, 0, 0.08);
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 0.2rem 0.65rem;
+  border-radius: 12px;
+}
+
+.mockup-wa-bubble {
+  max-width: 78%;
+  padding: 0.75rem 0.95rem;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.mockup-wa-bubble.inbound {
+  align-self: flex-start;
+  background: #FFFFFF;
+  border-top-left-radius: 2px;
+}
+
+.mockup-wa-bubble.outbound {
+  align-self: flex-end;
+  background: #DCF8C6;
+  border-top-right-radius: 2px;
+}
+
+.mockup-wa-line {
+  height: 8px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+}
+
+.mockup-wa-line.white {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.mockup-wa-line.short {
+  width: 60%;
+}
+
+.mockup-wa-timestamp {
+  align-self: flex-end;
+  font-size: 0.62rem;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.mockup-wa-meta {
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.mockup-wa-check {
+  color: #34B7F1;
+}
+
+.mockup-wa-quick-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-top: 0.35rem;
+}
+
+.mockup-wa-option-btn {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 7px;
+  padding: 0.45rem 0.65rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--color-brand-ink);
+}
+
+.mockup-wa-opt-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-brand-blue);
+}
+
+.mockup-wa-typing-indicator {
+  align-self: flex-end;
+  background: #DCF8C6;
+  padding: 0.5rem 0.85rem;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  width: fit-content;
+}
+
+.mockup-typing-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.mockup-wa-input-bar {
+  background: #F0F0F0;
+  padding: 0.65rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.mockup-wa-input-pill {
+  flex: 1;
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.mockup-wa-placeholder {
+  width: 50%;
+  height: 7px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}
+
+.mockup-wa-send-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #128C7E;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ------------------------------------------------------------
+   MOCKUP 5: SISTEMA ERP
+   ------------------------------------------------------------ */
+.mockup-erp-layout {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  min-height: 480px;
+  background: #FFFFFF;
+}
+
+.mockup-erp-sidebar {
+  background: #F9FAFB;
+  border-right: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 1.25rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.mockup-erp-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+  color: var(--text-body);
+  font-size: 0.75rem;
+}
+
+.mockup-erp-nav-item.active {
+  background: #FFFFFF;
+  color: var(--color-brand-blue);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.mockup-erp-nav-line {
+  width: 48px;
+  height: 7px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+}
+
+.mockup-erp-nav-item.active .mockup-erp-nav-line {
+  background: var(--color-brand-blue);
+}
+
+.mockup-erp-main {
+  padding: 1.25rem 1.45rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.mockup-erp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mockup-erp-title-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.mockup-erp-heading {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-brand-ink);
+}
+
+.mockup-erp-sub {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.mockup-erp-cta-btn {
+  background: var(--color-brand-blue);
+  color: #FFFFFF;
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 0.38rem 0.85rem;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.mockup-erp-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.65rem;
+}
+
+.mockup-erp-kpi-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 8px;
+  padding: 0.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.mockup-kpi-icon.blue { color: var(--color-brand-blue); }
+.mockup-kpi-icon.green { color: #10B981; }
+.mockup-kpi-icon.yellow { color: #F59E0B; }
+
+.mockup-kpi-bar {
+  width: 75%;
+  height: 8px;
+  background: var(--color-brand-ink);
+  border-radius: 4px;
+}
+
+.mockup-kpi-bar.short {
+  width: 45%;
+  height: 6px;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.mockup-erp-table-wrap {
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.mockup-erp-table-head {
+  background: #F9FAFB;
+  padding: 0.55rem 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.mockup-th {
+  height: 7px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.mockup-erp-table-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.mockup-erp-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.mockup-erp-row:last-child {
+  border-bottom: none;
+}
+
+.mockup-td-status {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.mockup-td-status.green { background: #10B981; }
+.mockup-td-status.blue { background: var(--color-brand-blue); }
+.mockup-td-status.gray { background: #9CA3AF; }
+
+.mockup-td {
+  height: 7px;
+  background: rgba(0, 0, 0, 0.14);
+  border-radius: 3px;
+}
+
+.mockup-td-pill {
+  width: 24px;
+  height: 7px;
+  background: rgba(53, 51, 205, 0.2);
+  border-radius: 4px;
+  margin-left: auto;
+}
+
+.mockup-erp-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  padding-top: 0.5rem;
+}
+
+.mockup-erp-footer-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10B981;
+}
+
+/* ============================================================
+   EXECUÇÃO ESCALONADA DOS MOCKUPS ATIVOS (RF-7)
+   ============================================================ */
+.anim-active .mockup-anim-step-1 {
   animation: mockupBlock1 6.5s cubic-bezier(0.16, 1, 0.3, 1) infinite;
 }
 
-.mockup-anim-step-2 {
+.anim-active .mockup-anim-step-2 {
   animation: mockupBlock2 6.5s cubic-bezier(0.16, 1, 0.3, 1) infinite;
 }
 
-.mockup-anim-step-3 {
+.anim-active .mockup-anim-step-3 {
   animation: mockupBlock3 6.5s cubic-bezier(0.16, 1, 0.3, 1) infinite;
 }
 
-.mockup-anim-step-4 {
+.anim-active .mockup-anim-step-4 {
   animation: mockupBlock4 6.5s cubic-bezier(0.16, 1, 0.3, 1) infinite;
 }
 
-.mockup-anim-step-5 {
+.anim-active .mockup-anim-step-5 {
   animation: mockupBlock5 6.5s cubic-bezier(0.16, 1, 0.3, 1) infinite;
 }
 
@@ -1200,6 +2259,28 @@ a:focus-visible {
   92%, 96% { opacity: 0; transform: translateY(-4px); }
   100% { opacity: 0; transform: translateY(10px); }
 }
+
+/* ============================================================
+   SPEC-SITE-007 RF-6: ENTRADA ESCALONADA DE CARTÕES (STAGGER)
+   ============================================================ */
+.stagger-card {
+  opacity: 0;
+  transform: translateY(10px) scale(0.98);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.revealed .stagger-card {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.scroll-reveal.revealed .stagger-card:nth-child(1) { transition-delay: 0ms; }
+.scroll-reveal.revealed .stagger-card:nth-child(2) { transition-delay: 90ms; }
+.scroll-reveal.revealed .stagger-card:nth-child(3) { transition-delay: 180ms; }
+.scroll-reveal.revealed .stagger-card:nth-child(4) { transition-delay: 270ms; }
+.scroll-reveal.revealed .stagger-card:nth-child(5) { transition-delay: 360ms; }
+.scroll-reveal.revealed .stagger-card:nth-child(6) { transition-delay: 450ms; }
 
 /* ============================================================
    SPEC-SITE-006 RF-2: ENTRADA SUTIL DE SEÇÃO AO ROLAR (SCROLL REVEAL)
@@ -1240,6 +2321,26 @@ a:focus-visible {
   }
 
   .scroll-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .stagger-card {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .hero-carousel-slide {
+    transition: none !important;
+  }
+
+  .hero-typewriter-cursor {
+    display: none !important;
+  }
+
+  .hero-argument-box {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
@@ -2588,6 +3689,29 @@ a:focus-visible {
     margin-top: 0.75rem;
   }
 
+  .hero-carousel-stage {
+    min-height: 460px;
+  }
+
+  .hero-carousel-nav {
+    gap: 0.35rem;
+  }
+
+  .hero-carousel-dot {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.72rem;
+    min-height: 44px;
+  }
+
+  .hero-argument-box {
+    padding: 0.95rem 1.1rem;
+    margin: 0.85rem 0 1.25rem;
+  }
+
+  .hero-typewriter-line {
+    font-size: 0.88rem;
+  }
+
   .hero-mockup-window {
     max-width: 100%;
   }
@@ -2617,6 +3741,55 @@ a:focus-visible {
   .mockup-product-card {
     padding: 0.5rem;
     gap: 0.35rem;
+  }
+
+  /* Mockup 2 Institucional no mobile */
+  .mockup-inst-canvas {
+    padding: 0.85rem 0.85rem 1rem;
+    gap: 0.85rem;
+  }
+
+  .mockup-inst-hero {
+    padding: 1rem;
+  }
+
+  .mockup-service-card {
+    padding: 0.65rem;
+  }
+
+  /* Mockup 3 PDV no mobile */
+  .mockup-pdv-body {
+    grid-template-columns: 1fr;
+    padding: 0.85rem;
+    gap: 0.85rem;
+  }
+
+  .mockup-pdv-sidebar {
+    padding: 0.75rem;
+  }
+
+  /* Mockup 4 WhatsApp no mobile */
+  .mockup-wa-canvas {
+    padding: 0.75rem;
+    min-height: 320px;
+  }
+
+  /* Mockup 5 ERP no mobile */
+  .mockup-erp-layout {
+    grid-template-columns: 48px 1fr;
+    min-height: 400px;
+  }
+
+  .mockup-erp-nav-line {
+    display: none;
+  }
+
+  .mockup-erp-kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .mockup-erp-main {
+    padding: 0.85rem;
   }
 
   /* Faixa de Soluções: Swipe Horizontal Fluido com Snap no Mobile */
