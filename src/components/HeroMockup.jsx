@@ -24,7 +24,7 @@ export default function HeroMockup() {
             <span className="mockup-dot mockup-dot-green" />
           </div>
           <div className="mockup-address-bar">
-            <Lock size={11} className="mockup-address-lock" />
+            <Lock size={14} className="mockup-address-lock" />
             <span className="mockup-address-url">sualoja.com.br</span>
           </div>
           <div className="mockup-browser-actions">
@@ -45,7 +45,7 @@ export default function HeroMockup() {
               <span className="mockup-nav-item" />
             </div>
             <div className="mockup-store-cart">
-              <ShoppingCart size={15} />
+              <ShoppingCart size={19} />
               <span className="mockup-cart-badge" />
             </div>
           </div>
@@ -59,7 +59,7 @@ export default function HeroMockup() {
               <div className="mockup-store-cta">Comprar</div>
             </div>
             <div className="mockup-hero-media">
-              <ImageIcon size={28} className="mockup-media-icon" />
+              <ImageIcon size={38} className="mockup-media-icon" />
             </div>
           </div>
 
@@ -67,7 +67,7 @@ export default function HeroMockup() {
           <div className="mockup-products-grid mockup-anim-step-4">
             <div className="mockup-product-card">
               <div className="mockup-product-thumb">
-                <ImageIcon size={18} className="mockup-thumb-icon" />
+                <ImageIcon size={24} className="mockup-thumb-icon" />
               </div>
               <div className="mockup-product-title-bar" />
               <div className="mockup-product-price-bar" />
@@ -75,7 +75,7 @@ export default function HeroMockup() {
 
             <div className="mockup-product-card">
               <div className="mockup-product-thumb">
-                <ImageIcon size={18} className="mockup-thumb-icon" />
+                <ImageIcon size={24} className="mockup-thumb-icon" />
               </div>
               <div className="mockup-product-title-bar" />
               <div className="mockup-product-price-bar" />
@@ -83,7 +83,7 @@ export default function HeroMockup() {
 
             <div className="mockup-product-card">
               <div className="mockup-product-thumb">
-                <ImageIcon size={18} className="mockup-thumb-icon" />
+                <ImageIcon size={24} className="mockup-thumb-icon" />
               </div>
               <div className="mockup-product-title-bar" />
               <div className="mockup-product-price-bar" />
@@ -93,7 +93,7 @@ export default function HeroMockup() {
           {/* BLOCO 5: Rodapé de Checkout Seguro */}
           <div className="mockup-checkout-bar mockup-anim-step-5">
             <div className="mockup-checkout-trust">
-              <Lock size={13} className="mockup-trust-icon" />
+              <Lock size={16} className="mockup-trust-icon" />
               <span className="mockup-trust-label">Pagamento Seguro</span>
             </div>
             <div className="mockup-checkout-btn">Finalizar Pedido</div>
