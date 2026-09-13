@@ -22,9 +22,18 @@ export default function HeroCarousel({
   onSelectIndex, 
   onSlideChange 
 }) {
-  const [isHovered, setIsHovered] = useState(false);
-  const [isManualPause, setIsManualPause] = useState(false);
+  const [resetTick, setResetTick] = useState(0);
+  const isHoveredRef = useRef(false);
+  const ignoreHoverUntilRef = useRef(0);
   const containerRef = useRef(null);
+
+  const activeIndexRef = useRef(activeIndex);
+  activeIndexRef.current = activeIndex;
+
+  const onSlideChangeRef = useRef(onSlideChange);
+  onSlideChangeRef.current = onSlideChange;
+  const onSelectIndexRef = useRef(onSelectIndex);
+  onSelectIndexRef.current = onSelectIndex;
 
   // Efeito de rotação automática a cada 7 segundos
   useEffect(() => {
@@ -36,34 +45,52 @@ export default function HeroCarousel({
       }
     }
 
-    if (isHovered || isManualPause) return;
-
     const timer = setInterval(() => {
-      const nextIndex = (activeIndex + 1) % slides.length;
-      if (onSlideChange) {
-        onSlideChange(nextIndex);
-      } else if (onSelectIndex) {
-        onSelectIndex(nextIndex);
+      // Pausa se o cursor estiver sobre o mockup, a menos que o usuário tenha acabado de selecionar um slide
+      if (isHoveredRef.current && Date.now() > ignoreHoverUntilRef.current) {
+        return;
+      }
+
+      const nextIndex = (activeIndexRef.current + 1) % slides.length;
+      if (onSlideChangeRef.current) {
+        onSlideChangeRef.current(nextIndex);
+      } else if (onSelectIndexRef.current) {
+        onSelectIndexRef.current(nextIndex);
       }
     }, 7000);
 
     return () => clearInterval(timer);
-  }, [activeIndex, isHovered, isManualPause, slides.length, onSlideChange, onSelectIndex]);
+  }, [resetTick, slides.length]);
 
   const handleManualSelect = (idx) => {
-    setIsManualPause(true);
-    if (onSelectIndex) onSelectIndex(idx);
-    if (onSlideChange) onSlideChange(idx);
+    // Ao clicar manualmente, garante que o movimento retome após 7s,
+    // mesmo se o cursor do mouse permanecer sobre o botão clicado
+    ignoreHoverUntilRef.current = Date.now() + 15000;
+    isHoveredRef.current = false;
+
+    if (onSlideChange) {
+      onSlideChange(idx);
+    } else if (onSelectIndex) {
+      onSelectIndex(idx);
+    }
+
+    // Reinicia o ciclo de 7s a partir do clique
+    setResetTick(t => t + 1);
   };
 
   const handleMouseEnter = () => {
-    setIsHovered(true);
+    // Apenas ativa pausa de hover em dispositivos com ponteiro físico (mouse)
+    // Evita congelamento permanente em celulares e tablets (telas touch)
+    if (typeof window !== 'undefined' && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      isHoveredRef.current = true;
+    }
   };
 
   const handleMouseLeave = () => {
-    setIsHovered(false);
-    setIsManualPause(false); // Retoma o fluxo quando o cursor sai do carrossel
+    isHoveredRef.current = false;
   };
+
+
 
   const mockups = [
     <MockupLoja key="loja" isActive={activeIndex === 0} />,

@@ -721,10 +721,32 @@ a:focus-visible {
   z-index: 2;
   max-width: 1280px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.hero-enterprise-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
   align-items: center;
+  width: 100%;
+}
+
+.hero-enterprise-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  width: 100%;
+}
+
+.hero-enterprise-footer .hero-pain-chips-row {
+  margin-bottom: 0;
+}
+
+.hero-enterprise-footer .hero-actions-row {
+  margin-bottom: 0;
 }
 
 .hero-pill-badge {
@@ -901,11 +923,13 @@ a:focus-visible {
 }
 
 .hero-argument-title {
+  font-family: var(--font-heading);
   font-size: 1.05rem;
   font-weight: 700;
+  letter-spacing: 0.025em;
   color: var(--color-brand-ink);
-  margin: 0 0 0.35rem;
-  line-height: 1.35;
+  margin: 0 0 0.4rem;
+  line-height: 1.45;
 }
 
 .hero-argument-desc {
@@ -3531,8 +3555,12 @@ a:focus-visible {
   }
 
   .hero-enterprise-inner {
+    gap: 2.25rem;
+  }
+
+  .hero-enterprise-grid {
     grid-template-columns: 1fr;
-    gap: 2.75rem;
+    gap: 2.25rem;
   }
 
   .ai-spotlight-inner {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import { 
   DEFAULT_SERVICES, 
   DEFAULT_RISKS, 
@@ -13,18 +13,25 @@ import {
   Zap,
   ShieldCheck,
   CheckCircle2,
-  Gauge,
-  MessageSquare,
+  Clock,
+  Database,
   ArrowRight,
   ArrowDown,
-  MapPin,
-  Clock,
-  Send,
   Sparkles,
+  Layers,
+  BarChart3,
+  Server,
+  Network,
+  Cpu,
   ShieldAlert,
+  Gauge,
+  Workflow,
+  MapPin,
+  MessageSquare,
   AlertOctagon,
   Check,
-  XCircle
+  XCircle,
+  Send
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import HeroCarousel from '../components/HeroMockups/HeroCarousel';
@@ -37,10 +44,13 @@ const ICON_MAP = {
   Zap,
   ShieldCheck,
   CheckCircle2,
-  Gauge,
   Clock,
-  ShieldAlert,
-  AlertOctagon
+  Database,
+  Layers,
+  BarChart3,
+  Server,
+  Network,
+  Cpu
 };
 
 export default function Home({ profile }) {
@@ -50,19 +60,21 @@ export default function Home({ profile }) {
   // SPEC-SITE-007: Carrossel de 5 mockups e textos sincronizados
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const [isTextFading, setIsTextFading] = useState(false);
+  const activeSlideIndexRef = useRef(activeSlideIndex);
+  activeSlideIndexRef.current = activeSlideIndex;
 
   const heroSlides = DEFAULT_HERO_SLIDES;
   const currentSlide = heroSlides[activeSlideIndex] || heroSlides[0];
   const typedLabel = useTypewriter(currentSlide.label);
 
-  const handleSlideChange = (newIndex) => {
-    if (newIndex === activeSlideIndex) return;
+  const handleSlideChange = useCallback((newIndex) => {
+    if (newIndex === activeSlideIndexRef.current) return;
     setIsTextFading(true);
     setTimeout(() => {
       setActiveSlideIndex(newIndex);
       setIsTextFading(false);
     }, 180);
-  };
+  }, []);
 
   // Formulário de solicitação de avaliação operacional
   const [formData, setFormData] = useState({
@@ -148,37 +160,52 @@ export default function Home({ profile }) {
          ============================================================ */}
       <section className="corp-hero-enterprise" id="inicio">
         <div className="hero-enterprise-inner">
-          <div className="hero-enterprise-copy">
-            
-            <div className="hero-pill-badge">
-              <Sparkles size={14} />
-              <span>{heroBadge}</span>
-            </div>
-
-            <h1 className="hero-enterprise-title">
-              Um engenheiro dedicado na linha de frente da sua empresa para <span className="highlight-cyan">destravar processos</span> e garantir que sua operação nunca pare.
-            </h1>
-
-            {/* SPEC-SITE-007 RF-4: Linha com efeito digitado (typewriter) */}
-            <div className="hero-typewriter-line" aria-hidden="true">
-              <span className="hero-typewriter-prefix">Na prática:</span>{' '}
-              <span className="hero-typewriter-text">{typedLabel}</span>
-              <span className="hero-typewriter-cursor" />
-            </div>
-
-            <p className="hero-enterprise-desc">
-              {heroDesc}
-            </p>
-
-            {/* SPEC-SITE-007 RF-3: Bloco de Argumento Comercial Sincronizado */}
-            <div className={`hero-argument-box ${isTextFading ? 'fading' : ''}`}>
-              <div className="hero-argument-header">
-                <span className="hero-argument-tag">{currentSlide.label}</span>
-                <h2 className="hero-argument-title">{currentSlide.titulo}</h2>
+          <div className="hero-enterprise-grid">
+            <div className="hero-enterprise-copy">
+              
+              <div className="hero-pill-badge">
+                <Sparkles size={14} />
+                <span>{heroBadge}</span>
               </div>
-              <p className="hero-argument-desc">{currentSlide.texto}</p>
+
+              <h1 className="hero-enterprise-title">
+                Um engenheiro dedicado na linha de frente da sua empresa para <span className="highlight-cyan">destravar processos</span> e garantir que sua operação nunca pare.
+              </h1>
+
+              {/* SPEC-SITE-007 RF-4: Linha com efeito digitado (typewriter) */}
+              <div className="hero-typewriter-line" aria-hidden="true">
+                <span className="hero-typewriter-prefix">Na prática:</span>{' '}
+                <span className="hero-typewriter-text">{typedLabel}</span>
+                <span className="hero-typewriter-cursor" />
+              </div>
+
+              <p className="hero-enterprise-desc">
+                {heroDesc}
+              </p>
+
+              {/* SPEC-SITE-007 RF-3: Bloco de Argumento Comercial Sincronizado */}
+              <div className={`hero-argument-box ${isTextFading ? 'fading' : ''}`}>
+                <div className="hero-argument-header">
+                  <span className="hero-argument-tag">{currentSlide.label}</span>
+                  <h2 className="hero-argument-title">{currentSlide.titulo}</h2>
+                </div>
+                <p className="hero-argument-desc">{currentSlide.texto}</p>
+              </div>
+
             </div>
 
+            <div className="hero-enterprise-visual">
+              <HeroCarousel 
+                slides={heroSlides}
+                activeIndex={activeSlideIndex}
+                onSelectIndex={handleSlideChange}
+                onSlideChange={handleSlideChange}
+              />
+            </div>
+          </div>
+
+          {/* Rodapé do Hero: Chips operacionais e Botões de Ação (Sempre após as animações) */}
+          <div className="hero-enterprise-footer">
             <div className="hero-pain-chips-row">
               {heroChips.map((chip, idx) => (
                 <span key={idx} className="hero-pain-chip-item">{chip}</span>
@@ -199,16 +226,6 @@ export default function Home({ profile }) {
                 {heroSecondaryCta} <ArrowDown size={16} />
               </a>
             </div>
-
-          </div>
-
-          <div className="hero-enterprise-visual">
-            <HeroCarousel 
-              slides={heroSlides}
-              activeIndex={activeSlideIndex}
-              onSelectIndex={handleSlideChange}
-              onSlideChange={handleSlideChange}
-            />
           </div>
         </div>
       </section>
