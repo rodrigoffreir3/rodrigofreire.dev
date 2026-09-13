@@ -27,6 +27,7 @@ import {
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import HeroMockup from '../components/HeroMockup';
+import useScrollReveal from '../hooks/useScrollReveal';
 
 const ICON_MAP = {
   Wrench,
@@ -41,6 +42,7 @@ const ICON_MAP = {
 };
 
 export default function Home({ profile }) {
+  useScrollReveal();
   const phone = (profile?.whatsapp_number ? String(profile.whatsapp_number).replace(/\D/g, '') : '') || '5569992782919';
 
   // Formulário de solicitação de avaliação operacional
@@ -50,15 +52,23 @@ export default function Home({ profile }) {
     empresa: '',
     problema: ''
   });
+  const [formStatus, setFormStatus] = useState('idle'); // 'idle' | 'sending' | 'success'
+  const [submittedWhatsappUrl, setSubmittedWhatsappUrl] = useState('');
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    setFormStatus('sending');
     const text = `Olá Rodrigo! Vim pelo seu site e gostaria de solicitar uma avaliação operacional:\n\n*Nome:* ${formData.nome}\n*WhatsApp:* ${formData.whatsapp}\n*Empresa/Comércio:* ${formData.empresa || 'Não informado'}\n*O que precisa de atenção:* ${formData.problema}`;
     const targetUrl = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
-    const win = window.open(targetUrl, '_blank', 'noopener,noreferrer');
-    if (!win || win.closed || typeof win.closed === 'undefined') {
-      window.location.href = targetUrl;
-    }
+    setSubmittedWhatsappUrl(targetUrl);
+
+    setTimeout(() => {
+      const win = window.open(targetUrl, '_blank', 'noopener,noreferrer');
+      if (!win || win.closed || typeof win.closed === 'undefined') {
+        window.location.href = targetUrl;
+      }
+      setFormStatus('success');
+    }, 300);
   };
 
   const homeJsonLd = {
@@ -166,7 +176,7 @@ export default function Home({ profile }) {
       {/* ============================================================
          SEÇÃO DE RISCOS: O CUSTO DE NÃO AGIR (SPEC-SITE-005 RF-2)
          ============================================================ */}
-      <section className="section-risks" id="riscos">
+      <section className="section-risks scroll-reveal" id="riscos">
         <div className="section-head-center">
           <span className="section-tag-pill" style={{ color: '#dc2626', borderColor: 'rgba(220, 38, 38, 0.25)', background: 'rgba(220, 38, 38, 0.08)' }}>
             O Custo de Não Agir
@@ -203,7 +213,7 @@ export default function Home({ profile }) {
       {/* ============================================================
          CARRO-CHEFE: O MODELO DE ENGENHARIA NA LINHA DE FRENTE (FDE)
          ============================================================ */}
-      <section className="section-fde-model" id="linha-de-frente">
+      <section className="section-fde-model scroll-reveal" id="linha-de-frente">
         <div className="section-head-center">
           <span className="section-tag-pill">
             <Sparkles size={14} style={{ display: 'inline', marginRight: '4px' }} />
@@ -330,7 +340,7 @@ export default function Home({ profile }) {
       {/* ============================================================
          BLOCO 2: OS 3 PILARES DE ATUAÇÃO B2B (SPEC-SITE-005 RF-1)
          ============================================================ */}
-      <section className="section-services-catalog" id="servicos" style={{ paddingTop: '3rem', paddingBottom: '5rem' }}>
+      <section className="section-services-catalog scroll-reveal" id="servicos" style={{ paddingTop: '3rem', paddingBottom: '5rem' }}>
         <div className="section-head-center">
           <span className="section-tag-pill">Pilares de Atuação B2B</span>
           <h2 className="section-title-large">Três pilares estruturados para a sua empresa não parar</h2>
@@ -425,7 +435,7 @@ export default function Home({ profile }) {
       {/* ============================================================
          BLOCO 3: COMPROMISSO & PADRÃO DE ATENDIMENTO
          ============================================================ */}
-      <section className="section-pains-container" id="diferenciais" style={{ paddingTop: '5rem', paddingBottom: '5rem' }}>
+      <section className="section-pains-container scroll-reveal" id="diferenciais" style={{ paddingTop: '5rem', paddingBottom: '5rem' }}>
         <div className="section-head-center">
           <span className="section-tag-pill">Compromisso & Padrão de Atendimento</span>
           <h2 className="section-title-large">Por que contar com um responsável técnico dedicado gera mais segurança e retorno?</h2>
@@ -482,7 +492,7 @@ export default function Home({ profile }) {
       {/* ============================================================
          BLOCO 4: MÉTODO EM 4 ETAPAS COM ESCOPO FECHADO (SPEC-SITE-005 RF-4)
          ============================================================ */}
-      <section className="section-methodology-bg" id="como-funciona" style={{ paddingTop: '5rem', paddingBottom: '5rem' }}>
+      <section className="section-methodology-bg scroll-reveal" id="como-funciona" style={{ paddingTop: '5rem', paddingBottom: '5rem' }}>
         <div className="methodology-inner">
           <div className="section-head-center">
             <span className="section-tag-pill">Método de Trabalho</span>
@@ -550,57 +560,96 @@ export default function Home({ profile }) {
               Ou agende uma avaliação da sua operação
             </h3>
 
-            <div className="form-group-item">
-              <label className="form-label-corp">Seu Nome</label>
-              <input
-                type="text"
-                required
-                value={formData.nome}
-                onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
-                placeholder="Ex: Carlos Oliveira"
-                className="form-input-corp"
-              />
-            </div>
+            {formStatus === 'success' ? (
+              <div className="form-feedback-success" role="status" aria-live="polite">
+                <CheckCircle2 size={24} color="#10B981" style={{ flexShrink: 0, marginTop: '2px' }} />
+                <div>
+                  <strong>Solicitação enviada com sucesso!</strong>
+                  <p>O WhatsApp foi aberto para você confirmar os dados diretamente com o Rodrigo.</p>
+                  {submittedWhatsappUrl && (
+                    <a
+                      href={submittedWhatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="corp-link-text"
+                      style={{ fontSize: '0.86rem', marginTop: '0.45rem', display: 'inline-block', padding: '0.2rem 0' }}
+                    >
+                      Clique aqui caso o WhatsApp não tenha aberto automaticamente
+                    </a>
+                  )}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setFormStatus('idle');
+                      setFormData({ nome: '', whatsapp: '', empresa: '', problema: '' });
+                    }}
+                    className="corp-btn-outline-glass"
+                    style={{ marginTop: '1rem', width: '100%', fontSize: '0.85rem', padding: '0.6rem 1rem' }}
+                  >
+                    Enviar nova solicitação
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <>
+                <div className="form-group-item">
+                  <label className="form-label-corp">Seu Nome</label>
+                  <input
+                    type="text"
+                    required
+                    value={formData.nome}
+                    onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
+                    placeholder="Ex: Carlos Oliveira"
+                    className="form-input-corp"
+                  />
+                </div>
 
-            <div className="form-group-item">
-              <label className="form-label-corp">Seu WhatsApp com DDD</label>
-              <input
-                type="tel"
-                required
-                value={formData.whatsapp}
-                onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
-                placeholder="(69) 99999-9999"
-                className="form-input-corp"
-              />
-            </div>
+                <div className="form-group-item">
+                  <label className="form-label-corp">Seu WhatsApp com DDD</label>
+                  <input
+                    type="tel"
+                    required
+                    value={formData.whatsapp}
+                    onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
+                    placeholder="(69) 99999-9999"
+                    className="form-input-corp"
+                  />
+                </div>
 
-            <div className="form-group-item">
-              <label className="form-label-corp">Nome da sua Loja ou Empresa (opcional)</label>
-              <input
-                type="text"
-                value={formData.empresa}
-                onChange={(e) => setFormData({ ...formData, empresa: e.target.value })}
-                placeholder="Ex: Comercial Rondônia"
-                className="form-input-corp"
-              />
-            </div>
+                <div className="form-group-item">
+                  <label className="form-label-corp">Nome da sua Loja ou Empresa (opcional)</label>
+                  <input
+                    type="text"
+                    value={formData.empresa}
+                    onChange={(e) => setFormData({ ...formData, empresa: e.target.value })}
+                    placeholder="Ex: Comercial Rondônia"
+                    className="form-input-corp"
+                  />
+                </div>
 
-            <div className="form-group-item">
-              <label className="form-label-corp">O que precisa de atenção na sua operação?</label>
-              <textarea
-                required
-                rows={3}
-                value={formData.problema}
-                onChange={(e) => setFormData({ ...formData, problema: e.target.value })}
-                placeholder="Ex: Computadores lentos no balcão, perda de tempo com planilhas manuais da equipe, receio de perder dados por falta de backup..."
-                className="form-input-corp"
-                style={{ resize: 'vertical' }}
-              />
-            </div>
+                <div className="form-group-item">
+                  <label className="form-label-corp">O que precisa de atenção na sua operação?</label>
+                  <textarea
+                    required
+                    rows={3}
+                    value={formData.problema}
+                    onChange={(e) => setFormData({ ...formData, problema: e.target.value })}
+                    placeholder="Ex: Computadores lentos no balcão, perda de tempo com planilhas manuais da equipe, receio de perder dados por falta de backup..."
+                    className="form-input-corp"
+                    style={{ resize: 'vertical' }}
+                  />
+                </div>
 
-            <button type="submit" className="corp-btn-accent" style={{ width: '100%', marginTop: '0.5rem', justifyContent: 'center' }}>
-              <Send size={16} /> Solicitar Avaliação Operacional
-            </button>
+                <button
+                  type="submit"
+                  disabled={formStatus === 'sending'}
+                  className="corp-btn-accent"
+                  style={{ width: '100%', marginTop: '0.5rem', justifyContent: 'center' }}
+                >
+                  <Send size={16} /> {formStatus === 'sending' ? 'Preparando conversa no WhatsApp...' : 'Solicitar Avaliação Operacional'}
+                </button>
+              </>
+            )}
           </form>
         </div>
       </section>
