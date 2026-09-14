@@ -31,7 +31,8 @@ import {
   AlertOctagon,
   Check,
   XCircle,
-  Send
+  Send,
+  ExternalLink
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import HeroCarousel from '../components/HeroMockups/HeroCarousel';
@@ -149,14 +150,14 @@ export default function Home({ profile }) {
   return (
     <div className="home-enterprise-wrapper">
       <SEO
-        title="Rodrigo Freire · Engenharia na Linha de Frente (Forward Deployed Engineer) — Porto Velho"
-        description="Engenharia de TI na linha de frente da sua empresa em Porto Velho. Atuação direta, automação de processos manuais, estabilidade de caixas e redes comerciais com escopo fechado por escrito."
+        title="Rodrigo Freire · Consultor de Tecnologia e Sistemas na Linha de Frente — Porto Velho"
+        description="Consultoria de Tecnologia e Sistemas na linha de frente da sua empresa em Porto Velho. Atuação direta, automação de processos manuais, estabilidade de caixas e redes comerciais com escopo fechado por escrito."
         canonicalPath="/"
         jsonLd={homeJsonLd}
       />
 
       {/* ============================================================
-         BLOCO 1: ABERTURA (HERO B2B INSTITUCIONAL) — CARRO-CHEFE FDE
+         BLOCO 1: ABERTURA (HERO B2B INSTITUCIONAL) — CARRO-CHEFE
          ============================================================ */}
       <section className="corp-hero-enterprise" id="inicio">
         <div className="hero-enterprise-inner">
@@ -169,7 +170,7 @@ export default function Home({ profile }) {
               </div>
 
               <h1 className="hero-enterprise-title">
-                Um engenheiro dedicado na linha de frente da sua empresa para <span className="highlight-cyan">destravar processos</span> e garantir que sua operação nunca pare.
+                Um Consultor de Tecnologia e Sistemas dedicado na linha de frente da sua empresa para <span className="highlight-cyan">destravar processos</span> e garantir que sua operação nunca pare.
               </h1>
 
               {/* SPEC-SITE-007 RF-4: Linha com efeito digitado (typewriter) */}
@@ -231,6 +232,92 @@ export default function Home({ profile }) {
       </section>
 
       {/* ============================================================
+         VITRINE: EXEMPLOS DE SOLUÇÕES AMIGÁVEIS QUE RESOLVEM PROBLEMAS
+         ============================================================ */}
+      <section className="section-solutions-showcase" id="solucoes-amigaveis">
+        <div className="solutions-showcase-inner">
+          <div className="section-head-center">
+            <span className="section-tag-pill">
+              <Sparkles size={14} style={{ display: 'inline', marginRight: '4px' }} />
+              Soluções Digitais sob Medida · Varejo & Vendas
+            </span>
+            <h2 className="section-title-large">
+              Exemplos de Soluções amigáveis que resolvem problemas
+            </h2>
+            <p className="section-desc-subtle">
+              Interfaces modernas de altíssimo impacto visual, carregamento instantâneo e navegação intuitiva, projetadas para reter a atenção do cliente e conectar seu público diretamente ao WhatsApp da equipe comercial.
+            </p>
+          </div>
+
+          {/* MOLDURA DE NAVEGADOR COM O PRIMEIRO TEMPLATE EMBARCADO */}
+          <div className="template-showcase-card">
+            <div className="template-browser-topbar">
+              <div className="template-browser-dots">
+                <span className="dot dot-red" />
+                <span className="dot dot-yellow" />
+                <span className="dot dot-green" />
+              </div>
+              <div className="template-browser-url-pill">
+                <span className="url-lock">🔒</span>
+                <span className="url-domain">templates.rodrigofreire.dev.br</span>
+                <span className="url-path">/roupa-feminina</span>
+              </div>
+              <div className="template-status-pill">
+                <span className="status-ping" />
+                <span>Template 01 · No Ar</span>
+              </div>
+            </div>
+
+            <div className="template-viewport-container">
+              <iframe
+                src="/templates/roupa-feminina/index.html?embed=hero"
+                title="Demonstração do Template 01: Lumina Boutique - Moda Feminina"
+                className="template-live-iframe"
+                loading="lazy"
+              />
+            </div>
+
+            <div className="template-showcase-footer">
+              <div className="template-footer-details">
+                <div className="template-tag-category">✦ E-commerce & Varejo de Moda</div>
+                <h3 className="template-footer-title">Lumina Boutique & Atelier · Vitrine Digital 360°</h3>
+                <p className="template-footer-desc">
+                  Provador virtual interativo com rotação de manequins (frente e costas), detalhamento de tecidos nobres, valores claros e canal direto de atendimento via WhatsApp. Sem códigos pesados de terceiros, com abertura imediata no celular.
+                </p>
+                <div className="template-footer-highlights">
+                  <span>✓ Carregamento em menos de 1 segundo</span>
+                  <span>✓ Sem bibliotecas pesadas de animação</span>
+                  <span>✓ 100% responsivo para smartphone</span>
+                </div>
+              </div>
+
+              <div className="template-footer-cta-col">
+                <a
+                  href="https://templates-rodrigofreire-dev.rodrigo-freire1040z.workers.dev/roupa-feminina/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="corp-btn-accent"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem', padding: '0.85rem 1.6rem', fontSize: '0.92rem' }}
+                >
+                  <span>Abrir Demonstração Completa</span>
+                  <ExternalLink size={16} />
+                </a>
+                <a
+                  href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá Rodrigo! Vi o template de Loja de Roupa Feminina no seu site e gostaria de uma solução similar para o meu negócio.')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="corp-link-text"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.86rem', marginTop: '0.5rem' }}
+                >
+                  <MessageSquare size={14} /> Quero uma solução sob medida
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================
          SEÇÃO DE RISCOS: O CUSTO DE NÃO AGIR (SPEC-SITE-005 RF-2)
          ============================================================ */}
       <section className="section-risks scroll-reveal" id="riscos">
@@ -268,19 +355,19 @@ export default function Home({ profile }) {
       </section>
 
       {/* ============================================================
-         CARRO-CHEFE: O MODELO DE ENGENHARIA NA LINHA DE FRENTE (FDE)
+         CARRO-CHEFE: O MODELO DE CONSULTORIA NA LINHA DE FRENTE
          ============================================================ */}
       <section className="section-fde-model scroll-reveal" id="linha-de-frente">
         <div className="section-head-center">
           <span className="section-tag-pill">
             <Sparkles size={14} style={{ display: 'inline', marginRight: '4px' }} />
-            Carro-Chefe · Engenharia na Linha de Frente
+            Carro-Chefe · Consultoria na Linha de Frente
           </span>
           <h2 className="section-title-large">
-            Por que ter um Engenheiro na Linha de Frente muda o patamar da sua empresa?
+            Por que ter um Consultor de Tecnologia e Sistemas na Linha de Frente muda o patamar da sua empresa?
           </h2>
           <p className="section-desc-subtle">
-            No mercado de tecnologia moderna, <strong>Forward Deployed Engineer</strong> (em tradução livre, <em>"Engenheiro Alocado na Linha de Frente"</em>) é o especialista técnico sênior que sai do isolamento das telas abstratas para atuar diretamente dentro da operação da sua empresa. Veja a diferença prática para o seu negócio:
+            No mercado corporativo moderno, contar com um <strong>Consultor de Tecnologia e Sistemas na Linha de Frente</strong> significa ter o especialista técnico sênior que sai do isolamento das telas abstratas para atuar diretamente dentro da operação da sua empresa. Veja a diferença prática para o seu negócio:
           </p>
         </div>
 
@@ -355,7 +442,7 @@ export default function Home({ profile }) {
             </div>
           </div>
 
-          {/* CARD 3: FORWARD DEPLOYED ENGINEER (RODRIGO FREIRE) */}
+          {/* CARD 3: CONSULTOR DE TECNOLOGIA E SISTEMAS (RODRIGO FREIRE) */}
           <div className="fde-card fde-card-featured stagger-card">
             <div className="fde-card-header">
               <div className="fde-card-icon featured">
@@ -364,7 +451,7 @@ export default function Home({ profile }) {
               <span className="fde-card-tag featured">★ Carro-Chefe · Linha de Frente</span>
             </div>
             <h3 className="fde-card-title" style={{ color: '#000000' }}>
-              Engenheiro na Linha de Frente <span style={{ fontSize: '0.82em', color: '#3533cd', display: 'block' }}>(Forward Deployed Engineer)</span>
+              Consultor de Tecnologia e Sistemas <span style={{ fontSize: '0.82em', color: '#3533cd', display: 'block' }}>(Atuação Direta na Linha de Frente)</span>
             </h3>
             <p className="fde-card-focus" style={{ color: '#3533cd', fontWeight: '600' }}>
               "Atuação direta dentro do seu negócio para destravar processos e blindar sua operação."
@@ -376,7 +463,7 @@ export default function Home({ profile }) {
               </div>
               <div className="fde-point-item positive">
                 <CheckCircle2 size={18} className="fde-point-icon" color="#3533cd" />
-                <span><strong>Engenharia de ponta a ponta:</strong> infraestrutura estável + automação de rotinas + conexão entre sistemas.</span>
+                <span><strong>Tecnologia e Sistemas de ponta a ponta:</strong> infraestrutura estável + automação de rotinas + conexão entre sistemas.</span>
               </div>
               <div className="fde-point-item positive">
                 <CheckCircle2 size={18} className="fde-point-icon" color="#3533cd" />
@@ -390,6 +477,92 @@ export default function Home({ profile }) {
             <div className="fde-card-conclusion featured">
               🛡️ <strong>Resultado:</strong> Operação contínua, equipe produtiva sem retrabalho e faturamento protegido.
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================
+         SUBSEÇÃO: INTELIGÊNCIA ARTIFICIAL PRÁTICA PARA EMPRESAS
+         ============================================================ */}
+      <section className="section-ai-pragmatic scroll-reveal" id="ia-para-negocios">
+        <div className="ai-pragmatic-card">
+          <div className="section-head-center">
+            <span className="section-tag-pill" style={{ background: 'rgba(53, 51, 205, 0.08)', color: '#3533cd', borderColor: 'rgba(53, 51, 205, 0.25)' }}>
+              <Sparkles size={14} style={{ display: 'inline', marginRight: '4px' }} />
+              Inteligência Artificial Aplicada ao Negócio
+            </span>
+            <h2 className="section-title-large" style={{ marginTop: '0.85rem', marginBottom: '1rem' }}>
+              Inteligência Artificial na sua empresa da forma correta: resultados reais em vez de modismos
+            </h2>
+            <p className="section-desc-subtle" style={{ maxWidth: '820px', margin: '0 auto 2.5rem' }}>
+              Como Consultor de Tecnologia e Sistemas, ajudo sua empresa a implementar Inteligência Artificial sob medida para a sua rotina operacional. O objetivo é traduzir essa inovação em ferramentas eficazes, economia palpável de tempo e ganhos reais de faturamento — longe de modinhas passageiras.
+            </p>
+          </div>
+
+          <div className="ai-pragmatic-grid">
+            {/* O ERRO COMUM */}
+            <div className="ai-card-item error-case stagger-card">
+              <div className="ai-card-tag danger">⚠️ Por que tantas empresas falham ao tentar usar IA?</div>
+              <h3 className="ai-card-title">O mito de "só ligar o ChatGPT e mandar fazer"</h3>
+              <p className="ai-card-desc">
+                Muitas empresas tentam adotar Inteligência Artificial no improviso, abrindo ferramentas genéricas e esperando que elas resolvam a rotina do dia a dia sem nenhum preparo técnico:
+              </p>
+              <div className="ai-points-list">
+                <div className="ai-point-row">
+                  <XCircle size={18} color="#ef4444" className="ai-icon-shrink" />
+                  <span><strong>Esquece o que era para fazer:</strong> Em diálogos mais longos ou tarefas com etapas encadeadas, a ferramenta perde o contexto inicial e passa a emitir respostas desconexas ou incompletas.</span>
+                </div>
+                <div className="ai-point-row">
+                  <XCircle size={18} color="#ef4444" className="ai-icon-shrink" />
+                  <span><strong>Decisões contra as suas regras:</strong> Por não ter sido ancorada nas diretrizes do seu negócio, a IA inventa dados, concede descontos fora da política da loja ou promete prazos irreais ao cliente.</span>
+                </div>
+                <div className="ai-point-row">
+                  <XCircle size={18} color="#ef4444" className="ai-icon-shrink" />
+                  <span><strong>Falta de treino com a realidade da sua empresa:</strong> Ninguém alimentou o sistema com o catálogo, preços e exceções comerciais que só quem vive a sua rotina conhece.</span>
+                </div>
+              </div>
+              <div className="ai-card-summary danger">
+                <strong>Resultado:</strong> Frustração dos clientes, retrabalho para a equipe corrigir erros e a falsa impressão de que "IA não serve para o meu negócio".
+              </div>
+            </div>
+
+            {/* A SOLUÇÃO NA LINHA DE FRENTE */}
+            <div className="ai-card-item success-case stagger-card">
+              <div className="ai-card-tag success">★ Como eu implemento na sua empresa</div>
+              <h3 className="ai-card-title">IA integrada aos seus sistemas e blindada por regras</h3>
+              <p className="ai-card-desc">
+                Minha atuação como Consultor de Tecnologia e Sistemas é estruturar a IA como uma extensão segura e produtiva da sua equipe:
+              </p>
+              <div className="ai-points-list">
+                <div className="ai-point-row">
+                  <CheckCircle2 size={18} color="#3533cd" className="ai-icon-shrink" />
+                  <span><strong>Treinada com as regras do seu negócio:</strong> Alimentamos a inteligência com o catálogo, políticas de garantia e padrões de atendimento específicos da sua operação.</span>
+                </div>
+                <div className="ai-point-row">
+                  <CheckCircle2 size={18} color="#3533cd" className="ai-icon-shrink" />
+                  <span><strong>Travas de segurança (<em>guardrails</em>):</strong> Limites rigorosos programados para impedir que o sistema invente informações ou tome decisões além da sua alçada (mecanismos que bloqueiam respostas fora do escopo).</span>
+                </div>
+                <div className="ai-point-row">
+                  <CheckCircle2 size={18} color="#3533cd" className="ai-icon-shrink" />
+                  <span><strong>Ganho real de tempo e vendas:</strong> Triagem ágil de mensagens, geração automática de resumos de pedidos e assistência inteligente que poupa horas de digitação manual de cada funcionário.</span>
+                </div>
+              </div>
+              <div className="ai-card-summary success">
+                <strong>Resultado:</strong> Respostas rápidas e confiáveis, equipe focada em fechar negócios e a segurança de que nenhuma regra da sua empresa será quebrada.
+              </div>
+            </div>
+          </div>
+
+          <div className="ai-cta-box">
+            <a
+              href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá Rodrigo! Li no seu site sobre a implementação prática de Inteligência Artificial para empresas e gostaria de entender como aplicar na minha rotina.')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="corp-btn-accent"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem', padding: '0.9rem 2rem', fontSize: '0.98rem' }}
+            >
+              <MessageSquare size={18} /> Conversar sobre IA Prática para a Sua Empresa
+            </a>
           </div>
         </div>
       </section>

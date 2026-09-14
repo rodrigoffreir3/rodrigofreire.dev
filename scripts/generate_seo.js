@@ -184,15 +184,15 @@ function prerenderRoutes() {
   const pages = [
     {
       dir: 'sobre',
-      title: 'Sobre Rodrigo Freire · Engenharia na Linha de Frente (Forward Deployed Engineer) — Porto Velho',
-      description: 'Conheça Rodrigo Freire: Forward Deployed Engineer em Porto Velho, formação em Direito e Análise de Sistemas, patente no INPI e foco em TI empresarial, automação e continuidade operacional.',
+      title: 'Sobre Rodrigo Freire · Consultor de Tecnologia e Sistemas — Porto Velho',
+      description: 'Conheça Rodrigo Freire: Consultor de Tecnologia e Sistemas em Porto Velho, formação em Direito e Análise de Sistemas, patente no INPI e foco em TI empresarial, automação e continuidade operacional.',
       canonicalUrl: `${SITE_URL}/sobre`,
       jsonLd: {
         '@context': 'https://schema.org',
         '@type': 'Person',
         'name': 'Rodrigo Freire',
-        'jobTitle': 'Forward Deployed Engineer & Responsável Técnico de TI Empresarial',
-        'description': 'Engenheiro de TI na linha de frente (Forward Deployed Engineer) e continuidade operacional em Porto Velho - RO. Formação em Direito e Análise de Sistemas, patente no INPI e foco em estabilidade, automação e proteção de dados.',
+        'jobTitle': 'Consultor de Tecnologia e Sistemas & Responsável Técnico',
+        'description': 'Consultor de Tecnologia e Sistemas na linha de frente e continuidade operacional em Porto Velho - RO. Formação em Direito e Análise de Sistemas, patente no INPI e foco em estabilidade, automação e proteção de dados.',
         'url': `${SITE_URL}/sobre`,
         'image': `${SITE_URL}/foto_perfil.jpeg`,
         'address': {

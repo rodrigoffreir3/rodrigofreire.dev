@@ -17,8 +17,8 @@ export default function Sobre({ profile }) {
     '@context': 'https://schema.org',
     '@type': 'Person',
     'name': 'Rodrigo Freire',
-    'jobTitle': 'Forward Deployed Engineer & Responsável Técnico de TI Empresarial',
-    'description': 'Engenheiro de TI na linha de frente (Forward Deployed Engineer) e continuidade operacional em Porto Velho - RO. Formação em Direito e Análise de Sistemas, patente no INPI e foco em estabilidade, automação e proteção de dados.',
+    'jobTitle': 'Consultor de Tecnologia e Sistemas & Responsável Técnico',
+    'description': 'Consultor de Tecnologia e Sistemas na linha de frente e continuidade operacional em Porto Velho - RO. Formação em Direito e Análise de Sistemas, patente no INPI e foco em estabilidade, automação e proteção de dados.',
     'url': 'https://rodrigofreire.dev.br/sobre',
     'image': 'https://rodrigofreire.dev.br/foto_perfil.jpeg',
     'address': {
@@ -31,8 +31,8 @@ export default function Sobre({ profile }) {
       'https://github.com/rodrigoffreir3'
     ],
     'knowsAbout': [
-      'Forward Deployed Engineering',
-      'Engenharia na Linha de Frente',
+      'Consultoria de Tecnologia e Sistemas',
+      'Tecnologia na Linha de Frente',
       'TI Empresarial',
       'Continuidade Operacional',
       'Automação de Processos',
@@ -44,8 +44,8 @@ export default function Sobre({ profile }) {
   return (
     <div className="portfolio-container" style={{ paddingTop: '2.5rem' }}>
       <SEO
-        title="Sobre Rodrigo Freire · Engenharia na Linha de Frente (Forward Deployed Engineer) — Porto Velho"
-        description="Conheça Rodrigo Freire: Forward Deployed Engineer em Porto Velho, formação em Direito e Análise de Sistemas, patente no INPI e foco em TI empresarial, automação e continuidade operacional."
+        title="Sobre Rodrigo Freire · Consultor de Tecnologia e Sistemas — Porto Velho"
+        description="Conheça Rodrigo Freire: Consultor de Tecnologia e Sistemas em Porto Velho, formação em Direito e Análise de Sistemas, patente no INPI e foco em TI empresarial, automação e continuidade operacional."
         canonicalPath="/sobre"
         jsonLd={personJsonLd}
       />
@@ -58,7 +58,7 @@ export default function Sobre({ profile }) {
         </span>
         <h1 className="section-title-large">Sobre Rodrigo Freire</h1>
         <p className="section-desc-subtle">
-          Engenharia de TI na linha de frente, estabilidade operacional e compromisso direto com a continuidade da sua empresa em Porto Velho.
+          Consultoria de Tecnologia e Sistemas na linha de frente, estabilidade operacional e compromisso direto com a continuidade da sua empresa em Porto Velho.
         </p>
       </div>
 
@@ -84,7 +84,7 @@ export default function Sobre({ profile }) {
           <div className="about-photo-frame">
             <img
               src={avatarUrl}
-              alt="Rodrigo Freire, Forward Deployed Engineer de TI em Porto Velho"
+              alt="Rodrigo Freire, Consultor de Tecnologia e Sistemas em Porto Velho"
               loading="lazy"
               onError={(e) => {
                 e.currentTarget.onerror = null;
@@ -94,7 +94,7 @@ export default function Sobre({ profile }) {
             />
           </div>
           <h3 className="about-photo-name">Rodrigo Freire</h3>
-          <div className="about-photo-role">Forward Deployed Engineer · TI Empresarial</div>
+          <div className="about-photo-role">Consultor de Tecnologia e Sistemas · TI Empresarial</div>
           <div className="about-photo-location">
             <MapPin size={15} color="#3533cd" /> Porto Velho · Rondônia
           </div>
