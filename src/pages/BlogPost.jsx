@@ -51,7 +51,7 @@ export default function BlogPost({ posts, profile }) {
     },
     'publisher': {
       '@type': 'Organization',
-      'name': 'Rodrigo Freire — TI Empresarial',
+      'name': 'Rodrigo Freire Tech',
       'logo': {
         '@type': 'ImageObject',
         'url': 'https://rodrigofreire.dev.br/og-default.png'
@@ -108,7 +108,7 @@ export default function BlogPost({ posts, profile }) {
   return (
     <article className="project-case-page">
       <SEO
-        title={`${post.title} · Blog Rodrigo Freire`}
+        title={`${post.title} · Rodrigo Freire Tech`}
         description={post.description}
         canonicalPath={`/blog/${post.slug}`}
         type="article"
@@ -121,7 +121,7 @@ export default function BlogPost({ posts, profile }) {
       {/* NAVEGAÇÃO DE VOLTA */}
       <div style={{ margin: '1.5rem 0 1rem 0' }}>
         <Link to="/blog" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem', color: 'var(--color-brand-ink)', textDecoration: 'none', fontSize: '0.92rem', fontWeight: '600' }}>
-          <ArrowLeft size={16} /> Voltar para o Blog
+          <ArrowLeft size={16} /> Voltar para artigos
         </Link>
       </div>
 
@@ -176,10 +176,10 @@ export default function BlogPost({ posts, profile }) {
       {/* FOOTER DO ARTIGO COM AUTOR E CTA */}
       <section className="cta-banner-corp" style={{ marginTop: '3.5rem' }}>
         <div className="corp-badge" style={{ background: 'rgba(255,255,255,0.1)', borderColor: 'rgba(255,255,255,0.2)', color: '#ffffff', marginBottom: '0.75rem' }}>
-          Autor & Consultoria
+          Autor · Rodrigo Freire Tech
         </div>
-        <h3 style={{ color: '#ffffff' }}>Gostou da análise e quer aplicar na sua empresa?</h3>
-        <p>Posso ajudar a estruturar a melhor solução técnica para o desafio da sua empresa.</p>
+        <h3 style={{ color: '#ffffff' }}>Quer conversar sobre este tema na sua operação?</h3>
+        <p>Fale diretamente comigo para entender como aplicar isso na prática da sua empresa.</p>
         <a
           href={`https://wa.me/${(profile?.whatsapp_number ? String(profile.whatsapp_number).replace(/\D/g, '') : '') || '5569992782919'}?text=${encodeURIComponent(`Olá Rodrigo! Li o artigo "${post.title}" no seu blog e gostaria de conversar.`)}`}
           target="_blank"
@@ -187,7 +187,7 @@ export default function BlogPost({ posts, profile }) {
           className="corp-btn corp-btn-primary"
           style={{ fontSize: '1rem', padding: '0.85rem 2rem' }}
         >
-          Conversar no WhatsApp com Rodrigo Freire →
+          Conversar no WhatsApp com Rodrigo
         </a>
       </section>
 

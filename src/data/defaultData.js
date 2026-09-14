@@ -31,29 +31,29 @@ export const DEFAULT_HOME_SETTINGS = {
   bg_page_subtle: "#F0EFEA",      // Cinza Quente UI
   text_heading_color: "#000000",  // Preto
   text_body_color: "#2C3437",
-  // Textos do Hero Institucional B2B (Carro-Chefe: Consultor de Tecnologia e Sistemas)
-  hero_badge: "Consultor de Tecnologia e Sistemas · Linha de Frente",
-  hero_title: "Um Consultor de Tecnologia e Sistemas dedicado na linha de frente da sua empresa para destravar processos e garantir que sua operação nunca pare.",
-  hero_desc: "Diferente do suporte reativo que só aparece após o prejuízo ou do desenvolvedor distante que não conhece sua rotina: eu atuo diretamente dentro do seu negócio em Porto Velho. Conecto sistemas que hoje não conversam, automatizo o trabalho manual da equipe e assumo a responsabilidade técnica contínua pela sua operação.",
+  // Textos do Hero Institucional B2B (SPEC-SITE-008 Seção 3.1)
+  hero_badge: "Rodrigo Freire Tech · Porto Velho, RO",
+  hero_title: "Sistemas sob medida para a sua empresa vender mais.",
+  hero_desc: "Desenvolvo e mantenho a tecnologia que a sua operação usa todos os dias: sistemas próprios, automação das rotinas manuais da equipe e estabilidade de caixa e rede. Cada projeto começa com escopo e preço fechados por escrito. Quem executa o trabalho é quem atende você depois.",
   hero_chips: [
-    "✓ Diagnóstico técnico direto na sua operação em Porto Velho",
-    "✓ Automação de processos manuais e conexão entre sistemas",
-    "✓ Estabilidade para caixas, rede comercial e dados protegidos",
-    "✓ Responsável técnico dedicado com escopo fechado por escrito"
+    "Sistemas, sites e lojas online desenvolvidos sob medida",
+    "Automação e inteligência artificial aplicadas às rotinas da equipe",
+    "Estabilidade de caixa, rede comercial e dados protegidos",
+    "Escopo e preço definidos por escrito antes de começar"
   ],
-  hero_primary_cta: "Solicitar avaliação técnica na sua empresa",
-  hero_whatsapp_msg: "Olá Rodrigo! Gostaria de agendar uma avaliação técnica na linha de frente da minha empresa.",
-  hero_secondary_cta: "Entender o modelo de atuação"
+  hero_primary_cta: "Solicitar avaliação da sua operação",
+  hero_whatsapp_msg: "Olá Rodrigo. Sou de uma empresa em Porto Velho e gostaria de solicitar uma avaliação da nossa operação de tecnologia.",
+  hero_secondary_cta: "Conhecer os quatro pilares de atuação"
 };
 
 export const DEFAULT_PROFILE = {
   full_name: "RODRIGOFREIRE.DEV",
   company_name: "Rodrigo Freire Tech",
-  tagline: "Consultor de Tecnologia e Sistemas na Linha de Frente · Porto Velho",
-  lead_bio: "Atuo como Consultor de Tecnologia e Sistemas na Linha de Frente — o especialista técnico que entra direto na sua empresa para diagnosticar gargalos, integrar sistemas e blindar sua operação. Presença direta em Porto Velho com escopo fechado por escrito e foco no que realmente importa: seu faturamento não parar.",
-  about_text: "Moro em Porto Velho e atendo comércios e empresas locais que precisam de estabilidade técnica no dia a dia. Minha especialidade é atuar como Consultor de Tecnologia e Sistemas na Linha de Frente — unindo soluções técnicas de alto nível à realidade prática do negócio. Em vez de ficar isolado atrás de um monitor criando código abstrato ou atendendo chamados superficiais, eu coloco minha capacidade técnica em sistemas e minha base jurídica diretamente a serviço da operação da sua empresa.\n\nMinha formação une duas áreas que trazem garantias concretas ao empresário: sou graduado em Direito e estou em formação em Análise e Desenvolvimento de Sistemas (ADS). Essa base jurídica me dá um cuidado redobrado com o que vai por escrito em contrato, leitura atenta de termos e respeito rigoroso às informações sigilosas e aos dados de clientes da sua empresa sob a LGPD (Lei Geral de Proteção de Dados, para blindar seu negócio contra vazamentos e multas). Também desenvolvi tecnologia própria para proteção de servidores com registro oficial no INPI (Instituto Nacional da Propriedade Industrial, sob o processo nº 512025006506-0).\n\nPara mim, tecnologia é meio, não fim. O que importa não é o software pelo software, mas a tranquilidade de saber que sua equipe tem ferramentas fáceis de operar, que o caixa não trava na hora da venda e que você tem um Consultor de Tecnologia e Sistemas dedicado para atender e resolver diretamente quando algo sair do esperado.",
+  tagline: "Fundador da Rodrigo Freire Tech · Porto Velho, RO",
+  lead_bio: "Construo e mantenho os sistemas que empresas de Porto Velho usam para trabalhar todos os dias. Sistema sob medida, automação de rotina manual e a infraestrutura que sustenta os dois, com um único responsável técnico pelo conjunto.",
+  about_text: "Moro em Porto Velho e atendo comércio e empresa daqui. Trabalho com a operação por dentro: entendo como o fechamento acontece, onde a equipe perde tempo e o que trava no horário de pico, e construo a partir disso. O que entrego é sistema que a pessoa da ponta consegue operar, não software que impressiona em apresentação e atrapalha na rotina.\n\nMinha formação soma duas áreas que produzem garantia concreta para quem contrata. Sou graduado em Direito e curso Análise e Desenvolvimento de Sistemas. A base jurídica se traduz em cuidado com o que vai por escrito no contrato, leitura atenta de termo de terceiro e tratamento rigoroso de informação sigilosa e dado de cliente sob a LGPD. Também desenvolvi tecnologia própria de proteção de servidores, com Registro INPI de Programa de Computador Nº 512025006506-0.\n\nTecnologia aqui é meio, não fim. O que importa é a equipe ter ferramenta que funciona no primeiro dia, o caixa não travar na hora da venda e existir um responsável definido para atender quando algo sair do esperado.",
   whatsapp_number: "5569992782919",
-  inpi_record: "Registro INPI Nº 512025006506-0",
+  inpi_record: "Registro INPI de Programa de Computador Nº 512025006506-0",
   avatar_url: "/foto_perfil.jpeg",
   logo_url: "/RODRIGO.FREIRE COLORIDA (800 x 200 px).png",
   logo_dark_url: "/RODRIGO.FREIRE BRANCA (800 x 200 px).png",
@@ -64,7 +64,7 @@ export const DEFAULT_PROFILE = {
 };
 
 // =============================================================================
-// COMPROMISSOS DE ATUAÇÃO PROFISSIONAL (SPEC-SITE-005-B RF-2)
+// COMPROMISSOS DE ATUAÇÃO PROFISSIONAL (SPEC-SITE-008 Seção 3.8)
 // =============================================================================
 export const DEFAULT_COMMITMENTS = [
   {
@@ -89,153 +89,160 @@ export const DEFAULT_COMMITMENTS = [
     id: "quem-faz-atende",
     number: "04",
     title: "Quem faz é quem atende",
-    description: "Não existe fila impessoal de atendimento nem atendente que não conhece a sua rotina. Quem montou a solução é quem atende e resolve diretamente quando der problema."
+    description: "Não existe fila de chamados nem atendente que não conhece a sua rotina. Quem montou a solução é quem atende e resolve diretamente quando der problema."
   }
 ];
 
 // =============================================================================
-// SEÇÃO DE RISCOS OPERACIONAIS: O CUSTO DE NÃO AGIR (SPEC-SITE-005 RF-2)
+// SEÇÃO DE RISCOS OPERACIONAIS: TRÊS PROBLEMAS QUE CUSTAM DINHEIRO (SPEC-SITE-008 Seção 3.2)
 // =============================================================================
 export const DEFAULT_RISKS = [
   {
     id: "backup-nao-testado",
     icon: "ShieldAlert",
     tag: "RISCO 01",
-    title: "Dado sem cópia testada",
-    description: "Backup que nunca foi restaurado não é backup. Uma pane de disco, exclusão acidental ou vírus levam junto anos de histórico de vendas, cadastro de clientes e contas a receber.",
-    consequence: "Perda irreversível do histórico contábil e financeiro, gerando paralisia imediata da operação."
+    title: "Cópia de segurança que nunca foi testada",
+    description: "Backup que nunca foi restaurado não é backup, é suposição. Uma pane de disco ou uma exclusão acidental leva junto anos de histórico de vendas, cadastro de clientes e contas a receber.",
+    consequence: "Perda definitiva do histórico financeiro e parada imediata da operação."
   },
   {
     id: "trabalho-manual",
     icon: "Clock",
     tag: "RISCO 02",
-    title: "Hora de funcionário em trabalho manual",
-    description: "Equipe copiando e colando informações entre planilhas e sistemas todos os dias. Um processo lento, caro e sujeito a erros de digitação e fechamento que custam caro.",
-    consequence: "Salários pagos para retrabalho de digitação manual e fechamentos atrasados toda semana."
+    title: "Hora de funcionário gasta em digitação",
+    description: "Equipe copiando informação de um sistema para outro todo dia. É lento, custa salário e produz erro de fechamento que ninguém percebe até o mês virar.",
+    consequence: "Folha de pagamento financiando retrabalho e fechamento atrasado toda semana."
   },
   {
     id: "sistema-fora-do-ar",
     icon: "AlertOctagon",
     tag: "RISCO 03",
-    title: "Sistema fora do ar em horário de pico",
-    description: "Caixas travados e rede comercial oscilando no momento de maior movimento da loja causam filas no balcão, atraso de entregas e clientes que desistem e vão para o concorrente.",
-    consequence: "Prejuízo direto no faturamento do dia e desgaste da imagem comercial da sua empresa."
+    title: "Sistema fora do ar no horário de pico",
+    description: "Caixa travado e rede oscilando no maior movimento da loja geram fila no balcão, entrega atrasada e cliente que desiste e compra no concorrente.",
+    consequence: "Faturamento do dia comprometido e desgaste da imagem comercial."
   }
 ];
 
 // =============================================================================
-// COMPARATIVO EXECUTIVO: O MODELO DE ENGENHARIA NA LINHA DE FRENTE (FDE)
+// COMPARATIVO DE MODELOS DE CONTRATAÇÃO (SPEC-SITE-008 Seção 3.3)
 // =============================================================================
 export const DEFAULT_FDE_COMPARISON = [
   {
-    criterion: "Postura e Atendimento",
-    traditional_support: "Reativo: só aparece depois que o computador queimou ou a rede caiu, conserta pontualmente e vai embora sem resolver a causa raiz.",
-    distant_dev: "Teórico e distante: fica fechado atrás de uma tela remota, sem nunca ter pisado no balcão ou visto a rotina real dos funcionários.",
-    fde_rodrigo: "Proativo e presente: atua diretamente dentro da sua empresa em Porto Velho, diagnosticando e resolvendo gargalos antes que gerem prejuízo."
+    criterion: "Quando age",
+    model_1: "Age depois da falha. O atendimento começa quando o equipamento já parou e o prejuízo do dia já aconteceu.",
+    model_2: "Age dentro do escopo contratado. O que está fora do pacote fica sem dono até virar novo orçamento.",
+    model_3: "Ajo antes. Conheço a operação por dentro e trato o gargalo enquanto ele ainda é ajuste, não pane."
   },
   {
-    criterion: "Escopo de Solução",
-    traditional_support: "Limitado a hardware básico (troca de peças e formatação), sem visão de processos ou capacidade de integrar softwares.",
-    distant_dev: "Apenas código fechado ou pacotes genéricos de prateleira que a sua equipe tem dificuldade de alimentar e operar no dia a dia.",
-    fde_rodrigo: "Tecnologia e Sistemas de ponta a ponta: infraestrutura estável de rede e caixas + conexão inteligente entre sistemas + rotinas automáticas sob medida."
+    criterion: "Alcance da solução",
+    model_1: "Cobre equipamento e rede. Integração entre sistemas e automação de rotina ficam fora do alcance do serviço.",
+    model_2: "Cobre o software encomendado. A infraestrutura que sustenta esse software continua sendo problema de outra pessoa.",
+    model_3: "Cubro os dois lados. Do servidor ao balcão, com um único responsável pelo conjunto funcionando."
   },
   {
-    criterion: "Trabalho Manual e Processos",
-    traditional_support: "Ignora o fluxo operacional: não entende de fechamento de caixa, planilhas duplicadas ou perda de tempo dos colaboradores.",
-    distant_dev: "Muitas vezes cria sistemas burocráticos que aumentam o retrabalho e exigem ainda mais digitação manual da equipe.",
-    fde_rodrigo: "Elimina o retrabalho: integra sistemas que hoje não conversam e automatiza tarefas manuais em poucos segundos."
+    criterion: "Conhecimento da rotina",
+    model_1: "O atendimento é pontual, então a rotina de fechamento e o fluxo do balcão não entram na conta.",
+    model_2: "O trabalho acontece à distância, com o entendimento da operação limitado ao que coube na reunião de levantamento.",
+    model_3: "Estou presencialmente na sua operação em Porto Velho. Vejo o fechamento acontecer e projeto o sistema em cima do que realmente ocorre."
   },
   {
-    criterion: "Responsabilidade e Contrato",
-    traditional_support: "Nenhum compromisso formal com a continuidade do faturamento nem garantia de retorno rápido a falhas.",
-    distant_dev: "Atendimento por fila impessoal de chamados ou tickets (pedidos eletrônicos de suporte), onde cada dúvida ou pane demora dias para ter retorno.",
-    fde_rodrigo: "Responsável técnico direto e dedicado, com escopo fechado por escrito e compromisso contratual de sigilo e continuidade."
+    criterion: "Responsabilidade e contrato",
+    model_1: "Sem compromisso formal de continuidade. Cada chamado é uma negociação nova.",
+    model_2: "Atendimento por fila de chamados, com prazo de retorno que depende da posição na fila.",
+    model_3: "Responsável técnico definido em contrato, com escopo e preço fechados por escrito e cláusula de sigilo sobre os dados da empresa."
   }
 ];
 
 // =============================================================================
-// 3 PILARES DE TI EMPRESARIAL & CONTINUIDADE OPERACIONAL (SPEC-SITE-005 RF-1)
+// QUATRO PILARES DE ATUAÇÃO (SPEC-SITE-008 Seções 3.4 e 3.5)
 // =============================================================================
 export const DEFAULT_SERVICES = [
   {
-    id: "continuidade-sustentacao",
+    id: "continuidade-operacao",
     icon: "ShieldCheck",
-    tag: "PILAR 01 · CONTINUIDADE & SUSTENTAÇÃO",
-    title: "Continuidade e Sustentação da Operação",
-    focus: "A operação não para e os dados da empresa não se perdem.",
-    short_desc: "Rotina preventiva, backups testados e suporte ágil para caixas, computadores e rede comercial.",
-    description: "Quando o computador do caixa trava no pico do movimento, a impressora para de emitir cupom ou a internet comercial oscila, o prejuízo é imediato: filas de clientes descontentes, estresse da equipe e vendas que somem. Presto atendimento presencial em Porto Velho ou via acesso remoto imediato (conexão segura à distância pelo computador) com prazo de retorno acordado por escrito. Implemento manutenção preventiva periódica e rotinas de backup com teste real de restauração, blindando seus cadastros e seu histórico financeiro sob conformidade prática com a LGPD (Lei Geral de Proteção de Dados, para blindar seu negócio contra vazamentos e multas).",
-    pain: "Computadores do caixa ou escritório travando no meio do expediente, internet oscilando bem na hora de passar o cartão ou receio constante de perder cadastros e notas fiscais por falta de backup seguro?",
-    solution: "Assumo a responsabilidade técnica pela sua infraestrutura: executo manutenção preventiva em computadores e rede, configuro rotinas automáticas de backup com teste de recuperação e presto atendimento rápido a falhas com prazo de retorno acordado por escrito.",
+    tag: "PILAR 01 · CONTINUIDADE",
+    title: "Continuidade da operação",
+    focus: "A empresa não para e o dado não se perde.",
+    description: "Quando o computador do caixa trava no pico do movimento, a impressora para de emitir cupom ou a internet comercial oscila, o prejuízo é imediato: fila de cliente, equipe sob pressão e venda que não acontece. Assumo a responsabilidade técnica pela infraestrutura, com atendimento presencial em Porto Velho ou por acesso remoto (conexão segura ao computador à distância), sempre com prazo de retorno acordado por escrito. As rotinas de cópia de segurança são testadas com restauração real, protegendo cadastro e histórico financeiro em conformidade com a LGPD (Lei Geral de Proteção de Dados, que define como dados de clientes devem ser guardados e tratados).",
     deliverables: [
-      "Rotina de backup automático com teste real de restauração periódica para garantir recuperação imediata",
-      "Manutenção preventiva de computadores, rede comercial e servidores para antecipar falhas",
-      "Atendimento ágil a falhas operacionais com prazo de retorno acordado por escrito"
+      "Rotina automática de cópia de segurança com teste periódico de restauração real",
+      "Manutenção preventiva de computadores, rede comercial e servidores",
+      "Atendimento a falhas com prazo de retorno acordado em contrato",
+      "Inventário do que a empresa possui hoje, entregue por escrito"
     ],
-    gain: "Caixas e computadores operando estáveis sem filas, histórico financeiro 100% protegido contra perdas e a segurança de contar com um responsável direto pela sua operação.",
-    whatsapp_msg: "Olá Rodrigo! Gostaria de solicitar uma avaliação para o pilar de Continuidade e Sustentação na minha empresa."
+    gain: "Caixa e computadores estáveis no horário de maior movimento, histórico financeiro recuperável e um responsável direto quando algo sai do esperado.",
+    whatsapp_msg: "Olá Rodrigo. Gostaria de solicitar uma avaliação para a continuidade da operação da minha empresa."
   },
   {
-    id: "automacao-integracao",
+    id: "automacao-processos",
     icon: "Zap",
-    tag: "PILAR 02 · AUTOMAÇÃO & INTEGRAÇÃO",
-    title: "Automação e Integração de Processos",
-    focus: "Eliminar trabalho manual repetitivo que consome horas da equipe e gera erros de digitação.",
-    short_desc: "Integração entre sistemas, relatórios automáticos e fim do retrabalho diário em planilhas.",
-    description: "Sua equipe perde horas preciosas copiando dados de um sistema para o outro, preenchendo planilhas manuais ou conferindo relatórios no olho? Trabalho manual em excesso é caro, lento e gera falhas de fechamento que drenam o caixa silenciosamente. Conecto sistemas operacionais que hoje não conversam e crio rotinas automáticas no seu computador para substituir controles improvisados e gerar relatórios consolidados em poucos segundos, liberando tempo útil para a equipe vender mais.",
-    pain: "Colaboradores gastando horas do expediente copiando informações entre planilhas e telas, fazendo contas à mão e gerando relatórios demorados toda semana?",
-    solution: "Conecto sistemas que hoje operam isolados e crio rotinas automáticas personalizadas para substituir tarefas repetitivas, planilhas duplicadas e conferências manuais.",
+    tag: "PILAR 02 · AUTOMAÇÃO",
+    title: "Automação e integração de processos",
+    focus: "Devolver à equipe as horas gastas em digitação.",
+    description: "Sua equipe perde horas copiando dado de um sistema para outro e conferindo relatório à mão. Conecto os sistemas que hoje não conversam entre si e crio rotinas que geram o consolidado sozinhas, em segundos.",
     deliverables: [
-      "Integração entre sistemas operacionais e financeiros que hoje não conversam entre si",
-      "Substituição de controles manuais e planilhas improvisadas por rotinas automáticas",
-      "Relatórios consolidados gerados sozinhos, sem ninguém precisar montar manualmente toda semana"
+      "Integração entre os sistemas operacionais e financeiros que hoje funcionam isolados",
+      "Substituição de controles manuais e planilhas paralelas por rotina automática",
+      "Relatório consolidado gerado sem ninguém precisar montar toda semana"
     ],
-    gain: "Horas livres de trabalho manual devolvidas para a equipe focar em atendimento e vendas, com eliminação de erros de digitação e retrabalho operacional.",
-    whatsapp_msg: "Olá Rodrigo! Gostaria de solicitar uma avaliação para o pilar de Automação e Integração na minha empresa."
+    gain: "Horas de trabalho manual devolvidas para atendimento e venda, com o erro de digitação eliminado na origem.",
+    whatsapp_msg: "Olá Rodrigo. Gostaria de solicitar uma avaliação para automação e integração de processos na minha empresa."
   },
   {
-    id: "plataformas-presenca-digital",
+    id: "plataformas-presenca",
     icon: "ShoppingCart",
-    tag: "PILAR 03 · PLATAFORMAS & PRESENÇA DIGITAL",
-    title: "Plataformas e Presença Digital",
-    focus: "Vendas com margem cheia, controle da carteira de clientes e sistemas que funcionam.",
-    short_desc: "Site ou loja própria integrada aos seus canais de venda e consultoria independente de sistemas.",
-    description: "Vender somente por redes sociais ou depender exclusivamente de plataformas e marketplaces (shoppings virtuais de terceiros) deixa seu negócio vulnerável a comissões abusivas, mudanças de algoritmo e perda de contato com quem já comprou. Desenvolvo sites institucionais e lojas online próprias, rápidas e sem menus confusos, integradas ao WhatsApp e às suas redes atuais. Além disso, presto consultoria técnica independente para ajudar sua empresa a escolher e implantar sistemas de terceiros adequados ao seu segmento, sem empurrar ferramentas caras ou desnecessárias.",
-    pain: "Clientes que desconfiam antes de fechar compras de maior valor por você não ter um canal oficial próprio, comissões altas comendo sua margem ou dificuldade para escolher um software de mercado que realmente atenda sua rotina?",
-    solution: "Desenvolvo um site institucional ou loja online própria, rápida e objetiva, integrada aos canais que você já usa, e oriento tecnicamente a implantação de softwares de mercado no seu negócio.",
+    tag: "PILAR 03 · PLATAFORMAS",
+    title: "Plataformas e presença digital própria",
+    focus: "Vender com margem cheia e manter a carteira de clientes.",
+    description: "Vender apenas por rede social ou por marketplace deixa o negócio exposto a comissão alta, mudança de algoritmo e perda de contato com quem já comprou. Desenvolvo site institucional e loja online próprios, rápidos e integrados ao WhatsApp e aos canais que a empresa já usa. Também presto orientação técnica independente na escolha de sistemas de mercado, sem empurrar ferramenta cara que a sua fase não pede.",
     deliverables: [
-      "Site institucional ou loja online própria, sem menus confusos e fácil de navegar",
-      "Integração direta com o WhatsApp e os canais de venda que sua empresa já utiliza",
-      "Apoio técnico independente na escolha e implantação de softwares de terceiros"
+      "Site institucional ou loja online própria, desenvolvida sob medida para o seu segmento",
+      "Orientação técnica independente na escolha e implantação de sistemas de terceiros"
     ],
-    gain: "Vendas diretas com margem cheia (sem taxas de terceiros comendo seu lucro), base própria de clientes protegida para recompras e credibilidade para fechar negócios maiores.",
-    whatsapp_msg: "Olá Rodrigo! Gostaria de solicitar uma avaliação para o pilar de Plataformas e Presença Digital na minha empresa."
+    gain: "Venda direta com margem cheia, base de clientes própria para recompra e credibilidade para fechar negócio de valor maior.",
+    whatsapp_msg: "Olá Rodrigo. Gostaria de solicitar uma avaliação para plataformas e presença digital própria na minha empresa."
+  },
+  {
+    id: "inteligencia-artificial",
+    icon: "Cpu",
+    tag: "PILAR 04 · INTELIGÊNCIA ARTIFICIAL",
+    title: "Inteligência artificial aplicada à rotina da empresa",
+    focus: "A tecnologia é sua aliada, não sua concorrente.",
+    description: "A maior parte das empresas que tenta usar inteligência artificial desiste pelo mesmo motivo: ligou a ferramenta e pediu para ela resolver. Sem conhecer o catálogo, o preço e as exceções comerciais da casa, ela inventa informação, promete prazo fora da realidade e perde o fio em tarefa mais longa. Empresa grande resolve isso colocando equipe técnica dentro da operação por algumas semanas, até a ferramenta estar ajustada à rotina real. Faço exatamente esse trabalho, na escala do comércio de Porto Velho, aplicado a tarefa com nome e resultado medido.",
+    deliverables: [
+      "Triagem automática das mensagens de WhatsApp, com encaminhamento por assunto e urgência",
+      "Resumo automático de pedido e consulta de catálogo e preço pela equipe de balcão",
+      "Regras escritas de limite, definindo o que a ferramenta responde sozinha e o que passa por você antes",
+      "Período de acompanhamento presencial definido em contrato, até a equipe operar sem apoio"
+    ],
+    gain: "Horas de atendimento repetitivo devolvidas à equipe, com a ferramenta trabalhando dentro da política comercial que você definiu e sem inventar o que não sabe.",
+    whatsapp_msg: "Olá Rodrigo. Gostaria de conversar sobre aplicar inteligência artificial na rotina da minha empresa."
   }
 ];
 
 // =============================================================================
-// MÉTODO EM 4 ETAPAS COM ESCOPO FECHADO (SPEC-SITE-005 RF-4)
+// MÉTODO EM 4 ETAPAS COM ESCOPO E PREÇO FECHADOS (SPEC-SITE-008 Seção 3.6)
 // =============================================================================
 export const DEFAULT_STEPS = [
   {
     number: "01",
     title: "Avaliação",
-    description: "Conversa direta e levantamento prático do que sua empresa possui hoje: equipamentos, computadores, rede comercial, onde os dados estão guardados e quais tarefas operacionais ainda são manuais."
+    description: "Levantamento prático do que a empresa tem hoje: equipamento, rede comercial, onde o dado está guardado e quais tarefas ainda são manuais."
   },
   {
     number: "02",
     title: "Prioridade",
-    description: "Definição clara do que resolver primeiro, por ordem de risco operacional e retorno prático. Escopo e preço fechados por escrito antes de iniciar qualquer serviço."
+    description: "Definição do que resolver primeiro, por ordem de risco e de retorno. O escopo e o preço são fechados por escrito antes de qualquer execução."
   },
   {
     number: "03",
     title: "Execução",
-    description: "Implementação direta do que foi combinado, com explicação transparente em português claro do que está sendo feito e por quê, sem jargões complicados de tecnologia."
+    description: "Implementação do que foi acordado, com explicação em português claro do que está sendo feito e por quê."
   },
   {
     number: "04",
     title: "Acompanhamento",
-    description: "Entrega testada na rotina diária da empresa, com clareza total sobre o que fica sob sustentação contínua e o que é entrega única concluída."
+    description: "Entrega testada na rotina real, com distinção explícita entre o que fica sob manutenção contínua e o que é entrega única concluída."
   }
 ];
 
@@ -245,18 +252,18 @@ export const DEFAULT_PROJECTS = [
     id: 1,
     slug: "imunno-system",
     title: "Imunno System",
-    badge: "Defesa Autônoma no Kernel · Patente INPI Nº 512025006506-0",
+    badge: "Defesa autônoma no kernel · Registro INPI de Programa de Computador Nº 512025006506-0",
     summary: "Sistema imunológico autônomo para servidores Linux que opera no anel mais profundo do sistema operacional (Ring 0), interceptando invasões e ameaças em tempo real com matriz de decepção ativa Hades, protocolo Gossip em malha P2P e código genético evolutivo.",
     problem_description: "A segurança computacional tradicional foi fundamentada sobre duas premissas que se tornaram obsoletas: a dependência estrita de assinaturas e hashes de arquivos conhecidos, e a reação por bloqueio imediato.\n\nQuando um agente autônomo de inteligência artificial ou um invasor executando um ataque Zero-Day atua em um servidor, ele não possui assinatura catalogada em listas públicas. Se o sistema de defesa simplesmente bloqueia a conexão com um 'Access Denied', ele entrega feedback imediato ao adversário, ensinando a IA atacante a ajustar seu código e buscar novos vetores de evasão.\n\nO Imunno System resolve essa fragilidade estrutural operando na camada mais profunda do sistema (Ring 0): ele avalia a intenção comportamental das chamadas de sistema (syscalls) e, em vez de alertar o invasor com interrupções óbvias, aprisiona o processo em um labirinto de decepção ativa onde o adversário gasta energia atacando dados sintéticos enquanto a máquina real permanece segura e fria.",
-    technical_details: "### 1. Vigilância no Anel Mais Profundo (Ring 0)\nO agente de defesa atua acoplado diretamente aos ganchos fundamentais do núcleo do sistema operacional, interceptando chamadas de sistema no instante em que são solicitadas. Isso garante visibilidade em nível de microssegundos sobre abertura de arquivos, manipulação de processos e abertura de conexões de rede antes que qualquer dano seja concretizado.\n\n### 2. Duelos Adversariais no Coliseu (Ataque vs Defesa)\nA validação e o refinamento do Imunno foram forjados em confrontos reais dentro de um ambiente de testes rigoroso batizado de **Coliseu**, colocando agentes autônomos de inteligência artificial para tentar invadir e comprometer o sistema:\n\n- **As Vitórias da IA nos Rounds Iniciais:** Dotada de autonomia e raciocínio dinâmico, a IA atacante obteve vitórias táticas nas primeiras rodadas. Ela utilizou técnicas avançadas de *Living-off-the-Land* (LotL) — utilizando utilitários legítimos do próprio sistema operacional —, explorou rotas inéditas de reconhecimento e tentou exfiltrar credenciais sem disparar heurísticas simples.\n- **A Virada e Vitória Definitiva da Matriz Hades:** A contenção definitiva ocorreu com a ativação da arquitetura **Hades**. Toda vez que a IA invasora tentou agir sobre os alvos vitais, foi desviada silenciosamente para um ecossistema simulado. Nas rodadas subsequentes, todas as tentativas de extração de credenciais foram contidas e neutralizadas pela decepção ativa, comprovando a superioridade da contenção assimétrica.\n\n### 3. Matriz de Decepção Ativa Hades (Engodo e Asfixia)\nEm vez de avisar ao adversário que ele foi identificado, o Hades aplica contenção em três frentes simultâneas:\n\n- **Ilusão do Sistema de Arquivos (Honeyfiles):** O processo suspeito é isolado em um namespace exclusivo com arquivos-isca contendo bancos de dados e credenciais forjadas. A IA invasora consome tempo e computação analisando informações inúteis, envenenando seu fluxo de tomada de decisão.\n- **Silêncio de Rede & Timeouts Infinitos:** Em vez de emitir rejeição de conexão (o que alertaria o atacante), os pacotes sofrem descarte silencioso e latência induzida, simulando instabilidade natural de rede e congelando canais de comando e controle (C2).\n- **Asfixia de Recursos:** O escalonador do sistema restringe severamente o tempo de processamento e a cota de memória do grupo de processos suspeito. O atacante queima energia tentando manter a requisição viva, enquanto o servidor protegido reduz o consumo e resfria.\n\n### 4. Protocolo de Fofoca (Gossip Swarm)\nEm frotas distribuídas de servidores, o Imunno opera como um enxame descentralizado. Quando qualquer nó da malha neutraliza uma ameaça ou vetor anômalo, ele sintetiza uma 'vacina' comportamental instantânea. Essa regra de contenção é propagada via **Protocolo Gossip** ponto a ponto entre os servidores em milissegundos, imunizando toda a infraestrutura antes que o ataque consiga se mover lateralmente.\n\n### 5. Código Genético Evolutivo (Algoritmo Genético)\nA sensibilidade da defesa e os limiares de risco são governados por genomas matemáticos (pesos de anomalia, janelas temporais e taxas de decaimento). O motor genético executa rotinas de mutação, cruzamento (crossover) e torneios de aptidão baseados na velocidade de contenção e na ausência estrita de falsos positivos.\n\nA arquitetura genética está totalmente estruturada no núcleo do sistema, aguardando a expansão contínua da base de dados de telemetria para ter parâmetros históricos suficientes para comparar e determinar empiricamente o que é ser a melhor versão de si mesma.\n\n### 6. Machine Learning Comportamental Sem Hashes\nO motor de análise prescinde de listas de assinaturas conhecidas ou comparações estáticas de hashes. A inteligência do sistema detecta invasões avaliando a topologia temporal das chamadas ao sistema, divergências de consumo energético e dispersão de acessos — identificando ameaças inéditas (Zero-Day) no seu primeiro milissegundo de manifestação.\n\n### 7. Propriedade Intelectual & Patente\nTecnologia e arquitetura com registro de programa de computador no Instituto Nacional da Propriedade Industrial (INPI) sob o **Nº 512025006506-0**.",
+    technical_details: "### 1. Vigilância no Anel Mais Profundo (Ring 0)\nO agente de defesa atua acoplado diretamente aos ganchos fundamentais do núcleo do sistema operacional, interceptando chamadas de sistema no instante em que são solicitadas. Isso garante visibilidade em nível de microssegundos sobre abertura de arquivos, manipulação de processos e abertura de conexões de rede antes que qualquer dano seja concretizado.\n\n### 2. Duelos Adversariais no Coliseu (Ataque vs Defesa)\nA validação e o refinamento do Imunno foram forjados em confrontos reais dentro de um ambiente de testes rigoroso batizado de **Coliseu**, colocando agentes autônomos de inteligência artificial para tentar invadir e comprometer o sistema:\n\n- **As Vitórias da IA nos Rounds Iniciais:** Dotada de autonomia e raciocínio dinâmico, a IA atacante obteve vitórias táticas nas primeiras rodadas. Ela utilizou técnicas avançadas de *Living-off-the-Land* (LotL) — utilizando utilitários legítimos do próprio sistema operacional —, explorou rotas inéditas de reconhecimento e tentou exfiltrar credenciais sem disparar heurísticas simples.\n- **A Virada e Vitória Definitiva da Matriz Hades:** A contenção definitiva ocorreu com a ativação da arquitetura **Hades**. Toda vez que a IA invasora tentou agir sobre os alvos vitais, foi desviada silenciosamente para um ecossistema simulado. Nas rodadas subsequentes, todas as tentativas de extração de credenciais foram contidas e neutralizadas pela decepção ativa, comprovando a superioridade da contenção assimétrica.\n\n### 3. Matriz de Decepção Ativa Hades (Engodo e Asfixia)\nEm vez de avisar ao adversário que ele foi identificado, o Hades aplica contenção em três frentes simultâneas:\n\n- **Ilusão do Sistema de Arquivos (Honeyfiles):** O processo suspeito é isolado em um namespace exclusivo com arquivos-isca contendo bancos de dados e credenciais forjadas. A IA invasora consome tempo e computação analisando informações inúteis, envenenando seu fluxo de tomada de decisão.\n- **Silêncio de Rede & Timeouts Infinitos:** Em vez de emitir rejeição de conexão (o que alertaria o atacante), os pacotes sofrem descarte silencioso e latência induzida, simulando instabilidade natural de rede e congelando canais de comando e controle (C2).\n- **Asfixia de Recursos:** O escalonador do sistema restringe severamente o tempo de processamento e a cota de memória do grupo de processos suspeito. O atacante queima energia tentando manter a requisição viva, enquanto o servidor protegido reduz o consumo e resfria.\n\n### 4. Protocolo de Fofoca (Gossip Swarm)\nEm frotas distribuídas de servidores, o Imunno opera como um enxame descentralizado. Quando qualquer nó da malha neutraliza uma ameaça ou vetor anômalo, ele sintetiza uma 'vacina' comportamental instantânea. Essa regra de contenção é propagada via **Protocolo Gossip** ponto a ponto entre os servidores em milissegundos, imunizando toda a infraestrutura antes que o ataque consiga se mover lateralmente.\n\n### 5. Código Genético Evolutivo (Algoritmo Genético)\nA sensibilidade da defesa e os limiares de risco são governados por genomas matemáticos (pesos de anomalia, janelas temporais e taxas de decaimento). O motor genético executa rotinas de mutação, cruzamento (crossover) e torneios de aptidão baseados na velocidade de contenção e na ausência estrita de falsos positivos.\n\nA arquitetura genética está totalmente estruturada no núcleo do sistema, aguardando a expansão contínua da base de dados de telemetria para ter parâmetros históricos suficientes para comparar e determinar empiricamente o que é ser a melhor versão de si mesma.\n\n### 6. Machine Learning Comportamental Sem Hashes\nO motor de análise prescinde de listas de assinaturas conhecidas ou comparações estáticas de hashes. A inteligência do sistema detecta invasões avaliando a topologia temporal das chamadas ao sistema, divergências de consumo energético e dispersão de acessos — identificando ameaças inéditas (Zero-Day) no seu primeiro milissegundo de manifestação.\n\n### 7. Propriedade Intelectual & Registro INPI\nTecnologia e arquitetura com registro de programa de computador no Instituto Nacional da Propriedade Industrial (INPI) sob o **Nº 512025006506-0**.",
     cover_image: "",
     hero_image: "",
     gallery: [],
-    tags: ["Kernel Ring 0", "Cyber Deception (Hades)", "Protocolo Gossip", "Código Genético Evolutivo", "Machine Learning Sem Hashes", "Patente INPI"],
+    tags: ["Kernel Ring 0", "Cyber Deception (Hades)", "Protocolo Gossip", "Código Genético Evolutivo", "Machine Learning Sem Hashes", "Registro INPI"],
     github_url: "https://github.com/rodrigoffreir3",
     live_url: "",
     is_featured: true,
-    display_order: 1
+    display_order: 3
   },
   {
     id: 2,
@@ -273,7 +280,7 @@ export const DEFAULT_PROJECTS = [
     github_url: "https://github.com/rodrigoffreir3/syscallcage",
     live_url: "",
     is_featured: true,
-    display_order: 2
+    display_order: 4
   },
   {
     id: 3,
@@ -290,7 +297,7 @@ export const DEFAULT_PROJECTS = [
     github_url: "https://github.com/rodrigoffreir3",
     live_url: "",
     is_featured: true,
-    display_order: 3
+    display_order: 5
   },
   {
     id: 4,
@@ -307,7 +314,7 @@ export const DEFAULT_PROJECTS = [
     github_url: "https://github.com/rodrigoffreir3",
     live_url: "",
     is_featured: false,
-    display_order: 4
+    display_order: 6
   },
   {
     id: 5,
@@ -324,7 +331,7 @@ export const DEFAULT_PROJECTS = [
     github_url: "https://github.com/rodrigoffreir3",
     live_url: "",
     is_featured: false,
-    display_order: 5
+    display_order: 2
   },
   {
     id: 6,
@@ -341,7 +348,7 @@ export const DEFAULT_PROJECTS = [
     github_url: "https://github.com/rodrigoffreir3",
     live_url: "",
     is_featured: false,
-    display_order: 6
+    display_order: 1
   },
   {
     id: 7,

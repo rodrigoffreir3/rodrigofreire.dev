@@ -32,7 +32,8 @@ import {
   Check,
   XCircle,
   Send,
-  ExternalLink
+  ExternalLink,
+  ChevronRight
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import HeroCarousel from '../components/HeroMockups/HeroCarousel';
@@ -106,7 +107,7 @@ export default function Home({ profile }) {
   const homeJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    'name': 'Rodrigo Freire — TI Empresarial & Tecnologias Amigáveis',
+    'name': 'Rodrigo Freire Tech',
     'image': 'https://rodrigofreire.dev.br/og-default.png',
     'url': 'https://rodrigofreire.dev.br',
     'telephone': '+5569992782919',
@@ -131,27 +132,27 @@ export default function Home({ profile }) {
     'sameAs': [
       'https://github.com/rodrigoffreir3'
     ],
-    'description': 'Consultoria e suporte em TI empresarial de alto padrão em Porto Velho - RO. Atendimento ágil, redes seguras, conformidade com a LGPD e desenvolvimento de sistemas sob medida.'
+    'description': 'Desenvolvimento de sistemas sob medida, automação de processos e infraestrutura de tecnologia para empresas em Porto Velho, RO.'
   };
 
-  const heroBadge = DEFAULT_HOME_SETTINGS.hero_badge || 'TI Empresarial de Alto Padrão · Porto Velho';
-  const heroTitle = DEFAULT_HOME_SETTINGS.hero_title || 'Sua empresa não pode parar. Cuido da tecnologia para manter sua operação funcionando e seus dados protegidos.';
-  const heroDesc = DEFAULT_HOME_SETTINGS.hero_desc || 'Estabilidade para computadores e redes comerciais, rotinas automáticas para eliminar retrabalho em planilhas e presença digital com controle total da sua carteira de clientes. Atendimento direto comigo em Porto Velho ou remoto seguro, com escopo e preço fechados por escrito antes de começar.';
+  const heroBadge = DEFAULT_HOME_SETTINGS.hero_badge || 'Rodrigo Freire Tech · Porto Velho, RO';
+  const heroTitle = DEFAULT_HOME_SETTINGS.hero_title || 'Sistemas sob medida para a sua empresa vender mais.';
+  const heroDesc = DEFAULT_HOME_SETTINGS.hero_desc || 'Desenvolvo e mantenho a tecnologia que a sua operação usa todos os dias: sistemas próprios, automação das rotinas manuais da equipe e estabilidade de caixa e rede. Cada projeto começa com escopo e preço fechados por escrito. Quem executa o trabalho é quem atende você depois.';
   const heroChips = DEFAULT_HOME_SETTINGS.hero_chips || [
-    '✓ Continuidade operacional e dados protegidos',
-    '✓ Automação de rotinas manuais da equipe',
-    '✓ Plataformas próprias e presença digital',
-    '✓ Atendimento direto com o Rodrigo'
+    'Sistemas, sites e lojas online desenvolvidos sob medida',
+    'Automação e inteligência artificial aplicadas às rotinas da equipe',
+    'Estabilidade de caixa, rede comercial e dados protegidos',
+    'Escopo e preço definidos por escrito antes de começar'
   ];
   const heroPrimaryCta = DEFAULT_HOME_SETTINGS.hero_primary_cta || 'Solicitar avaliação da sua operação';
-  const heroWhatsappMsg = DEFAULT_HOME_SETTINGS.hero_whatsapp_msg || 'Olá Rodrigo! Gostaria de solicitar uma avaliação da operação de tecnologia da minha empresa.';
-  const heroSecondaryCta = DEFAULT_HOME_SETTINGS.hero_secondary_cta || 'Conhecer os 3 pilares de atuação';
+  const heroWhatsappMsg = DEFAULT_HOME_SETTINGS.hero_whatsapp_msg || 'Olá Rodrigo. Sou de uma empresa em Porto Velho e gostaria de solicitar uma avaliação da nossa operação de tecnologia.';
+  const heroSecondaryCta = DEFAULT_HOME_SETTINGS.hero_secondary_cta || 'Conhecer os quatro pilares de atuação';
 
   return (
     <div className="home-enterprise-wrapper">
       <SEO
-        title="Rodrigo Freire · Consultor de Tecnologia e Sistemas na Linha de Frente — Porto Velho"
-        description="Consultoria de Tecnologia e Sistemas na linha de frente da sua empresa em Porto Velho. Atuação direta, automação de processos manuais, estabilidade de caixas e redes comerciais com escopo fechado por escrito."
+        title="Rodrigo Freire Tech · Sistemas sob medida para empresas — Porto Velho"
+        description="Desenvolvimento de sistemas, sites e lojas online sob medida, automação de rotinas manuais e estabilidade de caixa e rede para empresas de Porto Velho. Escopo e preço fechados por escrito."
         canonicalPath="/"
         jsonLd={homeJsonLd}
       />
@@ -170,7 +171,7 @@ export default function Home({ profile }) {
               </div>
 
               <h1 className="hero-enterprise-title">
-                Um Consultor de Tecnologia e Sistemas dedicado na linha de frente da sua empresa para <span className="highlight-cyan">destravar processos</span> e garantir que sua operação nunca pare.
+                {heroTitle}
               </h1>
 
               {/* SPEC-SITE-007 RF-4: Linha com efeito digitado (typewriter) */}
@@ -209,7 +210,10 @@ export default function Home({ profile }) {
           <div className="hero-enterprise-footer">
             <div className="hero-pain-chips-row">
               {heroChips.map((chip, idx) => (
-                <span key={idx} className="hero-pain-chip-item">{chip}</span>
+                <span key={idx} className="hero-pain-chip-item">
+                  <CheckCircle2 size={15} color="#3533cd" />
+                  <span>{chip}</span>
+                </span>
               ))}
             </div>
 
@@ -219,12 +223,19 @@ export default function Home({ profile }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="corp-btn-accent"
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem' }}
               >
-                <MessageSquare size={18} /> {heroPrimaryCta}
+                <MessageSquare size={18} />
+                <span>{heroPrimaryCta}</span>
               </a>
 
-              <a href="#linha-de-frente" className="corp-link-text">
-                {heroSecondaryCta} <ArrowDown size={16} />
+              <a
+                href="#servicos"
+                className="corp-btn-outline-glass"
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem' }}
+              >
+                <span>{heroSecondaryCta}</span>
+                <ChevronRight size={16} />
               </a>
             </div>
           </div>
@@ -279,15 +290,18 @@ export default function Home({ profile }) {
 
             <div className="template-showcase-footer">
               <div className="template-footer-details">
-                <div className="template-tag-category">✦ E-commerce & Varejo de Moda</div>
+                <div className="template-tag-category">
+                  <Sparkles size={13} style={{ display: 'inline', marginRight: '4px' }} />
+                  E-commerce & Varejo de Moda
+                </div>
                 <h3 className="template-footer-title">Lumina Boutique & Atelier · Vitrine Digital 360°</h3>
                 <p className="template-footer-desc">
                   Provador virtual interativo com rotação de manequins (frente e costas), detalhamento de tecidos nobres, valores claros e canal direto de atendimento via WhatsApp. Sem códigos pesados de terceiros, com abertura imediata no celular.
                 </p>
                 <div className="template-footer-highlights">
-                  <span>✓ Carregamento em menos de 1 segundo</span>
-                  <span>✓ Sem bibliotecas pesadas de animação</span>
-                  <span>✓ 100% responsivo para smartphone</span>
+                  <span><CheckCircle2 size={14} color="#3533cd" /> Carregamento em menos de 1 segundo</span>
+                  <span><CheckCircle2 size={14} color="#3533cd" /> Sem bibliotecas pesadas de animação</span>
+                  <span><CheckCircle2 size={14} color="#3533cd" /> 100% responsivo para smartphone</span>
                 </div>
               </div>
 
@@ -303,13 +317,13 @@ export default function Home({ profile }) {
                   <ExternalLink size={16} />
                 </a>
                 <a
-                  href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá Rodrigo! Vi o template de Loja de Roupa Feminina no seu site e gostaria de uma solução similar para o meu negócio.')}`}
+                  href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá Rodrigo. Vi o template de Loja de Roupa Feminina no seu site e gostaria de uma solução sob medida para o meu negócio.')}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="corp-link-text"
                   style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.86rem', marginTop: '0.5rem' }}
                 >
-                  <MessageSquare size={14} /> Quero uma solução sob medida
+                  <MessageSquare size={14} /> Solicitar solução sob medida
                 </a>
               </div>
             </div>
@@ -318,14 +332,14 @@ export default function Home({ profile }) {
       </section>
 
       {/* ============================================================
-         SEÇÃO DE RISCOS: O CUSTO DE NÃO AGIR (SPEC-SITE-005 RF-2)
+         SEÇÃO DE RISCOS: TRÊS PROBLEMAS QUE CUSTAM DINHEIRO (SPEC-SITE-008 Seção 3.2)
          ============================================================ */}
       <section className="section-risks scroll-reveal" id="riscos">
         <div className="section-head-center">
           <span className="section-tag-pill" style={{ color: '#dc2626', borderColor: 'rgba(220, 38, 38, 0.25)', background: 'rgba(220, 38, 38, 0.08)' }}>
-            O Custo de Não Agir
+            Problemas Operacionais
           </span>
-          <h2 className="section-title-large">Três vulnerabilidades operacionais que sangram caixa antes de você notar</h2>
+          <h2 className="section-title-large">Três problemas que custam dinheiro antes de aparecer no relatório</h2>
           <p className="section-desc-subtle">
             Na rotina comercial, o prejuízo raramente avisa com antecedência. Identificar onde a empresa está exposta é o primeiro passo para garantir estabilidade real.
           </p>
@@ -345,7 +359,7 @@ export default function Home({ profile }) {
                 <h3 className="risk-card-title">{risk.title}</h3>
                 <p className="risk-card-text">{risk.description}</p>
                 <div className="risk-card-consequence">
-                  <strong>Consequência direta: </strong>
+                  <strong>Consequência: </strong>
                   {risk.consequence}
                 </div>
               </div>
@@ -355,234 +369,127 @@ export default function Home({ profile }) {
       </section>
 
       {/* ============================================================
-         CARRO-CHEFE: O MODELO DE CONSULTORIA NA LINHA DE FRENTE
+         COMPARATIVO DE MODELOS DE CONTRATAÇÃO (SPEC-SITE-008 Seção 3.3)
          ============================================================ */}
-      <section className="section-fde-model scroll-reveal" id="linha-de-frente">
+      <section className="section-fde-model scroll-reveal" id="modelos">
         <div className="section-head-center">
           <span className="section-tag-pill">
             <Sparkles size={14} style={{ display: 'inline', marginRight: '4px' }} />
-            Carro-Chefe · Consultoria na Linha de Frente
+            Modelos de Contratação
           </span>
           <h2 className="section-title-large">
-            Por que ter um Consultor de Tecnologia e Sistemas na Linha de Frente muda o patamar da sua empresa?
+            Três formas de resolver tecnologia na sua empresa, e o que muda em cada uma
           </h2>
           <p className="section-desc-subtle">
-            No mercado corporativo moderno, contar com um <strong>Consultor de Tecnologia e Sistemas na Linha de Frente</strong> significa ter o especialista técnico sênior que sai do isolamento das telas abstratas para atuar diretamente dentro da operação da sua empresa. Veja a diferença prática para o seu negócio:
+            Entenda como cada modelo de contratação atua na prática e a diferença para a estabilidade da sua operação:
           </p>
         </div>
 
         <div className="fde-comparison-grid">
-          {/* CARD 1: SUPORTE TRADICIONAL */}
+          {/* MODELO 1: SUPORTE REATIVO */}
           <div className="fde-card fde-card-traditional stagger-card">
             <div className="fde-card-header">
               <div className="fde-card-icon traditional">
                 <AlertOctagon size={22} />
               </div>
-              <span className="fde-card-tag traditional">Suporte Reativo</span>
+              <span className="fde-card-tag traditional">Modelo 1</span>
             </div>
-            <h3 className="fde-card-title">O Técnico de Suporte Comum</h3>
+            <h3 className="fde-card-title">Modelo 1 · Suporte reativo por chamado</h3>
             <p className="fde-card-focus">
-              "Espera o equipamento queimar ou o sistema cair para tentar consertar."
+              "Age depois da falha. O atendimento começa quando o equipamento já parou e o prejuízo do dia já aconteceu."
             </p>
             <div className="fde-points-list">
               <div className="fde-point-item negative">
                 <XCircle size={18} className="fde-point-icon" color="#94a3b8" />
-                <span>Atuação 100% reativa: só aparece após a pane ou o prejuízo financeiro.</span>
+                <span><strong>Alcance da solução:</strong> Cobre equipamento e rede. Integração entre sistemas e automação de rotina ficam fora do alcance do serviço.</span>
               </div>
               <div className="fde-point-item negative">
                 <XCircle size={18} className="fde-point-icon" color="#94a3b8" />
-                <span>Limitado a conserto de hardware básico (troca de peças e formatação simples).</span>
+                <span><strong>Conhecimento da rotina:</strong> O atendimento é pontual, então a rotina de fechamento e o fluxo do balcão não entram na conta.</span>
               </div>
               <div className="fde-point-item negative">
                 <XCircle size={18} className="fde-point-icon" color="#94a3b8" />
-                <span>Não entende os fluxos de trabalho da equipe nem sabe criar automações de sistemas.</span>
+                <span><strong>Responsabilidade e contrato:</strong> Sem compromisso formal de continuidade. Cada chamado é uma negociação nova.</span>
               </div>
-              <div className="fde-point-item negative">
-                <XCircle size={18} className="fde-point-icon" color="#94a3b8" />
-                <span>Nenhum compromisso formal com a continuidade do seu faturamento.</span>
-              </div>
-            </div>
-            <div className="fde-card-conclusion traditional">
-              ⚠️ <strong>Resultado:</strong> Apaga incêndios pontuais, mas a causa raiz continua gerando novas paradas.
             </div>
           </div>
 
-          {/* CARD 2: PROGRAMADOR DISTANTE */}
+          {/* MODELO 2: DESENVOLVIMENTO REMOTO */}
           <div className="fde-card fde-card-distant stagger-card">
             <div className="fde-card-header">
               <div className="fde-card-icon distant">
                 <Clock size={22} />
               </div>
-              <span className="fde-card-tag distant">Desenvolvedor Distante</span>
+              <span className="fde-card-tag distant">Modelo 2</span>
             </div>
-            <h3 className="fde-card-title">A Agência ou Programador Remoto</h3>
+            <h3 className="fde-card-title">Modelo 2 · Desenvolvimento remoto por pacote</h3>
             <p className="fde-card-focus">
-              "Constrói sistemas fechados sem nunca ter visto a rotina real do seu balcão."
+              "Age dentro do escopo contratado. O que está fora do pacote fica sem dono até virar novo orçamento."
             </p>
             <div className="fde-points-list">
               <div className="fde-point-item negative">
                 <XCircle size={18} className="fde-point-icon" color="#d97706" />
-                <span>Fica isolado atrás de um monitor sem contato com o chão da sua empresa.</span>
+                <span><strong>Alcance da solução:</strong> Cobre o software encomendado. A infraestrutura que sustenta esse software continua sendo problema de outra pessoa.</span>
               </div>
               <div className="fde-point-item negative">
                 <XCircle size={18} className="fde-point-icon" color="#d97706" />
-                <span>Muitas vezes empurra ferramentas complexas que exigem mais digitação manual dos funcionários.</span>
+                <span><strong>Conhecimento da rotina:</strong> O trabalho acontece à distância, com o entendimento da operação limitado ao que coube na reunião de levantamento.</span>
               </div>
               <div className="fde-point-item negative">
                 <XCircle size={18} className="fde-point-icon" color="#d97706" />
-                <span>Ignora problemas físicos de rede comercial, impressoras fiscais e caixas travando.</span>
+                <span><strong>Responsabilidade e contrato:</strong> Atendimento por fila de chamados, com prazo de retorno que depende da posição na fila.</span>
               </div>
-              <div className="fde-point-item negative">
-                <XCircle size={18} className="fde-point-icon" color="#d97706" />
-                <span>Atendimento por fila impessoal de tickets (chamados de suporte) que demoram dias para ter retorno.</span>
-              </div>
-            </div>
-            <div className="fde-card-conclusion distant">
-              ⏳ <strong>Resultado:</strong> Sistemas caros e distantes da realidade operacional da sua equipe.
             </div>
           </div>
 
-          {/* CARD 3: CONSULTOR DE TECNOLOGIA E SISTEMAS (RODRIGO FREIRE) */}
+          {/* MODELO 3: RODRIGO FREIRE TECH */}
           <div className="fde-card fde-card-featured stagger-card">
             <div className="fde-card-header">
               <div className="fde-card-icon featured">
                 <Sparkles size={22} />
               </div>
-              <span className="fde-card-tag featured">★ Carro-Chefe · Linha de Frente</span>
+              <span className="fde-card-tag featured">Modelo 3</span>
             </div>
             <h3 className="fde-card-title" style={{ color: '#000000' }}>
-              Consultor de Tecnologia e Sistemas <span style={{ fontSize: '0.82em', color: '#3533cd', display: 'block' }}>(Atuação Direta na Linha de Frente)</span>
+              Modelo 3 · Rodrigo Freire Tech
             </h3>
             <p className="fde-card-focus" style={{ color: '#3533cd', fontWeight: '600' }}>
-              "Atuação direta dentro do seu negócio para destravar processos e blindar sua operação."
+              "Ajo antes. Conheço a operação por dentro e trato o gargalo enquanto ele ainda é ajuste, não pane."
             </p>
             <div className="fde-points-list">
               <div className="fde-point-item positive">
                 <CheckCircle2 size={18} className="fde-point-icon" color="#3533cd" />
-                <span><strong>Presença de campo:</strong> diagnóstico e atuação técnica presencial em Porto Velho ou remoto seguro.</span>
+                <span><strong>Alcance da solução:</strong> Cubro os dois lados. Do servidor ao balcão, com um único responsável pelo conjunto funcionando.</span>
               </div>
               <div className="fde-point-item positive">
                 <CheckCircle2 size={18} className="fde-point-icon" color="#3533cd" />
-                <span><strong>Tecnologia e Sistemas de ponta a ponta:</strong> infraestrutura estável + automação de rotinas + conexão entre sistemas.</span>
+                <span><strong>Conhecimento da rotina:</strong> Estou presencialmente na sua operação em Porto Velho. Vejo o fechamento acontecer e projeto o sistema em cima do que realmente ocorre.</span>
               </div>
               <div className="fde-point-item positive">
                 <CheckCircle2 size={18} className="fde-point-icon" color="#3533cd" />
-                <span><strong>Fim do trabalho manual:</strong> rotinas que integram seus sistemas e geram relatórios consolidados em segundos.</span>
+                <span><strong>Responsabilidade e contrato:</strong> Responsável técnico definido em contrato, com escopo e preço fechados por escrito e cláusula de sigilo sobre os dados da empresa.</span>
               </div>
-              <div className="fde-point-item positive">
-                <CheckCircle2 size={18} className="fde-point-icon" color="#3533cd" />
-                <span><strong>Responsabilidade técnica direta:</strong> escopo fechado por escrito, base jurídica e sigilo estrito de dados sob a LGPD.</span>
-              </div>
-            </div>
-            <div className="fde-card-conclusion featured">
-              🛡️ <strong>Resultado:</strong> Operação contínua, equipe produtiva sem retrabalho e faturamento protegido.
             </div>
           </div>
         </div>
       </section>
 
       {/* ============================================================
-         SUBSEÇÃO: INTELIGÊNCIA ARTIFICIAL PRÁTICA PARA EMPRESAS
-         ============================================================ */}
-      <section className="section-ai-pragmatic scroll-reveal" id="ia-para-negocios">
-        <div className="ai-pragmatic-card">
-          <div className="section-head-center">
-            <span className="section-tag-pill" style={{ background: 'rgba(53, 51, 205, 0.08)', color: '#3533cd', borderColor: 'rgba(53, 51, 205, 0.25)' }}>
-              <Sparkles size={14} style={{ display: 'inline', marginRight: '4px' }} />
-              Inteligência Artificial Aplicada ao Negócio
-            </span>
-            <h2 className="section-title-large" style={{ marginTop: '0.85rem', marginBottom: '1rem' }}>
-              Inteligência Artificial na sua empresa da forma correta: resultados reais em vez de modismos
-            </h2>
-            <p className="section-desc-subtle" style={{ maxWidth: '820px', margin: '0 auto 2.5rem' }}>
-              Como Consultor de Tecnologia e Sistemas, ajudo sua empresa a implementar Inteligência Artificial sob medida para a sua rotina operacional. O objetivo é traduzir essa inovação em ferramentas eficazes, economia palpável de tempo e ganhos reais de faturamento — longe de modinhas passageiras.
-            </p>
-          </div>
-
-          <div className="ai-pragmatic-grid">
-            {/* O ERRO COMUM */}
-            <div className="ai-card-item error-case stagger-card">
-              <div className="ai-card-tag danger">⚠️ Por que tantas empresas falham ao tentar usar IA?</div>
-              <h3 className="ai-card-title">O mito de "só ligar o ChatGPT e mandar fazer"</h3>
-              <p className="ai-card-desc">
-                Muitas empresas tentam adotar Inteligência Artificial no improviso, abrindo ferramentas genéricas e esperando que elas resolvam a rotina do dia a dia sem nenhum preparo técnico:
-              </p>
-              <div className="ai-points-list">
-                <div className="ai-point-row">
-                  <XCircle size={18} color="#ef4444" className="ai-icon-shrink" />
-                  <span><strong>Esquece o que era para fazer:</strong> Em diálogos mais longos ou tarefas com etapas encadeadas, a ferramenta perde o contexto inicial e passa a emitir respostas desconexas ou incompletas.</span>
-                </div>
-                <div className="ai-point-row">
-                  <XCircle size={18} color="#ef4444" className="ai-icon-shrink" />
-                  <span><strong>Decisões contra as suas regras:</strong> Por não ter sido ancorada nas diretrizes do seu negócio, a IA inventa dados, concede descontos fora da política da loja ou promete prazos irreais ao cliente.</span>
-                </div>
-                <div className="ai-point-row">
-                  <XCircle size={18} color="#ef4444" className="ai-icon-shrink" />
-                  <span><strong>Falta de treino com a realidade da sua empresa:</strong> Ninguém alimentou o sistema com o catálogo, preços e exceções comerciais que só quem vive a sua rotina conhece.</span>
-                </div>
-              </div>
-              <div className="ai-card-summary danger">
-                <strong>Resultado:</strong> Frustração dos clientes, retrabalho para a equipe corrigir erros e a falsa impressão de que "IA não serve para o meu negócio".
-              </div>
-            </div>
-
-            {/* A SOLUÇÃO NA LINHA DE FRENTE */}
-            <div className="ai-card-item success-case stagger-card">
-              <div className="ai-card-tag success">★ Como eu implemento na sua empresa</div>
-              <h3 className="ai-card-title">IA integrada aos seus sistemas e blindada por regras</h3>
-              <p className="ai-card-desc">
-                Minha atuação como Consultor de Tecnologia e Sistemas é estruturar a IA como uma extensão segura e produtiva da sua equipe:
-              </p>
-              <div className="ai-points-list">
-                <div className="ai-point-row">
-                  <CheckCircle2 size={18} color="#3533cd" className="ai-icon-shrink" />
-                  <span><strong>Treinada com as regras do seu negócio:</strong> Alimentamos a inteligência com o catálogo, políticas de garantia e padrões de atendimento específicos da sua operação.</span>
-                </div>
-                <div className="ai-point-row">
-                  <CheckCircle2 size={18} color="#3533cd" className="ai-icon-shrink" />
-                  <span><strong>Travas de segurança (<em>guardrails</em>):</strong> Limites rigorosos programados para impedir que o sistema invente informações ou tome decisões além da sua alçada (mecanismos que bloqueiam respostas fora do escopo).</span>
-                </div>
-                <div className="ai-point-row">
-                  <CheckCircle2 size={18} color="#3533cd" className="ai-icon-shrink" />
-                  <span><strong>Ganho real de tempo e vendas:</strong> Triagem ágil de mensagens, geração automática de resumos de pedidos e assistência inteligente que poupa horas de digitação manual de cada funcionário.</span>
-                </div>
-              </div>
-              <div className="ai-card-summary success">
-                <strong>Resultado:</strong> Respostas rápidas e confiáveis, equipe focada em fechar negócios e a segurança de que nenhuma regra da sua empresa será quebrada.
-              </div>
-            </div>
-          </div>
-
-          <div className="ai-cta-box">
-            <a
-              href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá Rodrigo! Li no seu site sobre a implementação prática de Inteligência Artificial para empresas e gostaria de entender como aplicar na minha rotina.')}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="corp-btn-accent"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem', padding: '0.9rem 2rem', fontSize: '0.98rem' }}
-            >
-              <MessageSquare size={18} /> Conversar sobre IA Prática para a Sua Empresa
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* ============================================================
-         BLOCO 2: OS 3 PILARES DE ATUAÇÃO B2B (SPEC-SITE-005 RF-1)
+         QUATRO PILARES DE ATUAÇÃO (SPEC-SITE-008 Seções 3.4 e 3.5)
          ============================================================ */}
       <section className="section-services-catalog scroll-reveal" id="servicos" style={{ paddingTop: '3rem', paddingBottom: '5rem' }}>
         <div className="section-head-center">
-          <span className="section-tag-pill">Pilares de Atuação B2B</span>
-          <h2 className="section-title-large">Três pilares estruturados para a sua empresa não parar</h2>
+          <span className="section-tag-pill">Pilares de Atuação</span>
+          <h2 className="section-title-large">Quatro pilares de atuação</h2>
           <p className="section-desc-subtle">
-            Sem promessas vazias, ferramentas desnecessárias ou mensalidades abusivas. Escopo fechado, método claro e responsabilidade técnica direta sobre a sua operação.
+            Cada pilar responde por uma frente da sua empresa, com entregáveis claros, escopo fechado e ganho comercial medido.
           </p>
         </div>
 
-        <div className="services-catalog-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '2rem', marginTop: '3rem' }}>
+        <div className="services-catalog-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem', marginTop: '3rem' }}>
           {DEFAULT_SERVICES.map((service) => {
             const IconComponent = ICON_MAP[service.icon] || Wrench;
-            const message = service.whatsapp_msg || `Olá Rodrigo! Gostaria de conversar sobre: ${service.title}`;
+            const message = service.whatsapp_msg || `Olá Rodrigo. Gostaria de solicitar uma avaliação para ${service.title}.`;
 
             return (
               <div key={service.id} className="service-card-liquid stagger-card" style={{ display: 'flex', flexDirection: 'column' }}>
@@ -604,32 +511,19 @@ export default function Home({ profile }) {
                   </div>
                 )}
 
-                {/* Gargalo */}
-                <div style={{ marginBottom: '0.85rem' }}>
-                  <p style={{ fontSize: '0.94rem', color: 'var(--text-body)', lineHeight: '1.6', margin: 0 }}>
-                    <strong style={{ color: '#ef4444' }}>O gargalo: </strong>
-                    {service.pain}
-                  </p>
-                </div>
+                <p style={{ fontSize: '0.94rem', color: 'var(--text-body)', lineHeight: '1.6', marginBottom: '1.25rem' }}>
+                  {service.description}
+                </p>
 
-                {/* O que eu assumo */}
-                <div style={{ marginBottom: '1rem' }}>
-                  <p style={{ fontSize: '0.94rem', color: 'var(--text-body)', lineHeight: '1.6', margin: 0 }}>
-                    <strong style={{ color: '#3533cd' }}>O que eu assumo: </strong>
-                    {service.solution}
-                  </p>
-                </div>
-
-                {/* Entregas do Pilar */}
                 {service.deliverables && service.deliverables.length > 0 && (
-                  <div className="service-deliverables-box">
-                    <div className="service-deliverables-title">
-                      <Check size={14} /> Entregas incluídas neste pilar:
+                  <div className="service-deliverables-box" style={{ marginBottom: '1.25rem' }}>
+                    <div className="service-deliverables-title" style={{ fontSize: '0.82rem', fontWeight: '700', color: 'var(--color-brand-ink)', marginBottom: '0.65rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                      <Check size={14} /> Entregáveis incluídos:
                     </div>
                     <ul className="service-deliverables-list">
                       {service.deliverables.map((item, idx) => (
                         <li key={idx} className="service-deliverable-item">
-                          <CheckCircle2 size={15} />
+                          <CheckCircle2 size={15} color="#3533cd" />
                           <span>{item}</span>
                         </li>
                       ))}
@@ -637,10 +531,9 @@ export default function Home({ profile }) {
                   </div>
                 )}
 
-                {/* Ganho Concreto */}
                 <div style={{ marginTop: 'auto', padding: '0.85rem 1rem', background: 'rgba(53, 51, 205, 0.06)', borderRadius: '12px', border: '1px solid rgba(53, 51, 205, 0.2)', marginBottom: '1.25rem' }}>
                   <p style={{ fontSize: '0.9rem', color: 'var(--text-heading)', lineHeight: '1.5', margin: 0 }}>
-                    <strong>Resultado prático: </strong>
+                    <strong>Ganho: </strong>
                     {service.gain}
                   </p>
                 </div>
@@ -663,70 +556,13 @@ export default function Home({ profile }) {
       </section>
 
       {/* ============================================================
-         BLOCO 3: COMPROMISSO & PADRÃO DE ATENDIMENTO
-         ============================================================ */}
-      <section className="section-pains-container scroll-reveal" id="diferenciais" style={{ paddingTop: '5rem', paddingBottom: '5rem' }}>
-        <div className="section-head-center">
-          <span className="section-tag-pill">Compromisso & Padrão de Atendimento</span>
-          <h2 className="section-title-large">Por que contar com um responsável técnico dedicado gera mais segurança e retorno?</h2>
-          <p className="section-desc-subtle">
-            Mais do que consertos pontuais quando algo quebra, sua empresa ganha continuidade nas vendas, blindagem jurídica e ferramentas que a equipe opera sem complicação.
-          </p>
-        </div>
-
-        <div className="pains-grid-cards" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginTop: '2.5rem' }}>
-          
-          <div className="pain-card-item stagger-card">
-            <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
-              <Gauge size={22} color="#3533cd" />
-            </div>
-            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Fácil de operar no primeiro dia</h3>
-            <p style={{ fontSize: '0.92rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
-              Elimino telas confusas que exigem semanas de treino. Implemento e oriento sobre ferramentas limpas que qualquer colaborador aprende em poucos minutos, acabando com erros operacionais.
-            </p>
-          </div>
-
-          <div className="pain-card-item stagger-card">
-            <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
-              <Clock size={22} color="#3533cd" />
-            </div>
-            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Estabilidade e balcão sem filas</h3>
-            <p style={{ fontSize: '0.92rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
-              Cliente parado em fila por instabilidade técnica desiste da compra e queima a reputação da loja. Infraestrutura estável destrava caixas PDV (ponto de venda no balcão) e protege seu faturamento diário.
-            </p>
-          </div>
-
-          <div className="pain-card-item stagger-card">
-            <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
-              <ShieldCheck size={22} color="#3533cd" />
-            </div>
-            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Blindagem jurídica e LGPD</h3>
-            <p style={{ fontSize: '0.92rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
-              Formação em Direito somada à tecnologia: garantia de domínio prático da LGPD (Lei Geral de Proteção de Dados, para blindar seu negócio contra vazamentos e multas) e contratos formais com sigilo estrito.
-            </p>
-          </div>
-
-          <div className="pain-card-item stagger-card">
-            <div className="service-icon-wrapper" style={{ marginBottom: '1rem' }}>
-              <MapPin size={22} color="#3533cd" />
-            </div>
-            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem' }}>Atendimento direto comigo em Porto Velho</h3>
-            <p style={{ fontSize: '0.92rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
-              Moro em Porto Velho e você fala diretamente com quem resolve, sem intermediários nem chamados esquecidos. Atendimento presencial no seu balcão ou acesso remoto imediato e seguro.
-            </p>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ============================================================
-         BLOCO 4: MÉTODO EM 4 ETAPAS COM ESCOPO FECHADO (SPEC-SITE-005 RF-4)
+         BLOCO 4: MÉTODO EM 4 ETAPAS (SPEC-SITE-008 Seção 3.6)
          ============================================================ */}
       <section className="section-methodology-bg scroll-reveal" id="como-funciona" style={{ paddingTop: '5rem', paddingBottom: '5rem' }}>
         <div className="methodology-inner">
           <div className="section-head-center">
             <span className="section-tag-pill">Método de Trabalho</span>
-            <h2 className="section-title-large">Quatro etapas claras, com escopo e valor fechados antes de começar</h2>
+            <h2 className="section-title-large">Quatro etapas, com escopo e valor definidos antes de começar</h2>
             <p className="section-desc-subtle">
               Processo transparente e previsível: você sabe exatamente o que será feito, o prazo e o investimento antes de qualquer intervenção técnica.
             </p>
@@ -747,7 +583,7 @@ export default function Home({ profile }) {
       </section>
 
       {/* ============================================================
-         BLOCO 5: DECISÃO DE NEGÓCIO & AVALIAÇÃO OPERACIONAL (SPEC-SITE-005 RF-5)
+         BLOCO 5: DECISÃO DE NEGÓCIO & FORMULÁRIO (SPEC-SITE-008 Seção 3.7)
          ============================================================ */}
       <section className="section-diagnostic-contact" id="contato" style={{ paddingTop: '5rem', paddingBottom: '6rem' }}>
         <div className="diagnostic-contact-inner" style={{ maxWidth: '1080px', margin: '0 auto' }}>
@@ -758,7 +594,7 @@ export default function Home({ profile }) {
                 Descobrir uma vulnerabilidade no dia da pane custa muito mais caro que prevenir.
               </h2>
               <p className="section-desc-subtle" style={{ marginBottom: '1.75rem' }}>
-                Fale diretamente comigo pelo WhatsApp para uma avaliação transparente da sua operação. Identificamos o que precisa de proteção imediata, com escopo e preço fechados por escrito antes de qualquer início.
+                Fale diretamente comigo pelo WhatsApp para uma avaliação transparente da sua operação. Identificamos o que precisa de atenção imediata, com escopo e orçamento definidos antes de qualquer início.
               </p>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', marginBottom: '2rem' }}>
@@ -766,7 +602,7 @@ export default function Home({ profile }) {
                   <CheckCircle2 size={18} color="#3533cd" /> Avaliação prática de equipamentos, rede e rotinas manuais da equipe
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#000000', fontWeight: '600' }}>
-                  <CheckCircle2 size={18} color="#3533cd" /> Escopo fechado e orçamento definido por escrito antes de começar
+                  <CheckCircle2 size={18} color="#3533cd" /> Escopo definido e orçamento por escrito antes de começar
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#000000', fontWeight: '600' }}>
                   <CheckCircle2 size={18} color="#3533cd" /> Atendimento direto com o Rodrigo em Porto Velho (presencial ou remoto seguro)
@@ -775,27 +611,27 @@ export default function Home({ profile }) {
             </div>
 
             <a
-              href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá Rodrigo! Gostaria de solicitar uma avaliação da operação de tecnologia da minha empresa.')}`}
+              href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá Rodrigo. Sou de uma empresa em Porto Velho e gostaria de solicitar uma avaliação da nossa operação de tecnologia.')}`}
               target="_blank"
               rel="noopener noreferrer"
               className="corp-btn-outline-glass"
               style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.85rem 1.8rem', width: 'fit-content' }}
             >
-              <MessageSquare size={18} /> Solicitar Avaliação da Operação
+              <MessageSquare size={18} /> Solicitar avaliação da sua operação
             </a>
           </div>
 
           <form onSubmit={handleFormSubmit} className="diagnostic-form-glass">
             <h3 style={{ fontSize: '1.25rem', marginBottom: '1.25rem', color: 'var(--text-heading)' }}>
-              Ou agende uma avaliação da sua operação
+              Solicitar avaliação da sua operação
             </h3>
 
             {formStatus === 'success' ? (
               <div className="form-feedback-success" role="status" aria-live="polite">
                 <CheckCircle2 size={24} color="#10B981" style={{ flexShrink: 0, marginTop: '2px' }} />
                 <div>
-                  <strong>Solicitação enviada com sucesso!</strong>
-                  <p>O WhatsApp foi aberto para você confirmar os dados diretamente com o Rodrigo.</p>
+                  <strong>Solicitação enviada.</strong>
+                  <p>O WhatsApp foi aberto para você confirmar os dados comigo diretamente.</p>
                   {submittedWhatsappUrl && (
                     <a
                       href={submittedWhatsappUrl}
@@ -823,7 +659,7 @@ export default function Home({ profile }) {
             ) : (
               <>
                 <div className="form-group-item">
-                  <label className="form-label-corp">Seu Nome</label>
+                  <label className="form-label-corp">Seu nome</label>
                   <input
                     type="text"
                     required
@@ -835,7 +671,7 @@ export default function Home({ profile }) {
                 </div>
 
                 <div className="form-group-item">
-                  <label className="form-label-corp">Seu WhatsApp com DDD</label>
+                  <label className="form-label-corp">WhatsApp</label>
                   <input
                     type="tel"
                     required
@@ -847,7 +683,7 @@ export default function Home({ profile }) {
                 </div>
 
                 <div className="form-group-item">
-                  <label className="form-label-corp">Nome da sua Loja ou Empresa (opcional)</label>
+                  <label className="form-label-corp">Nome da empresa (opcional)</label>
                   <input
                     type="text"
                     value={formData.empresa}
@@ -858,7 +694,7 @@ export default function Home({ profile }) {
                 </div>
 
                 <div className="form-group-item">
-                  <label className="form-label-corp">O que precisa de atenção na sua operação?</label>
+                  <label className="form-label-corp">O que precisa de atenção na sua operação</label>
                   <textarea
                     required
                     rows={3}
@@ -876,7 +712,7 @@ export default function Home({ profile }) {
                   className="corp-btn-accent"
                   style={{ width: '100%', marginTop: '0.5rem', justifyContent: 'center' }}
                 >
-                  <Send size={16} /> {formStatus === 'sending' ? 'Preparando conversa no WhatsApp...' : 'Solicitar Avaliação Operacional'}
+                  <Send size={16} /> {formStatus === 'sending' ? 'Preparando conversa no WhatsApp...' : 'Enviar solicitação'}
                 </button>
               </>
             )}

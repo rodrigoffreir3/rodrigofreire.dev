@@ -2,8 +2,8 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
 const SITE_URL = 'https://rodrigofreire.dev.br';
-const DEFAULT_TITLE = 'Rodrigo Freire · TI Empresarial de Alto Nível — Porto Velho';
-const DEFAULT_DESCRIPTION = 'Consultoria e suporte em TI empresarial de alto padrão em Porto Velho - RO. Atendimento ágil, redes seguras, conformidade com a LGPD (Lei Geral de Proteção de Dados) e desenvolvimento de sistemas sob medida.';
+const DEFAULT_TITLE = 'Rodrigo Freire Tech · Sistemas sob medida para empresas — Porto Velho';
+const DEFAULT_DESCRIPTION = 'Desenvolvimento de sistemas, sites e lojas online sob medida, automação de rotinas manuais e estabilidade de caixa e rede para empresas de Porto Velho. Escopo e preço fechados por escrito.';
 const DEFAULT_IMAGE = `${SITE_URL}/og-default.png`;
 
 export default function SEO({
@@ -37,7 +37,7 @@ export default function SEO({
       <link rel="canonical" href={canonicalUrl} />
 
       {/* Open Graph / Facebook / WhatsApp */}
-      <meta property="og:site_name" content="Rodrigo Freire — TI Empresarial" />
+      <meta property="og:site_name" content="Rodrigo Freire Tech" />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={canonicalUrl} />

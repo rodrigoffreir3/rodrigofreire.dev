@@ -48,7 +48,7 @@ export default function Navbar({ profile }) {
               className="navbar-brand-logo-img"
             />
             <span className="logo-subtitle-desc">
-              {profile?.tagline || 'TI Empresarial & Continuidade Operacional · Porto Velho'}
+              {profile?.tagline || 'Sistemas sob medida para empresas · Porto Velho, RO'}
             </span>
           </Link>
         </div>
@@ -60,11 +60,11 @@ export default function Navbar({ profile }) {
           </li>
 
           <li>
-            <Link to="/#servicos" className={location.hash === '#servicos' ? 'active' : ''}>O que eu resolvo</Link>
+            <Link to="/#servicos" className={location.hash === '#servicos' ? 'active' : ''}>Quatro pilares</Link>
           </li>
 
           <li>
-            <Link to="/#diferenciais" className={location.hash === '#diferenciais' ? 'active' : ''}>Diferenciais</Link>
+            <Link to="/#comparativo" className={location.hash === '#comparativo' ? 'active' : ''}>Comparativo</Link>
           </li>
 
           <li>
@@ -88,13 +88,13 @@ export default function Navbar({ profile }) {
               onClick={() => setDropdownOpen(!dropdownOpen)}
               aria-expanded={dropdownOpen}
             >
-              Cases <ChevronDown size={14} className={`dropdown-arrow ${dropdownOpen ? 'rotated' : ''}`} />
+              Projetos <ChevronDown size={14} className={`dropdown-arrow ${dropdownOpen ? 'rotated' : ''}`} />
             </button>
             
             {dropdownOpen && (
               <div className="dropdown-menu-box">
                 <Link to="/projetos" className="dropdown-link-all">
-                  ✦ Ver Todos os Cases
+                  Ver todos os projetos
                 </Link>
                 <div className="dropdown-divider" />
                 {projects.map((proj) => (
@@ -111,7 +111,7 @@ export default function Navbar({ profile }) {
           </li>
 
           <li>
-            <Link to="/blog" className={location.pathname.startsWith('/blog') ? 'active' : ''}>Blog</Link>
+            <Link to="/blog" className={location.pathname.startsWith('/blog') ? 'active' : ''}>Artigos</Link>
           </li>
 
           <li>
@@ -122,7 +122,7 @@ export default function Navbar({ profile }) {
         {/* CTA NO HEADER DESKTOP & MOBILE TOGGLE */}
         <div className="header-actions-right">
           <a
-            href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá Rodrigo! Gostaria de tirar uma dúvida sobre serviços de informática/TI.')}`}
+            href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá Rodrigo. Sou de uma empresa em Porto Velho e gostaria de solicitar uma avaliação da nossa operação de tecnologia.')}`}
             target="_blank"
             rel="noopener noreferrer"
             className="corp-btn-accent header-cta-btn"
@@ -153,31 +153,31 @@ export default function Navbar({ profile }) {
               Início
             </Link>
             <Link to="/#servicos" className={`mobile-nav-link ${location.hash === '#servicos' ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
-              O que eu resolvo
+              Quatro pilares
             </Link>
-            <Link to="/#diferenciais" className={`mobile-nav-link ${location.hash === '#diferenciais' ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
-              Diferenciais
+            <Link to="/#comparativo" className={`mobile-nav-link ${location.hash === '#comparativo' ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
+              Comparativo
             </Link>
             <Link to="/#como-funciona" className={`mobile-nav-link ${location.hash === '#como-funciona' ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
               Como funciona
             </Link>
             <Link to="/sobre" className={`mobile-nav-link ${isActive('/sobre') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
-              Sobre mim
+              Sobre
             </Link>
             <Link to="/projetos" className={`mobile-nav-link ${location.pathname.startsWith('/projetos') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
-              Cases de Sucesso
+              Projetos
             </Link>
             <Link to="/blog" className={`mobile-nav-link ${location.pathname.startsWith('/blog') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
-              Blog & Artigos
+              Artigos
             </Link>
             <Link to="/contato" className={`mobile-nav-link ${isActive('/contato') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
-              Contato Direto
+              Contato
             </Link>
 
             <div className="mobile-drawer-divider" />
 
             <a
-              href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá Rodrigo! Gostaria de tirar uma dúvida sobre serviços de informática/TI.')}`}
+              href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá Rodrigo. Sou de uma empresa em Porto Velho e gostaria de solicitar uma avaliação da nossa operação de tecnologia.')}`}
               target="_blank"
               rel="noopener noreferrer"
               className="corp-btn-accent mobile-drawer-cta"

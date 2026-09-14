@@ -71,7 +71,7 @@ export default function ProjectDetail({ projects, profile }) {
   return (
     <article className="project-case-page" style={{ maxWidth: '960px', margin: '0 auto', padding: '2.5rem 1.5rem 6rem' }}>
       <SEO
-        title={`${project.title} · Rodrigo Freire — Porto Velho`}
+        title={`${project.title} · Rodrigo Freire Tech`}
         description={project.summary}
         canonicalPath={`/projetos/${project.slug}`}
         image={hasRealCover ? project.cover_image : undefined}
@@ -81,15 +81,14 @@ export default function ProjectDetail({ projects, profile }) {
       {/* NAVEGAÇÃO DE RETORNO */}
       <div style={{ marginBottom: '1.75rem' }}>
         <Link to="/projetos" className="back-link-corp">
-          <ArrowLeft size={16} /> Voltar para todos os cases
+          <ArrowLeft size={16} /> Voltar para projetos
         </Link>
       </div>
 
       {/* 1. CABEÇALHO DO CASE */}
       <header className="project-case-header" style={{ marginBottom: '3rem' }}>
         <div className="section-tag-pill" style={{ marginBottom: '1rem' }}>
-          <Sparkles size={14} style={{ display: 'inline', marginRight: '5px' }} />
-          <span>{project.badge || "Case de Sucesso Corporativo"}</span>
+          <span>{project.badge || "Projeto & Engenharia"}</span>
         </div>
         
         <h1 style={{ fontSize: 'clamp(2.2rem, 3.8vw, 3.2rem)', fontWeight: '800', lineHeight: '1.2', marginBottom: '1.25rem', color: 'var(--text-heading)' }}>
@@ -108,11 +107,10 @@ export default function ProjectDetail({ projects, profile }) {
         )}
       </header>
 
-      {/* 2. O PROBLEMA QUE RESOLVE */}
+      {/* 2. O PROBLEMA */}
       {project.problem_description && (
         <section className="project-section-box apple-liquid-glass" style={{ padding: '2.2rem', marginBottom: '2.5rem' }}>
-          <div className="section-tag-pill" style={{ marginBottom: '0.75rem' }}>Contexto & Desafio</div>
-          <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>O Problema que Resolve</h2>
+          <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>O problema</h2>
           <div className="project-prose" style={{ fontSize: '1rem', lineHeight: '1.7', color: 'var(--text-body)' }}>
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {project.problem_description}
@@ -124,8 +122,7 @@ export default function ProjectDetail({ projects, profile }) {
       {/* 3. GALERIA (Apenas imagens reais cadastradas pelo CMS) */}
       {realGallery.length > 0 && (
         <section className="project-section-box apple-liquid-glass" style={{ padding: '2.2rem', marginBottom: '2.5rem' }}>
-          <div className="section-tag-pill" style={{ marginBottom: '0.75rem' }}>Demonstração Visual</div>
-          <h2 style={{ fontSize: '1.5rem', marginBottom: '1.25rem' }}>Telas e Registros Visuais</h2>
+          <h2 style={{ fontSize: '1.5rem', marginBottom: '1.25rem' }}>Telas e registros visuais</h2>
           <div className="gallery-grid-corp" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
             {realGallery.map((item, idx) => (
               <div key={idx} style={{ borderRadius: '14px', overflow: 'hidden', border: '1px solid var(--color-gray-ui)' }}>
@@ -141,11 +138,10 @@ export default function ProjectDetail({ projects, profile }) {
         </section>
       )}
 
-      {/* 4. ARQUITETURA & COMO FUNCIONA POR TRÁS */}
+      {/* 4. COMO FUNCIONA */}
       {project.technical_details && (
-        <section className="project-section-box apple-liquid-glass" style={{ padding: '2.2rem', marginBottom: '3rem' }}>
-          <div className="section-tag-pill" style={{ marginBottom: '0.75rem' }}>Engenharia & Arquitetura</div>
-          <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Como Funciona por Trás</h2>
+        <section className="project-section-box apple-liquid-glass" style={{ padding: '2.2rem', marginBottom: '2.5rem' }}>
+          <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Como funciona</h2>
           <div className="project-prose" style={{ fontSize: '1rem', lineHeight: '1.7', color: 'var(--text-body)' }}>
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {project.technical_details}
@@ -154,16 +150,40 @@ export default function ProjectDetail({ projects, profile }) {
         </section>
       )}
 
-      {/* 5. BOTÕES PÍLULA DE AÇÃO E GITHUB (SEM BLOCO PESADO) */}
+      {/* 5. TECNOLOGIAS */}
+      {project.tags && project.tags.length > 0 && (
+        <section className="project-section-box apple-liquid-glass" style={{ padding: '2.2rem', marginBottom: '3rem' }}>
+          <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Tecnologias</h2>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+            {project.tags.map((t, idx) => (
+              <span
+                key={idx}
+                style={{
+                  fontSize: '0.85rem',
+                  fontWeight: '600',
+                  padding: '0.35rem 0.85rem',
+                  borderRadius: '999px',
+                  background: 'rgba(0, 0, 0, 0.06)',
+                  color: 'var(--color-brand-ink)'
+                }}
+              >
+                {t}
+              </span>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* 6. BOTÕES DE AÇÃO E GITHUB */}
       <div className="project-pill-actions-container" style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center', justifyContent: 'center', padding: '2rem 0', borderTop: '1px solid var(--color-gray-ui)' }}>
         <a
-          href={`https://wa.me/${phone}?text=${encodeURIComponent(`Olá! Gostei muito do case "${project.title}" e gostaria de conversar sobre minhas ideias para a minha empresa.`)}`}
+          href={`https://wa.me/${phone}?text=${encodeURIComponent(`Olá Rodrigo. Vi o projeto "${project.title}" no seu site e gostaria de conversar a respeito.`)}`}
           target="_blank"
           rel="noopener noreferrer"
           className="corp-btn-accent"
           style={{ padding: '0.85rem 1.8rem', fontSize: '1rem', borderRadius: '999px' }}
         >
-          <MessageSquare size={18} /> Me fale sobre suas ideias
+          <MessageSquare size={18} /> Conversar sobre este projeto
         </a>
 
         {project.github_url && (

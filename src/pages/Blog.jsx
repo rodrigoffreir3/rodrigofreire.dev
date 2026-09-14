@@ -20,7 +20,7 @@ export default function Blog({ posts = [] }) {
       {
         '@type': 'ListItem',
         'position': 2,
-        'name': 'Blog',
+        'name': 'Artigos',
         'item': 'https://rodrigofreire.dev.br/blog'
       }
     ]
@@ -29,8 +29,8 @@ export default function Blog({ posts = [] }) {
   return (
     <div className="portfolio-container">
       <SEO
-        title="Blog & Publicações Técnicas · Rodrigo Freire — Porto Velho"
-        description="Artigos e análises sobre TI empresarial, conformidade com a LGPD, inteligência artificial, arquitetura de sistemas e segurança da informação."
+        title="Artigos · Rodrigo Freire Tech"
+        description="Notas sobre engenharia, tecnologia aplicada a negócio e o que observo no mercado."
         canonicalPath="/blog"
         jsonLd={blogBreadcrumbJsonLd}
       />
@@ -39,11 +39,11 @@ export default function Blog({ posts = [] }) {
       <div style={{ marginBottom: '3.5rem', textAlign: 'center' }}>
         <div className="corp-badge" style={{ margin: '0 auto 0.85rem auto' }}>
           <BookOpen size={14} />
-          <span>Artigos & Publicações</span>
+          <span>Artigos e Publicações</span>
         </div>
-        <h2 className="section-title-large">Blog & Reflexões de Engenharia</h2>
+        <h1 className="section-title-large">Artigos</h1>
         <p className="section-desc-subtle" style={{ maxWidth: '680px', margin: '0 auto' }}>
-          Análises sobre arquitetura de sistemas, inteligência artificial, eficiência de hardware e segurança no kernel.
+          Notas sobre engenharia, tecnologia aplicada a negócio e o que observo no mercado.
         </p>
       </div>
 
@@ -67,13 +67,13 @@ export default function Blog({ posts = [] }) {
               <p>{post.description}</p>
               
               <Link to={`/blog/${post.slug}`} className="corp-btn corp-btn-secondary" style={{ padding: '0.55rem 1.25rem', fontSize: '0.88rem', marginTop: 'auto', alignSelf: 'flex-start' }}>
-                Ler Artigo Completo →
+                Ler artigo completo
               </Link>
             </div>
           ))
         ) : (
           <div style={{ gridColumn: '1 / -1', textAlign: 'center', padding: '4rem 1rem' }}>
-            <p style={{ color: 'var(--text-muted)' }}>Nenhum artigo encontrado com os filtros selecionados.</p>
+            <p style={{ color: 'var(--text-muted)' }}>Nenhum artigo corresponde aos filtros selecionados.</p>
           </div>
         )}
       </div>

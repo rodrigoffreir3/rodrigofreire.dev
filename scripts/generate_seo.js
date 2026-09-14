@@ -153,7 +153,7 @@ function prerenderRoutes() {
   const homeJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    'name': 'Rodrigo Freire — Engenharia na Linha de Frente (Forward Deployed Engineer)',
+    'name': 'Rodrigo Freire Tech',
     'image': DEFAULT_IMAGE,
     'url': SITE_URL,
     'telephone': '+5569992782919',
@@ -169,12 +169,12 @@ function prerenderRoutes() {
       'latitude': -8.7619,
       'longitude': -63.9039
     },
-    'description': 'Engenharia de TI na linha de frente da sua empresa em Porto Velho. Atuação direta, automação de processos manuais, estabilidade de caixas e redes comerciais com escopo fechado por escrito.'
+    'description': 'Desenvolvimento de sistemas sob medida, automação de processos e infraestrutura de tecnologia para empresas em Porto Velho, RO.'
   };
 
   const homeHtml = injectMetaTags(baseHtml, {
-    title: 'Rodrigo Freire · Engenharia na Linha de Frente (Forward Deployed Engineer) — Porto Velho',
-    description: 'Engenharia de TI na linha de frente da sua empresa em Porto Velho. Atuação direta, automação de processos manuais, estabilidade de caixas e redes comerciais com escopo fechado por escrito.',
+    title: 'Rodrigo Freire Tech · Sistemas sob medida para empresas — Porto Velho',
+    description: 'Desenvolvimento de sistemas, sites e lojas online sob medida, automação de rotinas manuais e estabilidade de caixa e rede para empresas de Porto Velho. Escopo e preço fechados por escrito.',
     canonicalUrl: `${SITE_URL}/`,
     jsonLdList: [homeJsonLd]
   });
@@ -184,15 +184,15 @@ function prerenderRoutes() {
   const pages = [
     {
       dir: 'sobre',
-      title: 'Sobre Rodrigo Freire · Consultor de Tecnologia e Sistemas — Porto Velho',
-      description: 'Conheça Rodrigo Freire: Consultor de Tecnologia e Sistemas em Porto Velho, formação em Direito e Análise de Sistemas, patente no INPI e foco em TI empresarial, automação e continuidade operacional.',
+      title: 'Sobre Rodrigo Freire · Fundador da Rodrigo Freire Tech',
+      description: 'Construo e mantenho os sistemas que empresas de Porto Velho usam para trabalhar todos os dias. Sistema sob medida, automação de rotina manual e a infraestrutura que sustenta os dois, com um único responsável técnico pelo conjunto.',
       canonicalUrl: `${SITE_URL}/sobre`,
       jsonLd: {
         '@context': 'https://schema.org',
         '@type': 'Person',
         'name': 'Rodrigo Freire',
-        'jobTitle': 'Consultor de Tecnologia e Sistemas & Responsável Técnico',
-        'description': 'Consultor de Tecnologia e Sistemas na linha de frente e continuidade operacional em Porto Velho - RO. Formação em Direito e Análise de Sistemas, patente no INPI e foco em estabilidade, automação e proteção de dados.',
+        'jobTitle': 'Fundador e responsável técnico',
+        'description': 'Fundador e responsável técnico da Rodrigo Freire Tech em Porto Velho, RO. Formação em Direito e Análise de Sistemas, registro INPI e foco em estabilidade, automação e proteção de dados.',
         'url': `${SITE_URL}/sobre`,
         'image': `${SITE_URL}/foto_perfil.jpeg`,
         'address': {
@@ -205,20 +205,20 @@ function prerenderRoutes() {
     },
     {
       dir: 'contato',
-      title: 'Contato & Atendimento Direto · Rodrigo Freire — Porto Velho',
-      description: 'Fale diretamente com Rodrigo Freire via WhatsApp ou e-mail para suporte de TI empresarial, manutenção de servidores e consultoria em Porto Velho.',
+      title: 'Contato direto · Rodrigo Freire Tech — Porto Velho',
+      description: 'Fale diretamente com Rodrigo Freire via WhatsApp ou e-mail. Atendimento comigo, sem fila de chamado, em Porto Velho, RO.',
       canonicalUrl: `${SITE_URL}/contato`,
       jsonLd: {
         '@context': 'https://schema.org',
         '@type': 'ContactPage',
-        'name': 'Contato & Atendimento Direto — Rodrigo Freire',
+        'name': 'Contato direto · Rodrigo Freire Tech — Porto Velho',
         'url': `${SITE_URL}/contato`
       }
     },
     {
       dir: 'projetos',
-      title: 'Projetos & Engenharia de Sistemas · Rodrigo Freire — Porto Velho',
-      description: 'Conheça os sistemas desenvolvidos por Rodrigo Freire: segurança da informação, patentes no INPI, ferramentas para comércio e computação científica.',
+      title: 'Projetos e sistemas desenvolvidos · Rodrigo Freire Tech',
+      description: 'Conheça os projetos e sistemas desenvolvidos por Rodrigo Freire: tecnologia própria, pesquisa aplicada e produto em operação real.',
       canonicalUrl: `${SITE_URL}/projetos`,
       jsonLd: {
         '@context': 'https://schema.org',
@@ -231,15 +231,15 @@ function prerenderRoutes() {
     },
     {
       dir: 'blog',
-      title: 'Blog & Publicações Técnicas · Rodrigo Freire — Porto Velho',
-      description: 'Artigos e análises sobre TI empresarial, conformidade com a LGPD, inteligência artificial, arquitetura de sistemas e segurança da informação.',
+      title: 'Artigos · Rodrigo Freire Tech',
+      description: 'Notas sobre engenharia, tecnologia aplicada a negócio e o que observo no mercado.',
       canonicalUrl: `${SITE_URL}/blog`,
       jsonLd: {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
         'itemListElement': [
           { '@type': 'ListItem', 'position': 1, 'name': 'Início', 'item': `${SITE_URL}/` },
-          { '@type': 'ListItem', 'position': 2, 'name': 'Blog', 'item': `${SITE_URL}/blog` }
+          { '@type': 'ListItem', 'position': 2, 'name': 'Artigos', 'item': `${SITE_URL}/blog` }
         ]
       }
     }
@@ -267,7 +267,7 @@ function prerenderRoutes() {
       : DEFAULT_IMAGE;
 
     const rendered = injectMetaTags(baseHtml, {
-      title: `${proj.title} · Rodrigo Freire — Porto Velho`,
+      title: `${proj.title} · Rodrigo Freire Tech`,
       description: proj.summary,
       canonicalUrl: `${SITE_URL}/projetos/${proj.slug}`,
       imageUrl: projCover,
@@ -323,7 +323,7 @@ function prerenderRoutes() {
         },
         'publisher': {
           '@type': 'Organization',
-          'name': 'Rodrigo Freire — TI Empresarial',
+          'name': 'Rodrigo Freire Tech',
           'logo': {
             '@type': 'ImageObject',
             'url': DEFAULT_IMAGE
@@ -339,7 +339,7 @@ function prerenderRoutes() {
         '@type': 'BreadcrumbList',
         'itemListElement': [
           { '@type': 'ListItem', 'position': 1, 'name': 'Início', 'item': `${SITE_URL}/` },
-          { '@type': 'ListItem', 'position': 2, 'name': 'Blog', 'item': `${SITE_URL}/blog` },
+          { '@type': 'ListItem', 'position': 2, 'name': 'Artigos', 'item': `${SITE_URL}/blog` },
           { '@type': 'ListItem', 'position': 3, 'name': post.title, 'item': `${SITE_URL}/blog/${post.slug}` }
         ]
       }
@@ -361,7 +361,7 @@ function prerenderRoutes() {
     }
 
     const rendered = injectMetaTags(baseHtml, {
-      title: `${post.title} · Blog Rodrigo Freire`,
+      title: `${post.title} · Rodrigo Freire Tech`,
       description: post.description,
       canonicalUrl: `${SITE_URL}/blog/${post.slug}`,
       ogType: 'article',

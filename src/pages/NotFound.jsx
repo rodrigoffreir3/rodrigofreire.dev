@@ -10,12 +10,12 @@ export default function NotFound() {
           <Compass size={32} />
         </div>
         <h1 style={{ fontSize: '3rem', fontWeight: '800', margin: '0 0 0.5rem 0', color: 'var(--text-heading)' }}>404</h1>
-        <h2 style={{ fontSize: '1.4rem', fontWeight: '700', marginBottom: '1rem' }}>Página Não Encontrada</h2>
+        <h2 style={{ fontSize: '1.4rem', fontWeight: '700', marginBottom: '1rem' }}>Página não encontrada</h2>
         <p style={{ color: 'var(--text-body)', lineHeight: '1.6', marginBottom: '2rem' }}>
-          A rota solicitada não existe ou foi reestruturada.
+          O endereço acessado não existe ou foi movido.
         </p>
         <Link to="/" className="corp-btn corp-btn-primary">
-          <ArrowLeft size={16} /> Voltar para o Início
+          <ArrowLeft size={16} /> Voltar para a página inicial
         </Link>
       </div>
     </div>

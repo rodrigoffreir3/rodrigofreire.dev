@@ -4,6 +4,8 @@ import { Sparkles, ArrowRight } from 'lucide-react';
 import SEO from '../components/SEO';
 
 export default function Projects({ projects = [] }) {
+  const sortedProjects = [...projects].sort((a, b) => (a.display_order || 99) - (b.display_order || 99));
+
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -26,8 +28,8 @@ export default function Projects({ projects = [] }) {
   return (
     <div className="portfolio-container" style={{ maxWidth: '1280px', margin: '0 auto', padding: '3.5rem 1.5rem 6rem' }}>
       <SEO
-        title="Projetos & Engenharia de Sistemas · Rodrigo Freire — Porto Velho"
-        description="Conheça os sistemas desenvolvidos por Rodrigo Freire: segurança da informação, patentes no INPI, ferramentas para comércio e computação científica."
+        title="Projetos e sistemas desenvolvidos · Rodrigo Freire Tech"
+        description="Conheça os projetos e sistemas desenvolvidos por Rodrigo Freire: tecnologia própria, pesquisa aplicada e produto em operação real."
         canonicalPath="/projetos"
         jsonLd={breadcrumbJsonLd}
       />
@@ -35,18 +37,31 @@ export default function Projects({ projects = [] }) {
       {/* HEADER DA PÁGINA */}
       <div className="section-head-center">
         <span className="section-tag-pill">
-          <Sparkles size={14} style={{ display: 'inline', marginRight: '4px' }} />
-          Pesquisa, Engenharia & Sistemas
+          Portfólio & Engenharia
         </span>
-        <h1 className="section-title-large">Projetos & Cases Desenvolvidos</h1>
+        <h1 className="section-title-large">Projetos e sistemas desenvolvidos</h1>
         <p className="section-desc-subtle">
-          Conheça sistemas de segurança, ferramentas open source e projetos desenvolvidos por mim para proteção de computadores, pesquisa científica e automação.
+          Tecnologia própria, pesquisa aplicada e produto em operação real.
+        </p>
+      </div>
+
+      {/* MOLDURA DE ENQUADRAMENTO OBRIGATÓRIA (SPEC-SITE-008 3.10) */}
+      <div style={{
+        maxWidth: '840px',
+        margin: '2rem auto 2.5rem',
+        padding: '1.25rem 1.5rem',
+        background: 'rgba(53, 51, 205, 0.04)',
+        borderLeft: '4px solid var(--color-brand-ink)',
+        borderRadius: '0 12px 12px 0'
+      }}>
+        <p style={{ margin: 0, fontSize: '0.96rem', lineHeight: '1.65', color: 'var(--text-body)' }}>
+          Esta seção reúne o que construo no limite técnico: pesquisa publicada, tecnologia registrada e sistema em produção. Não é o que a maioria das empresas contrata no dia a dia, e está aqui por outro motivo. É a prova de que o mesmo cuidado aplicado nesses projetos entra no sistema simples que roda no seu balcão.
         </p>
       </div>
 
       {/* GRID DE CASES */}
       <div className="services-catalog-grid" style={{ marginTop: '2rem' }}>
-        {projects.map((proj) => (
+        {sortedProjects.map((proj) => (
           <div key={proj.id} className="service-card-liquid">
             <div className="service-card-header">
               <span className="service-card-tag">{proj.badge || "Projeto & Engenharia"}</span>
@@ -80,7 +95,7 @@ export default function Projects({ projects = [] }) {
             <div className="service-card-footer">
               <span className="service-price-label">Engenharia & Código</span>
               <Link to={`/projetos/${proj.slug}`} className="service-btn-contact">
-                Conhecer Detalhes <ArrowRight size={14} />
+                Conhecer detalhes <ArrowRight size={14} />
               </Link>
             </div>
           </div>
