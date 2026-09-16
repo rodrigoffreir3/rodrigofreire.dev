@@ -255,6 +255,7 @@ function prerenderRoutes() {
       jsonLdList: page.jsonLd ? [page.jsonLd] : []
     });
     fs.writeFileSync(path.join(pageDir, 'index.html'), rendered, 'utf8');
+    fs.writeFileSync(path.join(DIST_DIR, `${page.dir}.html`), rendered, 'utf8');
   }
 
   // PROJETOS DINÂMICOS
@@ -296,6 +297,7 @@ function prerenderRoutes() {
       ]
     });
     fs.writeFileSync(path.join(projDir, 'index.html'), rendered, 'utf8');
+    fs.writeFileSync(path.join(DIST_DIR, 'projetos', `${proj.slug}.html`), rendered, 'utf8');
   }
 
   // BLOG POSTS (RF-2, RF-3, CA-2, CA-3)
@@ -371,6 +373,7 @@ function prerenderRoutes() {
       jsonLdList: postSchemas
     });
     fs.writeFileSync(path.join(postDir, 'index.html'), rendered, 'utf8');
+    fs.writeFileSync(path.join(DIST_DIR, 'blog', `${post.slug}.html`), rendered, 'utf8');
   }
 
   console.log(`✅ Pré-renderização concluída: ${pages.length + DEFAULT_PROJECTS.length + DEFAULT_POSTS.length} páginas com tags Open Graph e JSON-LD nativas!`);
