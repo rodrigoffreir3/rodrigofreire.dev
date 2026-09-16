@@ -11,10 +11,10 @@ POSTS_OUTPUT_DIR = BASE_DIR / "instagram-posts"
 POSTS_OUTPUT_DIR.mkdir(exist_ok=True)
 
 # Carrega imagens em base64
-with open(BASE_DIR / "public" / "logo-rfd.png", "rb") as f:
+with open(BASE_DIR / "public" / "logo.png", "rb") as f:
     LOGO_DARK_B64 = base64.b64encode(f.read()).decode("utf-8")
 
-with open(BASE_DIR / "public" / "logo-rfd-white.png", "rb") as f:
+with open(BASE_DIR / "public" / "logo-branca.png", "rb") as f:
     LOGO_WHITE_B64 = base64.b64encode(f.read()).decode("utf-8")
 
 with open(BASE_DIR / "public" / "foto_perfil.jpeg", "rb") as f:

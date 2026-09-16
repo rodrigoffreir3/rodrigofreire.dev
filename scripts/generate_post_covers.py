@@ -233,7 +233,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     
     <div class="header-row">
       <div class="brand-group">
-        <img src="file:///home/rodrigo-freire/Downloads/rodrigofreire.dev/public/logo-rfd-white.png" class="brand-logo" alt="RFD Logo">
+        <img src="file:///home/rodrigo-freire/Downloads/rodrigofreire.dev/public/logo-branca.png" class="brand-logo" alt="Logo Rodrigo Freire">
         <div class="brand-text">RODRIGO FREIRE · BLOG</div>
       </div>
       <div class="brand-badge">{badge}</div>
@@ -265,7 +265,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 """
 
 def generate_covers():
-    logo_path = "/home/rodrigo-freire/Downloads/rodrigofreire.dev/public/logo-rfd-white.png"
+    logo_path = "/home/rodrigo-freire/Downloads/rodrigofreire.dev/public/logo-branca.png"
     output_dir = "/home/rodrigo-freire/Downloads/rodrigofreire.dev/public/images/posts"
     os.makedirs(output_dir, exist_ok=True)
     temp_html = "/tmp/post-cover-template.html"

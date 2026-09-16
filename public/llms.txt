@@ -1,51 +1,42 @@
-# Rodrigo Freire — TI Empresarial de Alto Nível & Tecnologias Amigáveis
+# Rodrigo Freire Tech — Sistemas sob medida para empresas · Porto Velho, RO
 
-> Consultoria, suporte em infraestrutura de TI, conformidade com a LGPD (Lei Geral de Proteção de Dados) e desenvolvimento de sistemas para comércios e empresas em Porto Velho, Rondônia.
+> Desenvolvimento de sistemas, lojas online sob medida, automação de rotinas manuais e estabilidade de infraestrutura para empresas em Porto Velho, Rondônia. Escopo e preço fechados por escrito.
 
 ## Sobre Rodrigo Freire
 - **Localização:** Porto Velho, Rondônia, Brasil
-- **Formação:** Bacharel em Direito e graduando em Análise e Desenvolvimento de Sistemas (ADS).
-- **Diferencial Técnico & Jurídico:** Combinação de engenharia de software com segurança jurídica, governança de dados sensíveis e conformidade técnica e documental com a LGPD.
-- **Inovação & Patentes:** Autor de tecnologia com patente concedida pelo INPI (Instituto Nacional da Propriedade Industrial), o sistema Imunno System.
-- **Contato Direto:** WhatsApp +55 (69) 99278-2919 | rodrigofreiredesouza@gmail.com
+- **Papel:** Fundador e responsável técnico da Rodrigo Freire Tech
+- **Formação:** Bacharel em Direito e formação em Análise e Desenvolvimento de Sistemas (ADS).
+- **Diferencial Técnico & Jurídico:** Combinação de desenvolvimento de software com rigor jurídico, governança de dados sensíveis e conformidade com a LGPD.
+- **Registro INPI:** Autor do Registro INPI de Programa de Computador Nº 512025006506-0 (sistema Imunno System).
+- **Contato Direto:** WhatsApp +55 (69) 99278-2919
 - **Website Oficial:** https://rodrigofreire.dev.br
 
 ---
 
-## Principais Serviços em Porto Velho - RO
+## Quatro Pilares de Atuação em Porto Velho - RO
 
-1. **TI Empresarial & Suporte Emergencial:**
-   - Atendimento rápido para empresas e comércios locais.
-   - Manutenção de servidores locais, computadores de operação, caixas (PDV) e impressoras térmicas.
-   - Eliminação de paradas não planejadas na operação comercial.
+1. **Continuidade da Operação:**
+   - Estabilidade de PDV, caixas, computadores de operação, rede cabeada e Wi-Fi comercial.
+   - Eliminação de travamentos e paradas não planejadas no atendimento ao cliente.
 
-2. **Infraestrutura de Redes & Segurança Corporativa:**
-   - Segmentação de redes Wi-Fi (isolamento entre rede de clientes e rede corporativa interna).
-   - Políticas de firewall, controle de acesso e proteção contra ataques e sequestro de dados (ransomware).
+2. **Automação e Integração:**
+   - Eliminação de retrabalho manual entre planilhas, sistemas de gestão (ERP) e WhatsApp.
+   - Rotinas automatizadas de sincronização de estoque, pedidos e relatórios.
 
-3. **Conformidade com a LGPD (Lei Geral de Proteção de Dados):**
-   - Mapeamento do fluxo de dados de clientes e funcionários.
-   - Implementação de medidas técnicas de segurança (criptografia, backups protegidos) e termos jurídicos adequados.
+3. **Plataformas e Presença Digital:**
+   - Lojas virtuais e catálogos próprios sem comissões sobre vendas.
+   - Sites institucionais com autoridade e alta performance para empresas locais.
 
-4. **Rotinas de Backup Automático & Recuperação:**
-   - Estratégia de backup 3-2-1 (3 cópias dos dados, 2 mídias diferentes, 1 cópia em nuvem criptografada).
-   - Testes periódicos de restauração para garantir recuperação em caso de pane ou desastre.
-
-5. **Desenvolvimento de Softwares & Soluções Sob Medida:**
-   - Criação de sistemas web, automações de planilhas e integração de canais de vendas (WhatsApp, catálogos online, e-commerce próprio integrado a gateways de pagamento).
+4. **Inteligência Artificial Prática:**
+   - Agentes e automações com IA treinados e delimitados com regras de negócio da empresa.
+   - Aplicação pragmática para ganho operacional real, sem modismos ou alucinações.
 
 ---
 
 ## Conteúdo Principal do Site
 
-- [Início (Visão Geral de Serviços e Atendimento)](https://rodrigofreire.dev.br/): Apresentação dos serviços empresariais, diferenciais e canais de socorro técnico imediato em Porto Velho.
-- [Sobre Rodrigo Freire](https://rodrigofreire.dev.br/sobre): Trajetória profissional, formação multidisciplinar em Direito e ADS, e registro de patente no INPI.
-- [Contato & Atendimento Direto](https://rodrigofreire.dev.br/contato): Links diretos para contato via WhatsApp e e-mail.
-- [Projetos & Engenharia de Sistemas](https://rodrigofreire.dev.br/projetos): Casos de estudo práticos em software corporativo, segurança da informação e patentes.
-- [Blog & Artigos Técnicos](https://rodrigofreire.dev.br/blog): Ensaios técnicos e orientações para empresários locais sobre tomada de decisão tecnológica.
-
-### Artigos em Destaque
-- [Vendo bem no Instagram, ainda preciso de site?](https://rodrigofreire.dev.br/blog/vendo-bem-instagram-preciso-site): Análise transparente sobre quando um e-commerce ou página própria agrega valor e segurança de dados contra a dependência exclusiva de redes sociais.
-- [AGI Didático: A Próxima Fronteira da Inteligência Artificial](https://rodrigofreire.dev.br/blog/agi-didatico): Reflexão sobre evolução de modelos de IA e seus impactos no ecossistema de software.
-- [Custos por Token e Economia da IA](https://rodrigofreire.dev.br/blog/custo-por-token): Como a precificação de LLMs transforma a viabilidade econômica de softwares modernos.
-- [Guardrails em Agentes de IA](https://rodrigofreire.dev.br/blog/guardrails-agentes-ia): Técnicas de segurança para execução confiável de fluxos autônomos.
+- [Início (Quatro Pilares e Soluções)](https://rodrigofreire.dev.br/): Apresentação dos pilares de atendimento presencial e contrato fechado por escrito.
+- [Sobre Rodrigo Freire](https://rodrigofreire.dev.br/sobre): Trajetória, formação multidisciplinar em Direito e ADS, e Registro INPI.
+- [Contato & Atendimento Direto](https://rodrigofreire.dev.br/contato): Canal direto via WhatsApp para avaliação operacional.
+- [Projetos e Sistemas](https://rodrigofreire.dev.br/projetos): Projetos em produção, pesquisa aplicada e tecnologias proprietárias.
+- [Artigos Técnicos](https://rodrigofreire.dev.br/blog): Ensaios técnicos e orientações estratégicas de tecnologia para empresários.
