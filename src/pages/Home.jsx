@@ -91,7 +91,7 @@ export default function Home({ profile }) {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     setFormStatus('sending');
-    const text = `Olá Rodrigo! Vim pelo seu site e gostaria de solicitar uma avaliação operacional:\n\n*Nome:* ${formData.nome}\n*WhatsApp:* ${formData.whatsapp}\n*Empresa/Comércio:* ${formData.empresa || 'Não informado'}\n*O que precisa de atenção:* ${formData.problema}`;
+    const text = `Olá Rodrigo! Vim pelo seu site e gostaria de solicitar uma avaliação operacional:\n\n*Nome:* ${formData.nome}\n*WhatsApp:* ${formData.whatsapp}\n*Empresa:* ${formData.empresa}\n*O que precisa de atenção:* ${formData.problema}`;
     const targetUrl = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
     setSubmittedWhatsappUrl(targetUrl);
 
@@ -683,12 +683,13 @@ export default function Home({ profile }) {
                 </div>
 
                 <div className="form-group-item">
-                  <label className="form-label-corp">Nome da empresa (opcional)</label>
+                  <label className="form-label-corp">Nome da sua empresa</label>
                   <input
                     type="text"
+                    required
                     value={formData.empresa}
                     onChange={(e) => setFormData({ ...formData, empresa: e.target.value })}
-                    placeholder="Ex: Comercial Rondônia"
+                    placeholder="Ex: Comercial Rondônia Ltda"
                     className="form-input-corp"
                   />
                 </div>
@@ -712,7 +713,7 @@ export default function Home({ profile }) {
                   className="corp-btn-accent"
                   style={{ width: '100%', marginTop: '0.5rem', justifyContent: 'center' }}
                 >
-                  <Send size={16} /> {formStatus === 'sending' ? 'Preparando conversa no WhatsApp...' : 'Enviar solicitação'}
+                  <Send size={16} /> {formStatus === 'sending' ? 'Abrindo conversa no WhatsApp...' : 'Enviar mensagem para o WhatsApp'}
                 </button>
               </>
             )}
