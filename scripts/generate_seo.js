@@ -344,12 +344,21 @@ function prerenderRoutes() {
 
   const baseHtml = fs.readFileSync(baseHtmlPath, 'utf8');
 
-  // HOME
-  const homeJsonLd = {
+  // HOME SCHEMAS
+  const homeWebsiteJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    'name': 'Rodrigo Freire Tech',
+    'alternateName': ['rodrigofreire.dev.br', 'Rodrigo Freire'],
+    'url': `${SITE_URL}/`
+  };
+
+  const homeLocalBusinessJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     'name': 'Rodrigo Freire Tech',
     'image': DEFAULT_IMAGE,
+    'logo': `${SITE_URL}/icon-512.png`,
     'url': SITE_URL,
     'telephone': '+5569992782919',
     'priceRange': '$$',
@@ -416,7 +425,7 @@ function prerenderRoutes() {
     title: 'Rodrigo Freire Tech · Sistemas sob medida para empresas — Porto Velho',
     description: 'Desenvolvimento de sistemas, sites e lojas online sob medida, automação de rotinas manuais e estabilidade de caixa e rede para empresas de Porto Velho. Escopo e preço fechados por escrito.',
     canonicalUrl: `${SITE_URL}/`,
-    jsonLdList: [homeJsonLd],
+    jsonLdList: [homeWebsiteJsonLd, homeLocalBusinessJsonLd],
     bodyHtml: homeBodyHtml
   });
   fs.writeFileSync(baseHtmlPath, homeHtml, 'utf8');
