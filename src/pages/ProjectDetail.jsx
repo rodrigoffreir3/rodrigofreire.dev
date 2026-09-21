@@ -2,13 +2,14 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { ArrowLeft, Sparkles, MessageSquare, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Sparkles, MessageSquare, CheckCircle2 } from 'lucide-react';
 import GithubIcon from '../components/GithubIcon';
 import SEO from '../components/SEO';
 
 export default function ProjectDetail({ projects, profile }) {
   const { slug } = useParams();
-  const project = projects.find(p => p.slug === slug);
+  const project = projects?.find(p => p.slug === slug);
+  const otherProjects = (projects || []).filter(p => p.slug !== slug).slice(0, 3);
   const phone = (profile?.whatsapp_number ? String(profile.whatsapp_number).replace(/\D/g, '') : '') || '5569992782919';
 
   if (!project) {
@@ -169,6 +170,49 @@ export default function ProjectDetail({ projects, profile }) {
               >
                 {t}
               </span>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* SEÇÃO DE CROSS-LINKING: OUTROS PROJETOS (SEO & AUTORIDADE) */}
+      {otherProjects.length > 0 && (
+        <section className="related-projects-section" style={{ marginTop: '2.5rem', marginBottom: '3rem', paddingTop: '2.5rem', borderTop: '1px solid rgba(0, 0, 0, 0.08)' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
+            <div>
+              <span className="section-tag-pill" style={{ fontSize: '0.75rem', marginBottom: '0.35rem' }}>
+                Portfólio técnico
+              </span>
+              <h3 style={{ fontSize: '1.4rem', color: 'var(--text-heading)', margin: 0 }}>
+                Outros projetos desenvolvidos
+              </h3>
+            </div>
+            <Link to="/projetos" className="corp-link-text" style={{ fontSize: '0.9rem', display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
+              Ver todos os projetos <ArrowRight size={14} />
+            </Link>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
+            {otherProjects.map(op => (
+              <Link
+                key={op.slug}
+                to={`/projetos/${op.slug}`}
+                className="service-card-liquid"
+                style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', padding: '1.5rem' }}
+              >
+                <div className="corp-badge" style={{ alignSelf: 'flex-start', marginBottom: '0.75rem', fontSize: '0.72rem' }}>
+                  {op.category || 'Tecnologia'}
+                </div>
+                <h4 style={{ fontSize: '1.05rem', color: 'var(--text-heading)', margin: '0 0 0.5rem', lineHeight: '1.4' }}>
+                  {op.title}
+                </h4>
+                <p style={{ fontSize: '0.86rem', color: 'var(--text-body)', margin: '0 0 1rem', lineHeight: '1.5', flex: 1 }}>
+                  {op.summary}
+                </p>
+                <span style={{ fontSize: '0.84rem', color: 'var(--color-brand-blue)', fontWeight: '600', marginTop: 'auto', display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
+                  Conhecer o case <ArrowRight size={13} />
+                </span>
+              </Link>
             ))}
           </div>
         </section>

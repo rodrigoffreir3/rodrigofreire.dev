@@ -2,12 +2,13 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { ArrowLeft, Calendar, Tag, Share2 } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Calendar, Tag, Share2 } from 'lucide-react';
 import SEO from '../components/SEO';
 
 export default function BlogPost({ posts, profile }) {
   const { slug } = useParams();
-  const post = posts.find(p => p.slug === slug);
+  const post = posts?.find(p => p.slug === slug);
+  const relatedPosts = (posts || []).filter(p => p.slug !== slug).slice(0, 3);
 
   if (!post) {
     return (
@@ -172,6 +173,49 @@ export default function BlogPost({ posts, profile }) {
           {post.content_markdown}
         </ReactMarkdown>
       </section>
+
+      {/* SEÇÃO DE CROSS-LINKING: ARTIGOS RECOMENDADOS (SEO & AUTORIDADE) */}
+      {relatedPosts.length > 0 && (
+        <section className="related-articles-section" style={{ marginTop: '3.5rem', paddingTop: '2.5rem', borderTop: '1px solid rgba(0, 0, 0, 0.08)' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
+            <div>
+              <span className="section-tag-pill" style={{ fontSize: '0.75rem', marginBottom: '0.35rem' }}>
+                Conteúdo complementar
+              </span>
+              <h3 style={{ fontSize: '1.4rem', color: 'var(--text-heading)', margin: 0 }}>
+                Outros artigos recomendados
+              </h3>
+            </div>
+            <Link to="/blog" className="corp-link-text" style={{ fontSize: '0.9rem', display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
+              Ver todos os artigos <ArrowRight size={14} />
+            </Link>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
+            {relatedPosts.map(rp => (
+              <Link
+                key={rp.slug}
+                to={`/blog/${rp.slug}`}
+                className="service-card-liquid"
+                style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', padding: '1.5rem' }}
+              >
+                <div className="tech-tag" style={{ alignSelf: 'flex-start', marginBottom: '0.75rem', fontSize: '0.72rem' }}>
+                  {new Date(rp.published_at).toLocaleDateString('pt-BR')}
+                </div>
+                <h4 style={{ fontSize: '1.05rem', color: 'var(--text-heading)', margin: '0 0 0.5rem', lineHeight: '1.4' }}>
+                  {rp.title}
+                </h4>
+                <p style={{ fontSize: '0.86rem', color: 'var(--text-body)', margin: '0 0 1rem', lineHeight: '1.5', flex: 1 }}>
+                  {rp.description}
+                </p>
+                <span style={{ fontSize: '0.84rem', color: 'var(--color-brand-blue)', fontWeight: '600', marginTop: 'auto', display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
+                  Ler artigo <ArrowRight size={13} />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* FOOTER DO ARTIGO COM AUTOR E CTA */}
       <section className="cta-banner-corp" style={{ marginTop: '3.5rem' }}>

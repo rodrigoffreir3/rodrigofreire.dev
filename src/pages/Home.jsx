@@ -1,11 +1,13 @@
 import React, { useState, useCallback, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { 
   DEFAULT_SERVICES, 
   DEFAULT_RISKS, 
   DEFAULT_STEPS, 
   DEFAULT_HOME_SETTINGS,
   DEFAULT_FDE_COMPARISON,
-  DEFAULT_HERO_SLIDES 
+  DEFAULT_HERO_SLIDES,
+  DEFAULT_POSTS
 } from '../data/defaultData';
 import {
   Wrench,
@@ -18,6 +20,7 @@ import {
   ArrowRight,
   ArrowDown,
   Sparkles,
+  BookOpen,
   Layers,
   BarChart3,
   Server,
@@ -578,6 +581,69 @@ export default function Home({ profile }) {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================
+         ARTIGOS E ANÁLISES TÉCNICAS (SEO & AUTORIDADE DE CONTEÚDO)
+         ============================================================ */}
+      <section className="section-featured-articles scroll-reveal" id="artigos" style={{ paddingTop: '5rem', paddingBottom: '5rem', borderTop: '1px solid rgba(0, 0, 0, 0.06)' }}>
+        <div className="portfolio-container" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem' }}>
+          <div className="section-head-center" style={{ marginBottom: '3rem' }}>
+            <span className="section-tag-pill">
+              <BookOpen size={14} style={{ display: 'inline', marginRight: '6px' }} />
+              Pesquisa, Engenharia & Negócios
+            </span>
+            <h2 className="section-title-large">
+              Análises e Artigos Técnicos
+            </h2>
+            <p className="section-desc-subtle">
+              Notas diretas sobre arquitetura de sistemas, inteligência artificial aplicada sem modismos e lições práticas observadas no mercado.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
+            {DEFAULT_POSTS.slice(0, 3).map((post) => (
+              <article key={post.slug} className="service-card-liquid" style={{ display: 'flex', flexDirection: 'column', padding: '1.75rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.85rem' }}>
+                  <span className="tech-tag" style={{ fontSize: '0.72rem' }}>
+                    {new Date(post.published_at).toLocaleDateString('pt-BR')}
+                  </span>
+                  {post.tags?.[0] && (
+                    <span className="corp-badge" style={{ fontSize: '0.72rem' }}>
+                      {post.tags[0]}
+                    </span>
+                  )}
+                </div>
+                <h3 style={{ fontSize: '1.15rem', color: 'var(--text-heading)', margin: '0 0 0.65rem', lineHeight: '1.4' }}>
+                  <Link to={`/blog/${post.slug}`} style={{ color: 'inherit', textDecoration: 'none' }}>
+                    {post.title}
+                  </Link>
+                </h3>
+                <p style={{ fontSize: '0.88rem', color: 'var(--text-body)', margin: '0 0 1.25rem', lineHeight: '1.55', flex: 1 }}>
+                  {post.description}
+                </p>
+                <Link
+                  to={`/blog/${post.slug}`}
+                  className="corp-link-text"
+                  style={{ fontSize: '0.86rem', fontWeight: '600', display: 'inline-flex', alignItems: 'center', gap: '0.35rem', marginTop: 'auto' }}
+                >
+                  Ler artigo completo <ArrowRight size={14} />
+                </Link>
+              </article>
+            ))}
+          </div>
+
+          <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
+            <Link
+              to="/blog"
+              className="corp-btn-outline-glass"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.8rem', textDecoration: 'none' }}
+            >
+              <span>Acessar todos os artigos e publicações</span>
+              <ArrowRight size={16} />
+            </Link>
           </div>
         </div>
       </section>
