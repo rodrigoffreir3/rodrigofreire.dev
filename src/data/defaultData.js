@@ -120,6 +120,30 @@ export const DEFAULT_RISKS = [
     title: "Sistema fora do ar no horário de pico",
     description: "Caixa travado e rede oscilando no maior movimento da loja geram fila no balcão, entrega atrasada e cliente que desiste e compra no concorrente.",
     consequence: "Faturamento do dia comprometido e desgaste da imagem comercial."
+  },
+  {
+    id: "whatsapp-sem-resposta",
+    icon: "MessageSquare",
+    tag: "RISCO 04",
+    title: "WhatsApp sem resposta ou robô sem graça",
+    description: "Cliente esperando horas por retorno ou preso em menus limitados de um robô engessado, sem calor humano e sem o estilo de atendimento da sua empresa.",
+    consequence: "Lead que esfria, venda perdida para o concorrente e percepção de atendimento descuidado."
+  },
+  {
+    id: "gestao-pouco-amigavel",
+    icon: "Layers",
+    tag: "RISCO 05",
+    title: "Sistemas de gestão complexos e pouco amigáveis",
+    description: "Sistemas cheios de telas confusas, difíceis de aprender e lentos de operar, que exigem treinamento demorado e desgastante para cada novo funcionário.",
+    consequence: "Equipe desmotivada, lentidão no fechamento e erros recorrentes na operação diária."
+  },
+  {
+    id: "escolha-tecnologica",
+    icon: "Wrench",
+    tag: "RISCO 06",
+    title: "Dificuldade em escolher a tecnologia certa",
+    description: "Dúvida sobre qual ferramenta realmente resolve o gargalo, contratando além do necessário, inflando custos mensais ou gerando atrito interno sem embasamento técnico.",
+    consequence: "Gastos excessivos com licenças subutilizadas e sensação de que a tecnologia só traz dor de cabeça."
   }
 ];
 
@@ -130,25 +154,25 @@ export const DEFAULT_FDE_COMPARISON = [
   {
     criterion: "Quando age",
     model_1: "Age depois da falha. O atendimento começa quando o equipamento já parou e o prejuízo do dia já aconteceu.",
-    model_2: "Age dentro do escopo contratado. O que está fora do pacote fica sem dono até virar novo orçamento.",
+    model_2: "Desenvolvo exatamente o escopo que a sua empresa necessita, entregando sistemas sob medida com entusiasmo e rapidez.",
     model_3: "Ajo antes. Conheço a operação por dentro e trato o gargalo enquanto ele ainda é ajuste, não pane."
   },
   {
     criterion: "Alcance da solução",
-    model_1: "Cobre equipamento e rede. Integração entre sistemas e automação de rotina ficam fora do alcance do serviço.",
-    model_2: "Cobre o software encomendado. A infraestrutura que sustenta esse software continua sendo problema de outra pessoa.",
-    model_3: "Cubro os dois lados. Do servidor ao balcão, com um único responsável pelo conjunto funcionando."
+    model_1: "Cobre equipamento e rede física, sem criar sistemas nem automatizar rotinas.",
+    model_2: "Crio desde ERPs enxutos (RH, faturamento, financeiro) até CRM no WhatsApp e integrações diretas entre bancos de dados.",
+    model_3: "Cubro os dois lados. Do servidor ao balcão, integrando software sob medida e infraestrutura estável."
   },
   {
     criterion: "Conhecimento da rotina",
     model_1: "O atendimento é pontual, então a rotina de fechamento e o fluxo do balcão não entram na conta.",
-    model_2: "O trabalho acontece à distância, com o entendimento da operação limitado ao que coube na reunião de levantamento.",
-    model_3: "Estou presencialmente na sua operação em Porto Velho. Vejo o fechamento acontecer e projeto o sistema em cima do que realmente ocorre."
+    model_2: "Construo telas amigáveis e elegantes, fáceis de operar para a sua equipe começar a produzir no primeiro dia.",
+    model_3: "Estou presencialmente na sua operação em Porto Velho. Vejo o fechamento acontecer e projeto em cima da realidade local."
   },
   {
     criterion: "Responsabilidade e contrato",
     model_1: "Sem compromisso formal de continuidade. Cada chamado é uma negociação nova.",
-    model_2: "Atendimento por fila de chamados, com prazo de retorno que depende da posição na fila.",
+    model_2: "Escopo claro, código limpo, sem módulos inúteis e com entrega combinada por escrito.",
     model_3: "Responsável técnico definido em contrato, com escopo e preço fechados por escrito e cláusula de sigilo sobre os dados da empresa."
   }
 ];
@@ -211,6 +235,7 @@ export const DEFAULT_SERVICES = [
     description: "A maior parte das empresas que tenta usar inteligência artificial desiste pelo mesmo motivo: ligou a ferramenta e pediu para ela resolver. Sem conhecer o catálogo, o preço e as exceções comerciais da casa, ela inventa informação, promete prazo fora da realidade e perde o fio em tarefa mais longa. Empresa grande resolve isso colocando equipe técnica dentro da operação por algumas semanas, até a ferramenta estar ajustada à rotina real. Faço exatamente esse trabalho, na escala do comércio de Porto Velho, aplicado a tarefa com nome e resultado medido.",
     deliverables: [
       "Triagem automática das mensagens de WhatsApp, com encaminhamento por assunto e urgência",
+      "Contagem e controle de estoque com visão computacional e inteligência artificial, treinada para a rotina da sua loja ou depósito",
       "Resumo automático de pedido e consulta de catálogo e preço pela equipe de balcão",
       "Regras escritas de limite, definindo o que a ferramenta responde sozinha e o que passa por você antes",
       "Período de acompanhamento presencial definido em contrato, até a equipe operar sem apoio"

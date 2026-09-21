@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   DEFAULT_SERVICES, 
@@ -55,8 +55,20 @@ const ICON_MAP = {
   BarChart3,
   Server,
   Network,
-  Cpu
+  Cpu,
+  ShieldAlert,
+  AlertOctagon,
+  MessageSquare
 };
+
+const DIAGNOSTIC_GOALS = [
+  'impulsionar as suas vendas',
+  'automatizar o seu negócio',
+  'aumentar a sua produtividade',
+  'personalizar o seu atendimento',
+  'promover a melhor experiência ao cliente',
+  'elevar a percepção de valor'
+];
 
 export default function Home({ profile }) {
   useScrollReveal();
@@ -71,6 +83,16 @@ export default function Home({ profile }) {
   const heroSlides = DEFAULT_HERO_SLIDES;
   const currentSlide = heroSlides[activeSlideIndex] || heroSlides[0];
   const typedLabel = useTypewriter(currentSlide.label);
+
+  // Efeito de digitação para a seção de diagnóstico & contato
+  const [diagGoalIndex, setDiagGoalIndex] = useState(0);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDiagGoalIndex((prev) => (prev + 1) % DIAGNOSTIC_GOALS.length);
+    }, 4200);
+    return () => clearInterval(timer);
+  }, []);
+  const typedDiagnosticGoal = useTypewriter(DIAGNOSTIC_GOALS[diagGoalIndex], { typingSpeed: 60, deletingSpeed: 30 });
 
   const handleSlideChange = useCallback((newIndex) => {
     if (newIndex === activeSlideIndexRef.current) return;
@@ -256,7 +278,7 @@ export default function Home({ profile }) {
               Soluções Digitais sob Medida · Varejo & Vendas
             </span>
             <h2 className="section-title-large">
-              Exemplos de Soluções amigáveis que resolvem problemas
+              Desenvolvo soluções amigáveis e elegantes, fáceis de entender e usar, visando maior praticidade e produtividade para o seu negócio.
             </h2>
             <p className="section-desc-subtle">
               Interfaces modernas de altíssimo impacto visual, carregamento instantâneo e navegação intuitiva, projetadas para reter a atenção do cliente e conectar seu público diretamente ao WhatsApp da equipe comercial.
@@ -335,16 +357,18 @@ export default function Home({ profile }) {
       </section>
 
       {/* ============================================================
-         SEÇÃO DE RISCOS: TRÊS PROBLEMAS QUE CUSTAM DINHEIRO (SPEC-SITE-008 Seção 3.2)
+         SEÇÃO DE RISCOS OPERACIONAIS & TECNOLOGIA
          ============================================================ */}
       <section className="section-risks scroll-reveal" id="riscos">
         <div className="section-head-center">
           <span className="section-tag-pill" style={{ color: '#dc2626', borderColor: 'rgba(220, 38, 38, 0.25)', background: 'rgba(220, 38, 38, 0.08)' }}>
-            Problemas Operacionais
+            Gargalos Operacionais & Tecnologia
           </span>
-          <h2 className="section-title-large">Três problemas que custam dinheiro antes de aparecer no relatório</h2>
+          <h2 className="section-title-large">
+            A tecnologia, se bem integrada ao ritmo da empresa, trabalha para alavancar o seu negócio, e nunca para se tornar outra preocupação.
+          </h2>
           <p className="section-desc-subtle">
-            Na rotina comercial, o prejuízo raramente avisa com antecedência. Identificar onde a empresa está exposta é o primeiro passo para garantir estabilidade real.
+            Na rotina comercial, o prejuízo raramente avisa com antecedência. Identifico e elimino gargalos operacionais antes que virem custo, retrabalho ou atrito com o seu cliente.
           </p>
         </div>
 
@@ -378,13 +402,13 @@ export default function Home({ profile }) {
         <div className="section-head-center">
           <span className="section-tag-pill">
             <Sparkles size={14} style={{ display: 'inline', marginRight: '4px' }} />
-            Modelos de Contratação
+            Modelos de Resolução
           </span>
           <h2 className="section-title-large">
-            Três formas de resolver tecnologia na sua empresa, e o que muda em cada uma
+            As soluções são apresentadas nas seguintes formas de resolução
           </h2>
           <p className="section-desc-subtle">
-            Entenda como cada modelo de contratação atua na prática e a diferença para a estabilidade da sua operação:
+            Entenda como cada formato atua na prática e como o desenvolvimento sob medida transforma a rotina do seu negócio:
           </p>
         </div>
 
@@ -404,7 +428,7 @@ export default function Home({ profile }) {
             <div className="fde-points-list">
               <div className="fde-point-item negative">
                 <XCircle size={18} className="fde-point-icon" color="#94a3b8" />
-                <span><strong>Alcance da solução:</strong> Cobre equipamento e rede. Integração entre sistemas e automação de rotina ficam fora do alcance do serviço.</span>
+                <span><strong>Alcance da solução:</strong> Cobre equipamento e rede física. Integrações entre sistemas e automação de processos manuais ficam fora do escopo.</span>
               </div>
               <div className="fde-point-item negative">
                 <XCircle size={18} className="fde-point-icon" color="#94a3b8" />
@@ -417,30 +441,34 @@ export default function Home({ profile }) {
             </div>
           </div>
 
-          {/* MODELO 2: DESENVOLVIMENTO REMOTO */}
-          <div className="fde-card fde-card-distant stagger-card">
+          {/* MODELO 2: SISTEMAS SOB MEDIDA & DESENVOLVIMENTO PERSONALIZADO */}
+          <div className="fde-card fde-card-tailored stagger-card">
             <div className="fde-card-header">
-              <div className="fde-card-icon distant">
-                <Clock size={22} />
+              <div className="fde-card-icon tailored">
+                <Sparkles size={22} />
               </div>
-              <span className="fde-card-tag distant">Modelo 2</span>
+              <span className="fde-card-tag tailored">Modelo 2 · Sob Medida</span>
             </div>
-            <h3 className="fde-card-title">Modelo 2 · Desenvolvimento remoto por pacote</h3>
-            <p className="fde-card-focus">
-              "Age dentro do escopo contratado. O que está fora do pacote fica sem dono até virar novo orçamento."
+            <h3 className="fde-card-title">Modelo 2 · Sistemas sob medida para a sua necessidade</h3>
+            <p className="fde-card-focus" style={{ color: '#000000', fontStyle: 'normal' }}>
+              "Desenvolvo exatamente o que a sua operação precisa, com entusiasmo, foco no que gera retorno e sem ferramentas complicadas."
             </p>
             <div className="fde-points-list">
-              <div className="fde-point-item negative">
-                <XCircle size={18} className="fde-point-icon" color="#d97706" />
-                <span><strong>Alcance da solução:</strong> Cobre o software encomendado. A infraestrutura que sustenta esse software continua sendo problema de outra pessoa.</span>
+              <div className="fde-point-item positive">
+                <CheckCircle2 size={18} className="fde-point-icon" color="#3533cd" />
+                <span><strong>ERP enxuto e prático:</strong> Precisa de um ERP sob medida que tenha apenas RH, faturamento e contas a pagar/receber? Eu desenvolvo direto ao ponto para a sua rotina.</span>
               </div>
-              <div className="fde-point-item negative">
-                <XCircle size={18} className="fde-point-icon" color="#d97706" />
-                <span><strong>Conhecimento da rotina:</strong> O trabalho acontece à distância, com o entendimento da operação limitado ao que coube na reunião de levantamento.</span>
+              <div className="fde-point-item positive">
+                <CheckCircle2 size={18} className="fde-point-icon" color="#3533cd" />
+                <span><strong>CRM e pós-venda no WhatsApp:</strong> Quer qualificar seus clientes com tags automáticas e organizar o atendimento pós-venda no WhatsApp? Eu construo e deixo funcionando.</span>
               </div>
-              <div className="fde-point-item negative">
-                <XCircle size={18} className="fde-point-icon" color="#d97706" />
-                <span><strong>Responsabilidade e contrato:</strong> Atendimento por fila de chamados, com prazo de retorno que depende da posição na fila.</span>
+              <div className="fde-point-item positive">
+                <CheckCircle2 size={18} className="fde-point-icon" color="#3533cd" />
+                <span><strong>Integração de sistemas:</strong> Precisa conectar o WhatsApp aos sistemas internos ou ao banco de dados da sua empresa? Eu integro de ponta a ponta sem complicações.</span>
+              </div>
+              <div className="fde-point-item positive">
+                <CheckCircle2 size={18} className="fde-point-icon" color="#3533cd" />
+                <span><strong>Sem módulos inúteis:</strong> Você não paga mensalidades caras por funções desnecessárias e recebe um software ágil, que a equipe aprende a operar no primeiro dia.</span>
               </div>
             </div>
           </div>
@@ -489,10 +517,78 @@ export default function Home({ profile }) {
           </p>
         </div>
 
-        <div className="services-catalog-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem', marginTop: '3rem' }}>
-          {DEFAULT_SERVICES.map((service) => {
+        <div className="services-catalog-grid" style={{ gap: '2rem', marginTop: '3rem' }}>
+          {DEFAULT_SERVICES.map((service, index) => {
             const IconComponent = ICON_MAP[service.icon] || Wrench;
             const message = service.whatsapp_msg || `Olá Rodrigo. Gostaria de solicitar uma avaliação para ${service.title}.`;
+            const isHorizontal = service.id === 'inteligencia-artificial' || index === 3;
+
+            if (isHorizontal) {
+              return (
+                <div key={service.id} className="service-card-liquid service-card-horizontal stagger-card">
+                  <div className="service-card-horizontal-left">
+                    <div className="service-card-header">
+                      <div className="service-icon-wrapper">
+                        <IconComponent size={22} />
+                      </div>
+                      <span className="service-card-tag">{service.tag}</span>
+                    </div>
+
+                    <h3 style={{ fontSize: '1.35rem', marginBottom: '0.85rem', color: 'var(--text-heading)' }}>
+                      {service.title}
+                    </h3>
+
+                    {service.focus && (
+                      <div className="service-focus-badge" style={{ marginBottom: '1.15rem' }}>
+                        <Sparkles size={15} />
+                        <span>{service.focus}</span>
+                      </div>
+                    )}
+
+                    <p style={{ fontSize: '0.94rem', color: 'var(--text-body)', lineHeight: '1.6', marginBottom: '1.5rem' }}>
+                      {service.description}
+                    </p>
+
+                    <div className="service-card-footer" style={{ paddingTop: '0.75rem', borderTop: '1px solid var(--color-gray-ui)', marginTop: 'auto' }}>
+                      <a
+                        href={`https://wa.me/${phone}?text=${encodeURIComponent(message)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="service-btn-contact"
+                        style={{ width: '100%', justifyContent: 'center' }}
+                      >
+                        Solicitar avaliação deste pilar <ArrowRight size={14} />
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="service-card-horizontal-right">
+                    {service.deliverables && service.deliverables.length > 0 && (
+                      <div className="service-deliverables-box" style={{ marginBottom: '1.25rem' }}>
+                        <div className="service-deliverables-title" style={{ fontSize: '0.82rem', fontWeight: '700', color: 'var(--color-brand-ink)', marginBottom: '0.65rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                          <Check size={14} /> Entregáveis incluídos:
+                        </div>
+                        <ul className="service-deliverables-list">
+                          {service.deliverables.map((item, idx) => (
+                            <li key={idx} className="service-deliverable-item">
+                              <CheckCircle2 size={15} color="#3533cd" />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    <div style={{ marginTop: 'auto', padding: '0.85rem 1rem', background: 'rgba(53, 51, 205, 0.06)', borderRadius: '12px', border: '1px solid rgba(53, 51, 205, 0.2)' }}>
+                      <p style={{ fontSize: '0.9rem', color: 'var(--text-heading)', lineHeight: '1.5', margin: 0 }}>
+                        <strong>Ganho: </strong>
+                        {service.gain}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            }
 
             return (
               <div key={service.id} className="service-card-liquid stagger-card" style={{ display: 'flex', flexDirection: 'column' }}>
@@ -655,13 +751,23 @@ export default function Home({ profile }) {
         <div className="diagnostic-contact-inner" style={{ maxWidth: '1080px', margin: '0 auto' }}>
           <div className="diagnostic-info-card">
             <div>
-              <span className="section-tag-pill">Decisão de Continuidade & Risco</span>
-              <h2 className="section-title-large" style={{ fontSize: 'clamp(1.75rem, 2.5vw, 2.25rem)' }}>
-                Descobrir uma vulnerabilidade no dia da pane custa muito mais caro que prevenir.
+              <span className="section-tag-pill">
+                <Sparkles size={14} style={{ display: 'inline', marginRight: '4px' }} />
+                Experiência & Valor do Negócio
+              </span>
+              
+              <h2 className="section-title-large diagnostic-typewriter-title" style={{ fontSize: 'clamp(1.65rem, 2.3vw, 2.2rem)', lineHeight: '1.25' }}>
+                Tecnologia para <span className="diagnostic-typed-keyword">{typedDiagnosticGoal}</span><span className="hero-typewriter-cursor" />
               </h2>
-              <p className="section-desc-subtle" style={{ marginBottom: '1.75rem' }}>
-                Fale diretamente comigo pelo WhatsApp para uma avaliação transparente da sua operação. Identificamos o que precisa de atenção imediata, com escopo e orçamento definidos antes de qualquer início.
-              </p>
+
+              <div className="diagnostic-highlight-statement">
+                <p className="diagnostic-statement-main">
+                  Impulsione as suas vendas, automatize o seu negócio, aumente a sua produtividade, personalize o seu atendimento e promova a melhor experiência ao seu cliente, aumentando a percepção de valor do seu negócio.
+                </p>
+                <p className="diagnostic-statement-accent">
+                  A experiência do cliente também acontece naquilo que ele não vê, mas sente se for ruim.
+                </p>
+              </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', marginBottom: '2rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#000000', fontWeight: '600' }}>

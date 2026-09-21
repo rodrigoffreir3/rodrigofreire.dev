@@ -2747,6 +2747,40 @@ a:focus-visible {
   border-top: 1px solid rgba(53, 51, 205, 0.12);
 }
 
+/* PILAR 04: LAYOUT HORIZONTAL EXPANDIDO (DESKTOP) E EMPILHADO (MOBILE) */
+.service-card-horizontal {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 1024px) {
+  .services-catalog-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  
+  .service-card-horizontal {
+    grid-column: 1 / -1;
+    display: grid !important;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 2.5rem;
+    align-items: stretch;
+    padding: 2.6rem;
+    background: linear-gradient(135deg, var(--surface-level-1-bg) 0%, rgba(53, 51, 205, 0.03) 100%);
+    border: 1.5px solid rgba(53, 51, 205, 0.24);
+  }
+
+  .service-card-horizontal-left {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .service-card-horizontal-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
 .service-price-label {
   font-size: 0.8rem;
   font-weight: 700;
@@ -3275,6 +3309,47 @@ a:focus-visible {
 
 .diagnostic-info-card:hover {
   border-color: var(--surface-level-1-border-hover);
+}
+
+.diagnostic-typewriter-title {
+  margin-top: 0.85rem;
+  margin-bottom: 1.15rem;
+  min-height: 2.8em;
+}
+
+.diagnostic-typed-keyword {
+  color: #3533cd;
+  font-weight: 800;
+  border-bottom: 2px solid rgba(53, 51, 205, 0.35);
+  padding-bottom: 2px;
+}
+
+.diagnostic-highlight-statement {
+  margin: 1.35rem 0 1.85rem 0;
+  padding: 1.35rem 1.5rem;
+  background: rgba(53, 51, 205, 0.04);
+  border-left: 3.5px solid var(--color-brand-blue);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  border-top: 1px solid rgba(53, 51, 205, 0.08);
+  border-right: 1px solid rgba(53, 51, 205, 0.08);
+  border-bottom: 1px solid rgba(53, 51, 205, 0.08);
+}
+
+.diagnostic-statement-main {
+  font-size: 1.1rem; /* 1 ponto a mais que a tipografia padrão de leitura (0.94rem -> 1.1rem) */
+  line-height: 1.65;
+  color: var(--text-heading);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.diagnostic-statement-accent {
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--color-brand-blue);
+  font-weight: 700;
+  font-style: italic;
+  margin: 0;
 }
 
 .diagnostic-form-glass {
@@ -4724,6 +4799,16 @@ a:focus-visible {
   border-color: rgba(245, 158, 11, 0.25);
 }
 
+.fde-card-tailored {
+  border: 1.5px solid rgba(53, 51, 205, 0.35);
+  background: var(--surface-level-1-bg);
+  box-shadow: 0 4px 16px -2px rgba(53, 51, 205, 0.08);
+}
+
+.fde-card-tailored:hover {
+  border-color: var(--color-brand-blue);
+}
+
 .fde-card-featured {
   border: 1.5px solid rgba(53, 51, 205, 0.35);
   box-shadow: 0 4px 16px -2px rgba(53, 51, 205, 0.12);
@@ -4763,6 +4848,12 @@ a:focus-visible {
   color: #d97706;
 }
 
+.fde-card-icon.tailored {
+  background: rgba(53, 51, 205, 0.10);
+  border: 1px solid rgba(53, 51, 205, 0.25);
+  color: #3533cd;
+}
+
 .fde-card-icon.featured {
   background: rgba(53, 51, 205, 0.12);
   border: 1px solid rgba(53, 51, 205, 0.30);
@@ -4788,6 +4879,12 @@ a:focus-visible {
   color: #d97706;
   background: rgba(245, 158, 11, 0.08);
   border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.fde-card-tag.tailored {
+  color: #3533cd;
+  background: rgba(53, 51, 205, 0.08);
+  border: 1px solid rgba(53, 51, 205, 0.25);
 }
 
 .fde-card-tag.featured {
