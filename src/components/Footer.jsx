@@ -39,35 +39,42 @@ export default function Footer({ profile }) {
             <li><Link to="/#servicos">Plataformas e presença digital</Link></li>
             <li><Link to="/#servicos">Inteligência artificial</Link></li>
             <li><Link to="/#riscos">Prevenção de riscos</Link></li>
+            <li><Link to="/sobre">Sobre a empresa</Link></li>
           </ul>
         </div>
 
-        {/* COLUNA 3: NAVEGAÇÃO */}
+        {/* COLUNA 3: SISTEMAS & PROJETOS (CRAWLABLE PELO GOOGLEBOT) */}
         <div className="footer-col">
-          <h4>Navegação</h4>
+          <h4>Sistemas & Projetos</h4>
           <ul className="footer-links-list">
+            <li><Link to="/projetos">Ver todos os projetos</Link></li>
+            <li><Link to="/projetos/appfitness">AppFitness (SaaS)</Link></li>
+            <li><Link to="/projetos/creare-labs">CreareLabs</Link></li>
+            <li><Link to="/projetos/syscallcage">SysCallCage (INPI)</Link></li>
+            <li><Link to="/projetos/greentoken">GreenToken</Link></li>
+            <li><Link to="/projetos/kernel-wsl2-bpf-plus">Kernel WSL2 BPF</Link></li>
+            <li><Link to="/projetos/imunno-system">Imunno System</Link></li>
+            <li><Link to="/projetos/oficial-helper">Oficial Helper</Link></li>
+          </ul>
+        </div>
+
+        {/* COLUNA 4: NAVEGAÇÃO & ATENDIMENTO */}
+        <div className="footer-col">
+          <h4>Navegação & Contato</h4>
+          <ul className="footer-links-list" style={{ marginBottom: '1.25rem' }}>
             <li><Link to="/">Início</Link></li>
-            <li><Link to="/#comparativo">Comparativo</Link></li>
-            <li><Link to="/#como-funciona">Como funciona</Link></li>
-            <li><Link to="/sobre">Sobre</Link></li>
-            <li><Link to="/projetos">Projetos</Link></li>
-            <li><Link to="/blog">Artigos</Link></li>
+            <li><Link to="/blog">Artigos e Análises</Link></li>
             <li><Link to="/contato">Contato direto</Link></li>
           </ul>
-        </div>
-
-        {/* COLUNA 4: ATENDIMENTO */}
-        <div className="footer-col">
-          <h4>Atendimento</h4>
-          <p style={{ fontSize: '0.88rem', color: 'rgba(248, 250, 252, 0.7)', lineHeight: '1.6', marginBottom: '1rem' }}>
-            Fale diretamente comigo pelo WhatsApp para uma avaliação da sua operação de tecnologia em Porto Velho.
+          <p style={{ fontSize: '0.86rem', color: 'rgba(248, 250, 252, 0.7)', lineHeight: '1.5', marginBottom: '0.85rem' }}>
+            Atendimento presencial em Porto Velho ou remoto seguro.
           </p>
           <a
             href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá Rodrigo. Sou de uma empresa em Porto Velho e gostaria de solicitar uma avaliação da nossa operação de tecnologia.')}`}
             target="_blank"
             rel="noopener noreferrer"
             className="corp-btn-accent"
-            style={{ fontSize: '0.85rem', padding: '0.65rem 1.25rem' }}
+            style={{ fontSize: '0.85rem', padding: '0.65rem 1.25rem', width: '100%', justifyContent: 'center' }}
           >
             <MessageSquare size={16} /> Conversar no WhatsApp
           </a>

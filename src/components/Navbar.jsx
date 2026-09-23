@@ -75,39 +75,37 @@ export default function Navbar({ profile }) {
             <Link to="/sobre" className={isActive('/sobre') ? 'active' : ''}>Sobre</Link>
           </li>
 
-          {/* DROPDOWN DE CASES / PROJETOS */}
+          {/* DROPDOWN DE CASES / PROJETOS (CRAWLABLE PELO GOOGLEBOT) */}
           <li
             className="has-dropdown"
             ref={dropdownRef}
             onMouseEnter={() => setDropdownOpen(true)}
             onMouseLeave={() => setDropdownOpen(false)}
           >
-            <button
-              type="button"
+            <Link
+              to="/projetos"
               className={`dropdown-trigger-btn ${location.pathname.startsWith('/projetos') ? 'active' : ''}`}
-              onClick={() => setDropdownOpen(!dropdownOpen)}
               aria-expanded={dropdownOpen}
             >
               Projetos <ChevronDown size={14} className={`dropdown-arrow ${dropdownOpen ? 'rotated' : ''}`} />
-            </button>
+            </Link>
             
-            {dropdownOpen && (
-              <div className="dropdown-menu-box">
-                <Link to="/projetos" className="dropdown-link-all">
-                  Ver todos os projetos
+            <div className={`dropdown-menu-box ${dropdownOpen ? 'is-open' : ''}`}>
+              <Link to="/projetos" className="dropdown-link-all" onClick={() => setDropdownOpen(false)}>
+                Ver todos os projetos
+              </Link>
+              <div className="dropdown-divider" />
+              {projects.map((proj) => (
+                <Link
+                  key={proj.id}
+                  to={`/projetos/${proj.slug}`}
+                  className="dropdown-item-link"
+                  onClick={() => setDropdownOpen(false)}
+                >
+                  <span className="dropdown-item-title">{proj.title}</span>
                 </Link>
-                <div className="dropdown-divider" />
-                {projects.map((proj) => (
-                  <Link
-                    key={proj.id}
-                    to={`/projetos/${proj.slug}`}
-                    className="dropdown-item-link"
-                  >
-                    <span className="dropdown-item-title">{proj.title}</span>
-                  </Link>
-                ))}
-              </div>
-            )}
+              ))}
+            </div>
           </li>
 
           <li>

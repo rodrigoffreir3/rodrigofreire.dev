@@ -7,7 +7,8 @@ import {
   DEFAULT_HOME_SETTINGS,
   DEFAULT_FDE_COMPARISON,
   DEFAULT_HERO_SLIDES,
-  DEFAULT_POSTS
+  DEFAULT_POSTS,
+  DEFAULT_PROJECTS
 } from '../data/defaultData';
 import {
   Wrench,
@@ -677,6 +678,74 @@ export default function Home({ profile }) {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================
+         SISTEMAS & ENGENHARIA EM PRODUÇÃO (PROJETOS EM DESTAQUE)
+         Distribuição de PageRank e Rastreabilidade para o Googlebot
+         ============================================================ */}
+      <section className="section-featured-projects scroll-reveal" id="projetos" style={{ paddingTop: '5rem', paddingBottom: '3.5rem', borderTop: '1px solid rgba(0, 0, 0, 0.06)' }}>
+        <div className="portfolio-container" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem' }}>
+          <div className="section-head-center" style={{ marginBottom: '3rem' }}>
+            <span className="section-tag-pill">
+              <Sparkles size={14} style={{ display: 'inline', marginRight: '4px' }} />
+              Portfólio & Sistemas em Produção
+            </span>
+            <h2 className="section-title-large">
+              Tecnologia Própria, Pesquisa e Sistemas em Operação
+            </h2>
+            <p className="section-desc-subtle">
+              Conheça os softwares desenvolvidos, tecnologias com registro de patente e soluções sob medida entregues para a vida real.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.75rem' }}>
+            {DEFAULT_PROJECTS.map((proj) => (
+              <div key={proj.id} className="service-card-liquid stagger-card" style={{ display: 'flex', flexDirection: 'column', padding: '1.85rem' }}>
+                <div className="service-card-header" style={{ marginBottom: '0.85rem' }}>
+                  <span className="service-card-tag">{proj.badge || "Sistemas & Soluções"}</span>
+                </div>
+                <h3 style={{ fontSize: '1.25rem', marginBottom: '0.65rem', color: 'var(--text-heading)' }}>
+                  <Link to={`/projetos/${proj.slug}`} style={{ color: 'inherit', textDecoration: 'none' }}>
+                    {proj.title}
+                  </Link>
+                </h3>
+                <p style={{ fontSize: '0.9rem', color: 'var(--text-body)', lineHeight: '1.6', marginBottom: '1.25rem', flex: 1 }}>
+                  {proj.summary}
+                </p>
+                {proj.tags && proj.tags.length > 0 && (
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem', marginBottom: '1.25rem' }}>
+                    {proj.tags.slice(0, 3).map((t, idx) => (
+                      <span key={idx} className="tech-tag" style={{ fontSize: '0.72rem' }}>
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                )}
+                <div className="service-card-footer" style={{ paddingTop: '0.75rem', borderTop: '1px solid var(--color-gray-ui)', marginTop: 'auto' }}>
+                  <Link
+                    to={`/projetos/${proj.slug}`}
+                    className="corp-link-text"
+                    style={{ fontSize: '0.86rem', fontWeight: '600', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}
+                  >
+                    Ver documentação técnica <ArrowRight size={14} />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
+            <Link
+              to="/projetos"
+              className="corp-btn-outline-glass"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.8rem', textDecoration: 'none' }}
+            >
+              <span>Ver todos os projetos e documentações</span>
+              <ArrowRight size={16} />
+            </Link>
           </div>
         </div>
       </section>

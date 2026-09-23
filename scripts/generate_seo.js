@@ -14,29 +14,29 @@ const DEFAULT_IMAGE = `${SITE_URL}/og-default.png`;
 
 // 1. GERAR SITEMAP.XML
 function generateSitemap() {
-  console.log('📄 Gerando sitemap.xml...');
+  console.log('📄 Gerando sitemap.xml com datas verídicas...');
   const today = new Date().toISOString().split('T')[0];
 
   const staticPages = [
     { loc: `${SITE_URL}/`, changefreq: 'weekly', priority: '1.0', lastmod: today },
-    { loc: `${SITE_URL}/sobre`, changefreq: 'monthly', priority: '0.8', lastmod: today },
-    { loc: `${SITE_URL}/contato`, changefreq: 'monthly', priority: '0.8', lastmod: today },
-    { loc: `${SITE_URL}/projetos`, changefreq: 'monthly', priority: '0.8', lastmod: today },
-    { loc: `${SITE_URL}/blog`, changefreq: 'weekly', priority: '0.9', lastmod: today }
+    { loc: `${SITE_URL}/sobre`, changefreq: 'monthly', priority: '0.8', lastmod: '2026-09-21' },
+    { loc: `${SITE_URL}/contato`, changefreq: 'monthly', priority: '0.8', lastmod: '2026-09-21' },
+    { loc: `${SITE_URL}/projetos`, changefreq: 'weekly', priority: '0.9', lastmod: '2026-09-23' },
+    { loc: `${SITE_URL}/blog`, changefreq: 'weekly', priority: '0.9', lastmod: '2026-09-21' }
   ];
 
   const projectPages = DEFAULT_PROJECTS.map(proj => ({
     loc: `${SITE_URL}/projetos/${proj.slug}`,
     changefreq: 'monthly',
-    priority: '0.8',
-    lastmod: today
+    priority: '0.85',
+    lastmod: '2026-09-21'
   }));
 
   const blogPages = DEFAULT_POSTS.map(post => ({
     loc: `${SITE_URL}/blog/${post.slug}`,
     changefreq: 'weekly',
     priority: '0.8',
-    lastmod: today
+    lastmod: post.published_at || '2026-09-21'
   }));
 
   const allUrls = [...staticPages, ...projectPages, ...blogPages];
@@ -258,7 +258,7 @@ function wrapPrerenderedContent(contentHtml) {
       </div>
       <footer class="prerender-footer" style="max-width:1040px;margin:3.5rem auto 0;padding:2.5rem 1.25rem;border-top:1px solid rgba(0,0,0,0.08);text-align:center;font-size:0.875rem;color:#666;">
         <p style="margin:0 0 0.5rem;font-weight:500;color:#333;">Rodrigo Freire Tech · Porto Velho, RO · Sistemas sob medida, estabilidade e automação</p>
-        <p style="margin:0 0 1rem;">Atendimento direto com o responsável técnico pelo WhatsApp: +55 (69) 99278-2919</p>
+        <p style="margin:0 0 0.75rem;font-size:0.82rem;"><strong style="color:#222;">Sistemas e Projetos:</strong> <a href="/projetos/appfitness" style="color:#555;text-decoration:none;">AppFitness</a> · <a href="/projetos/creare-labs" style="color:#555;text-decoration:none;">CreareLabs</a> · <a href="/projetos/syscallcage" style="color:#555;text-decoration:none;">SysCallCage</a> · <a href="/projetos/greentoken" style="color:#555;text-decoration:none;">GreenToken</a> · <a href="/projetos/kernel-wsl2-bpf-plus" style="color:#555;text-decoration:none;">Kernel WSL2 BPF</a> · <a href="/projetos/imunno-system" style="color:#555;text-decoration:none;">Imunno System</a> · <a href="/projetos/oficial-helper" style="color:#555;text-decoration:none;">Oficial Helper</a></p>
         <p style="margin:0;"><a href="/" style="color:#3533cd;text-decoration:none;">Início</a> · <a href="/sobre" style="color:#3533cd;text-decoration:none;">Sobre</a> · <a href="/projetos" style="color:#3533cd;text-decoration:none;">Projetos</a> · <a href="/blog" style="color:#3533cd;text-decoration:none;">Blog</a> · <a href="/contato" style="color:#3533cd;text-decoration:none;">Contato</a></p>
       </footer>
     </div>
