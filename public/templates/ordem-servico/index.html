@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oficina & Reparo OS | Demonstração de Sistema de Ordens de Serviço</title>
+  <meta name="description" content="Demonstração interativa de sistema de ordem de serviço: controle de bancada técnica, histórico de consertos e envio de orçamento no WhatsApp." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-os: #0b1329;
+      --bg-surface: #13203f;
+      --bg-card: #1c2b52;
+      --border-os: rgba(255, 255, 255, 0.08);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --color-brand: #3b82f6;
+      --color-success: #10b981;
+      --color-warning: #f59e0b;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-os);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-size: 14px;
+      overflow-x: hidden;
+    }
+
+    /* Topbar */
+    .os-topbar {
+      height: 52px;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-os);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .os-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .os-logo {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      width: 28px;
+      height: 28px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    .os-title {
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .os-badge {
+      font-size: 0.7rem;
+      background: rgba(59, 130, 246, 0.2);
+      color: #93c5fd;
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+
+    /* Status Bar */
+    .status-filter-bar {
+      padding: 0.75rem 1rem;
+      display: flex;
+      gap: 0.45rem;
+      overflow-x: auto;
+      border-bottom: 1px solid var(--border-os);
+      background: rgba(19, 32, 63, 0.5);
+    }
+
+    .filter-tab {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.75rem;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .filter-tab.active {
+      background: rgba(59, 130, 246, 0.25);
+      border-color: rgba(59, 130, 246, 0.5);
+      color: #bfdbfe;
+      font-weight: 600;
+    }
+
+    /* Container de OS */
+    .os-container {
+      padding: 1rem;
+      flex: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .os-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-os);
+      border-radius: var(--radius-md);
+      padding: 0.95rem 1.15rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      transition: border-color 0.2s;
+    }
+
+    .os-card:hover {
+      border-color: rgba(59, 130, 246, 0.4);
+    }
+
+    .os-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .os-number {
+      font-weight: 700;
+      color: #fff;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .os-device-tag {
+      font-size: 0.72rem;
+      background: rgba(255, 255, 255, 0.06);
+      color: #cbd5e1;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    .badge-os-status {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .status-bancada {
+      background: rgba(59, 130, 246, 0.2);
+      color: #93c5fd;
+    }
+
+    .status-aguardando {
+      background: rgba(245, 158, 11, 0.2);
+      color: #fcd34d;
+    }
+
+    .status-pronto {
+      background: rgba(16, 185, 129, 0.2);
+      color: #6ee7b7;
+    }
+
+    .os-details-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 0.75rem;
+      font-size: 0.82rem;
+    }
+
+    @media (max-width: 650px) {
+      .os-details-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .os-defect-box {
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .os-defect-box strong {
+      color: #e2e8f0;
+    }
+
+    .os-financial-box {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.2rem;
+    }
+
+    .os-price-val {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #34d399;
+    }
+
+    .os-footer-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.65rem;
+      border-top: 1px solid var(--border-os);
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .os-client-info {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .btn-zap-notify {
+      background: #10b981;
+      color: #fff;
+      border: none;
+      padding: 0.4rem 0.85rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: background 0.15s;
+    }
+
+    .btn-zap-notify:hover {
+      background: #059669;
+    }
+
+    /* Modal Simulado de Mensagem */
+    .zap-modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .zap-modal-card {
+      background: #1e293b;
+      border: 1px solid var(--border-os);
+      border-radius: var(--radius-md);
+      max-width: 440px;
+      width: 100%;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .zap-modal-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .zap-bubble {
+      background: #064e3b;
+      color: #d1fae5;
+      padding: 0.85rem;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      line-height: 1.5;
+      border-left: 3px solid #10b981;
+    }
+
+    .zap-modal-btns {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.5rem;
+    }
+
+    .btn-modal-close {
+      background: transparent;
+      border: 1px solid var(--border-os);
+      color: var(--text-muted);
+      padding: 0.4rem 0.8rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+
+    .btn-modal-send {
+      background: #10b981;
+      border: none;
+      color: #fff;
+      padding: 0.4rem 0.85rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+
+    /* EMBED MODE */
+    html.embed-hero-only body {
+      background: #0b1329;
+    }
+    html.embed-hero-only .os-topbar {
+      height: 44px;
+    }
+    html.embed-hero-only .os-container {
+      padding: 0.65rem;
+      gap: 0.6rem;
+    }
+    html.embed-hero-only .os-card {
+      padding: 0.75rem 0.85rem;
+    }
+  </style>
+  <script>
+    if (window.location.search.includes('embed=hero')) {
+      document.documentElement.classList.add('embed-hero-only');
+    }
+  </script>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <header class="os-topbar">
+    <div class="os-brand">
+      <div class="os-logo">🔧</div>
+      <span class="os-title">Oficina & Reparo OS</span>
+    </div>
+    <span class="os-badge">14 Chamados Ativos</span>
+  </header>
+
+  <!-- Filtro de Status -->
+  <div class="status-filter-bar">
+    <button class="filter-tab active" onclick="filtrarOS('todas', this)">Todas (3)</button>
+    <button class="filter-tab" onclick="filtrarOS('aguardando', this)">Aguardando Aprovação (1)</button>
+    <button class="filter-tab" onclick="filtrarOS('bancada', this)">Em Bancada (1)</button>
+    <button class="filter-tab" onclick="filtrarOS('pronto', this)">Pronto (1)</button>
+  </div>
+
+  <div class="os-container">
+    <!-- OS 1: Aguardando Aprovação -->
+    <div class="os-card" data-cat="aguardando">
+      <div class="os-card-header">
+        <div class="os-number">
+          <span>OS #103</span>
+          <span class="os-device-tag">iPhone 13 Pro</span>
+        </div>
+        <span class="badge-os-status status-aguardando">Aguardando Aprovação</span>
+      </div>
+      <div class="os-details-grid">
+        <div class="os-defect-box">
+          <strong>Defeito relatado:</strong> Tela com linhas verdes após queda e bateria descarregando rápido.<br />
+          <strong>Laudo técnico:</strong> Substituição do display OLED e bateria nova original.
+        </div>
+        <div class="os-financial-box">
+          <span style="font-size:0.7rem;color:var(--text-muted)">Valor do Orçamento</span>
+          <span class="os-price-val">R$ 890,00</span>
+        </div>
+      </div>
+      <div class="os-footer-actions">
+        <span class="os-client-info">Cliente: Mariana B. · (69) 98114-****</span>
+        <button class="btn-zap-notify" onclick="abrirModalZap('Mariana', '103', 'iPhone 13 Pro', 'R$ 890,00', 'Troca de Tela OLED + Bateria')">
+          <span>📱 Enviar Orçamento no WhatsApp</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- OS 2: Em Bancada -->
+    <div class="os-card" data-cat="bancada">
+      <div class="os-card-header">
+        <div class="os-number">
+          <span>OS #104</span>
+          <span class="os-device-tag">Notebook Dell G15</span>
+        </div>
+        <span class="badge-os-status status-bancada">Em Bancada</span>
+      </div>
+      <div class="os-details-grid">
+        <div class="os-defect-box">
+          <strong>Defeito relatado:</strong> Superaquecendo e travando em jogos pesados.<br />
+          <strong>Serviço:</strong> Limpeza ultrassônica interna e aplicação de pasta térmica Grizzly Kryonaut.
+        </div>
+        <div class="os-financial-box">
+          <span style="font-size:0.7rem;color:var(--text-muted)">Orçamento Aprovado</span>
+          <span class="os-price-val">R$ 380,00</span>
+        </div>
+      </div>
+      <div class="os-footer-actions">
+        <span class="os-client-info">Cliente: Carlos E. · (69) 99312-****</span>
+        <span style="font-size:0.75rem;color:#93c5fd">● Técnico Rodrigo executando</span>
+      </div>
+    </div>
+
+    <!-- OS 3: Pronto -->
+    <div class="os-card" data-cat="pronto">
+      <div class="os-card-header">
+        <div class="os-number">
+          <span>OS #101</span>
+          <span class="os-device-tag">Impressora Epson L3150</span>
+        </div>
+        <span class="badge-os-status status-pronto">Pronto para Retirada</span>
+      </div>
+      <div class="os-details-grid">
+        <div class="os-defect-box">
+          <strong>Defeito relatado:</strong> Impressão falhada na cor magenta.<br />
+          <strong>Concluído:</strong> Desobstrução de cabeçote e dreno de tinta revisado. Testes 100% OK.
+        </div>
+        <div class="os-financial-box">
+          <span style="font-size:0.7rem;color:var(--text-muted)">Total a Pagar</span>
+          <span class="os-price-val">R$ 220,00</span>
+        </div>
+      </div>
+      <div class="os-footer-actions">
+        <span class="os-client-info">Cliente: Papelaria Modelo · (69) 99245-****</span>
+        <button class="btn-zap-notify" onclick="abrirModalPronto('Papelaria Modelo', '101', 'Impressora Epson L3150')">
+          <span>✓ Avisar Retirada no WhatsApp</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal WhatsApp -->
+  <div class="zap-modal-backdrop" id="zapModal" onclick="fecharModal(event)">
+    <div class="zap-modal-card">
+      <h4 class="zap-modal-title">Mensagem Pronta para Envio Automático</h4>
+      <div class="zap-bubble" id="zapBubbleText">
+        <!-- Texto montado via JS -->
+      </div>
+      <div class="zap-modal-btns">
+        <button class="btn-modal-close" onclick="fecharModalDirect()">Fechar</button>
+        <button class="btn-modal-send" onclick="simularEnvio()">Simular Envio WhatsApp</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function filtrarOS(categoria, btn) {
+      document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cards = document.querySelectorAll('.os-card');
+      cards.forEach(card => {
+        if (categoria === 'todas') {
+          card.style.display = 'flex';
+        } else if (card.getAttribute('data-cat') === categoria) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function abrirModalZap(cliente, osNum, aparelho, valor, servico) {
+      const modal = document.getElementById('zapModal');
+      const text = document.getElementById('zapBubbleText');
+      text.innerHTML = `
+        Olá, <strong>${cliente}</strong>!<br /><br />
+        O diagnóstico da sua <strong>OS #${osNum} (${aparelho})</strong> ficou pronto na Oficina & Reparo:<br />
+        • Serviço: ${servico}<br />
+        • Total: <strong>${valor}</strong> em até 3x no cartão.<br /><br />
+        Para autorizar o conserto, basta responder <strong>SIM</strong> a esta mensagem!
+      `;
+      modal.style.display = 'flex';
+    }
+
+    function abrirModalPronto(cliente, osNum, aparelho) {
+      const modal = document.getElementById('zapModal');
+      const text = document.getElementById('zapBubbleText');
+      text.innerHTML = `
+        Olá, <strong>${cliente}</strong>!<br /><br />
+        Informamos que o seu equipamento <strong>${aparelho} (OS #${osNum})</strong> já foi testado, finalizado e está <strong>pronto para retirada</strong>!<br /><br />
+        Pode vir retirar no horário comercial das 08h às 18h.
+      `;
+      modal.style.display = 'flex';
+    }
+
+    function fecharModal(e) {
+      if (e.target.id === 'zapModal') {
+        document.getElementById('zapModal').style.display = 'none';
+      }
+    }
+
+    function fecharModalDirect() {
+      document.getElementById('zapModal').style.display = 'none';
+    }
+
+    function simularEnvio() {
+      alert('Mensagem enviada com sucesso para o WhatsApp do cliente!');
+      fecharModalDirect();
+    }
+  </script>
+</body>
+</html>

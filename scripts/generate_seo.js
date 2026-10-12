@@ -257,7 +257,7 @@ function wrapPrerenderedContent(contentHtml) {
         ${contentHtml}
       </div>
       <footer class="prerender-footer" style="max-width:1040px;margin:3.5rem auto 0;padding:2.5rem 1.25rem;border-top:1px solid rgba(0,0,0,0.08);text-align:center;font-size:0.875rem;color:#666;">
-        <p style="margin:0 0 0.5rem;font-weight:500;color:#333;">Rodrigo Freire Tech · Porto Velho, RO · Sistemas sob medida, estabilidade e automação</p>
+        <p style="margin:0 0 0.5rem;font-weight:500;color:#333;">Rodrigo Freire Tech · Porto Velho, RO · Sistemas sob medida, suporte de TI e automação</p>
         <p style="margin:0 0 0.75rem;font-size:0.82rem;"><strong style="color:#222;">Sistemas e Projetos:</strong> <a href="/projetos/appfitness" style="color:#555;text-decoration:none;">AppFitness</a> · <a href="/projetos/creare-labs" style="color:#555;text-decoration:none;">CreareLabs</a> · <a href="/projetos/syscallcage" style="color:#555;text-decoration:none;">SysCallCage</a> · <a href="/projetos/greentoken" style="color:#555;text-decoration:none;">GreenToken</a> · <a href="/projetos/kernel-wsl2-bpf-plus" style="color:#555;text-decoration:none;">Kernel WSL2 BPF</a> · <a href="/projetos/imunno-system" style="color:#555;text-decoration:none;">Imunno System</a> · <a href="/projetos/oficial-helper" style="color:#555;text-decoration:none;">Oficial Helper</a></p>
         <p style="margin:0;"><a href="/" style="color:#3533cd;text-decoration:none;">Início</a> · <a href="/sobre" style="color:#3533cd;text-decoration:none;">Sobre</a> · <a href="/projetos" style="color:#3533cd;text-decoration:none;">Projetos</a> · <a href="/blog" style="color:#3533cd;text-decoration:none;">Blog</a> · <a href="/contato" style="color:#3533cd;text-decoration:none;">Contato</a></p>
       </footer>
@@ -373,7 +373,7 @@ function prerenderRoutes() {
       'latitude': -8.7619,
       'longitude': -63.9039
     },
-    'description': 'Desenvolvimento de sistemas sob medida, automação de processos e infraestrutura de tecnologia para empresas em Porto Velho, RO.'
+    'description': 'Desenvolvimento de sistemas sob medida, suporte técnico de TI e automação para empresas em Porto Velho, RO.'
   };
 
   const homeBodyHtml = `
@@ -381,8 +381,14 @@ function prerenderRoutes() {
       <section class="hero-summary" style="margin-bottom:3rem;">
         <p style="font-size:0.875rem;font-weight:700;color:#3533cd;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">Rodrigo Freire Tech · Porto Velho, RO</p>
         <h1 style="font-size:2.4rem;color:#000;margin:0 0 1.25rem;line-height:1.2;letter-spacing:-0.02em;">Sistemas sob medida para a sua empresa vender mais.</h1>
-        <p style="font-size:1.15rem;color:#444;line-height:1.65;margin-bottom:1.75rem;">Desenvolvo e mantenho a tecnologia que a sua operação usa todos os dias: sistemas próprios, automação das rotinas manuais da equipe e estabilidade de caixa e rede. Cada projeto começa com escopo e preço fechados por escrito. Quem executa o trabalho é quem atende você depois.</p>
+        <p style="font-size:1.15rem;color:#444;line-height:1.65;margin-bottom:1.75rem;">Sistemas sob medida, suporte técnico e automação para empresas de Porto Velho. Escopo e preço por escrito, antes de começar.</p>
         <p><a href="/contato" style="background:#3533cd;color:#fff;padding:0.85rem 1.6rem;border-radius:6px;text-decoration:none;font-weight:600;display:inline-block;">Solicitar avaliação da sua operação &rarr;</a></p>
+      </section>
+
+      <section class="services-summary" style="margin-top:2.5rem;margin-bottom:2.5rem;">
+        <h2 style="font-size:1.6rem;color:#000;margin:0 0 0.4rem;">Serviços: Suporte Técnico de TI & Sistemas Sob Medida</h2>
+        <p style="font-size:0.95rem;color:#444;line-height:1.6;margin-bottom:1rem;">Atendimento direto em Porto Velho com escopo e preço por escrito: manutenção de computadores, redes e servidores, além de desenvolvimento de sistemas como ERP enxuto, PDV frente de caixa, ordem de serviço, agendamento online e lojas com catálogo.</p>
+        <p style="font-size:0.9rem;color:#666;">Demonstrações disponíveis: <a href="/templates/roupa-feminina/" style="color:#3533cd;">Loja Online</a> · <a href="/templates/erp/" style="color:#3533cd;">Apex Gestão ERP</a> · <a href="/templates/pdv/" style="color:#3533cd;">Caixa Ágil PDV</a> · <a href="/templates/ordem-servico/" style="color:#3533cd;">Oficina & Reparo OS</a> · <a href="/templates/agendador/" style="color:#3533cd;">Agenda Fácil</a></p>
       </section>
 
       <section class="featured-articles" style="margin-top:3.5rem;">
@@ -422,7 +428,7 @@ function prerenderRoutes() {
   `;
 
   const homeHtml = injectMetaTags(baseHtml, {
-    title: 'Rodrigo Freire Tech · Sistemas sob medida para empresas — Porto Velho',
+    title: 'Rodrigo Freire Tech · Sistemas sob medida e suporte de TI — Porto Velho',
     description: 'Desenvolvimento de sistemas, sites e lojas online sob medida, automação de rotinas manuais e estabilidade de caixa e rede para empresas de Porto Velho. Escopo e preço fechados por escrito.',
     canonicalUrl: `${SITE_URL}/`,
     jsonLdList: [homeWebsiteJsonLd, homeLocalBusinessJsonLd],

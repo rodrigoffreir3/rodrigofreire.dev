@@ -30,15 +30,12 @@ export default function Footer({ profile }) {
           </div>
         </div>
 
-        {/* COLUNA 2: QUATRO PILARES */}
+        {/* COLUNA 2: SERVIÇOS */}
         <div className="footer-col">
-          <h4>Quatro pilares</h4>
+          <h4>Serviços</h4>
           <ul className="footer-links-list">
-            <li><Link to="/#servicos">Continuidade da operação</Link></li>
-            <li><Link to="/#servicos">Automação e integração</Link></li>
-            <li><Link to="/#servicos">Plataformas e presença digital</Link></li>
-            <li><Link to="/#servicos">Inteligência artificial</Link></li>
-            <li><Link to="/#riscos">Prevenção de riscos</Link></li>
+            <li><Link to="/#servicos">Suporte técnico de TI</Link></li>
+            <li><Link to="/#servicos">Sistemas sob medida</Link></li>
             <li><Link to="/sobre">Sobre a empresa</Link></li>
           </ul>
         </div>

@@ -1,81 +1,112 @@
-import React, { useState, useCallback, useRef, useEffect } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  DEFAULT_SERVICES, 
-  DEFAULT_RISKS, 
-  DEFAULT_STEPS, 
+import {
+  DEFAULT_HOME_OFFERS,
+  DEFAULT_STEPS,
   DEFAULT_HOME_SETTINGS,
-  DEFAULT_FDE_COMPARISON,
   DEFAULT_HERO_SLIDES,
-  DEFAULT_POSTS,
   DEFAULT_PROJECTS
 } from '../data/defaultData';
 import {
   Wrench,
-  ShoppingCart,
-  Zap,
-  ShieldCheck,
-  CheckCircle2,
-  Clock,
-  Database,
-  ArrowRight,
-  ArrowDown,
-  Sparkles,
-  BookOpen,
   Layers,
-  BarChart3,
-  Server,
-  Network,
-  Cpu,
-  ShieldAlert,
-  Gauge,
-  Workflow,
-  MapPin,
+  CheckCircle2,
+  ArrowRight,
+  Sparkles,
   MessageSquare,
-  AlertOctagon,
-  Check,
-  XCircle,
   Send,
   ExternalLink,
-  ChevronRight
+  ChevronRight,
+  ChevronLeft
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import HeroCarousel from '../components/HeroMockups/HeroCarousel';
 import useScrollReveal from '../hooks/useScrollReveal';
 import useTypewriter from '../hooks/useTypewriter';
 
-const ICON_MAP = {
-  Wrench,
-  ShoppingCart,
-  Zap,
-  ShieldCheck,
-  CheckCircle2,
-  Clock,
-  Database,
-  Layers,
-  BarChart3,
-  Server,
-  Network,
-  Cpu,
-  ShieldAlert,
-  AlertOctagon,
-  MessageSquare
-};
+const ICON_MAP = { Wrench, Layers };
 
-const DIAGNOSTIC_GOALS = [
-  'impulsionar as suas vendas',
-  'automatizar o seu negócio',
-  'aumentar a sua produtividade',
-  'personalizar o seu atendimento',
-  'promover a melhor experiência ao cliente',
-  'elevar a percepção de valor'
+// Projetos em destaque na Home: texto de uma linha. O detalhe fica na página do projeto.
+const HOME_PROJECT_LINES = {
+  appfitness: 'Plataforma SaaS de treinos, em produção.',
+  'imunno-system': 'Defesa autônoma para servidores Linux. Registro de programa de computador no INPI.',
+  syscallcage: 'Jaula de segurança open source para agentes de IA, no kernel Linux.'
+};
+const HOME_PROJECT_SLUGS = ['appfitness', 'imunno-system', 'syscallcage'];
+
+// Vitrine interativa de 5 sistemas sob medida em carrossel
+const SHOWCASE_TEMPLATES = [
+  {
+    id: 'loja',
+    tabLabel: 'Loja Online',
+    category: 'E-commerce & Catálogo',
+    title: 'Lumina Boutique',
+    desc: 'Provador virtual, catálogo com fotos reais e fechamento de pedidos direto no WhatsApp.',
+    path: '/roupa-feminina',
+    iframeSrc: '/templates/roupa-feminina/index.html?embed=hero',
+    demoUrl: '/templates/roupa-feminina/',
+    highlights: ['Abre rápido no celular', 'Pedido direto no WhatsApp'],
+    whatsappMsg: 'Olá Rodrigo. Vi o modelo de Loja Online no seu site e gostaria de uma solução sob medida para o meu comércio.'
+  },
+  {
+    id: 'erp',
+    tabLabel: 'ERP Gestão',
+    category: 'Gestão & Finanças',
+    title: 'Apex Gestão ERP',
+    desc: 'Fluxo de caixa diário, faturamento, contas a pagar e receber em uma única tela sem complicação.',
+    path: '/erp',
+    iframeSrc: '/templates/erp/index.html?embed=hero',
+    demoUrl: '/templates/erp/',
+    highlights: ['Fluxo de caixa em tempo real', 'Relatório limpo sem burocracia'],
+    whatsappMsg: 'Olá Rodrigo. Vi a demonstração de ERP no seu site e gostaria de conversar sobre um sistema de gestão sob medida para a minha empresa.'
+  },
+  {
+    id: 'pdv',
+    tabLabel: 'PDV Caixa',
+    category: 'Ponto de Venda & Frente de Caixa',
+    title: 'Caixa Ágil PDV',
+    desc: 'Venda rápida por código de barras, cálculo automático de troco e recebimento via Pix instantâneo.',
+    path: '/pdv',
+    iframeSrc: '/templates/pdv/index.html?embed=hero',
+    demoUrl: '/templates/pdv/',
+    highlights: ['Não trava no horário de pico', 'Pix e comprovante em segundos'],
+    whatsappMsg: 'Olá Rodrigo. Vi o modelo de Frente de Caixa PDV no seu site e gostaria de um sistema assim para o meu ponto de venda.'
+  },
+  {
+    id: 'os',
+    tabLabel: 'Ordem de Serviço',
+    category: 'Assistência & Chamados',
+    title: 'Oficina & Reparo OS',
+    desc: 'Entrada de equipamentos, laudo técnico e envio de orçamento com aprovação direto no WhatsApp.',
+    path: '/ordem-servico',
+    iframeSrc: '/templates/ordem-servico/index.html?embed=hero',
+    demoUrl: '/templates/ordem-servico/',
+    highlights: ['Aprovação de orçamento no WhatsApp', 'Histórico completo do aparelho'],
+    whatsappMsg: 'Olá Rodrigo. Vi o modelo de Ordem de Serviço no seu site e gostaria de um sistema para a minha assistência/oficina.'
+  },
+  {
+    id: 'agendador',
+    tabLabel: 'Agendamento',
+    category: 'Salão, Barbearia & Clínica',
+    title: 'Agenda Fácil',
+    desc: 'O cliente escolhe o serviço e o horário livre sozinho, 24h por dia, com lembrete automático no WhatsApp.',
+    path: '/agendador',
+    iframeSrc: '/templates/agendador/index.html?embed=hero',
+    demoUrl: '/templates/agendador/',
+    highlights: ['Reduz faltas com lembretes', 'Cliente agenda sozinho 24h'],
+    whatsappMsg: 'Olá Rodrigo. Vi o modelo de Agendamento Online no seu site e gostaria de implementar no meu negócio.'
+  }
 ];
 
 export default function Home({ profile }) {
   useScrollReveal();
   const phone = (profile?.whatsapp_number ? String(profile.whatsapp_number).replace(/\D/g, '') : '') || '5569992782919';
 
-  // SPEC-SITE-007: Carrossel de 5 mockups e textos sincronizados
+  // Carrossel de Sistemas sob medida da vitrine
+  const [currentTemplateIndex, setCurrentTemplateIndex] = useState(0);
+  const currentTemplate = SHOWCASE_TEMPLATES[currentTemplateIndex];
+
+  // SPEC-SITE-007: Carrossel de 5 mockups e título sincronizado
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const [isTextFading, setIsTextFading] = useState(false);
   const activeSlideIndexRef = useRef(activeSlideIndex);
@@ -84,16 +115,6 @@ export default function Home({ profile }) {
   const heroSlides = DEFAULT_HERO_SLIDES;
   const currentSlide = heroSlides[activeSlideIndex] || heroSlides[0];
   const typedLabel = useTypewriter(currentSlide.label);
-
-  // Efeito de digitação para a seção de diagnóstico & contato
-  const [diagGoalIndex, setDiagGoalIndex] = useState(0);
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setDiagGoalIndex((prev) => (prev + 1) % DIAGNOSTIC_GOALS.length);
-    }, 4200);
-    return () => clearInterval(timer);
-  }, []);
-  const typedDiagnosticGoal = useTypewriter(DIAGNOSTIC_GOALS[diagGoalIndex], { typingSpeed: 60, deletingSpeed: 30 });
 
   const handleSlideChange = useCallback((newIndex) => {
     if (newIndex === activeSlideIndexRef.current) return;
@@ -158,39 +179,36 @@ export default function Home({ profile }) {
     'sameAs': [
       'https://github.com/rodrigoffreir3'
     ],
-    'description': 'Desenvolvimento de sistemas sob medida, automação de processos e infraestrutura de tecnologia para empresas em Porto Velho, RO.'
+    'description': 'Desenvolvimento de sistemas sob medida, suporte técnico de TI e automação para empresas em Porto Velho, RO.'
   };
 
-  const heroBadge = DEFAULT_HOME_SETTINGS.hero_badge || 'Rodrigo Freire Tech · Porto Velho, RO';
-  const heroTitle = DEFAULT_HOME_SETTINGS.hero_title || 'Sistemas sob medida para a sua empresa vender mais.';
-  const heroDesc = DEFAULT_HOME_SETTINGS.hero_desc || 'Desenvolvo e mantenho a tecnologia que a sua operação usa todos os dias: sistemas próprios, automação das rotinas manuais da equipe e estabilidade de caixa e rede. Cada projeto começa com escopo e preço fechados por escrito. Quem executa o trabalho é quem atende você depois.';
-  const heroChips = DEFAULT_HOME_SETTINGS.hero_chips || [
-    'Sistemas, sites e lojas online desenvolvidos sob medida',
-    'Automação e inteligência artificial aplicadas às rotinas da equipe',
-    'Estabilidade de caixa, rede comercial e dados protegidos',
-    'Escopo e preço definidos por escrito antes de começar'
-  ];
-  const heroPrimaryCta = DEFAULT_HOME_SETTINGS.hero_primary_cta || 'Solicitar avaliação da sua operação';
-  const heroWhatsappMsg = DEFAULT_HOME_SETTINGS.hero_whatsapp_msg || 'Olá Rodrigo. Sou de uma empresa em Porto Velho e gostaria de solicitar uma avaliação da nossa operação de tecnologia.';
-  const heroSecondaryCta = DEFAULT_HOME_SETTINGS.hero_secondary_cta || 'Conhecer os quatro pilares de atuação';
+  const heroBadge = DEFAULT_HOME_SETTINGS.hero_badge;
+  const heroTitle = DEFAULT_HOME_SETTINGS.hero_title;
+  const heroDesc = DEFAULT_HOME_SETTINGS.hero_desc;
+  const heroChips = DEFAULT_HOME_SETTINGS.hero_chips;
+  const heroPrimaryCta = DEFAULT_HOME_SETTINGS.hero_primary_cta;
+  const heroWhatsappMsg = DEFAULT_HOME_SETTINGS.hero_whatsapp_msg;
+  const heroSecondaryCta = DEFAULT_HOME_SETTINGS.hero_secondary_cta;
+
+  const featuredProjects = HOME_PROJECT_SLUGS
+    .map((slug) => DEFAULT_PROJECTS.find((p) => p.slug === slug))
+    .filter(Boolean);
 
   return (
     <div className="home-enterprise-wrapper">
       <SEO
-        title="Rodrigo Freire Tech · Sistemas sob medida para empresas — Porto Velho"
-        description="Desenvolvimento de sistemas, sites e lojas online sob medida, automação de rotinas manuais e estabilidade de caixa e rede para empresas de Porto Velho. Escopo e preço fechados por escrito."
+        title="Rodrigo Freire Tech · Sistemas sob medida e suporte de TI — Porto Velho"
+        description="Sistemas sob medida, sites, lojas online, automação e suporte técnico de TI para empresas de Porto Velho. Escopo e preço por escrito."
         canonicalPath="/"
         jsonLd={homeJsonLd}
       />
 
-      {/* ============================================================
-         BLOCO 1: ABERTURA (HERO B2B INSTITUCIONAL) — CARRO-CHEFE
-         ============================================================ */}
+      {/* HERO */}
       <section className="corp-hero-enterprise" id="inicio">
         <div className="hero-enterprise-inner">
           <div className="hero-enterprise-grid">
             <div className="hero-enterprise-copy">
-              
+
               <div className="hero-pill-badge">
                 <Sparkles size={14} />
                 <span>{heroBadge}</span>
@@ -200,7 +218,7 @@ export default function Home({ profile }) {
                 {heroTitle}
               </h1>
 
-              {/* SPEC-SITE-007 RF-4: Linha com efeito digitado (typewriter) */}
+              {/* SPEC-SITE-007 RF-4: linha digitada (apenas no hero) */}
               <div className="hero-typewriter-line" aria-hidden="true">
                 <span className="hero-typewriter-prefix">Na prática:</span>{' '}
                 <span className="hero-typewriter-text">{typedLabel}</span>
@@ -211,19 +229,15 @@ export default function Home({ profile }) {
                 {heroDesc}
               </p>
 
-              {/* SPEC-SITE-007 RF-3: Bloco de Argumento Comercial Sincronizado */}
+              {/* SPEC-SITE-007 RF-3: título sincronizado com o slide */}
               <div className={`hero-argument-box ${isTextFading ? 'fading' : ''}`}>
-                <div className="hero-argument-header">
-                  <span className="hero-argument-tag">{currentSlide.label}</span>
-                  <h2 className="hero-argument-title">{currentSlide.titulo}</h2>
-                </div>
-                <p className="hero-argument-desc">{currentSlide.texto}</p>
+                <h2 className="hero-argument-title">{currentSlide.titulo}</h2>
               </div>
 
             </div>
 
             <div className="hero-enterprise-visual">
-              <HeroCarousel 
+              <HeroCarousel
                 slides={heroSlides}
                 activeIndex={activeSlideIndex}
                 onSelectIndex={handleSlideChange}
@@ -232,7 +246,6 @@ export default function Home({ profile }) {
             </div>
           </div>
 
-          {/* Rodapé do Hero: Chips operacionais e Botões de Ação (Sempre após as animações) */}
           <div className="hero-enterprise-footer">
             <div className="hero-pain-chips-row">
               {heroChips.map((chip, idx) => (
@@ -268,25 +281,38 @@ export default function Home({ profile }) {
         </div>
       </section>
 
-      {/* ============================================================
-         VITRINE: EXEMPLOS DE SOLUÇÕES AMIGÁVEIS QUE RESOLVEM PROBLEMAS
-         ============================================================ */}
+      {/* VITRINE DE SISTEMAS EM CARROSSEL */}
       <section className="section-solutions-showcase" id="solucoes-amigaveis">
         <div className="solutions-showcase-inner">
           <div className="section-head-center">
             <span className="section-tag-pill">
               <Sparkles size={14} style={{ display: 'inline', marginRight: '4px' }} />
-              Soluções Digitais sob Medida · Varejo & Vendas
+              Sistemas sob medida
             </span>
             <h2 className="section-title-large">
-              Desenvolvo soluções amigáveis e elegantes, fáceis de entender e usar, visando maior praticidade e produtividade para o seu negócio.
+              Sistemas amigáveis e fáceis de entender.
             </h2>
-            <p className="section-desc-subtle">
-              Interfaces modernas de altíssimo impacto visual, carregamento instantâneo e navegação intuitiva, projetadas para reter a atenção do cliente e conectar seu público diretamente ao WhatsApp da equipe comercial.
+            <p className="section-desc-subtle" style={{ maxWidth: '640px', margin: '0.65rem auto 1.5rem', fontSize: '0.94rem', color: 'var(--text-body)', lineHeight: '1.6' }}>
+              Teste abaixo as demonstrações reais de sistemas desenvolvidos para atender as rotinas do comércio e de empresas locais:
             </p>
           </div>
 
-          {/* MOLDURA DE NAVEGADOR COM O PRIMEIRO TEMPLATE EMBARCADO */}
+          {/* ABAS DO CARROSSEL DE TEMPLATES */}
+          <div className="template-carousel-tabs" role="tablist" aria-label="Seletor de Sistemas">
+            {SHOWCASE_TEMPLATES.map((tmpl, idx) => (
+              <button
+                key={tmpl.id}
+                type="button"
+                role="tab"
+                aria-selected={idx === currentTemplateIndex}
+                className={`template-tab-pill ${idx === currentTemplateIndex ? 'is-active' : ''}`}
+                onClick={() => setCurrentTemplateIndex(idx)}
+              >
+                <span>{tmpl.tabLabel}</span>
+              </button>
+            ))}
+          </div>
+
           <div className="template-showcase-card">
             <div className="template-browser-topbar">
               <div className="template-browser-dots">
@@ -297,18 +323,40 @@ export default function Home({ profile }) {
               <div className="template-browser-url-pill">
                 <span className="url-lock">🔒</span>
                 <span className="url-domain">templates.rodrigofreire.dev.br</span>
-                <span className="url-path">/roupa-feminina</span>
+                <span className="url-path">{currentTemplate.path}</span>
+              </div>
+              <div className="template-browser-nav-arrows">
+                <button
+                  type="button"
+                  className="browser-nav-arrow-btn"
+                  onClick={() => setCurrentTemplateIndex((prev) => (prev > 0 ? prev - 1 : SHOWCASE_TEMPLATES.length - 1))}
+                  aria-label="Sistema anterior"
+                  title="Sistema anterior"
+                >
+                  <ChevronLeft size={14} />
+                </button>
+                <span className="template-counter-indicator">{currentTemplateIndex + 1}/{SHOWCASE_TEMPLATES.length}</span>
+                <button
+                  type="button"
+                  className="browser-nav-arrow-btn"
+                  onClick={() => setCurrentTemplateIndex((prev) => (prev < SHOWCASE_TEMPLATES.length - 1 ? prev + 1 : 0))}
+                  aria-label="Próximo sistema"
+                  title="Próximo sistema"
+                >
+                  <ChevronRight size={14} />
+                </button>
               </div>
               <div className="template-status-pill">
                 <span className="status-ping" />
-                <span>Template 01 · No Ar</span>
+                <span>Demonstração · Ao Vivo</span>
               </div>
             </div>
 
             <div className="template-viewport-container">
               <iframe
-                src="/templates/roupa-feminina/index.html?embed=hero"
-                title="Demonstração do Template 01: Lumina Boutique - Moda Feminina"
+                key={currentTemplate.id}
+                src={currentTemplate.iframeSrc}
+                title={`Demonstração: ${currentTemplate.title}`}
                 className="template-live-iframe"
                 loading="lazy"
               />
@@ -318,38 +366,38 @@ export default function Home({ profile }) {
               <div className="template-footer-details">
                 <div className="template-tag-category">
                   <Sparkles size={13} style={{ display: 'inline', marginRight: '4px' }} />
-                  E-commerce & Varejo de Moda
+                  {currentTemplate.category}
                 </div>
-                <h3 className="template-footer-title">Lumina Boutique & Atelier · Vitrine Digital 360°</h3>
+                <h3 className="template-footer-title">{currentTemplate.title}</h3>
                 <p className="template-footer-desc">
-                  Provador virtual interativo com rotação de manequins (frente e costas), detalhamento de tecidos nobres, valores claros e canal direto de atendimento via WhatsApp. Sem códigos pesados de terceiros, com abertura imediata no celular.
+                  {currentTemplate.desc}
                 </p>
                 <div className="template-footer-highlights">
-                  <span><CheckCircle2 size={14} color="#3533cd" /> Carregamento em menos de 1 segundo</span>
-                  <span><CheckCircle2 size={14} color="#3533cd" /> Sem bibliotecas pesadas de animação</span>
-                  <span><CheckCircle2 size={14} color="#3533cd" /> 100% responsivo para smartphone</span>
+                  {currentTemplate.highlights.map((h, i) => (
+                    <span key={i}><CheckCircle2 size={14} color="#3533cd" /> {h}</span>
+                  ))}
                 </div>
               </div>
 
               <div className="template-footer-cta-col">
                 <a
-                  href="https://templates-rodrigofreire-dev.rodrigo-freire1040z.workers.dev/roupa-feminina/"
+                  href={currentTemplate.demoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="corp-btn-accent"
                   style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem', padding: '0.85rem 1.6rem', fontSize: '0.92rem' }}
                 >
-                  <span>Abrir Demonstração Completa</span>
+                  <span>Abrir em tela cheia</span>
                   <ExternalLink size={16} />
                 </a>
                 <a
-                  href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá Rodrigo. Vi o template de Loja de Roupa Feminina no seu site e gostaria de uma solução sob medida para o meu negócio.')}`}
+                  href={`https://wa.me/${phone}?text=${encodeURIComponent(currentTemplate.whatsappMsg)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="corp-link-text"
                   style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.86rem', marginTop: '0.5rem' }}
                 >
-                  <MessageSquare size={14} /> Solicitar solução sob medida
+                  <MessageSquare size={14} /> Quero um sistema assim
                 </a>
               </div>
             </div>
@@ -357,296 +405,47 @@ export default function Home({ profile }) {
         </div>
       </section>
 
-      {/* ============================================================
-         SEÇÃO DE RISCOS OPERACIONAIS & TECNOLOGIA
-         ============================================================ */}
-      <section className="section-risks scroll-reveal" id="riscos">
+      {/* SERVIÇOS: DUAS FRENTES */}
+      <section className="section-services-catalog scroll-reveal" id="servicos" style={{ paddingTop: '3rem', paddingBottom: '4rem' }}>
         <div className="section-head-center">
-          <span className="section-tag-pill" style={{ color: '#dc2626', borderColor: 'rgba(220, 38, 38, 0.25)', background: 'rgba(220, 38, 38, 0.08)' }}>
-            Gargalos Operacionais & Tecnologia
-          </span>
-          <h2 className="section-title-large">
-            A tecnologia, se bem integrada ao ritmo da empresa, trabalha para alavancar o seu negócio, e nunca para se tornar outra preocupação.
-          </h2>
-          <p className="section-desc-subtle">
-            Na rotina comercial, o prejuízo raramente avisa com antecedência. Identifico e elimino gargalos operacionais antes que virem custo, retrabalho ou atrito com o seu cliente.
-          </p>
+          <span className="section-tag-pill">Serviços</span>
+          <h2 className="section-title-large">O que eu faço</h2>
         </div>
 
-        <div className="risks-grid">
-          {DEFAULT_RISKS.map((risk) => {
-            const IconComp = ICON_MAP[risk.icon] || ShieldAlert;
+        <div className="services-catalog-grid" style={{ gap: '2rem', marginTop: '2.5rem' }}>
+          {DEFAULT_HOME_OFFERS.map((offer) => {
+            const IconComponent = ICON_MAP[offer.icon] || Wrench;
             return (
-              <div key={risk.id} className="risk-card stagger-card">
-                <div className="risk-card-header">
-                  <div className="risk-card-icon">
-                    <IconComp size={22} />
-                  </div>
-                  <span className="risk-card-tag">{risk.tag}</span>
-                </div>
-                <h3 className="risk-card-title">{risk.title}</h3>
-                <p className="risk-card-text">{risk.description}</p>
-                <div className="risk-card-consequence">
-                  <strong>Consequência: </strong>
-                  {risk.consequence}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* ============================================================
-         COMPARATIVO DE MODELOS DE CONTRATAÇÃO (SPEC-SITE-008 Seção 3.3)
-         ============================================================ */}
-      <section className="section-fde-model scroll-reveal" id="modelos">
-        <div className="section-head-center">
-          <span className="section-tag-pill">
-            <Sparkles size={14} style={{ display: 'inline', marginRight: '4px' }} />
-            Modelos de Resolução
-          </span>
-          <h2 className="section-title-large">
-            As soluções são apresentadas nas seguintes formas de resolução
-          </h2>
-          <p className="section-desc-subtle">
-            Entenda como cada formato atua na prática e como o desenvolvimento sob medida transforma a rotina do seu negócio:
-          </p>
-        </div>
-
-        <div className="fde-comparison-grid">
-          {/* MODELO 1: SUPORTE REATIVO */}
-          <div className="fde-card fde-card-traditional stagger-card">
-            <div className="fde-card-header">
-              <div className="fde-card-icon traditional">
-                <AlertOctagon size={22} />
-              </div>
-              <span className="fde-card-tag traditional">Modelo 1</span>
-            </div>
-            <h3 className="fde-card-title">Modelo 1 · Suporte reativo por chamado</h3>
-            <p className="fde-card-focus">
-              "Age depois da falha. O atendimento começa quando o equipamento já parou e o prejuízo do dia já aconteceu."
-            </p>
-            <div className="fde-points-list">
-              <div className="fde-point-item negative">
-                <XCircle size={18} className="fde-point-icon" color="#94a3b8" />
-                <span><strong>Alcance da solução:</strong> Cobre equipamento e rede física. Integrações entre sistemas e automação de processos manuais ficam fora do escopo.</span>
-              </div>
-              <div className="fde-point-item negative">
-                <XCircle size={18} className="fde-point-icon" color="#94a3b8" />
-                <span><strong>Conhecimento da rotina:</strong> O atendimento é pontual, então a rotina de fechamento e o fluxo do balcão não entram na conta.</span>
-              </div>
-              <div className="fde-point-item negative">
-                <XCircle size={18} className="fde-point-icon" color="#94a3b8" />
-                <span><strong>Responsabilidade e contrato:</strong> Sem compromisso formal de continuidade. Cada chamado é uma negociação nova.</span>
-              </div>
-            </div>
-          </div>
-
-          {/* MODELO 2: SISTEMAS SOB MEDIDA & DESENVOLVIMENTO PERSONALIZADO */}
-          <div className="fde-card fde-card-tailored stagger-card">
-            <div className="fde-card-header">
-              <div className="fde-card-icon tailored">
-                <Sparkles size={22} />
-              </div>
-              <span className="fde-card-tag tailored">Modelo 2 · Sob Medida</span>
-            </div>
-            <h3 className="fde-card-title">Modelo 2 · Sistemas sob medida para a sua necessidade</h3>
-            <p className="fde-card-focus" style={{ color: '#000000', fontStyle: 'normal' }}>
-              "Desenvolvo exatamente o que a sua operação precisa, com entusiasmo, foco no que gera retorno e sem ferramentas complicadas."
-            </p>
-            <div className="fde-points-list">
-              <div className="fde-point-item positive">
-                <CheckCircle2 size={18} className="fde-point-icon" color="#3533cd" />
-                <span><strong>ERP enxuto e prático:</strong> Precisa de um ERP sob medida que tenha apenas RH, faturamento e contas a pagar/receber? Eu desenvolvo direto ao ponto para a sua rotina.</span>
-              </div>
-              <div className="fde-point-item positive">
-                <CheckCircle2 size={18} className="fde-point-icon" color="#3533cd" />
-                <span><strong>CRM e pós-venda no WhatsApp:</strong> Quer qualificar seus clientes com tags automáticas e organizar o atendimento pós-venda no WhatsApp? Eu construo e deixo funcionando.</span>
-              </div>
-              <div className="fde-point-item positive">
-                <CheckCircle2 size={18} className="fde-point-icon" color="#3533cd" />
-                <span><strong>Integração de sistemas:</strong> Precisa conectar o WhatsApp aos sistemas internos ou ao banco de dados da sua empresa? Eu integro de ponta a ponta sem complicações.</span>
-              </div>
-              <div className="fde-point-item positive">
-                <CheckCircle2 size={18} className="fde-point-icon" color="#3533cd" />
-                <span><strong>Sem módulos inúteis:</strong> Você não paga mensalidades caras por funções desnecessárias e recebe um software ágil, que a equipe aprende a operar no primeiro dia.</span>
-              </div>
-            </div>
-          </div>
-
-          {/* MODELO 3: RODRIGO FREIRE TECH */}
-          <div className="fde-card fde-card-featured stagger-card">
-            <div className="fde-card-header">
-              <div className="fde-card-icon featured">
-                <Sparkles size={22} />
-              </div>
-              <span className="fde-card-tag featured">Modelo 3</span>
-            </div>
-            <h3 className="fde-card-title" style={{ color: '#000000' }}>
-              Modelo 3 · Rodrigo Freire Tech
-            </h3>
-            <p className="fde-card-focus" style={{ color: '#3533cd', fontWeight: '600' }}>
-              "Ajo antes. Conheço a operação por dentro e trato o gargalo enquanto ele ainda é ajuste, não pane."
-            </p>
-            <div className="fde-points-list">
-              <div className="fde-point-item positive">
-                <CheckCircle2 size={18} className="fde-point-icon" color="#3533cd" />
-                <span><strong>Alcance da solução:</strong> Cubro os dois lados. Do servidor ao balcão, com um único responsável pelo conjunto funcionando.</span>
-              </div>
-              <div className="fde-point-item positive">
-                <CheckCircle2 size={18} className="fde-point-icon" color="#3533cd" />
-                <span><strong>Conhecimento da rotina:</strong> Estou presencialmente na sua operação em Porto Velho. Vejo o fechamento acontecer e projeto o sistema em cima do que realmente ocorre.</span>
-              </div>
-              <div className="fde-point-item positive">
-                <CheckCircle2 size={18} className="fde-point-icon" color="#3533cd" />
-                <span><strong>Responsabilidade e contrato:</strong> Responsável técnico definido em contrato, com escopo e preço fechados por escrito e cláusula de sigilo sobre os dados da empresa.</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ============================================================
-         QUATRO PILARES DE ATUAÇÃO (SPEC-SITE-008 Seções 3.4 e 3.5)
-         ============================================================ */}
-      <section className="section-services-catalog scroll-reveal" id="servicos" style={{ paddingTop: '3rem', paddingBottom: '5rem' }}>
-        <div className="section-head-center">
-          <span className="section-tag-pill">Pilares de Atuação</span>
-          <h2 className="section-title-large">Quatro pilares de atuação</h2>
-          <p className="section-desc-subtle">
-            Cada pilar responde por uma frente da sua empresa, com entregáveis claros, escopo fechado e ganho comercial medido.
-          </p>
-        </div>
-
-        <div className="services-catalog-grid" style={{ gap: '2rem', marginTop: '3rem' }}>
-          {DEFAULT_SERVICES.map((service, index) => {
-            const IconComponent = ICON_MAP[service.icon] || Wrench;
-            const message = service.whatsapp_msg || `Olá Rodrigo. Gostaria de solicitar uma avaliação para ${service.title}.`;
-            const isHorizontal = service.id === 'inteligencia-artificial' || index === 3;
-
-            if (isHorizontal) {
-              return (
-                <div key={service.id} className="service-card-liquid service-card-horizontal stagger-card">
-                  <div className="service-card-horizontal-left">
-                    <div className="service-card-header">
-                      <div className="service-icon-wrapper">
-                        <IconComponent size={22} />
-                      </div>
-                      <span className="service-card-tag">{service.tag}</span>
-                    </div>
-
-                    <h3 style={{ fontSize: '1.35rem', marginBottom: '0.85rem', color: 'var(--text-heading)' }}>
-                      {service.title}
-                    </h3>
-
-                    {service.focus && (
-                      <div className="service-focus-badge" style={{ marginBottom: '1.15rem' }}>
-                        <Sparkles size={15} />
-                        <span>{service.focus}</span>
-                      </div>
-                    )}
-
-                    <p style={{ fontSize: '0.94rem', color: 'var(--text-body)', lineHeight: '1.6', marginBottom: '1.5rem' }}>
-                      {service.description}
-                    </p>
-
-                    <div className="service-card-footer" style={{ paddingTop: '0.75rem', borderTop: '1px solid var(--color-gray-ui)', marginTop: 'auto' }}>
-                      <a
-                        href={`https://wa.me/${phone}?text=${encodeURIComponent(message)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="service-btn-contact"
-                        style={{ width: '100%', justifyContent: 'center' }}
-                      >
-                        Solicitar avaliação deste pilar <ArrowRight size={14} />
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="service-card-horizontal-right">
-                    {service.deliverables && service.deliverables.length > 0 && (
-                      <div className="service-deliverables-box" style={{ marginBottom: '1.25rem' }}>
-                        <div className="service-deliverables-title" style={{ fontSize: '0.82rem', fontWeight: '700', color: 'var(--color-brand-ink)', marginBottom: '0.65rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                          <Check size={14} /> Entregáveis incluídos:
-                        </div>
-                        <ul className="service-deliverables-list">
-                          {service.deliverables.map((item, idx) => (
-                            <li key={idx} className="service-deliverable-item">
-                              <CheckCircle2 size={15} color="#3533cd" />
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-
-                    <div style={{ marginTop: 'auto', padding: '0.85rem 1rem', background: 'rgba(53, 51, 205, 0.06)', borderRadius: '12px', border: '1px solid rgba(53, 51, 205, 0.2)' }}>
-                      <p style={{ fontSize: '0.9rem', color: 'var(--text-heading)', lineHeight: '1.5', margin: 0 }}>
-                        <strong>Ganho: </strong>
-                        {service.gain}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              );
-            }
-
-            return (
-              <div key={service.id} className="service-card-liquid stagger-card" style={{ display: 'flex', flexDirection: 'column' }}>
+              <div key={offer.id} className="service-card-liquid stagger-card" style={{ display: 'flex', flexDirection: 'column' }}>
                 <div className="service-card-header">
                   <div className="service-icon-wrapper">
                     <IconComponent size={22} />
                   </div>
-                  <span className="service-card-tag">{service.tag}</span>
+                  <span className="service-card-tag">{offer.tag}</span>
                 </div>
 
-                <h3 style={{ fontSize: '1.3rem', marginBottom: '0.85rem', color: 'var(--text-heading)' }}>
-                  {service.title}
+                <h3 style={{ fontSize: '1.3rem', marginBottom: '1rem', color: 'var(--text-heading)' }}>
+                  {offer.title}
                 </h3>
 
-                {service.focus && (
-                  <div className="service-focus-badge">
-                    <Sparkles size={15} />
-                    <span>{service.focus}</span>
-                  </div>
-                )}
+                <ul className="service-deliverables-list" style={{ marginBottom: '1.25rem' }}>
+                  {offer.items.map((item) => (
+                    <li key={item} className="service-deliverable-item">
+                      <CheckCircle2 size={15} color="#3533cd" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
 
-                <p style={{ fontSize: '0.94rem', color: 'var(--text-body)', lineHeight: '1.6', marginBottom: '1.25rem' }}>
-                  {service.description}
-                </p>
-
-                {service.deliverables && service.deliverables.length > 0 && (
-                  <div className="service-deliverables-box" style={{ marginBottom: '1.25rem' }}>
-                    <div className="service-deliverables-title" style={{ fontSize: '0.82rem', fontWeight: '700', color: 'var(--color-brand-ink)', marginBottom: '0.65rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                      <Check size={14} /> Entregáveis incluídos:
-                    </div>
-                    <ul className="service-deliverables-list">
-                      {service.deliverables.map((item, idx) => (
-                        <li key={idx} className="service-deliverable-item">
-                          <CheckCircle2 size={15} color="#3533cd" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                <div style={{ marginTop: 'auto', padding: '0.85rem 1rem', background: 'rgba(53, 51, 205, 0.06)', borderRadius: '12px', border: '1px solid rgba(53, 51, 205, 0.2)', marginBottom: '1.25rem' }}>
-                  <p style={{ fontSize: '0.9rem', color: 'var(--text-heading)', lineHeight: '1.5', margin: 0 }}>
-                    <strong>Ganho: </strong>
-                    {service.gain}
-                  </p>
-                </div>
-
-                <div className="service-card-footer" style={{ paddingTop: '0.75rem', borderTop: '1px solid var(--color-gray-ui)' }}>
+                <div className="service-card-footer" style={{ paddingTop: '0.75rem', borderTop: '1px solid var(--color-gray-ui)', marginTop: 'auto' }}>
                   <a
-                    href={`https://wa.me/${phone}?text=${encodeURIComponent(message)}`}
+                    href={`https://wa.me/${phone}?text=${encodeURIComponent(offer.whatsapp_msg)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="service-btn-contact"
                     style={{ width: '100%', justifyContent: 'center' }}
                   >
-                    Solicitar avaliação deste pilar <ArrowRight size={14} />
+                    Pedir orçamento <ArrowRight size={14} />
                   </a>
                 </div>
               </div>
@@ -655,25 +454,20 @@ export default function Home({ profile }) {
         </div>
       </section>
 
-      {/* ============================================================
-         BLOCO 4: MÉTODO EM 4 ETAPAS (SPEC-SITE-008 Seção 3.6)
-         ============================================================ */}
-      <section className="section-methodology-bg scroll-reveal" id="como-funciona" style={{ paddingTop: '5rem', paddingBottom: '5rem' }}>
+      {/* MÉTODO */}
+      <section className="section-methodology-bg scroll-reveal" id="como-funciona" style={{ paddingTop: '4rem', paddingBottom: '4rem' }}>
         <div className="methodology-inner">
           <div className="section-head-center">
-            <span className="section-tag-pill">Método de Trabalho</span>
-            <h2 className="section-title-large">Quatro etapas, com escopo e valor definidos antes de começar</h2>
-            <p className="section-desc-subtle">
-              Processo transparente e previsível: você sabe exatamente o que será feito, o prazo e o investimento antes de qualquer intervenção técnica.
-            </p>
+            <span className="section-tag-pill">Como funciona</span>
+            <h2 className="section-title-large">Quatro etapas, preço combinado antes.</h2>
           </div>
 
-          <div className="methodology-grid-steps" style={{ marginTop: '3rem' }}>
+          <div className="methodology-grid-steps" style={{ marginTop: '2.5rem' }}>
             {DEFAULT_STEPS.map((step) => (
               <div key={step.number} className="method-step-card stagger-card">
                 <div className="step-num-badge">{step.number}</div>
-                <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem' }}>{step.title}</h3>
-                <p style={{ fontSize: '0.93rem', lineHeight: '1.6', color: 'var(--text-body)' }}>
+                <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>{step.title}</h3>
+                <p style={{ fontSize: '0.93rem', lineHeight: '1.5', color: 'var(--text-body)' }}>
                   {step.description}
                 </p>
               </div>
@@ -682,55 +476,32 @@ export default function Home({ profile }) {
         </div>
       </section>
 
-      {/* ============================================================
-         SISTEMAS & ENGENHARIA EM PRODUÇÃO (PROJETOS EM DESTAQUE)
-         Distribuição de PageRank e Rastreabilidade para o Googlebot
-         ============================================================ */}
-      <section className="section-featured-projects scroll-reveal" id="projetos" style={{ paddingTop: '5rem', paddingBottom: '3.5rem', borderTop: '1px solid rgba(0, 0, 0, 0.06)' }}>
+      {/* PROJETOS EM DESTAQUE */}
+      <section className="section-featured-projects scroll-reveal" id="projetos" style={{ paddingTop: '4rem', paddingBottom: '3.5rem', borderTop: '1px solid rgba(0, 0, 0, 0.06)' }}>
         <div className="portfolio-container" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem' }}>
-          <div className="section-head-center" style={{ marginBottom: '3rem' }}>
-            <span className="section-tag-pill">
-              <Sparkles size={14} style={{ display: 'inline', marginRight: '4px' }} />
-              Portfólio & Sistemas em Produção
-            </span>
-            <h2 className="section-title-large">
-              Tecnologia Própria, Pesquisa e Sistemas em Operação
-            </h2>
-            <p className="section-desc-subtle">
-              Conheça os softwares desenvolvidos, tecnologias com registro de patente e soluções sob medida entregues para a vida real.
-            </p>
+          <div className="section-head-center" style={{ marginBottom: '2.5rem' }}>
+            <span className="section-tag-pill">Projetos</span>
+            <h2 className="section-title-large">Sistemas que eu construí</h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.75rem' }}>
-            {DEFAULT_PROJECTS.map((proj) => (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.75rem' }}>
+            {featuredProjects.map((proj) => (
               <div key={proj.id} className="service-card-liquid stagger-card" style={{ display: 'flex', flexDirection: 'column', padding: '1.85rem' }}>
-                <div className="service-card-header" style={{ marginBottom: '0.85rem' }}>
-                  <span className="service-card-tag">{proj.badge || "Sistemas & Soluções"}</span>
-                </div>
                 <h3 style={{ fontSize: '1.25rem', marginBottom: '0.65rem', color: 'var(--text-heading)' }}>
                   <Link to={`/projetos/${proj.slug}`} style={{ color: 'inherit', textDecoration: 'none' }}>
                     {proj.title}
                   </Link>
                 </h3>
-                <p style={{ fontSize: '0.9rem', color: 'var(--text-body)', lineHeight: '1.6', marginBottom: '1.25rem', flex: 1 }}>
-                  {proj.summary}
+                <p style={{ fontSize: '0.92rem', color: 'var(--text-body)', lineHeight: '1.5', marginBottom: '1.25rem', flex: 1 }}>
+                  {HOME_PROJECT_LINES[proj.slug] || proj.summary}
                 </p>
-                {proj.tags && proj.tags.length > 0 && (
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem', marginBottom: '1.25rem' }}>
-                    {proj.tags.slice(0, 3).map((t, idx) => (
-                      <span key={idx} className="tech-tag" style={{ fontSize: '0.72rem' }}>
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                )}
                 <div className="service-card-footer" style={{ paddingTop: '0.75rem', borderTop: '1px solid var(--color-gray-ui)', marginTop: 'auto' }}>
                   <Link
                     to={`/projetos/${proj.slug}`}
                     className="corp-link-text"
                     style={{ fontSize: '0.86rem', fontWeight: '600', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}
                   >
-                    Ver documentação técnica <ArrowRight size={14} />
+                    Ver detalhes <ArrowRight size={14} />
                   </Link>
                 </div>
               </div>
@@ -743,123 +514,31 @@ export default function Home({ profile }) {
               className="corp-btn-outline-glass"
               style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.8rem', textDecoration: 'none' }}
             >
-              <span>Ver todos os projetos e documentações</span>
+              <span>Ver todos os projetos</span>
               <ArrowRight size={16} />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ============================================================
-         ARTIGOS E ANÁLISES TÉCNICAS (SEO & AUTORIDADE DE CONTEÚDO)
-         ============================================================ */}
-      <section className="section-featured-articles scroll-reveal" id="artigos" style={{ paddingTop: '5rem', paddingBottom: '5rem', borderTop: '1px solid rgba(0, 0, 0, 0.06)' }}>
-        <div className="portfolio-container" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem' }}>
-          <div className="section-head-center" style={{ marginBottom: '3rem' }}>
-            <span className="section-tag-pill">
-              <BookOpen size={14} style={{ display: 'inline', marginRight: '6px' }} />
-              Pesquisa, Engenharia & Negócios
-            </span>
-            <h2 className="section-title-large">
-              Análises e Artigos Técnicos
-            </h2>
-            <p className="section-desc-subtle">
-              Notas diretas sobre arquitetura de sistemas, inteligência artificial aplicada sem modismos e lições práticas observadas no mercado.
-            </p>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
-            {DEFAULT_POSTS.slice(0, 3).map((post) => (
-              <article key={post.slug} className="service-card-liquid" style={{ display: 'flex', flexDirection: 'column', padding: '1.75rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.85rem' }}>
-                  <span className="tech-tag" style={{ fontSize: '0.72rem' }}>
-                    {new Date(post.published_at).toLocaleDateString('pt-BR')}
-                  </span>
-                  {post.tags?.[0] && (
-                    <span className="corp-badge" style={{ fontSize: '0.72rem' }}>
-                      {post.tags[0]}
-                    </span>
-                  )}
-                </div>
-                <h3 style={{ fontSize: '1.15rem', color: 'var(--text-heading)', margin: '0 0 0.65rem', lineHeight: '1.4' }}>
-                  <Link to={`/blog/${post.slug}`} style={{ color: 'inherit', textDecoration: 'none' }}>
-                    {post.title}
-                  </Link>
-                </h3>
-                <p style={{ fontSize: '0.88rem', color: 'var(--text-body)', margin: '0 0 1.25rem', lineHeight: '1.55', flex: 1 }}>
-                  {post.description}
-                </p>
-                <Link
-                  to={`/blog/${post.slug}`}
-                  className="corp-link-text"
-                  style={{ fontSize: '0.86rem', fontWeight: '600', display: 'inline-flex', alignItems: 'center', gap: '0.35rem', marginTop: 'auto' }}
-                >
-                  Ler artigo completo <ArrowRight size={14} />
-                </Link>
-              </article>
-            ))}
-          </div>
-
-          <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
-            <Link
-              to="/blog"
-              className="corp-btn-outline-glass"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.8rem', textDecoration: 'none' }}
-            >
-              <span>Acessar todos os artigos e publicações</span>
-              <ArrowRight size={16} />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ============================================================
-         BLOCO 5: DECISÃO DE NEGÓCIO & FORMULÁRIO (SPEC-SITE-008 Seção 3.7)
-         ============================================================ */}
-      <section className="section-diagnostic-contact" id="contato" style={{ paddingTop: '5rem', paddingBottom: '6rem' }}>
+      {/* CONTATO */}
+      <section className="section-diagnostic-contact" id="contato" style={{ paddingTop: '4rem', paddingBottom: '5rem' }}>
         <div className="diagnostic-contact-inner" style={{ maxWidth: '1080px', margin: '0 auto' }}>
           <div className="diagnostic-info-card">
             <div>
               <span className="section-tag-pill">
                 <Sparkles size={14} style={{ display: 'inline', marginRight: '4px' }} />
-                Experiência & Valor do Negócio
+                Contato
               </span>
-              
-              <h2 className="section-title-large diagnostic-typewriter-title" style={{ fontSize: 'clamp(1.65rem, 2.3vw, 2.2rem)', lineHeight: '1.25' }}>
-                Tecnologia para <span className="diagnostic-typed-keyword">{typedDiagnosticGoal}</span><span className="hero-typewriter-cursor" />
+
+              <h2 className="section-title-large" style={{ fontSize: 'clamp(1.65rem, 2.3vw, 2.2rem)', lineHeight: '1.25' }}>
+                Conta o que você precisa que eu respondo no WhatsApp.
               </h2>
 
-              <div className="diagnostic-highlight-statement">
-                <p className="diagnostic-statement-main">
-                  Impulsione as suas vendas, automatize o seu negócio, aumente a sua produtividade, personalize o seu atendimento e promova a melhor experiência ao seu cliente, aumentando a percepção de valor do seu negócio.
-                </p>
-                <p className="diagnostic-statement-accent">
-                  A experiência do cliente também acontece naquilo que ele não vê, mas sente se for ruim.
-                </p>
-              </div>
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', marginBottom: '2rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#000000', fontWeight: '600' }}>
-                  <CheckCircle2 size={18} color="#3533cd" /> Avaliação prática de equipamentos, rede e rotinas manuais da equipe
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#000000', fontWeight: '600' }}>
-                  <CheckCircle2 size={18} color="#3533cd" /> Escopo definido e orçamento por escrito antes de começar
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#000000', fontWeight: '600' }}>
-                  <CheckCircle2 size={18} color="#3533cd" /> Atendimento direto com o Rodrigo em Porto Velho (presencial ou remoto seguro)
-                </div>
-              </div>
+              <p className="diagnostic-statement-accent">
+                Atendimento direto comigo, em Porto Velho, presencial ou remoto.
+              </p>
             </div>
-
-            <a
-              href={`https://wa.me/${phone}?text=${encodeURIComponent('Olá Rodrigo. Sou de uma empresa em Porto Velho e gostaria de solicitar uma avaliação da nossa operação de tecnologia.')}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="corp-btn-outline-glass"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.85rem 1.8rem', width: 'fit-content' }}
-            >
-              <MessageSquare size={18} /> Solicitar avaliação da sua operação
-            </a>
           </div>
 
           <form onSubmit={handleFormSubmit} className="diagnostic-form-glass">

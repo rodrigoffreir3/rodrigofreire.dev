@@ -60,11 +60,11 @@ export default function Navbar({ profile }) {
           </li>
 
           <li>
-            <Link to="/#servicos" className={location.hash === '#servicos' ? 'active' : ''}>Quatro pilares</Link>
+            <Link to="/#servicos" className={location.hash === '#servicos' ? 'active' : ''}>Serviços</Link>
           </li>
 
           <li>
-            <Link to="/#comparativo" className={location.hash === '#comparativo' ? 'active' : ''}>Comparativo</Link>
+            <Link to="/#solucoes-amigaveis" className={location.hash === '#solucoes-amigaveis' ? 'active' : ''}>Sistemas</Link>
           </li>
 
           <li>
@@ -151,10 +151,10 @@ export default function Navbar({ profile }) {
               Início
             </Link>
             <Link to="/#servicos" className={`mobile-nav-link ${location.hash === '#servicos' ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
-              Quatro pilares
+              Serviços
             </Link>
-            <Link to="/#comparativo" className={`mobile-nav-link ${location.hash === '#comparativo' ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
-              Comparativo
+            <Link to="/#solucoes-amigaveis" className={`mobile-nav-link ${location.hash === '#solucoes-amigaveis' ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
+              Sistemas
             </Link>
             <Link to="/#como-funciona" className={`mobile-nav-link ${location.hash === '#como-funciona' ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
               Como funciona

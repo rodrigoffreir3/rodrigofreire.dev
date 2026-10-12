@@ -34,16 +34,15 @@ export const DEFAULT_HOME_SETTINGS = {
   // Textos do Hero Institucional B2B (SPEC-SITE-008 Seção 3.1)
   hero_badge: "Rodrigo Freire Tech · Porto Velho, RO",
   hero_title: "Sistemas sob medida para a sua empresa vender mais.",
-  hero_desc: "Desenvolvo e mantenho a tecnologia que a sua operação usa todos os dias: sistemas próprios, automação das rotinas manuais da equipe e estabilidade de caixa e rede. Cada projeto começa com escopo e preço fechados por escrito. Quem executa o trabalho é quem atende você depois.",
+  hero_desc: "Sistemas sob medida, suporte técnico e automação para empresas de Porto Velho. Escopo e preço por escrito, antes de começar.",
   hero_chips: [
-    "Sistemas, sites e lojas online desenvolvidos sob medida",
-    "Automação e inteligência artificial aplicadas às rotinas da equipe",
-    "Estabilidade de caixa, rede comercial e dados protegidos",
-    "Escopo e preço definidos por escrito antes de começar"
+    "Sistemas, sites e lojas online sob medida",
+    "Suporte técnico presencial e remoto",
+    "Escopo e preço por escrito"
   ],
   hero_primary_cta: "Solicitar avaliação da sua operação",
   hero_whatsapp_msg: "Olá Rodrigo. Sou de uma empresa em Porto Velho e gostaria de solicitar uma avaliação da nossa operação de tecnologia.",
-  hero_secondary_cta: "Conhecer os quatro pilares de atuação"
+  hero_secondary_cta: "Ver serviços"
 };
 
 export const DEFAULT_PROFILE = {
@@ -249,25 +248,53 @@ export const DEFAULT_SERVICES = [
 // MÉTODO EM 4 ETAPAS COM ESCOPO E PREÇO FECHADOS (SPEC-SITE-008 Seção 3.6)
 // =============================================================================
 export const DEFAULT_STEPS = [
+  { number: "01", title: "Avaliação", description: "Vejo o que você tem hoje e o que dói na rotina." },
+  { number: "02", title: "Combinado", description: "Escopo e preço fechados por escrito." },
+  { number: "03", title: "Execução", description: "Faço e explico em português claro." },
+  { number: "04", title: "Acompanhamento", description: "Testo na rotina real e fico à disposição." }
+];
+
+// =============================================================================
+// OFERTA DA HOME: DUAS FRENTES, LISTAS CURTAS (enxugamento de texto)
+// =============================================================================
+export const DEFAULT_HOME_OFFERS = [
   {
-    number: "01",
-    title: "Avaliação",
-    description: "Levantamento prático do que a empresa tem hoje: equipamento, rede comercial, onde o dado está guardado e quais tarefas ainda são manuais."
+    id: "suporte-tecnico",
+    icon: "Wrench",
+    tag: "SUPORTE TÉCNICO",
+    title: "Suporte de TI para o dia a dia",
+    items: [
+      "Manutenção de computadores e notebooks",
+      "Formatação, limpeza e upgrade de peças",
+      "Remoção de vírus e antivírus",
+      "Redes, roteadores e Wi-Fi",
+      "Cabeamento estruturado",
+      "Servidores: instalação e manutenção",
+      "Atualização de sistemas e programas",
+      "Backup e recuperação de dados",
+      "Impressoras, leitores e periféricos de caixa",
+      "Câmeras de segurança (CFTV)",
+      "E-mail corporativo e domínio",
+      "Suporte remoto"
+    ],
+    whatsapp_msg: "Olá Rodrigo. Preciso de suporte técnico de TI na minha empresa."
   },
   {
-    number: "02",
-    title: "Prioridade",
-    description: "Definição do que resolver primeiro, por ordem de risco e de retorno. O escopo e o preço são fechados por escrito antes de qualquer execução."
-  },
-  {
-    number: "03",
-    title: "Execução",
-    description: "Implementação do que foi acordado, com explicação em português claro do que está sendo feito e por quê."
-  },
-  {
-    number: "04",
-    title: "Acompanhamento",
-    description: "Entrega testada na rotina real, com distinção explícita entre o que fica sob manutenção contínua e o que é entrega única concluída."
+    id: "desenvolvimento",
+    icon: "Layers",
+    tag: "DESENVOLVIMENTO",
+    title: "Sistemas sob medida",
+    items: [
+      "ERP enxuto",
+      "CRM e atendimento no WhatsApp",
+      "Ordem de serviço",
+      "PDV e controle de estoque",
+      "Agendamento de horários",
+      "Sites e lojas online",
+      "Automação e integração de sistemas",
+      "Inteligência artificial aplicada à rotina"
+    ],
+    whatsapp_msg: "Olá Rodrigo. Gostaria de conversar sobre um sistema sob medida para o meu negócio."
   }
 ];
 

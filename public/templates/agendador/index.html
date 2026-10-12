@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agenda Fácil | Demonstração de Agendamento Online 24h</title>
+  <meta name="description" content="Demonstração interativa de agendamento online para barbearias, salões, clínicas e consultorias: escolha de serviço, grade de horários e lembrete no WhatsApp." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-booking: #090e1a;
+      --bg-surface: #121929;
+      --bg-card: #1c263d;
+      --border-bk: rgba(255, 255, 255, 0.08);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --color-brand: #6366f1;
+      --color-brand-glow: rgba(99, 102, 241, 0.2);
+      --color-success: #10b981;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-booking);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-size: 14px;
+      overflow-x: hidden;
+    }
+
+    /* Topbar */
+    .booking-topbar {
+      height: 52px;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-bk);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .booking-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .booking-logo {
+      background: linear-gradient(135deg, #6366f1, #4f46e5);
+      width: 28px;
+      height: 28px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    .booking-title {
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .booking-badge {
+      font-size: 0.7rem;
+      background: rgba(99, 102, 241, 0.15);
+      color: #a5b4fc;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+
+    /* Container Principal */
+    .booking-main {
+      padding: 1rem;
+      max-width: 680px;
+      margin: 0 auto;
+      width: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1.15rem;
+    }
+
+    .booking-step-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .step-num {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--color-brand);
+      color: #fff;
+      font-size: 0.72rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    /* Seleção de Serviços */
+    .services-stack {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.5rem;
+    }
+
+    .service-select-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-bk);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 0.85rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+
+    .service-select-card:hover {
+      border-color: var(--color-brand);
+      background: #172138;
+    }
+
+    .service-select-card.active {
+      border-color: #6366f1;
+      background: rgba(99, 102, 241, 0.18);
+    }
+
+    .srv-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .srv-name {
+      font-weight: 600;
+      color: #f1f5f9;
+      font-size: 0.85rem;
+    }
+
+    .srv-dur {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .srv-price {
+      font-weight: 700;
+      color: #34d399;
+      font-size: 0.9rem;
+    }
+
+    /* Grade de Horários */
+    .date-pills-row {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 0.65rem;
+      overflow-x: auto;
+    }
+
+    .date-pill {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-bk);
+      color: var(--text-muted);
+      padding: 0.35rem 0.65rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.75rem;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .date-pill.active {
+      background: rgba(99, 102, 241, 0.2);
+      border-color: #6366f1;
+      color: #c7d2fe;
+      font-weight: 600;
+    }
+
+    .slots-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+      gap: 0.45rem;
+    }
+
+    .time-slot {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-bk);
+      border-radius: 4px;
+      padding: 0.45rem 0.2rem;
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #cbd5e1;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .time-slot:hover {
+      border-color: #6366f1;
+      color: #fff;
+    }
+
+    .time-slot.active {
+      background: #6366f1;
+      border-color: #6366f1;
+      color: #fff;
+      box-shadow: 0 0 10px rgba(99, 102, 241, 0.4);
+    }
+
+    .time-slot.disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      text-decoration: line-through;
+    }
+
+    /* Resumo e Botão */
+    .booking-summary-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-bk);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .summary-line {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .summary-line strong {
+      color: #f8fafc;
+    }
+
+    .btn-confirm-booking {
+      background: linear-gradient(135deg, #6366f1, #4f46e5);
+      border: none;
+      color: #fff;
+      padding: 0.85rem;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 0.92rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: opacity 0.2s;
+    }
+
+    .btn-confirm-booking:hover {
+      opacity: 0.92;
+    }
+
+    /* Confirmação */
+    .success-alert {
+      display: none;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem;
+      color: #a7f3d0;
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
+
+    /* EMBED MODE */
+    html.embed-hero-only body {
+      background: #090e1a;
+    }
+    html.embed-hero-only .booking-topbar {
+      height: 44px;
+    }
+    html.embed-hero-only .booking-main {
+      padding: 0.65rem;
+      gap: 0.75rem;
+    }
+    html.embed-hero-only .services-stack {
+      grid-template-columns: 1fr;
+    }
+  </style>
+  <script>
+    if (window.location.search.includes('embed=hero')) {
+      document.documentElement.classList.add('embed-hero-only');
+    }
+  </script>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <header class="booking-topbar">
+    <div class="booking-brand">
+      <div class="booking-logo">📅</div>
+      <span class="booking-title">Agenda Fácil</span>
+    </div>
+    <span class="booking-badge">Barbearia Dom Freire</span>
+  </header>
+
+  <main class="booking-main">
+    <!-- Passo 1: Serviços -->
+    <div>
+      <div class="booking-step-title">
+        <span class="step-num">1</span>
+        <span>Escolha o Serviço</span>
+      </div>
+      <div class="services-stack">
+        <div class="service-select-card active" onclick="selecionarServico('Combo Cabelo + Barba', 75, this)">
+          <div class="srv-info">
+            <span class="srv-name">Combo Cabelo + Barba</span>
+            <span class="srv-dur">60 minutos · Com toalha quente</span>
+          </div>
+          <span class="srv-price">R$ 75</span>
+        </div>
+
+        <div class="service-select-card" onclick="selecionarServico('Corte Degradê Moderno', 45, this)">
+          <div class="srv-info">
+            <span class="srv-name">Corte Degradê Moderno</span>
+            <span class="srv-dur">40 minutos · Lavagem inclusa</span>
+          </div>
+          <span class="srv-price">R$ 45</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Passo 2: Horários -->
+    <div>
+      <div class="booking-step-title">
+        <span class="step-num">2</span>
+        <span>Escolha o Dia e Horário</span>
+      </div>
+      <div class="date-pills-row">
+        <button class="date-pill active">Hoje (Quarta)</button>
+        <button class="date-pill">Amanhã (Quinta)</button>
+        <button class="date-pill">Sexta-feira</button>
+      </div>
+      <div class="slots-grid">
+        <div class="time-slot disabled">09:00</div>
+        <div class="time-slot" onclick="selecionarHorario('10:00', this)">10:00</div>
+        <div class="time-slot disabled">11:15</div>
+        <div class="time-slot" onclick="selecionarHorario('14:00', this)">14:00</div>
+        <div class="time-slot active" onclick="selecionarHorario('15:30', this)">15:30</div>
+        <div class="time-slot" onclick="selecionarHorario('16:45', this)">16:45</div>
+        <div class="time-slot" onclick="selecionarHorario('18:00', this)">18:00</div>
+      </div>
+    </div>
+
+    <!-- Resumo e Confirmação -->
+    <div class="booking-summary-card">
+      <div class="summary-line">
+        <span>Serviço Selecionado:</span>
+        <strong id="sumServico">Combo Cabelo + Barba (R$ 75)</strong>
+      </div>
+      <div class="summary-line">
+        <span>Horário Escolhido:</span>
+        <strong id="sumHorario">Hoje às 15:30</strong>
+      </div>
+      <div class="summary-line">
+        <span>Lembrete Automático:</span>
+        <span style="color:#34d399;font-weight:600;">✓ WhatsApp 2h antes</span>
+      </div>
+
+      <div id="alertSuccess" class="success-alert">
+        ✓ <strong>Agendamento Confirmado!</strong> Lembrete automático agendado no WhatsApp do cliente.
+      </div>
+
+      <button class="btn-confirm-booking" onclick="confirmarAgendamento()">
+        <span>Confirmar Agendamento</span>
+      </button>
+    </div>
+  </main>
+
+  <script>
+    let servicoAtual = 'Combo Cabelo + Barba';
+    let valorAtual = 75;
+    let horarioAtual = '15:30';
+
+    function selecionarServico(nome, valor, card) {
+      servicoAtual = nome;
+      valorAtual = valor;
+      document.querySelectorAll('.service-select-card').forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+      document.getElementById('sumServico').innerText = `${nome} (R$ ${valor})`;
+    }
+
+    function selecionarHorario(hora, slot) {
+      horarioAtual = hora;
+      document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('active'));
+      slot.classList.add('active');
+      document.getElementById('sumHorario').innerText = `Hoje às ${hora}`;
+    }
+
+    function confirmarAgendamento() {
+      const alert = document.getElementById('alertSuccess');
+      alert.style.display = 'block';
+      setTimeout(() => {
+        alert.style.display = 'none';
+      }, 2500);
+    }
+  </script>
+</body>
+</html>

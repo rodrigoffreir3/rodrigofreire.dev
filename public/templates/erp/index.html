@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apex Gestão ERP | Demonstração de Sistema de Gestão Empresarial</title>
+  <meta name="description" content="Demonstração interativa de ERP enxuto sob medida: controle financeiro, faturamento em tempo real, contas a pagar e receber para empresas." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-app: #0f172a;
+      --bg-surface: #1e293b;
+      --bg-card: #243247;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --color-brand: #3b82f6;
+      --color-success: #10b981;
+      --color-warning: #f59e0b;
+      --color-danger: #ef4444;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-app);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      font-size: 14px;
+    }
+
+    /* Topbar */
+    .topbar {
+      height: 56px;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.25rem;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .brand-logo-icon {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    .brand-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: -0.01em;
+      color: #fff;
+    }
+
+    .brand-badge {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.5rem;
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 999px;
+      font-weight: 600;
+    }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn-quick-sale {
+      background: var(--color-brand);
+      color: #fff;
+      border: none;
+      padding: 0.45rem 0.9rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: background 0.2s;
+    }
+
+    .btn-quick-sale:hover {
+      background: #2563eb;
+    }
+
+    /* Layout Principal */
+    .app-container {
+      display: flex;
+      flex: 1;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 200px;
+      background: var(--bg-surface);
+      border-right: 1px solid var(--border-subtle);
+      padding: 1rem 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.6rem 0.75rem;
+      color: var(--text-muted);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 0.85rem;
+      transition: all 0.15s ease;
+      text-decoration: none;
+    }
+
+    .nav-item:hover, .nav-item.active {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-item.active {
+      background: rgba(59, 130, 246, 0.15);
+      color: #60a5fa;
+      font-weight: 600;
+    }
+
+    /* Conteúdo Principal */
+    .main-viewport {
+      flex: 1;
+      padding: 1.25rem;
+      overflow-y: auto;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* Grid de Métricas */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 0.85rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .kpi-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .kpi-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .kpi-value {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.02em;
+    }
+
+    .kpi-sub {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+    }
+
+    .tag-trend-up {
+      color: #34d399;
+      font-weight: 600;
+    }
+
+    .tag-trend-alert {
+      color: #fbbf24;
+      font-weight: 600;
+    }
+
+    /* Gráfico e Tabela */
+    .dashboard-split {
+      display: grid;
+      grid-template-columns: 1.2fr 1.8fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 900px) {
+      .dashboard-split {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .panel-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.15rem;
+    }
+
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .panel-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .panel-tag {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    /* Gráfico de Barras CSS */
+    .chart-bars-wrap {
+      display: flex;
+      align-items: flex-end;
+      gap: 0.85rem;
+      height: 140px;
+      padding-top: 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .bar-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      height: 100%;
+      justify-content: flex-end;
+    }
+
+    .bar-fill {
+      width: 100%;
+      background: linear-gradient(180deg, #3b82f6, #1d4ed8);
+      border-radius: 4px 4px 0 0;
+      transition: height 0.4s ease, opacity 0.2s;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .bar-fill:hover {
+      opacity: 0.85;
+      background: linear-gradient(180deg, #60a5fa, #2563eb);
+    }
+
+    .bar-fill:hover::after {
+      content: attr(data-val);
+      position: absolute;
+      top: -24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #0f172a;
+      border: 1px solid var(--border-subtle);
+      color: #fff;
+      font-size: 0.68rem;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      white-space: nowrap;
+      z-index: 10;
+    }
+
+    .bar-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Tabela de Lançamentos */
+    .filter-pills {
+      display: flex;
+      gap: 0.35rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .filter-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      padding: 0.25rem 0.55rem;
+      font-size: 0.72rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .filter-btn.active {
+      background: rgba(59, 130, 246, 0.2);
+      border-color: rgba(59, 130, 246, 0.4);
+      color: #93c5fd;
+      font-weight: 600;
+    }
+
+    .tx-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .tx-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.55rem 0.75rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+    }
+
+    .tx-left {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .tx-title {
+      font-weight: 600;
+      color: #f1f5f9;
+    }
+
+    .tx-desc {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .tx-right {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-align: right;
+    }
+
+    .tx-value {
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .badge-status {
+      font-size: 0.68rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .badge-pago {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+    }
+
+    .badge-pendente {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+    }
+
+    /* Banner de Demonstração */
+    .demo-footer-bar {
+      margin-top: 1.25rem;
+      background: linear-gradient(90deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.1));
+      border: 1px solid rgba(59, 130, 246, 0.25);
+      border-radius: var(--radius-md);
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .demo-footer-text {
+      font-size: 0.82rem;
+      color: #cbd5e1;
+    }
+
+    .demo-footer-text strong {
+      color: #fff;
+    }
+
+    .btn-cta-zap {
+      background: #10b981;
+      color: #fff;
+      text-decoration: none;
+      padding: 0.45rem 0.95rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      white-space: nowrap;
+    }
+
+    /* MODO EMBED (Compacto para o iframe na Home) */
+    html.embed-hero-only body {
+      background: #0b1120;
+    }
+    html.embed-hero-only .sidebar {
+      display: none;
+    }
+    html.embed-hero-only .topbar {
+      height: 48px;
+      padding: 0 0.85rem;
+    }
+    html.embed-hero-only .main-viewport {
+      padding: 0.75rem;
+    }
+    html.embed-hero-only .kpi-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+    html.embed-hero-only .kpi-card {
+      padding: 0.65rem;
+    }
+    html.embed-hero-only .kpi-value {
+      font-size: 1.15rem;
+    }
+    html.embed-hero-only .kpi-header {
+      font-size: 0.7rem;
+    }
+    html.embed-hero-only .dashboard-split {
+      grid-template-columns: 1fr;
+      gap: 0.65rem;
+    }
+    html.embed-hero-only .chart-bars-wrap {
+      height: 95px;
+    }
+    html.embed-hero-only .demo-footer-bar {
+      display: none;
+    }
+  </style>
+  <script>
+    if (window.location.search.includes('embed=hero')) {
+      document.documentElement.classList.add('embed-hero-only');
+    }
+  </script>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="brand-wrap">
+      <div class="brand-logo-icon">A</div>
+      <span class="brand-title">Apex ERP</span>
+      <span class="brand-badge">● Porto Velho</span>
+    </div>
+    <div class="topbar-actions">
+      <button class="btn-quick-sale" id="btnNovaVenda" onclick="simularVenda()">
+        <span>+ Lançar Venda</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <a class="nav-item active">📊 Visão Geral</a>
+      <a class="nav-item">💰 Financeiro</a>
+      <a class="nav-item">📦 Estoque & NF-e</a>
+      <a class="nav-item">🛒 Vendas</a>
+      <a class="nav-item">👥 Clientes</a>
+    </aside>
+
+    <!-- Main Viewport -->
+    <main class="main-viewport">
+      <!-- KPIs -->
+      <section class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-header">
+            <span>Faturamento do Mês</span>
+          </div>
+          <div class="kpi-value" id="valFaturamento">R$ 48.750,00</div>
+          <div class="kpi-sub">
+            <span class="tag-trend-up">↑ +14.2%</span>
+            <span style="color:var(--text-muted)">vs mês anterior</span>
+          </div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-header">
+            <span>Contas a Receber</span>
+          </div>
+          <div class="kpi-value">R$ 12.300,00</div>
+          <div class="kpi-sub">
+            <span style="color:#60a5fa">● 8 faturas abertas</span>
+          </div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-header">
+            <span>Contas a Pagar</span>
+          </div>
+          <div class="kpi-value">R$ 6.840,00</div>
+          <div class="kpi-sub">
+            <span class="tag-trend-alert">Previsão 7 dias</span>
+          </div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-header">
+            <span>Saldo Disponível</span>
+          </div>
+          <div class="kpi-value" style="color:#34d399">R$ 34.070,00</div>
+          <div class="kpi-sub">
+            <span style="color:var(--text-muted)">Caixa + Bancos</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Dashboard Split -->
+      <div class="dashboard-split">
+        <!-- Fluxo de Caixa Semanal -->
+        <div class="panel-box">
+          <div class="panel-head">
+            <h3 class="panel-title">Faturamento Semanal</h3>
+            <span class="panel-tag">Seg a Sex</span>
+          </div>
+          <div class="chart-bars-wrap">
+            <div class="bar-col">
+              <div class="bar-fill" style="height: 65%;" data-val="R$ 8.200"></div>
+              <span class="bar-label">Seg</span>
+            </div>
+            <div class="bar-col">
+              <div class="bar-fill" style="height: 75%;" data-val="R$ 9.400"></div>
+              <span class="bar-label">Ter</span>
+            </div>
+            <div class="bar-col">
+              <div class="bar-fill" style="height: 55%;" data-val="R$ 7.100"></div>
+              <span class="bar-label">Qua</span>
+            </div>
+            <div class="bar-col">
+              <div class="bar-fill" style="height: 90%;" data-val="R$ 11.500"></div>
+              <span class="bar-label">Qui</span>
+            </div>
+            <div class="bar-col">
+              <div class="bar-fill" style="height: 100%;" data-val="R$ 12.550"></div>
+              <span class="bar-label">Sex</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lançamentos Recentes -->
+        <div class="panel-box">
+          <div class="panel-head">
+            <h3 class="panel-title">Lançamentos Recentes</h3>
+            <div class="filter-pills">
+              <button class="filter-btn active" onclick="filtrar('todos', this)">Todos</button>
+              <button class="filter-btn" onclick="filtrar('pagos', this)">Pagos</button>
+              <button class="filter-btn" onclick="filtrar('pendentes', this)">Pendentes</button>
+            </div>
+          </div>
+
+          <div class="tx-list" id="txContainer">
+            <div class="tx-row" data-status="pagos">
+              <div class="tx-left">
+                <span class="tx-title">NF-e 1042 · Distribuidora Norte</span>
+                <span class="tx-desc">Venda de mercadorias · Pix recebido</span>
+              </div>
+              <div class="tx-right">
+                <span class="tx-value">R$ 3.420,00</span>
+                <span class="badge-status badge-pago">Pago</span>
+              </div>
+            </div>
+
+            <div class="tx-row" data-status="pendentes">
+              <div class="tx-left">
+                <span class="tx-title">Pedido #892 · Mercado Central</span>
+                <span class="tx-desc">Fatura a prazo · Vence em 3 dias</span>
+              </div>
+              <div class="tx-right">
+                <span class="tx-value">R$ 1.150,00</span>
+                <span class="badge-status badge-pendente">Pendente</span>
+              </div>
+            </div>
+
+            <div class="tx-row" data-status="pagos">
+              <div class="tx-left">
+                <span class="tx-title">Serviço #402 · Loja Silva</span>
+                <span class="tx-desc">Contrato mensal · Cartão de crédito</span>
+              </div>
+              <div class="tx-right">
+                <span class="tx-value">R$ 850,00</span>
+                <span class="badge-status badge-pago">Pago</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer CTA (Full Page) -->
+      <div class="demo-footer-bar">
+        <div class="demo-footer-text">
+          <strong>Quer um ERP enxuto para o seu negócio?</strong> Sem mensalidades abusivas e feito exatamente para as rotinas da sua equipe.
+        </div>
+        <a href="https://wa.me/5569992782919?text=Ol%C3%A1%20Rodrigo.%20Gostei%20do%20modelo%20de%20ERP%20e%20gostaria%20de%20um%20sistema%20sob%20medida%20para%20minha%20empresa." target="_blank" rel="noopener noreferrer" class="btn-cta-zap">
+          Conversar no WhatsApp
+        </a>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    let faturamentoBase = 48750;
+
+    function simularVenda() {
+      const valor = Math.floor(Math.random() * 800) + 200;
+      faturamentoBase += valor;
+      document.getElementById('valFaturamento').innerText = 'R$ ' + faturamentoBase.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+      
+      const container = document.getElementById('txContainer');
+      const row = document.createElement('div');
+      row.className = 'tx-row';
+      row.setAttribute('data-status', 'pagos');
+      row.innerHTML = `
+        <div class="tx-left">
+          <span class="tx-title">Venda Rápida #${Math.floor(Math.random() * 900) + 100}</span>
+          <span class="tx-desc">Lançamento instantâneo no caixa</span>
+        </div>
+        <div class="tx-right">
+          <span class="tx-value">R$ ${valor.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
+          <span class="badge-status badge-pago">Pago</span>
+        </div>
+      `;
+      container.prepend(row);
+      if (container.children.length > 4) {
+        container.removeChild(container.lastElementChild);
+      }
+    }
+
+    function filtrar(tipo, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const rows = document.querySelectorAll('.tx-row');
+      rows.forEach(r => {
+        if (tipo === 'todos') {
+          r.style.display = 'flex';
+        } else if (r.getAttribute('data-status') === tipo) {
+          r.style.display = 'flex';
+        } else {
+          r.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

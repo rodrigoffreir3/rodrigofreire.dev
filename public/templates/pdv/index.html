@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Caixa Ágil PDV | Demonstração de Frente de Caixa e Ponto de Venda</title>
+  <meta name="description" content="Demonstração interativa de frente de caixa PDV rápido: leitor de código de barras, cálculo de troco automático e recebimento via Pix instantâneo." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-pos: #090d16;
+      --bg-surface: #111827;
+      --bg-card: #1f2937;
+      --border-pos: rgba(255, 255, 255, 0.09);
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --color-brand: #10b981;
+      --color-blue: #3b82f6;
+      --color-accent: #f59e0b;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-pos);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-size: 14px;
+      overflow-x: hidden;
+    }
+
+    /* Topbar */
+    .pos-topbar {
+      height: 52px;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-pos);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .pos-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .pos-logo {
+      background: linear-gradient(135deg, #10b981, #059669);
+      width: 28px;
+      height: 28px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    .pos-title {
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .pos-status {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #10b981;
+    }
+
+    /* Layout Split */
+    .pos-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1.2fr;
+      flex: 1;
+      height: calc(100vh - 52px);
+      overflow: hidden;
+    }
+
+    @media (max-width: 850px) {
+      .pos-grid {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+    }
+
+    /* Lado Esquerdo: Catálogo */
+    .catalog-panel {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      overflow-y: auto;
+      border-right: 1px solid var(--border-pos);
+    }
+
+    .search-bar-wrap {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .input-barcode {
+      flex: 1;
+      background: var(--bg-card);
+      border: 1px solid var(--border-pos);
+      border-radius: var(--radius-sm);
+      padding: 0.65rem 0.85rem;
+      color: #fff;
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .input-barcode:focus {
+      border-color: var(--color-brand);
+    }
+
+    .cat-tabs {
+      display: flex;
+      gap: 0.35rem;
+      overflow-x: auto;
+      padding-bottom: 0.25rem;
+    }
+
+    .cat-tab {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      padding: 0.35rem 0.65rem;
+      font-size: 0.75rem;
+      border-radius: 4px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .cat-tab.active {
+      background: rgba(16, 185, 129, 0.2);
+      border-color: rgba(16, 185, 129, 0.4);
+      color: #6ee7b7;
+      font-weight: 600;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 0.65rem;
+    }
+
+    .prod-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-pos);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+
+    .prod-card:hover {
+      border-color: var(--color-brand);
+      transform: translateY(-2px);
+      background: #253347;
+    }
+
+    .prod-card:active {
+      transform: scale(0.98);
+    }
+
+    .prod-name {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #f3f4f6;
+      line-height: 1.3;
+    }
+
+    .prod-cat {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+
+    .prod-price {
+      margin-top: auto;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #34d399;
+    }
+
+    /* Lado Direito: Cesta de Venda */
+    .cart-panel {
+      background: var(--bg-surface);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      overflow-y: auto;
+    }
+
+    .cart-header {
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid var(--border-pos);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cart-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .cart-items-list {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 0.65rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-pos);
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+    }
+
+    .cart-item-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .cart-item-title {
+      font-weight: 600;
+      color: #f3f4f6;
+    }
+
+    .cart-item-calc {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .cart-item-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .cart-item-total {
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .btn-qty {
+      background: var(--bg-card);
+      border: 1px solid var(--border-pos);
+      color: #fff;
+      width: 22px;
+      height: 22px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    /* Totais e Pagamento */
+    .cart-footer {
+      padding: 1rem;
+      border-top: 1px solid var(--border-pos);
+      background: #0d131f;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .totals-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .label-total {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .val-total {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #34d399;
+      letter-spacing: -0.02em;
+    }
+
+    .payment-methods {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.4rem;
+    }
+
+    .pay-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-pos);
+      color: #fff;
+      padding: 0.5rem 0.25rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      transition: all 0.15s ease;
+    }
+
+    .pay-btn.active {
+      border-color: #34d399;
+      background: rgba(16, 185, 129, 0.15);
+      color: #6ee7b7;
+    }
+
+    .troco-box {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-pos);
+      border-radius: var(--radius-sm);
+      padding: 0.5rem 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+
+    .btn-checkout {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #fff;
+      border: none;
+      padding: 0.85rem;
+      border-radius: var(--radius-md);
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: opacity 0.2s;
+    }
+
+    .btn-checkout:hover {
+      opacity: 0.92;
+    }
+
+    /* Modal / Feedback de Venda Concluída */
+    .success-toast {
+      display: none;
+      background: rgba(16, 185, 129, 0.95);
+      color: #fff;
+      padding: 0.65rem 1rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-align: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* EMBED MODE */
+    html.embed-hero-only body {
+      background: #090d16;
+    }
+    html.embed-hero-only .pos-topbar {
+      height: 44px;
+    }
+    html.embed-hero-only .pos-grid {
+      height: auto;
+    }
+    html.embed-hero-only .catalog-panel {
+      padding: 0.65rem;
+    }
+    html.embed-hero-only .product-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.45rem;
+    }
+    html.embed-hero-only .cart-panel {
+      padding: 0;
+    }
+    html.embed-hero-only .val-total {
+      font-size: 1.3rem;
+    }
+  </style>
+  <script>
+    if (window.location.search.includes('embed=hero')) {
+      document.documentElement.classList.add('embed-hero-only');
+    }
+  </script>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <header class="pos-topbar">
+    <div class="pos-brand">
+      <div class="pos-logo">⚡</div>
+      <span class="pos-title">Caixa Ágil PDV</span>
+    </div>
+    <div class="pos-status">
+      <span class="status-dot"></span>
+      <span>NFC-e Online · Caixa 01</span>
+    </div>
+  </header>
+
+  <!-- Layout Split -->
+  <div class="pos-grid">
+    <!-- Lado Esquerdo: Catálogo de Produtos -->
+    <section class="catalog-panel">
+      <div class="search-bar-wrap">
+        <input type="text" class="input-barcode" placeholder="Escanear código ou buscar produto..." />
+      </div>
+
+      <div class="cat-tabs">
+        <button class="cat-tab active">Tudo</button>
+        <button class="cat-tab">Bebidas</button>
+        <button class="cat-tab">Alimentos</button>
+        <button class="cat-tab">Higiene</button>
+      </div>
+
+      <div class="product-grid">
+        <div class="prod-card" onclick="addProduto('Café Gourmet 500g', 18.90)">
+          <span class="prod-name">Café Gourmet 500g</span>
+          <span class="prod-cat">Alimentos</span>
+          <span class="prod-price">R$ 18,90</span>
+        </div>
+
+        <div class="prod-card" onclick="addProduto('Guaraná 2L', 9.50)">
+          <span class="prod-name">Guaraná Regional 2L</span>
+          <span class="prod-cat">Bebidas</span>
+          <span class="prod-price">R$ 9,50</span>
+        </div>
+
+        <div class="prod-card" onclick="addProduto('Água Mineral 500ml', 3.50)">
+          <span class="prod-name">Água Mineral 500ml</span>
+          <span class="prod-cat">Bebidas</span>
+          <span class="prod-price">R$ 3,50</span>
+        </div>
+
+        <div class="prod-card" onclick="addProduto('Pão de Queijo 400g', 14.00)">
+          <span class="prod-name">Pão de Queijo 400g</span>
+          <span class="prod-cat">Alimentos</span>
+          <span class="prod-price">R$ 14,00</span>
+        </div>
+
+        <div class="prod-card" onclick="addProduto('Chocolate Barra 90g', 7.90)">
+          <span class="prod-name">Chocolate 90g</span>
+          <span class="prod-cat">Doces</span>
+          <span class="prod-price">R$ 7,90</span>
+        </div>
+
+        <div class="prod-card" onclick="addProduto('Biscoito Salgado', 5.20)">
+          <span class="prod-name">Biscoito Salgado</span>
+          <span class="prod-cat">Snacks</span>
+          <span class="prod-price">R$ 5,20</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lado Direito: Cesta de Venda -->
+    <section class="cart-panel">
+      <div class="cart-header">
+        <span class="cart-title">Venda em Andamento #1049</span>
+        <button onclick="limparCesta()" style="background:transparent;border:none;color:#ef4444;font-size:0.75rem;cursor:pointer;">Limpar</button>
+      </div>
+
+      <div class="cart-items-list" id="cartItems">
+        <!-- Itens inseridos via JS -->
+      </div>
+
+      <div class="cart-footer">
+        <div id="toastSuccess" class="success-toast">
+          ✓ Venda autorizada! Comprovante emitido.
+        </div>
+
+        <div class="totals-row">
+          <span class="label-total">Total a Pagar</span>
+          <span class="val-total" id="valTotal">R$ 0,00</span>
+        </div>
+
+        <div class="payment-methods">
+          <button class="pay-btn active" onclick="setPagamento('pix', this)">
+            <span>⚡ Pix</span>
+            <small>Instantâneo</small>
+          </button>
+          <button class="pay-btn" onclick="setPagamento('cartao', this)">
+            <span>💳 Cartão</span>
+            <small>Crédito/Débito</small>
+          </button>
+          <button class="pay-btn" onclick="setPagamento('dinheiro', this)">
+            <span>💵 Dinheiro</span>
+            <small>Com Troco</small>
+          </button>
+        </div>
+
+        <div class="troco-box" id="trocoBox" style="display:none;">
+          <span>Troco calculado:</span>
+          <strong style="color:#34d399;" id="valTroco">R$ 0,00</strong>
+        </div>
+
+        <button class="btn-checkout" onclick="finalizarVenda()">
+          <span>Finalizar Venda (F2)</span>
+        </button>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    let carrinho = [
+      { nome: 'Café Gourmet 500g', preco: 18.90, qtd: 1 },
+      { nome: 'Água Mineral 500ml', preco: 3.50, qtd: 2 }
+    ];
+    let metodoPagamento = 'pix';
+
+    function renderCart() {
+      const container = document.getElementById('cartItems');
+      container.innerHTML = '';
+      let total = 0;
+
+      carrinho.forEach((item, index) => {
+        const itemTotal = item.preco * item.qtd;
+        total += itemTotal;
+
+        const row = document.createElement('div');
+        row.className = 'cart-item';
+        row.innerHTML = `
+          <div class="cart-item-info">
+            <span class="cart-item-title">${item.nome}</span>
+            <span class="cart-item-calc">${item.qtd}x R$ ${item.preco.toFixed(2).replace('.', ',')}</span>
+          </div>
+          <div class="cart-item-actions">
+            <button class="btn-qty" onclick="alterarQtd(${index}, -1)">-</button>
+            <span style="font-weight:600;min-width:14px;text-align:center;">${item.qtd}</span>
+            <button class="btn-qty" onclick="alterarQtd(${index}, 1)">+</button>
+            <span class="cart-item-total">R$ ${itemTotal.toFixed(2).replace('.', ',')}</span>
+          </div>
+        `;
+        container.appendChild(row);
+      });
+
+      document.getElementById('valTotal').innerText = 'R$ ' + total.toFixed(2).replace('.', ',');
+
+      if (metodoPagamento === 'dinheiro' && total > 0) {
+        const recebido = total <= 20 ? 20 : total <= 50 ? 50 : 100;
+        const troco = recebido - total;
+        document.getElementById('valTroco').innerText = 'R$ ' + troco.toFixed(2).replace('.', ',') + ` (Recebe R$ ${recebido},00)`;
+      }
+    }
+
+    function addProduto(nome, preco) {
+      const existente = carrinho.find(i => i.nome === nome);
+      if (existente) {
+        existente.qtd += 1;
+      } else {
+        carrinho.push({ nome, preco, qtd: 1 });
+      }
+      renderCart();
+    }
+
+    function alterarQtd(index, delta) {
+      carrinho[index].qtd += delta;
+      if (carrinho[index].qtd <= 0) {
+        carrinho.splice(index, 1);
+      }
+      renderCart();
+    }
+
+    function limparCesta() {
+      carrinho = [];
+      renderCart();
+    }
+
+    function setPagamento(metodo, btn) {
+      metodoPagamento = metodo;
+      document.querySelectorAll('.pay-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const trocoBox = document.getElementById('trocoBox');
+      if (metodo === 'dinheiro') {
+        trocoBox.style.display = 'flex';
+      } else {
+        trocoBox.style.display = 'none';
+      }
+      renderCart();
+    }
+
+    function finalizarVenda() {
+      if (carrinho.length === 0) return;
+      const toast = document.getElementById('toastSuccess');
+      toast.style.display = 'block';
+      setTimeout(() => {
+        toast.style.display = 'none';
+        carrinho = [];
+        renderCart();
+      }, 1800);
+    }
+
+    renderCart();
+  </script>
+</body>
+</html>
