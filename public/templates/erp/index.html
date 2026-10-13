@@ -8,23 +8,27 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --bg-app: #0f172a;
-      --bg-surface: #1e293b;
-      --bg-card: #243247;
-      --border-subtle: rgba(255, 255, 255, 0.08);
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --color-brand: #3b82f6;
-      --color-success: #10b981;
-      --color-warning: #f59e0b;
-      --color-danger: #ef4444;
-      --radius-sm: 6px;
-      --radius-md: 10px;
-      --radius-lg: 14px;
+      --color-primary: #3533cd;
+      --color-primary-dark: #23219c;
+      --color-primary-light: #eef2ff;
+      --color-accent-green: #10b981;
+      --color-accent-amber: #f59e0b;
+      --bg-page: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-surface-subtle: #f1f5f9;
+      --border-color: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.04);
+      --shadow-card: 0 6px 20px rgba(0, 0, 0, 0.05);
+      --shadow-primary: 0 8px 20px rgba(53, 51, 205, 0.22);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
     }
 
     * {
@@ -35,20 +39,20 @@
     }
 
     body {
-      background-color: var(--bg-app);
+      background: linear-gradient(180deg, #f8fafc 0%, #eef2f6 100%);
       color: var(--text-main);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      overflow-x: hidden;
       font-size: 14px;
+      overflow-x: hidden;
     }
 
-    /* Topbar */
+    /* Topbar Luminosa */
     .topbar {
-      height: 56px;
+      height: 58px;
       background: var(--bg-surface);
-      border-bottom: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-color);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -56,6 +60,7 @@
       position: sticky;
       top: 0;
       z-index: 50;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
     }
 
     .brand-wrap {
@@ -65,33 +70,37 @@
     }
 
     .brand-logo-icon {
-      width: 28px;
-      height: 28px;
-      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--color-primary), #4f46e5);
       border-radius: var(--radius-sm);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 800;
-      font-size: 14px;
+      font-weight: 900;
+      font-size: 15px;
       color: #fff;
+      box-shadow: 0 4px 12px rgba(53, 51, 205, 0.3);
     }
 
     .brand-title {
-      font-weight: 700;
-      font-size: 1.05rem;
-      letter-spacing: -0.01em;
-      color: #fff;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
     }
 
     .brand-badge {
-      font-size: 0.7rem;
-      padding: 0.15rem 0.5rem;
-      background: rgba(16, 185, 129, 0.15);
-      color: #34d399;
-      border: 1px solid rgba(16, 185, 129, 0.3);
+      font-size: 0.72rem;
+      padding: 0.2rem 0.6rem;
+      background: rgba(16, 185, 129, 0.12);
+      color: #059669;
+      border: 1px solid rgba(16, 185, 129, 0.25);
       border-radius: 999px;
-      font-weight: 600;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
     }
 
     .topbar-actions {
@@ -101,22 +110,24 @@
     }
 
     .btn-quick-sale {
-      background: var(--color-brand);
+      background: linear-gradient(135deg, var(--color-primary), #2563eb);
       color: #fff;
       border: none;
-      padding: 0.45rem 0.9rem;
+      padding: 0.5rem 1rem;
       border-radius: var(--radius-sm);
-      font-size: 0.8rem;
-      font-weight: 600;
+      font-size: 0.82rem;
+      font-weight: 700;
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 0.35rem;
-      transition: background 0.2s;
+      box-shadow: var(--shadow-primary);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .btn-quick-sale:hover {
-      background: #2563eb;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(53, 51, 205, 0.3);
     }
 
     /* Layout Principal */
@@ -127,68 +138,87 @@
 
     /* Sidebar */
     .sidebar {
-      width: 200px;
+      width: 210px;
       background: var(--bg-surface);
-      border-right: 1px solid var(--border-subtle);
-      padding: 1rem 0.75rem;
+      border-right: 1px solid var(--border-color);
+      padding: 1.25rem 0.85rem;
       display: flex;
       flex-direction: column;
-      gap: 0.35rem;
+      gap: 0.4rem;
     }
 
     .nav-item {
       display: flex;
       align-items: center;
       gap: 0.65rem;
-      padding: 0.6rem 0.75rem;
+      padding: 0.65rem 0.85rem;
       color: var(--text-muted);
       border-radius: var(--radius-sm);
       cursor: pointer;
-      font-weight: 500;
-      font-size: 0.85rem;
+      font-weight: 600;
+      font-size: 0.86rem;
       transition: all 0.15s ease;
       text-decoration: none;
     }
 
-    .nav-item:hover, .nav-item.active {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.06);
+    .nav-item:hover {
+      color: var(--color-primary);
+      background: var(--color-primary-light);
     }
 
     .nav-item.active {
-      background: rgba(59, 130, 246, 0.15);
-      color: #60a5fa;
-      font-weight: 600;
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+      font-weight: 700;
     }
 
-    /* Conteúdo Principal */
+    /* Main Viewport */
     .main-viewport {
       flex: 1;
-      padding: 1.25rem;
+      padding: 1.5rem;
       overflow-y: auto;
       max-width: 1200px;
       margin: 0 auto;
       width: 100%;
     }
 
-    /* Grid de Métricas */
+    /* Grid de Métricas (KPIs) com Vida */
     .kpi-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: 0.85rem;
-      margin-bottom: 1.25rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
     }
 
     .kpi-card {
       background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
-      padding: 1rem;
+      padding: 1.15rem;
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
+      gap: 0.45rem;
+      box-shadow: var(--shadow-card);
       position: relative;
       overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .kpi-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+      border-color: rgba(53, 51, 205, 0.3);
+    }
+
+    .kpi-card-halo {
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 90px;
+      height: 90px;
+      background: radial-gradient(circle, rgba(53, 51, 205, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
     }
 
     .kpi-header {
@@ -196,41 +226,49 @@
       justify-content: space-between;
       align-items: center;
       color: var(--text-muted);
-      font-size: 0.78rem;
-      font-weight: 500;
+      font-size: 0.76rem;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
     }
 
     .kpi-value {
-      font-size: 1.45rem;
-      font-weight: 700;
-      color: #fff;
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--text-main);
       letter-spacing: -0.02em;
     }
 
     .kpi-sub {
       display: flex;
       align-items: center;
-      gap: 0.4rem;
-      font-size: 0.75rem;
+      gap: 0.45rem;
+      font-size: 0.78rem;
     }
 
     .tag-trend-up {
-      color: #34d399;
-      font-weight: 600;
+      color: #059669;
+      background: #ecfdf5;
+      padding: 0.15rem 0.45rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.72rem;
     }
 
     .tag-trend-alert {
-      color: #fbbf24;
-      font-weight: 600;
+      color: #b45309;
+      background: #fffbeb;
+      padding: 0.15rem 0.45rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.72rem;
     }
 
-    /* Gráfico e Tabela */
+    /* Dashboard Split */
     .dashboard-split {
       display: grid;
       grid-template-columns: 1.2fr 1.8fr;
-      gap: 1rem;
+      gap: 1.25rem;
     }
 
     @media (max-width: 900px) {
@@ -241,40 +279,43 @@
 
     .panel-box {
       background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
-      padding: 1rem 1.15rem;
+      padding: 1.25rem 1.35rem;
+      box-shadow: var(--shadow-card);
     }
 
     .panel-head {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 1rem;
+      margin-bottom: 1.15rem;
     }
 
     .panel-title {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: #fff;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: -0.01em;
     }
 
     .panel-tag {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      background: rgba(255, 255, 255, 0.05);
-      padding: 0.2rem 0.5rem;
-      border-radius: 4px;
+      font-size: 0.74rem;
+      color: var(--color-primary);
+      background: var(--color-primary-light);
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      font-weight: 700;
     }
 
-    /* Gráfico de Barras CSS */
+    /* Gráfico de Barras com Vida */
     .chart-bars-wrap {
       display: flex;
       align-items: flex-end;
-      gap: 0.85rem;
-      height: 140px;
+      gap: 1rem;
+      height: 150px;
       padding-top: 1rem;
-      border-bottom: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-color);
     }
 
     .bar-col {
@@ -282,172 +323,200 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.5rem;
       height: 100%;
       justify-content: flex-end;
     }
 
     .bar-fill {
       width: 100%;
-      background: linear-gradient(180deg, #3b82f6, #1d4ed8);
-      border-radius: 4px 4px 0 0;
-      transition: height 0.4s ease, opacity 0.2s;
+      background: linear-gradient(180deg, #4f46e5 0%, var(--color-primary) 100%);
+      border-radius: 6px 6px 0 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       cursor: pointer;
       position: relative;
+      box-shadow: 0 4px 10px rgba(53, 51, 205, 0.2);
     }
 
     .bar-fill:hover {
-      opacity: 0.85;
-      background: linear-gradient(180deg, #60a5fa, #2563eb);
+      background: linear-gradient(180deg, #6366f1 0%, #3b82f6 100%);
+      transform: scaleY(1.05);
+      box-shadow: 0 6px 14px rgba(53, 51, 205, 0.35);
     }
 
     .bar-fill:hover::after {
       content: attr(data-val);
       position: absolute;
-      top: -24px;
+      top: -26px;
       left: 50%;
       transform: translateX(-50%);
       background: #0f172a;
-      border: 1px solid var(--border-subtle);
       color: #fff;
-      font-size: 0.68rem;
-      padding: 0.15rem 0.4rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
       border-radius: 4px;
       white-space: nowrap;
       z-index: 10;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     }
 
     .bar-label {
-      font-size: 0.72rem;
+      font-size: 0.74rem;
       color: var(--text-muted);
-      font-weight: 500;
+      font-weight: 600;
     }
 
     /* Tabela de Lançamentos */
     .filter-pills {
       display: flex;
-      gap: 0.35rem;
-      margin-bottom: 0.75rem;
+      gap: 0.4rem;
+      margin-bottom: 0.85rem;
     }
 
     .filter-btn {
-      background: rgba(255, 255, 255, 0.05);
+      background: var(--bg-surface-subtle);
       border: 1px solid transparent;
       color: var(--text-muted);
-      padding: 0.25rem 0.55rem;
-      font-size: 0.72rem;
-      border-radius: 4px;
+      padding: 0.3rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 999px;
       cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .filter-btn:hover {
+      color: var(--color-primary);
+      background: var(--color-primary-light);
     }
 
     .filter-btn.active {
-      background: rgba(59, 130, 246, 0.2);
-      border-color: rgba(59, 130, 246, 0.4);
-      color: #93c5fd;
-      font-weight: 600;
+      background: var(--color-primary);
+      color: #fff;
+      font-weight: 700;
+      box-shadow: 0 2px 8px rgba(53, 51, 205, 0.25);
     }
 
     .tx-list {
       display: flex;
       flex-direction: column;
-      gap: 0.45rem;
+      gap: 0.55rem;
     }
 
     .tx-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.55rem 0.75rem;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--border-subtle);
+      padding: 0.7rem 0.9rem;
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
       border-radius: var(--radius-sm);
-      font-size: 0.8rem;
+      font-size: 0.84rem;
+      transition: all 0.15s ease;
+    }
+
+    .tx-row:hover {
+      background: #ffffff;
+      border-color: rgba(53, 51, 205, 0.25);
+      box-shadow: var(--shadow-sm);
     }
 
     .tx-left {
       display: flex;
       flex-direction: column;
-      gap: 0.15rem;
+      gap: 0.2rem;
     }
 
     .tx-title {
-      font-weight: 600;
-      color: #f1f5f9;
+      font-weight: 700;
+      color: var(--text-main);
     }
 
     .tx-desc {
-      font-size: 0.7rem;
+      font-size: 0.74rem;
       color: var(--text-muted);
     }
 
     .tx-right {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.85rem;
       text-align: right;
     }
 
     .tx-value {
-      font-weight: 700;
-      color: #fff;
+      font-weight: 800;
+      color: var(--text-main);
+      font-size: 0.92rem;
     }
 
     .badge-status {
-      font-size: 0.68rem;
-      padding: 0.15rem 0.45rem;
-      border-radius: 4px;
-      font-weight: 600;
+      font-size: 0.72rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      font-weight: 700;
     }
 
     .badge-pago {
-      background: rgba(16, 185, 129, 0.15);
-      color: #34d399;
+      background: #ecfdf5;
+      color: #059669;
+      border: 1px solid rgba(16, 185, 129, 0.25);
     }
 
     .badge-pendente {
-      background: rgba(245, 158, 11, 0.15);
-      color: #fbbf24;
+      background: #fffbeb;
+      color: #b45309;
+      border: 1px solid rgba(245, 158, 11, 0.25);
     }
 
     /* Banner de Demonstração */
     .demo-footer-bar {
-      margin-top: 1.25rem;
-      background: linear-gradient(90deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.1));
-      border: 1px solid rgba(59, 130, 246, 0.25);
+      margin-top: 1.5rem;
+      background: linear-gradient(135deg, #eef2ff 0%, #ecfdf5 100%);
+      border: 1px solid rgba(53, 51, 205, 0.15);
       border-radius: var(--radius-md);
-      padding: 0.75rem 1rem;
+      padding: 1rem 1.25rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
+      box-shadow: var(--shadow-sm);
     }
 
     .demo-footer-text {
-      font-size: 0.82rem;
-      color: #cbd5e1;
+      font-size: 0.88rem;
+      color: #334155;
+      line-height: 1.5;
     }
 
     .demo-footer-text strong {
-      color: #fff;
+      color: var(--color-primary);
     }
 
     .btn-cta-zap {
-      background: #10b981;
+      background: #25d366;
       color: #fff;
       text-decoration: none;
-      padding: 0.45rem 0.95rem;
-      border-radius: var(--radius-sm);
-      font-weight: 600;
-      font-size: 0.8rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.85rem;
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
+      gap: 0.45rem;
       white-space: nowrap;
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+      transition: transform 0.2s;
+    }
+
+    .btn-cta-zap:hover {
+      transform: scale(1.03);
     }
 
     /* MODO EMBED (Compacto para o iframe na Home) */
     html.embed-hero-only body {
-      background: #0b1120;
+      background: #ffffff;
     }
     html.embed-hero-only .sidebar {
       display: none;
@@ -457,28 +526,28 @@
       padding: 0 0.85rem;
     }
     html.embed-hero-only .main-viewport {
-      padding: 0.75rem;
+      padding: 0.85rem;
     }
     html.embed-hero-only .kpi-grid {
       grid-template-columns: repeat(2, 1fr);
-      gap: 0.5rem;
-      margin-bottom: 0.75rem;
+      gap: 0.65rem;
+      margin-bottom: 0.85rem;
     }
     html.embed-hero-only .kpi-card {
-      padding: 0.65rem;
+      padding: 0.75rem;
     }
     html.embed-hero-only .kpi-value {
-      font-size: 1.15rem;
+      font-size: 1.25rem;
     }
     html.embed-hero-only .kpi-header {
-      font-size: 0.7rem;
+      font-size: 0.72rem;
     }
     html.embed-hero-only .dashboard-split {
       grid-template-columns: 1fr;
-      gap: 0.65rem;
+      gap: 0.75rem;
     }
     html.embed-hero-only .chart-bars-wrap {
-      height: 95px;
+      height: 105px;
     }
     html.embed-hero-only .demo-footer-bar {
       display: none;
@@ -521,10 +590,11 @@
       <!-- KPIs -->
       <section class="kpi-grid">
         <div class="kpi-card">
+          <div class="kpi-card-halo"></div>
           <div class="kpi-header">
             <span>Faturamento do Mês</span>
           </div>
-          <div class="kpi-value" id="valFaturamento">R$ 48.750,00</div>
+          <div class="kpi-value" id="valFaturamento" style="color: var(--color-primary);">R$ 48.750,00</div>
           <div class="kpi-sub">
             <span class="tag-trend-up">↑ +14.2%</span>
             <span style="color:var(--text-muted)">vs mês anterior</span>
@@ -532,16 +602,18 @@
         </div>
 
         <div class="kpi-card">
+          <div class="kpi-card-halo"></div>
           <div class="kpi-header">
             <span>Contas a Receber</span>
           </div>
           <div class="kpi-value">R$ 12.300,00</div>
           <div class="kpi-sub">
-            <span style="color:#60a5fa">● 8 faturas abertas</span>
+            <span style="color:#2563eb;font-weight:600;">● 8 faturas em aberto</span>
           </div>
         </div>
 
         <div class="kpi-card">
+          <div class="kpi-card-halo"></div>
           <div class="kpi-header">
             <span>Contas a Pagar</span>
           </div>
@@ -552,10 +624,11 @@
         </div>
 
         <div class="kpi-card">
+          <div class="kpi-card-halo"></div>
           <div class="kpi-header">
             <span>Saldo Disponível</span>
           </div>
-          <div class="kpi-value" style="color:#34d399">R$ 34.070,00</div>
+          <div class="kpi-value" style="color:#059669;">R$ 34.070,00</div>
           <div class="kpi-sub">
             <span style="color:var(--text-muted)">Caixa + Bancos</span>
           </div>

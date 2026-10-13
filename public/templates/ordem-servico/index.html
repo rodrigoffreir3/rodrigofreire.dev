@@ -8,21 +8,27 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --bg-os: #0b1329;
-      --bg-surface: #13203f;
-      --bg-card: #1c2b52;
-      --border-os: rgba(255, 255, 255, 0.08);
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --color-brand: #3b82f6;
-      --color-success: #10b981;
-      --color-warning: #f59e0b;
-      --radius-sm: 6px;
-      --radius-md: 10px;
+      --color-primary: #d97706;
+      --color-primary-dark: #b45309;
+      --color-primary-light: #fffbeb;
+      --color-accent-blue: #2563eb;
+      --color-accent-green: #059669;
+      --bg-page: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-surface-subtle: #f1f5f9;
+      --border-color: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.04);
+      --shadow-card: 0 6px 20px rgba(0, 0, 0, 0.05);
+      --shadow-primary: 0 8px 20px rgba(217, 119, 6, 0.25);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
     }
 
     * {
@@ -33,7 +39,7 @@
     }
 
     body {
-      background-color: var(--bg-os);
+      background: linear-gradient(180deg, #f8fafc 0%, #edf2f7 100%);
       color: var(--text-main);
       min-height: 100vh;
       display: flex;
@@ -42,107 +48,122 @@
       overflow-x: hidden;
     }
 
-    /* Topbar */
+    /* Topbar Luminosa */
     .os-topbar {
-      height: 52px;
+      height: 56px;
       background: var(--bg-surface);
-      border-bottom: 1px solid var(--border-os);
+      border-bottom: 1px solid var(--border-color);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 1rem;
+      padding: 0 1.25rem;
       position: sticky;
       top: 0;
       z-index: 50;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
     }
 
     .os-brand {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.65rem;
     }
 
     .os-logo {
       background: linear-gradient(135deg, #f59e0b, #d97706);
-      width: 28px;
-      height: 28px;
+      width: 32px;
+      height: 32px;
       border-radius: var(--radius-sm);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 800;
-      font-size: 14px;
+      font-weight: 900;
+      font-size: 15px;
       color: #fff;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
     }
 
     .os-title {
-      font-weight: 700;
-      font-size: 1rem;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
     }
 
     .os-badge {
-      font-size: 0.7rem;
-      background: rgba(59, 130, 246, 0.2);
-      color: #93c5fd;
-      padding: 0.2rem 0.5rem;
+      font-size: 0.74rem;
+      background: #fffbeb;
+      color: #b45309;
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      padding: 0.25rem 0.65rem;
       border-radius: 999px;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     /* Status Bar */
     .status-filter-bar {
-      padding: 0.75rem 1rem;
+      padding: 0.85rem 1.25rem;
       display: flex;
       gap: 0.45rem;
       overflow-x: auto;
-      border-bottom: 1px solid var(--border-os);
-      background: rgba(19, 32, 63, 0.5);
+      border-bottom: 1px solid var(--border-color);
+      background: var(--bg-surface);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
     }
 
     .filter-tab {
-      background: rgba(255, 255, 255, 0.05);
+      background: var(--bg-surface-subtle);
       border: 1px solid transparent;
       color: var(--text-muted);
-      padding: 0.35rem 0.75rem;
-      border-radius: var(--radius-sm);
-      font-size: 0.75rem;
-      font-weight: 500;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 600;
       cursor: pointer;
       white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+
+    .filter-tab:hover {
+      color: var(--color-primary);
+      background: var(--color-primary-light);
     }
 
     .filter-tab.active {
-      background: rgba(59, 130, 246, 0.25);
-      border-color: rgba(59, 130, 246, 0.5);
-      color: #bfdbfe;
-      font-weight: 600;
+      background: var(--color-primary);
+      color: #fff;
+      font-weight: 700;
+      box-shadow: 0 2px 8px rgba(217, 119, 6, 0.25);
     }
 
     /* Container de OS */
     .os-container {
-      padding: 1rem;
+      padding: 1.25rem;
       flex: 1;
       max-width: 1100px;
       margin: 0 auto;
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 0.85rem;
+      gap: 1rem;
     }
 
     .os-card {
       background: var(--bg-surface);
-      border: 1px solid var(--border-os);
+      border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
-      padding: 0.95rem 1.15rem;
+      padding: 1.15rem 1.35rem;
       display: flex;
       flex-direction: column;
-      gap: 0.65rem;
-      transition: border-color 0.2s;
+      gap: 0.75rem;
+      box-shadow: var(--shadow-card);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .os-card:hover {
-      border-color: rgba(59, 130, 246, 0.4);
+      border-color: rgba(217, 119, 6, 0.35);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.07);
     }
 
     .os-card-header {
@@ -153,50 +174,55 @@
     }
 
     .os-number {
-      font-weight: 700;
-      color: #fff;
-      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--text-main);
+      font-size: 1.05rem;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.6rem;
     }
 
     .os-device-tag {
-      font-size: 0.72rem;
-      background: rgba(255, 255, 255, 0.06);
-      color: #cbd5e1;
-      padding: 0.2rem 0.5rem;
-      border-radius: 4px;
+      font-size: 0.74rem;
+      background: var(--bg-surface-subtle);
+      color: #334155;
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      font-weight: 600;
     }
 
     .badge-os-status {
-      font-size: 0.7rem;
-      padding: 0.2rem 0.55rem;
-      border-radius: 4px;
-      font-weight: 600;
+      font-size: 0.74rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      font-weight: 700;
       white-space: nowrap;
     }
 
     .status-bancada {
-      background: rgba(59, 130, 246, 0.2);
-      color: #93c5fd;
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid rgba(37, 99, 235, 0.25);
     }
 
     .status-aguardando {
-      background: rgba(245, 158, 11, 0.2);
-      color: #fcd34d;
+      background: #fffbeb;
+      color: #b45309;
+      border: 1px solid rgba(245, 158, 11, 0.3);
     }
 
     .status-pronto {
-      background: rgba(16, 185, 129, 0.2);
-      color: #6ee7b7;
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid rgba(16, 185, 129, 0.25);
     }
 
     .os-details-grid {
       display: grid;
       grid-template-columns: 2fr 1fr;
-      gap: 0.75rem;
-      font-size: 0.82rem;
+      gap: 0.85rem;
+      font-size: 0.85rem;
     }
 
     @media (max-width: 650px) {
@@ -207,11 +233,11 @@
 
     .os-defect-box {
       color: var(--text-muted);
-      line-height: 1.4;
+      line-height: 1.5;
     }
 
     .os-defect-box strong {
-      color: #e2e8f0;
+      color: var(--text-main);
     }
 
     .os-financial-box {
@@ -219,47 +245,50 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 0.2rem;
+      gap: 0.25rem;
     }
 
     .os-price-val {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: #34d399;
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: #059669;
     }
 
     .os-footer-actions {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-top: 0.65rem;
-      border-top: 1px solid var(--border-os);
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border-color);
       gap: 0.5rem;
       flex-wrap: wrap;
     }
 
     .os-client-info {
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
+      font-weight: 500;
     }
 
     .btn-zap-notify {
-      background: #10b981;
+      background: #25d366;
       color: #fff;
       border: none;
-      padding: 0.4rem 0.85rem;
-      border-radius: var(--radius-sm);
-      font-size: 0.78rem;
-      font-weight: 600;
+      padding: 0.45rem 0.95rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
-      transition: background 0.15s;
+      gap: 0.4rem;
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .btn-zap-notify:hover {
-      background: #059669;
+      transform: scale(1.03);
+      box-shadow: 0 6px 16px rgba(37, 211, 102, 0.35);
     }
 
     /* Modal Simulado de Mensagem */
@@ -267,7 +296,8 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.75);
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
       z-index: 100;
       align-items: center;
       justify-content: center;
@@ -275,73 +305,77 @@
     }
 
     .zap-modal-card {
-      background: #1e293b;
-      border: 1px solid var(--border-os);
+      background: #ffffff;
+      border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
       max-width: 440px;
       width: 100%;
-      padding: 1.25rem;
+      padding: 1.35rem;
       display: flex;
       flex-direction: column;
-      gap: 0.85rem;
+      gap: 1rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     }
 
     .zap-modal-title {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: #fff;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text-main);
     }
 
     .zap-bubble {
-      background: #064e3b;
-      color: #d1fae5;
-      padding: 0.85rem;
-      border-radius: 8px;
-      font-size: 0.8rem;
-      line-height: 1.5;
-      border-left: 3px solid #10b981;
+      background: #dcf8c6;
+      color: #064e3b;
+      padding: 0.95rem 1.1rem;
+      border-radius: 12px;
+      font-size: 0.84rem;
+      line-height: 1.55;
+      border: 1px solid rgba(37, 211, 102, 0.3);
+      box-shadow: var(--shadow-sm);
     }
 
     .zap-modal-btns {
       display: flex;
       justify-content: flex-end;
-      gap: 0.5rem;
+      gap: 0.6rem;
     }
 
     .btn-modal-close {
       background: transparent;
-      border: 1px solid var(--border-os);
+      border: 1px solid var(--border-color);
       color: var(--text-muted);
-      padding: 0.4rem 0.8rem;
+      padding: 0.45rem 0.9rem;
       border-radius: var(--radius-sm);
       cursor: pointer;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
+      font-weight: 600;
     }
 
     .btn-modal-send {
-      background: #10b981;
+      background: #25d366;
       border: none;
       color: #fff;
-      padding: 0.4rem 0.85rem;
+      padding: 0.45rem 1rem;
       border-radius: var(--radius-sm);
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
+      box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
     }
 
     /* EMBED MODE */
     html.embed-hero-only body {
-      background: #0b1329;
+      background: #ffffff;
     }
     html.embed-hero-only .os-topbar {
-      height: 44px;
+      height: 46px;
     }
     html.embed-hero-only .os-container {
-      padding: 0.65rem;
-      gap: 0.6rem;
+      padding: 0.75rem;
+      gap: 0.65rem;
     }
     html.embed-hero-only .os-card {
-      padding: 0.75rem 0.85rem;
+      padding: 0.85rem 1rem;
     }
   </style>
   <script>
@@ -382,10 +416,10 @@
       <div class="os-details-grid">
         <div class="os-defect-box">
           <strong>Defeito relatado:</strong> Tela com linhas verdes após queda e bateria descarregando rápido.<br />
-          <strong>Laudo técnico:</strong> Substituição do display OLED e bateria nova original.
+          <strong>Laudo técnico:</strong> Substituição do display OLED e bateria nova original com garantia.
         </div>
         <div class="os-financial-box">
-          <span style="font-size:0.7rem;color:var(--text-muted)">Valor do Orçamento</span>
+          <span style="font-size:0.72rem;color:var(--text-muted);font-weight:600;">Valor do Orçamento</span>
           <span class="os-price-val">R$ 890,00</span>
         </div>
       </div>
@@ -412,13 +446,13 @@
           <strong>Serviço:</strong> Limpeza ultrassônica interna e aplicação de pasta térmica Grizzly Kryonaut.
         </div>
         <div class="os-financial-box">
-          <span style="font-size:0.7rem;color:var(--text-muted)">Orçamento Aprovado</span>
-          <span class="os-price-val">R$ 380,00</span>
+          <span style="font-size:0.72rem;color:var(--text-muted);font-weight:600;">Orçamento Aprovado</span>
+          <span class="os-price-val" style="color: #2563eb;">R$ 380,00</span>
         </div>
       </div>
       <div class="os-footer-actions">
         <span class="os-client-info">Cliente: Carlos E. · (69) 99312-****</span>
-        <span style="font-size:0.75rem;color:#93c5fd">● Técnico Rodrigo executando</span>
+        <span style="font-size:0.76rem;color:#2563eb;font-weight:700;">● Técnico Rodrigo executando</span>
       </div>
     </div>
 
@@ -437,7 +471,7 @@
           <strong>Concluído:</strong> Desobstrução de cabeçote e dreno de tinta revisado. Testes 100% OK.
         </div>
         <div class="os-financial-box">
-          <span style="font-size:0.7rem;color:var(--text-muted)">Total a Pagar</span>
+          <span style="font-size:0.72rem;color:var(--text-muted);font-weight:600;">Total a Pagar</span>
           <span class="os-price-val">R$ 220,00</span>
         </div>
       </div>
