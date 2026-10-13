@@ -17,6 +17,7 @@ const Blog = React.lazy(() => import('./pages/Blog'));
 const BlogPost = React.lazy(() => import('./pages/BlogPost'));
 const Sobre = React.lazy(() => import('./pages/Sobre'));
 const Contato = React.lazy(() => import('./pages/Contato'));
+const ArtifexLabs = React.lazy(() => import('./pages/ArtifexLabs'));
 const Login = React.lazy(() => import('./pages/Login'));
 const NotFound = React.lazy(() => import('./pages/NotFound'));
 
@@ -71,6 +72,8 @@ export default function App() {
                 <Route path="/blog/:slug" element={<BlogPost posts={posts} profile={profile} />} />
                 <Route path="/sobre" element={<Sobre profile={profile} />} />
                 <Route path="/contato" element={<Contato profile={profile} />} />
+                <Route path="/artifex-labs" element={<ArtifexLabs profile={profile} />} />
+                <Route path="/artifex" element={<ArtifexLabs profile={profile} />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </React.Suspense>

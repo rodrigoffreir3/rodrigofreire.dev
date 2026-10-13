@@ -19,6 +19,7 @@ function generateSitemap() {
 
   const staticPages = [
     { loc: `${SITE_URL}/`, changefreq: 'weekly', priority: '1.0', lastmod: today },
+    { loc: `${SITE_URL}/artifex-labs`, changefreq: 'weekly', priority: '0.95', lastmod: today },
     { loc: `${SITE_URL}/sobre`, changefreq: 'monthly', priority: '0.8', lastmod: '2026-09-21' },
     { loc: `${SITE_URL}/contato`, changefreq: 'monthly', priority: '0.8', lastmod: '2026-09-21' },
     { loc: `${SITE_URL}/projetos`, changefreq: 'weekly', priority: '0.9', lastmod: '2026-09-23' },
@@ -507,6 +508,46 @@ function prerenderRoutes() {
               <a href="mailto:contato@rodrigofreire.dev" style="color:#3533cd;font-weight:700;font-size:1.15rem;text-decoration:none;">contato@rodrigofreire.dev</a>
             </div>
           </div>
+        </main>
+      `
+    },
+    {
+      dir: 'artifex-labs',
+      title: 'Artifex Labs · Robótica Educacional & Physical AI com Rodrigo Freire em Porto Velho',
+      description: 'Plataforma pedagógica e currículo de robótica educacional e inteligência artificial física para colégios de Porto Velho, RO. Simulação física no navegador, programação em blocos e Python real, e Digital Twin com ESP32.',
+      canonicalUrl: `${SITE_URL}/artifex-labs`,
+      jsonLd: {
+        '@context': 'https://schema.org',
+        '@type': 'Course',
+        'name': 'Programa de Robótica Educacional & Physical AI com Artifex Labs',
+        'description': 'Plataforma pedagógica e currículo de robótica educacional para colégios de Porto Velho, RO.',
+        'provider': {
+          '@type': 'Person',
+          'name': 'Rodrigo Freire'
+        }
+      },
+      bodyHtml: `
+        <main>
+          <div style="margin-bottom:2rem;">
+            <p style="font-size:0.85rem;color:#888;margin-bottom:0.5rem;"><a href="/" style="color:#666;text-decoration:none;">Início</a> &gt; <span>Artifex Labs</span></p>
+            <p style="font-size:0.875rem;font-weight:700;color:#3533cd;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">Robótica Educacional & Physical AI · Porto Velho, RO</p>
+            <h1 style="font-size:2.4rem;color:#000;margin:0 0 1rem;line-height:1.2;">A plataforma de robótica e inteligência física que o seu colégio pode adotar amanhã.</h1>
+            <p style="font-size:1.15rem;color:#444;line-height:1.65;margin-bottom:1.75rem;">Sem a armadilha de kits comerciais de R$ 5.000 que quebram na primeira semana. O Artifex Labs leva o laboratório inteiro para o navegador: da lógica visual ao Python profissional conectado a placas reais ESP32 por Digital Twin.</p>
+            <p><a href="https://wa.me/5569992782919" target="_blank" rel="noopener noreferrer" style="background:#000;color:#fff;padding:0.85rem 1.6rem;border-radius:999px;text-decoration:none;font-weight:700;display:inline-block;">Agendar aula demonstrativa gratuita (45 min) no seu colégio &rarr;</a></p>
+          </div>
+          <section style="margin-top:2.5rem;margin-bottom:2.5rem;">
+            <h2 style="font-size:1.6rem;color:#000;margin:0 0 0.75rem;">Os 4 Pilares da Plataforma</h2>
+            <ul>
+              <li><strong>Física 2D Real & Sensores Calibrados:</strong> Motor Matter.js determinístico com inércia, colisão e raycasting de sonar HC-SR04.</li>
+              <li><strong>Programação Dupla:</strong> Folha de Eventos visual intuitiva e Editor Monaco com Python puro para o Ensino Médio.</li>
+              <li><strong>Digital Twin Bidirecional a 20Hz:</strong> Sincronização em tempo real com microcontroladores ESP32 via USB/WebSerial.</li>
+              <li><strong>Segurança Sandbox WebAssembly:</strong> Execução via Pyodide WASM com proteção AST Guard contra travamento de máquinas.</li>
+            </ul>
+          </section>
+          <section style="margin-top:2.5rem;">
+            <h2 style="font-size:1.6rem;color:#000;margin:0 0 0.75rem;">Docência e Responsabilidade Pedagógica</h2>
+            <p>Aulas ministradas diretamente por <strong>Rodrigo Freire</strong>, criador da ferramenta, graduado em Direito e graduando em Análise e Desenvolvimento de Sistemas, com Registro INPI de Programa de Computador Nº 512025006506-0 e atendimento presencial em Porto Velho, RO.</p>
+          </section>
         </main>
       `
     },

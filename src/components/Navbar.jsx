@@ -72,6 +72,10 @@ export default function Navbar({ profile }) {
           </li>
 
           <li>
+            <Link to="/artifex-labs" className={location.pathname.startsWith('/artifex') ? 'active' : ''}>Robótica (Artifex)</Link>
+          </li>
+
+          <li>
             <Link to="/sobre" className={isActive('/sobre') ? 'active' : ''}>Sobre</Link>
           </li>
 
@@ -158,6 +162,9 @@ export default function Navbar({ profile }) {
             </Link>
             <Link to="/#como-funciona" className={`mobile-nav-link ${location.hash === '#como-funciona' ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
               Como funciona
+            </Link>
+            <Link to="/artifex-labs" className={`mobile-nav-link ${location.pathname.startsWith('/artifex') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
+              Robótica (Artifex Labs)
             </Link>
             <Link to="/sobre" className={`mobile-nav-link ${isActive('/sobre') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
               Sobre
