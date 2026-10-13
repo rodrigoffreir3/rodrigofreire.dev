@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build && node scripts/generate_seo.js",
     "preview": "vite preview",
-    "deploy": "npm run build && rsync -avz --delete -e 'ssh -i ~/.ssh/oracle-hs.key' --rsync-path='sudo rsync' dist/ ubuntu@163.176.125.251:/var/www/html/ && ssh -i ~/.ssh/oracle-hs.key ubuntu@163.176.125.251 'sudo chown -R www-data:www-data /var/www/html'"
+    "deploy": "npm run build && rsync -avz --delete -e 'ssh -i ~/.ssh/oracle-hs.key' --rsync-path='sudo rsync' dist/ ubuntu@163.176.125.251:/var/www/html/ && ssh -i ~/.ssh/oracle-hs.key ubuntu@163.176.125.251 'sudo chown -R www-data:www-data /var/www/html && sudo systemctl reload nginx'"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.1",
